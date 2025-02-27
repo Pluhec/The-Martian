@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,10 +124,10 @@ TextureImporter:
       name: player-running-left_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 12
-        width: 34
-        height: 48
+        x: 0
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,10 +146,10 @@ TextureImporter:
       name: player-running-left_1
       rect:
         serializedVersion: 2
-        x: 52
-        y: 17
-        width: 34
-        height: 44
+        x: 48
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: player-running-left_2
       rect:
         serializedVersion: 2
-        x: 103
-        y: 16
-        width: 26
-        height: 44
+        x: 96
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,10 +190,10 @@ TextureImporter:
       name: player-running-left_3
       rect:
         serializedVersion: 2
-        x: 148
-        y: 16
-        width: 25
-        height: 44
+        x: 144
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,10 +212,10 @@ TextureImporter:
       name: player-running-left_4
       rect:
         serializedVersion: 2
-        x: 194
-        y: 16
-        width: 35
-        height: 44
+        x: 192
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,10 +234,10 @@ TextureImporter:
       name: player-running-left_5
       rect:
         serializedVersion: 2
-        x: 241
-        y: 16
-        width: 38
-        height: 44
+        x: 240
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,10 +256,10 @@ TextureImporter:
       name: player-running-left_6
       rect:
         serializedVersion: 2
-        x: 294
-        y: 15
-        width: 27
-        height: 45
+        x: 288
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,10 +278,10 @@ TextureImporter:
       name: player-running-left_7
       rect:
         serializedVersion: 2
-        x: 338
-        y: 12
-        width: 27
-        height: 47
+        x: 336
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ef8a65274c1cf44a787497659db03757
     internalID: 0
     vertices: []
     indices: 
@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      player-running-left_0: 6709054441960968140
+      player-running-left_1: -8668899880331847022
+      player-running-left_2: -683690009701470482
+      player-running-left_3: -7888432372190045585
+      player-running-left_4: 134250602476140307
+      player-running-left_5: -8663722355411995355
+      player-running-left_6: 649786275354763680
+      player-running-left_7: 2146436445552653229
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

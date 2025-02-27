@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,10 +124,10 @@ TextureImporter:
       name: player-walking-right_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 4
-        width: 23
-        height: 57
+        x: 0
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,10 +146,10 @@ TextureImporter:
       name: player-walking-right_1
       rect:
         serializedVersion: 2
-        x: 52
-        y: 4
-        width: 30
-        height: 55
+        x: 48
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: player-walking-right_2
       rect:
         serializedVersion: 2
-        x: 99
-        y: 4
-        width: 27
-        height: 55
+        x: 96
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,10 +190,10 @@ TextureImporter:
       name: player-walking-right_3
       rect:
         serializedVersion: 2
-        x: 153
-        y: 5
-        width: 16
-        height: 55
+        x: 144
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,10 +212,10 @@ TextureImporter:
       name: player-walking-right_4
       rect:
         serializedVersion: 2
-        x: 199
-        y: 5
-        width: 24
-        height: 54
+        x: 192
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,10 +234,10 @@ TextureImporter:
       name: player-walking-right_5
       rect:
         serializedVersion: 2
-        x: 243
-        y: 6
-        width: 29
-        height: 52
+        x: 240
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,10 +256,10 @@ TextureImporter:
       name: player-walking-right_6
       rect:
         serializedVersion: 2
-        x: 290
-        y: 6
-        width: 29
-        height: 53
+        x: 288
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,10 +278,10 @@ TextureImporter:
       name: player-walking-right_7
       rect:
         serializedVersion: 2
-        x: 344
-        y: 5
-        width: 17
-        height: 56
+        x: 336
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c77b391fd3d3641af825c5ce6b203ffc
     internalID: 0
     vertices: []
     indices: 
@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      player-walking-right_0: 6305083097989833040
+      player-walking-right_1: 5270501003028993145
+      player-walking-right_2: 4815805222394296882
+      player-walking-right_3: 6033962517945034497
+      player-walking-right_4: 5921221147279971631
+      player-walking-right_5: 2694518355276400377
+      player-walking-right_6: -2363496306927363709
+      player-walking-right_7: 3550128561999908459
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

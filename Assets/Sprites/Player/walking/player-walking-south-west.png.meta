@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,10 +124,10 @@ TextureImporter:
       name: player-walking-south-west_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 7
-        width: 24
-        height: 54
+        x: 0
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,10 +146,10 @@ TextureImporter:
       name: player-walking-south-west_1
       rect:
         serializedVersion: 2
-        x: 63
-        y: 6
-        width: 29
-        height: 53
+        x: 48
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: player-walking-south-west_2
       rect:
         serializedVersion: 2
-        x: 115
-        y: 7
-        width: 26
-        height: 52
+        x: 96
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,10 +190,10 @@ TextureImporter:
       name: player-walking-south-west_3
       rect:
         serializedVersion: 2
-        x: 165
-        y: 8
-        width: 21
-        height: 53
+        x: 144
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,10 +212,10 @@ TextureImporter:
       name: player-walking-south-west_4
       rect:
         serializedVersion: 2
-        x: 205
-        y: 2
-        width: 31
-        height: 58
+        x: 192
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,10 +234,10 @@ TextureImporter:
       name: player-walking-south-west_5
       rect:
         serializedVersion: 2
-        x: 251
-        y: 2
-        width: 35
-        height: 57
+        x: 240
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,10 +256,10 @@ TextureImporter:
       name: player-walking-south-west_6
       rect:
         serializedVersion: 2
-        x: 300
-        y: 2
-        width: 34
-        height: 57
+        x: 288
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,10 +278,10 @@ TextureImporter:
       name: player-walking-south-west_7
       rect:
         serializedVersion: 2
-        x: 356
-        y: 5
-        width: 22
-        height: 56
+        x: 336
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a9838448416af4e73873367312fbea3e
     internalID: 0
     vertices: []
     indices: 
@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      player-walking-south-west_0: 7251474752619623353
+      player-walking-south-west_1: 2755227548543007403
+      player-walking-south-west_2: -8443319556962654932
+      player-walking-south-west_3: -290830393321646850
+      player-walking-south-west_4: 6251459335503889310
+      player-walking-south-west_5: -8166032267374169397
+      player-walking-south-west_6: -6462793112727475537
+      player-walking-south-west_7: 8102195953146029745
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
