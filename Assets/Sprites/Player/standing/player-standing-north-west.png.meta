@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 81909642bce5bad4bbe9660655119bae
+guid: 8cec8b4212cc649989ee2106b70c6118
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5357944983111842808
-    second: 64x64_Mars_Crater_Variant1_Pixel_0
+      213: 6848953938450568751
+    second: player-standing-north-west_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 64x64_Mars_Crater_Variant1_Pixel_0
+      name: player-standing-north-west_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
+        x: 4
+        y: 3
+        width: 24
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8fbb774139e3b5a40800000000000000
-      internalID: 5357944983111842808
+      spriteID: f26db58d15f5c0f50800000000000000
+      internalID: 6848953938450568751
       vertices: []
       indices: 
       edges: []
@@ -147,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      64x64_Mars_Crater_Variant1_Pixel_0: 5357944983111842808
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
