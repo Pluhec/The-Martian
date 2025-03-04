@@ -31,6 +31,14 @@ public class RoverInteraction : MonoBehaviour, IInteractable {
             // Zde implementuj logiku výměny pneu
         };
         actions.Add(tireAction);
+        
+        InteractionAction repair = new InteractionAction();
+        repair.actionName = "Vyměnit pneumatiku";
+        repair.actionCallback = () => {
+            Debug.Log("Pneumatika vyměněna");
+            // Zde implementuj logiku výměny pneu
+        };
+        actions.Add(repair);
 
         return actions;
     }

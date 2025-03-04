@@ -3,7 +3,7 @@ using System;
 
 [Serializable]
 public class InteractionAction {
-    public string actionName;         // Název akce, např. "Otevřít", "Nabíjet" apod.
-    public Sprite actionIcon;         // Ikona akce (volitelně)
-    public Action actionCallback;     // Callback, který se zavolá při výběru
+    public string actionName;         // Název akce, např. "Otevřít"
+    public Sprite actionIcon;         // Ikona akce (můžeš ponechat prázdné, pokud ji nechceš používat)
+    public Action actionCallback;     // Metoda, která se zavolá při výběru akce
 }
