@@ -12,6 +12,9 @@ public class RoverInteraction : MonoBehaviour, IInteractable {
             Debug.Log("Nasednuto");
             // Zde implementuj logiku nasednutí
         };
+        quickAction.header = "Rover";
+        quickAction.description = "Nasednout na rover";
+        // quickAction.actionIcon = /* přiřaď ikonu */;
         actions.Add(quickAction);
 
         // Druhá akce: Nabíjet
@@ -21,6 +24,9 @@ public class RoverInteraction : MonoBehaviour, IInteractable {
             Debug.Log("Nabíjení");
             // Zde implementuj logiku nabíjení
         };
+        chargeAction.header = "Rover";
+        chargeAction.description = "Nabíjet rover";
+        // chargeAction.actionIcon = /* přiřaď ikonu */;
         actions.Add(chargeAction);
 
         // Třetí akce: Vyměnit pneumatiku
@@ -30,15 +36,10 @@ public class RoverInteraction : MonoBehaviour, IInteractable {
             Debug.Log("Pneumatika vyměněna");
             // Zde implementuj logiku výměny pneu
         };
+        tireAction.header = "Rover";
+        tireAction.description = "Vyměnit pneumatiku na roveru";
+        // tireAction.actionIcon = /* přiřaď ikonu */;
         actions.Add(tireAction);
-        
-        InteractionAction repair = new InteractionAction();
-        repair.actionName = "Vyměnit pneumatiku";
-        repair.actionCallback = () => {
-            Debug.Log("Pneumatika vyměněna");
-            // Zde implementuj logiku výměny pneu
-        };
-        actions.Add(repair);
 
         return actions;
     }

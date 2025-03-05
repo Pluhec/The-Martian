@@ -1,51 +1,54 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace SimplePieMenu
 {
-    public class MenuItemSelector : MonoBehaviour
+    public class MenuItemsTracker : MonoBehaviour
     {
-        public Dictionary<int, Button> ButtonComponentsReference { get; private set; }
-        public Dictionary<int, PieMenuItem> PieMenuItemsReference { get; private set; }
+        public Dictionary<int, Button> ButtonComponents { get; private set; }
+        public Dictionary<int, PieMenuItem> PieMenuItems { get; private set; }
+        public Dictionary<int, PieMenuItem> HiddenMenuItems { get; private set; }
 
-        private int previousSelection;
-
-        public void ResetPreviousSelection()
+        private void Awake()
         {
-            previousSelection = -1;
+            ButtonComponents = new Dictionary<int, Button>();
+            PieMenuItems = new Dictionary<int, PieMenuItem>();
+            HiddenMenuItems = new Dictionary<int, PieMenuItem>();
         }
 
-        public void RegisterMenuItems(Dictionary<int, Button> buttonComponents,
-            Dictionary<int, PieMenuItem> pieMenuItems)
+        public void Initialize(Transform menuItemsDir)
         {
-            ButtonComponentsReference = buttonComponents;
-            PieMenuItemsReference = pieMenuItems;
-        }
+            ButtonComponents.Clear();
+            PieMenuItems.Clear();
 
-        public void SelectMenuItem(PieMenu pieMenu, int selection)
-        {
-            if (selection != previousSelection)
+            for (int i = 0; i < menuItemsDir.childCount; i++)
             {
-                UnselectPreviousMenuItem();
+                Transform menuItemTransform = menuItemsDir.GetChild(i);
+                Button button = menuItemTransform.GetComponent<Button>();
+                PieMenuItem pieMenuItem = menuItemTransform.GetComponent<PieMenuItem>();
 
-                ButtonComponentsReference[selection].Select();
-                PieMenuItemsReference[selection].OnPointerEnter();
-
-                previousSelection = selection;
+                if (button != null && pieMenuItem != null)
+                {
+                    ButtonComponents.Add(i, button);
+                    PieMenuItems.Add(i, pieMenuItem);
+                }
             }
         }
 
-        public void UnselectPreviousMenuItem()
+        public PieMenuItem GetMenuItem(int id)
         {
-            if (previousSelection != -1)
-            {
-                PieMenuItemsReference[previousSelection].BeforePointerExit();
-                PieMenuItemsReference[previousSelection].OnPointerExit();
-                EventSystem.current.SetSelectedGameObject(null);
+            PieMenuItems.TryGetValue(id, out PieMenuItem menuItem);
+            return menuItem;
+        }
 
-                previousSelection = -1;
+        public void RemoveMenuItem(int id)
+        {
+            if (PieMenuItems.ContainsKey(id))
+            {
+                Destroy(PieMenuItems[id].gameObject);
+                PieMenuItems.Remove(id);
+                ButtonComponents.Remove(id);
             }
         }
     }
