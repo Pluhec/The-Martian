@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class TerminalManager : MonoBehaviour
 {
@@ -22,79 +22,89 @@ public class TerminalManager : MonoBehaviour
 
     private void OnGUI()
     {
-        if(terminalInput.isFocused && terminalInput.text != "" && Input.GetKey(KeyCode.Return))
+        if (terminalInput.isFocused && terminalInput.text != "" && Input.GetKey(KeyCode.Return))
         {
-            // Ulozeni uzivatelskeho vstupu
+            // Uložení uživatelského vstupu
             string userInput = terminalInput.text;
-            
-            // vycisteni inputu
+
+            // Vyčištění inputu
             ClearInputField();
-            
-            // Initiate a gameobject
+
+            // Vytvoření nového řádku s uživatelským vstupem
             AddDirectoryLine(userInput);
-            
-            // Interpretace uzivatelskeho vstupu
-            int lines = AddInterpreterLines(Interpreter.Interpret(userInput));
-            
-            // Scroll to the bottom
+
+            // Interpretace uživatelského vstupu
+            int lines = AddInterpreterLines(interpreter.Interpret(userInput));
+
+            // Posun scrollu na konec
             ScrollToBottom(lines);
 
-            // Moving the user line to the bottom
+            // Přesun řádku uživatele na konec
             userInputLine.transform.SetAsLastSibling();
-            
-            // Refocus the input field
+
+            // Refocus input fieldu
             terminalInput.ActivateInputField();
             terminalInput.Select();
-            
         }
-        
-        void ClearInputField()
+    }
+
+    void ClearInputField()
+    {
+        terminalInput.text = "";
+    }
+
+    void AddDirectoryLine(string userInput)
+    {
+        // Zvětšení výšky kontejneru zpráv
+        RectTransform msgListRT = msgList.GetComponent<RectTransform>();
+        msgListRT.sizeDelta = new Vector2(msgListRT.sizeDelta.x, msgListRT.sizeDelta.y + 25.0f);
+
+        GameObject msg = Instantiate(directoryLine, msgList.transform);
+        msg.transform.SetSiblingIndex(msgList.transform.childCount - 1);
+
+        Text[] texts = msg.GetComponentsInChildren<Text>();
+        if (texts.Length > 0)
         {
-            terminalInput.text = "";
+            texts[0].text = userInput;
         }
-        
-        void AddDirectoryLine(string userInput)
+        else
         {
-            // Resize comandoveho konteineru
-            Vector2 msgListSize = msgList.GetComponent<RectTransform>().sizeDelta;
-            msgList.GetComponent<RectTransform>().sizeDelta = new Vector2(msgListSize.x, msgListSize.y + 25.0f);
-
-            GameObject msg = Instantiate(directoryLine, msgList.transform);
-            
-            msg.transform.SetSiblingIndex(msgList.transform.childCount - 1);
-
-            msg.GetComponentsInChildren<Text>()[1].text = userInput;
-
+            Debug.LogError("Expected at least 1 Text component in directoryLine prefab.");
         }
+    }
 
-        int AddInterpreterLines(List<string> interpretation); 
+    int AddInterpreterLines(List<string> interpretation)
+    {
+        for (int i = 0; i < interpretation.Count; i++)
         {
-            for(int i = 0; i < interpretation.Count; i++)
+            GameObject res = Instantiate(responseLine, msgList.transform);
+            res.transform.SetAsLastSibling();
+
+            RectTransform msgListRT = msgList.GetComponent<RectTransform>();
+            msgListRT.sizeDelta = new Vector2(msgListRT.sizeDelta.x, msgListRT.sizeDelta.y + 25.0f);
+
+            Text[] texts = res.GetComponentsInChildren<Text>();
+            if (texts.Length > 0)
             {
-                gameObject res = Instantiate(responseLine, msgList.transform);
-                
-                res.transform.SetAsLastSibling();
-                
-                Vector2 ListSize = msgList.GetComponent<RectTransform>().sizeDelta;
-                msgList.GetComponent<RectTransform>().sizeDelta = new Vector2(msgListSize.x, msgListSize.y + 25.0f);
-                
-                res.GetComponentsInChildren<Text>()[1].text = interpretation[i];
-            }
-             
-            
-            return interpretation.Count;
-        }
-        
-        void ScrollToBottom(int lines)
-        {
-            if (lines > 4)
-            {
-                sr.velocity = new Vector2(0.0f, 100.0f);
+                texts[0].text = interpretation[i];
             }
             else
             {
-                sr.verticalNormalizedPosition = 0;
+                Debug.LogError("Expected at least 1 Text component in responseLine prefab.");
             }
+        }
+        return interpretation.Count;
+    }
+
+    void ScrollToBottom(int lines)
+    {
+        if (lines > 4)
+        {
+            sr.velocity = new Vector2(0.0f, 100.0f);
+        }
+        else
+        {
+            sr.verticalNormalizedPosition = 0;
         }
     }
 }
