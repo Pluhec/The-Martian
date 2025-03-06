@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using System.Collections.Generic;
 
 public class TerminalManager : MonoBehaviour
@@ -9,7 +10,7 @@ public class TerminalManager : MonoBehaviour
     public GameObject directoryLine;
     public GameObject responseLine;
 
-    public InputField terminalInput;
+    public TMP_InputField terminalInput;
     public GameObject userInputLine;
     public ScrollRect sr;
     public GameObject msgList;
@@ -66,7 +67,7 @@ public class TerminalManager : MonoBehaviour
         // Vložíme řádek nad input line:
         msg.transform.SetSiblingIndex(userInputLine.transform.GetSiblingIndex());
 
-        Text[] texts = msg.GetComponentsInChildren<Text>();
+        TextMeshProUGUI[] texts = msg.GetComponentsInChildren<TextMeshProUGUI>();
         if (texts.Length > 1)
         {
             // Index 0 obsahuje statický prompt (např. "C:\HAB>")
@@ -75,7 +76,7 @@ public class TerminalManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Expected at least 2 Text components in directoryLine prefab.");
+            Debug.LogError("Expected at least 2 TextMeshProUGUI components in directoryLine prefab.");
         }
     }
 
@@ -91,15 +92,15 @@ public class TerminalManager : MonoBehaviour
             // Vložíme nový řádek nad input line
             res.transform.SetSiblingIndex(userInputLine.transform.GetSiblingIndex());
 
-            Text[] texts = res.GetComponentsInChildren<Text>();
+            TextMeshProUGUI[] texts = res.GetComponentsInChildren<TextMeshProUGUI>();
             if (texts.Length > 0)
             {
                 // Postupně vypisujeme text s typewriter efektem
-                yield return StartCoroutine(TypewriterEffect(texts[0], interpretation[i]));
+                yield return StartCoroutine(TypewriterEffectWithColor(texts[0], interpretation[i]));
             }
             else
             {
-                Debug.LogError("Expected at least 1 Text component in responseLine prefab.");
+                Debug.LogError("Expected at least 1 TextMeshProUGUI component in responseLine prefab.");
             }
             
             // Po přidání řádku vždy zajistíme, že input line je na konci
@@ -108,12 +109,43 @@ public class TerminalManager : MonoBehaviour
         }
     }
 
-    IEnumerator TypewriterEffect(Text textComponent, string fullText)
+    IEnumerator TypewriterEffectWithColor(TextMeshProUGUI textComponent, string fullText)
     {
-        textComponent.text = "";
-        for (int i = 0; i < fullText.Length; i++)
+        textComponent.text = ""; // Začínáme s prázdným textem
+        int i = 0;
+        while (i < fullText.Length)
         {
-            textComponent.text += fullText[i];
+            // Pokud narazíme na začátek HTML tagu (<), zpracujeme ho
+            if (fullText[i] == '<')
+            {
+                int tagEnd = fullText.IndexOf('>', i);
+                if (tagEnd == -1) break; // Pokud není konec tagu, ukončíme
+
+                // Získání celého tagu (včetně < a >)
+                string tag = fullText.Substring(i, tagEnd - i + 1);
+
+                // Pokud je to barva, aplikujeme ji
+                if (tag.StartsWith("<color="))
+                {
+                    // Extrahujeme barvu z tagu
+                    string colorHex = tag.Substring(7, tag.Length - 8); // Např. #FF0000
+                    Color color;
+                    if (ColorUtility.TryParseHtmlString(colorHex, out color))
+                    {
+                        textComponent.color = color; // Nastavíme barvu
+                    }
+                }
+
+                // Přeskočíme celý tag
+                i = tagEnd + 1;
+            }
+            else
+            {
+                // Přidáme jeden znak
+                textComponent.text += fullText[i];
+                i++;
+            }
+
             yield return new WaitForSeconds(charDelay);
         }
     }

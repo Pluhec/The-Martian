@@ -12,28 +12,27 @@ public class Interpreter : MonoBehaviour
 
         if (args.Length == 0)
         {
-            response.Add("No command entered");
+            response.Add("<color=#FF0000>No command entered</color>");
         }
 
         if (args[0] == "/help" || args[0] == "help")
         {
-            response.Add("help" + "returns a list of commands");
-            response.Add("exit" + "exits the terminal");
-            response.Add("run " + "runs a program");
-            response.Add("clear " + "clears the terminal");
-            return response;
+            response.Add("<color=#00FF00>help</color> returns a list of commands");
+            response.Add("<color=#00FF00>exit</color> exits the terminal");
+            response.Add("<color=#00FF00>run</color> runs a program");
+            response.Add("<color=#00FF00>clear</color> clears the terminal");
             return response;
         }
         else if (args[0] == "exit")
         {
             // Např. přesměrování na hlavní scénu nebo jiná akce
-            response.Add("Exiting terminal...");
+            response.Add("<color=#FFFF00>Exiting terminal...</color>");
             return response;
         }
         else
         {
-            response.Add("Unknown command: " + args[0]);
-            response.Add("Type '/help' to see available commands");
+            response.Add("<color=#FF0000>Unknown command:</color> " + args[0]);
+            response.Add("Type <color=#00FF00>/help</color> to see available commands");
             return response;
         }
     }
