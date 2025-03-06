@@ -17,7 +17,7 @@ public class Interpreter : MonoBehaviour
 
         if (args[0] == "/help" || args[0] == "help")
         {
-            response.Add("<color=#00FF00>help</color> returns a list of commands");
+            response.Add("<color=#00FF00>help</color> " + "<color=#acacac>returns a list of commands</color>");
             response.Add("<color=#00FF00>exit</color> exits the terminal");
             response.Add("<color=#00FF00>run</color> runs a program");
             response.Add("<color=#00FF00>clear</color> clears the terminal");

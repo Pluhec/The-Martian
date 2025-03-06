@@ -1283,8 +1283,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: C:\HAB>
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 88f6f4a1d2bc049aa80e2aebf34b920e, type: 2}
-  m_sharedMaterial: {fileID: -1573855682367318716, guid: 88f6f4a1d2bc049aa80e2aebf34b920e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f93d75308f5e543fab18e888629f007b, type: 2}
+  m_sharedMaterial: {fileID: -376744290617177071, guid: f93d75308f5e543fab18e888629f007b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
