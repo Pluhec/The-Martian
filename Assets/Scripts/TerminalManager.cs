@@ -15,7 +15,7 @@ public class TerminalManager : MonoBehaviour
     public GameObject msgList;
 
     // Nastavení rychlosti typewriter efektu (znaky za sekundu)
-    public float typewriterSpeed = 50f;
+    public float typewriterSpeed = 80f;
     private float charDelay { get { return 1f / typewriterSpeed; } }
 
     Interpreter interpreter;
@@ -23,6 +23,8 @@ public class TerminalManager : MonoBehaviour
     private void Start()
     {
         interpreter = GetComponent<Interpreter>();
+        terminalInput.ActivateInputField();
+        terminalInput.Select();
     }
 
     private void OnGUI()
@@ -43,6 +45,7 @@ public class TerminalManager : MonoBehaviour
             // Vždy zajisti, že input line je na konci
             userInputLine.transform.SetAsLastSibling();
 
+            // Aktivace a výběr vstupního pole
             terminalInput.ActivateInputField();
             terminalInput.Select();
         }
