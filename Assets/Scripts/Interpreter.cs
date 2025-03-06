@@ -3,17 +3,6 @@ using System.Collections.Generic;
 
 public class Interpreter : MonoBehaviour
 {
-    private Dictionary<string, string> colors = new Dictionary<string, string>()
-    {
-        { "black", "#021b21" },
-        { "gray", "#555d71" },    
-        { "red", "#ff5879" },
-        { "yellow", "#f2f1b9" },
-        { "blue", "#9ed9d8" },
-        { "purple", "#ed926f" },  
-        { "orange", "#ef5847" }
-    };
-    
     List<string> response = new List<string>();
 
     public List<string> Interpret(string userInputText)
@@ -28,10 +17,11 @@ public class Interpreter : MonoBehaviour
 
         if (args[0] == "/help" || args[0] == "help")
         {
-            ListEntry("help", "returns a list of commands");
-            ListEntry("exit", "exits the terminal");
-            ListEntry("run", "runs a program");
-            ListEntry("clear", "clears the terminal");
+            response.Add("help" + "returns a list of commands");
+            response.Add("exit" + "exits the terminal");
+            response.Add("run " + "runs a program");
+            response.Add("clear " + "clears the terminal");
+            return response;
             return response;
         }
         else if (args[0] == "exit")
@@ -46,17 +36,5 @@ public class Interpreter : MonoBehaviour
             response.Add("Type '/help' to see available commands");
             return response;
         }
-    }
-
-    public string ColorString(string s, string color)
-    {
-        string leftTag = "<color=" + color + ">";
-        string rightTag = "</color>";
-        return leftTag + s + rightTag;
-    }
-
-    void ListEntry(string a, string b)
-    {
-        response.Add(ColorString(a, colors["orange"]) + ": " + ColorString(b, colors["yellow"]));
     }
 }
