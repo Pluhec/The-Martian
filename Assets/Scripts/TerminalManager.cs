@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -13,6 +14,10 @@ public class TerminalManager : MonoBehaviour
     public ScrollRect sr;
     public GameObject msgList;
 
+    // Nastavení rychlosti typewriter efektu (znaky za sekundu)
+    public float typewriterSpeed = 50f;
+    private float charDelay { get { return 1f / typewriterSpeed; } }
+
     Interpreter interpreter;
 
     private void Start()
@@ -26,23 +31,18 @@ public class TerminalManager : MonoBehaviour
         {
             // Uložení uživatelského vstupu
             string userInput = terminalInput.text;
-
-            // Vyčištění inputu
             ClearInputField();
 
-            // Vytvoření nového řádku s uživatelským vstupem
+            // Přidání řádku s promptem a uživatelským vstupem nad input line
             AddDirectoryLine(userInput);
 
-            // Interpretace uživatelského vstupu
-            int lines = AddInterpreterLines(interpreter.Interpret(userInput));
+            // Interpretace vstupu a postupné zpracování odpovědních řádků
+            List<string> interpretation = interpreter.Interpret(userInput);
+            StartCoroutine(ProcessInterpreterLines(interpretation));
 
-            // Posun scrollu na konec
-            ScrollToBottom(lines);
-
-            // Přesun řádku uživatele na konec
+            // Vždy zajisti, že input line je na konci
             userInputLine.transform.SetAsLastSibling();
 
-            // Refocus input fieldu
             terminalInput.ActivateInputField();
             terminalInput.Select();
         }
@@ -60,40 +60,59 @@ public class TerminalManager : MonoBehaviour
         msgListRT.sizeDelta = new Vector2(msgListRT.sizeDelta.x, msgListRT.sizeDelta.y + 25.0f);
 
         GameObject msg = Instantiate(directoryLine, msgList.transform);
-        msg.transform.SetSiblingIndex(msgList.transform.childCount - 1);
+        // Vložíme řádek nad input line:
+        msg.transform.SetSiblingIndex(userInputLine.transform.GetSiblingIndex());
 
         Text[] texts = msg.GetComponentsInChildren<Text>();
-        if (texts.Length > 0)
+        if (texts.Length > 1)
         {
-            texts[0].text = userInput;
+            // Index 0 obsahuje statický prompt (např. "C:\HAB>")
+            // Index 1 se naplní uživatelským vstupem
+            texts[1].text = userInput;
         }
         else
         {
-            Debug.LogError("Expected at least 1 Text component in directoryLine prefab.");
+            Debug.LogError("Expected at least 2 Text components in directoryLine prefab.");
         }
     }
 
-    int AddInterpreterLines(List<string> interpretation)
+    IEnumerator ProcessInterpreterLines(List<string> interpretation)
     {
         for (int i = 0; i < interpretation.Count; i++)
         {
-            GameObject res = Instantiate(responseLine, msgList.transform);
-            res.transform.SetAsLastSibling();
-
+            // Zvětšení výšky kontejneru zpráv pro nový řádek
             RectTransform msgListRT = msgList.GetComponent<RectTransform>();
             msgListRT.sizeDelta = new Vector2(msgListRT.sizeDelta.x, msgListRT.sizeDelta.y + 25.0f);
+
+            GameObject res = Instantiate(responseLine, msgList.transform);
+            // Vložíme nový řádek nad input line
+            res.transform.SetSiblingIndex(userInputLine.transform.GetSiblingIndex());
 
             Text[] texts = res.GetComponentsInChildren<Text>();
             if (texts.Length > 0)
             {
-                texts[0].text = interpretation[i];
+                // Postupně vypisujeme text s typewriter efektem
+                yield return StartCoroutine(TypewriterEffect(texts[0], interpretation[i]));
             }
             else
             {
                 Debug.LogError("Expected at least 1 Text component in responseLine prefab.");
             }
+            
+            // Po přidání řádku vždy zajistíme, že input line je na konci
+            userInputLine.transform.SetAsLastSibling();
+            ScrollToBottom(i + 1);
         }
-        return interpretation.Count;
+    }
+
+    IEnumerator TypewriterEffect(Text textComponent, string fullText)
+    {
+        textComponent.text = "";
+        for (int i = 0; i < fullText.Length; i++)
+        {
+            textComponent.text += fullText[i];
+            yield return new WaitForSeconds(charDelay);
+        }
     }
 
     void ScrollToBottom(int lines)

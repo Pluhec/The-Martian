@@ -5,10 +5,10 @@ public class Interpreter : MonoBehaviour
 {
     List<string> response = new List<string>();
 
-    public List<string> Interpret(string userInput)
+    public List<string> Interpret(string userInputText)
     {
         response.Clear();
-        string[] args = userInput.Split();
+        string[] args = userInputText.Split();
 
         if (args.Length == 0)
         {
@@ -25,7 +25,7 @@ public class Interpreter : MonoBehaviour
         }
         else if (args[0] == "exit")
         {
-            // Poté přesměruj na hlavní scénu nebo proveď potřebnou akci
+            // Např. přesměrování na hlavní scénu nebo jiná akce
             response.Add("Exiting terminal...");
             return response;
         }
