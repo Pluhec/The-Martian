@@ -25,7 +25,7 @@ public class Interpreter : MonoBehaviour
         }
         else if (args[0] == "exit")
         {
-            // Např. přesměrování na hlavní scénu nebo jiná akce
+            // presnerovani na play scenu
             response.Add("<color=#FFFF00>Exiting terminal...</color>");
             return response;
         }

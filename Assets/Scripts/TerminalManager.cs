@@ -15,9 +15,11 @@ public class TerminalManager : MonoBehaviour
     public ScrollRect sr;
     public GameObject msgList;
 
-    // Nastavení rychlosti typewriter efektu (znaky za sekundu)
     public float typewriterSpeed = 80f;
     private float charDelay { get { return 1f / typewriterSpeed; } }
+
+    private List<string> commandHistory = new List<string>(); 
+    private int historyIndex = -1; 
 
     Interpreter interpreter;
 
@@ -28,27 +30,67 @@ public class TerminalManager : MonoBehaviour
         terminalInput.Select();
     }
 
+    private void Update()
+    {
+        HandleCommandHistory();
+    }
+
     private void OnGUI()
     {
         if (terminalInput.isFocused && terminalInput.text != "" && Input.GetKey(KeyCode.Return))
         {
-            // Uložení uživatelského vstupu
             string userInput = terminalInput.text;
             ClearInputField();
 
-            // Přidání řádku s promptem a uživatelským vstupem nad input line
+            // pridani prikazu a reset indexu
+            if (commandHistory.Count == 0 || commandHistory[commandHistory.Count - 1] != userInput)
+            {
+                commandHistory.Add(userInput);
+            }
+            historyIndex = commandHistory.Count; // posune index na konec
+
             AddDirectoryLine(userInput);
 
-            // Interpretace vstupu a postupné zpracování odpovědních řádků
             List<string> interpretation = interpreter.Interpret(userInput);
             StartCoroutine(ProcessInterpreterLines(interpretation));
 
-            // Vždy zajisti, že input line je na konci
             userInputLine.transform.SetAsLastSibling();
-
-            // Aktivace a výběr vstupního pole
             terminalInput.ActivateInputField();
             terminalInput.Select();
+        }
+    }
+
+    void HandleCommandHistory()
+    {
+        if (commandHistory.Count == 0) return;
+
+        if (terminalInput.isFocused)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                // sipka nahoru - drivejsi command
+                if (historyIndex > 0)
+                {
+                    historyIndex--;
+                    terminalInput.text = commandHistory[historyIndex];
+                    terminalInput.caretPosition = terminalInput.text.Length;
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                // spika dolu - novejsi prikazy
+                if (historyIndex < commandHistory.Count - 1)
+                {
+                    historyIndex++;
+                    terminalInput.text = commandHistory[historyIndex];
+                }
+                else
+                {
+                    historyIndex = commandHistory.Count;
+                    terminalInput.text = "";
+                }
+                terminalInput.caretPosition = terminalInput.text.Length;
+            }
         }
     }
 
@@ -59,19 +101,15 @@ public class TerminalManager : MonoBehaviour
 
     void AddDirectoryLine(string userInput)
     {
-        // Zvětšení výšky kontejneru zpráv
         RectTransform msgListRT = msgList.GetComponent<RectTransform>();
         msgListRT.sizeDelta = new Vector2(msgListRT.sizeDelta.x, msgListRT.sizeDelta.y + 25.0f);
 
         GameObject msg = Instantiate(directoryLine, msgList.transform);
-        // Vložíme řádek nad input line:
         msg.transform.SetSiblingIndex(userInputLine.transform.GetSiblingIndex());
 
         TextMeshProUGUI[] texts = msg.GetComponentsInChildren<TextMeshProUGUI>();
         if (texts.Length > 1)
         {
-            // Index 0 obsahuje statický prompt (např. "C:\HAB>")
-            // Index 1 se naplní uživatelským vstupem
             texts[1].text = userInput;
         }
         else
@@ -84,26 +122,22 @@ public class TerminalManager : MonoBehaviour
     {
         for (int i = 0; i < interpretation.Count; i++)
         {
-            // Zvětšení výšky kontejneru zpráv pro nový řádek
             RectTransform msgListRT = msgList.GetComponent<RectTransform>();
             msgListRT.sizeDelta = new Vector2(msgListRT.sizeDelta.x, msgListRT.sizeDelta.y + 25.0f);
 
             GameObject res = Instantiate(responseLine, msgList.transform);
-            // Vložíme nový řádek nad input line
             res.transform.SetSiblingIndex(userInputLine.transform.GetSiblingIndex());
 
             TextMeshProUGUI[] texts = res.GetComponentsInChildren<TextMeshProUGUI>();
             if (texts.Length > 0)
             {
-                // Postupně vypisujeme text s typewriter efektem
                 yield return StartCoroutine(TypewriterEffectWithColor(texts[0], interpretation[i]));
             }
             else
             {
                 Debug.LogError("Expected at least 1 TextMeshProUGUI component in responseLine prefab.");
             }
-            
-            // Po přidání řádku vždy zajistíme, že input line je na konci
+
             userInputLine.transform.SetAsLastSibling();
             ScrollToBottom(i + 1);
         }
@@ -111,37 +145,31 @@ public class TerminalManager : MonoBehaviour
 
     IEnumerator TypewriterEffectWithColor(TextMeshProUGUI textComponent, string fullText)
     {
-        textComponent.text = ""; // Začínáme s prázdným textem
+        textComponent.text = "";
         int i = 0;
         while (i < fullText.Length)
         {
-            // Pokud narazíme na začátek HTML tagu (<), zpracujeme ho
             if (fullText[i] == '<')
             {
                 int tagEnd = fullText.IndexOf('>', i);
-                if (tagEnd == -1) break; // Pokud není konec tagu, ukončíme
+                if (tagEnd == -1) break;
 
-                // Získání celého tagu (včetně < a >)
                 string tag = fullText.Substring(i, tagEnd - i + 1);
 
-                // Pokud je to barva, aplikujeme ji
                 if (tag.StartsWith("<color="))
                 {
-                    // Extrahujeme barvu z tagu
-                    string colorHex = tag.Substring(7, tag.Length - 8); // Např. #FF0000
+                    string colorHex = tag.Substring(7, tag.Length - 8);
                     Color color;
                     if (ColorUtility.TryParseHtmlString(colorHex, out color))
                     {
-                        textComponent.color = color; // Nastavíme barvu
+                        textComponent.color = color;
                     }
                 }
 
-                // Přeskočíme celý tag
                 i = tagEnd + 1;
             }
             else
             {
-                // Přidáme jeden znak
                 textComponent.text += fullText[i];
                 i++;
             }
