@@ -42,6 +42,9 @@ public class TerminalManager : MonoBehaviour
             string userInput = terminalInput.text;
             ClearInputField();
 
+            // pridani prazdneho radku pred odeslanim prikazu
+            AddEmptyLine();
+            
             // pridani prikazu a reset indexu
             if (commandHistory.Count == 0 || commandHistory[commandHistory.Count - 1] != userInput)
             {
@@ -145,7 +148,7 @@ public class TerminalManager : MonoBehaviour
 
     IEnumerator TypewriterEffectWithColor(TextMeshProUGUI textComponent, string fullText)
     {
-        textComponent.text = "";
+        textComponent.text = ""; 
         int i = 0;
         while (i < fullText.Length)
         {
@@ -153,19 +156,8 @@ public class TerminalManager : MonoBehaviour
             {
                 int tagEnd = fullText.IndexOf('>', i);
                 if (tagEnd == -1) break;
-
-                string tag = fullText.Substring(i, tagEnd - i + 1);
-
-                if (tag.StartsWith("<color="))
-                {
-                    string colorHex = tag.Substring(7, tag.Length - 8);
-                    Color color;
-                    if (ColorUtility.TryParseHtmlString(colorHex, out color))
-                    {
-                        textComponent.color = color;
-                    }
-                }
-
+                
+                textComponent.text += fullText.Substring(i, tagEnd - i + 1);
                 i = tagEnd + 1;
             }
             else
@@ -187,6 +179,25 @@ public class TerminalManager : MonoBehaviour
         else
         {
             sr.verticalNormalizedPosition = 0;
+        }
+    }
+    
+    void AddEmptyLine()
+    {
+        RectTransform msgListRT = msgList.GetComponent<RectTransform>();
+        msgListRT.sizeDelta = new Vector2(msgListRT.sizeDelta.x, msgListRT.sizeDelta.y + 25.0f);
+
+        GameObject emptyLine = Instantiate(responseLine, msgList.transform);
+        emptyLine.transform.SetSiblingIndex(userInputLine.transform.GetSiblingIndex());
+
+        TextMeshProUGUI[] emptyTexts = emptyLine.GetComponentsInChildren<TextMeshProUGUI>();
+        if (emptyTexts.Length > 0)
+        {
+            emptyTexts[0].text = "";
+        }
+        else
+        {
+            Debug.LogError("Expected at least 1 TextMeshProUGUI component in responseLine prefab.");
         }
     }
 }
