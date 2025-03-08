@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections.Generic;
 
 public class TerminalManager : MonoBehaviour
 {
@@ -41,21 +40,27 @@ public class TerminalManager : MonoBehaviour
         {
             string userInput = terminalInput.text;
             ClearInputField();
-
-            // pridani prazdneho radku pred odeslanim prikazu
+            
             AddEmptyLine();
             
-            // pridani prikazu a reset indexu
             if (commandHistory.Count == 0 || commandHistory[commandHistory.Count - 1] != userInput)
             {
                 commandHistory.Add(userInput);
             }
-            historyIndex = commandHistory.Count; // posune index na konec
+            historyIndex = commandHistory.Count;
 
             AddDirectoryLine(userInput);
 
             List<string> interpretation = interpreter.Interpret(userInput);
-            StartCoroutine(ProcessInterpreterLines(interpretation));
+            
+            if (interpretation.Count > 0 && interpretation[0] == "CLEAR_TERMINAL")
+            {
+                ClearTerminal();
+            }
+            else
+            {
+                StartCoroutine(ProcessInterpreterLines(interpretation));
+            }
 
             userInputLine.transform.SetAsLastSibling();
             terminalInput.ActivateInputField();
@@ -71,7 +76,6 @@ public class TerminalManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                // sipka nahoru - drivejsi command
                 if (historyIndex > 0)
                 {
                     historyIndex--;
@@ -81,7 +85,6 @@ public class TerminalManager : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                // spika dolu - novejsi prikazy
                 if (historyIndex < commandHistory.Count - 1)
                 {
                     historyIndex++;
@@ -199,5 +202,24 @@ public class TerminalManager : MonoBehaviour
         {
             Debug.LogError("Expected at least 1 TextMeshProUGUI component in responseLine prefab.");
         }
+    }
+
+    void ClearTerminal()
+    {
+        List<GameObject> childrenToDestroy = new List<GameObject>();
+        foreach (Transform child in msgList.transform)
+        {
+            if (child.gameObject != userInputLine)
+            {
+                childrenToDestroy.Add(child.gameObject);
+            }
+        }
+        foreach (GameObject child in childrenToDestroy)
+        {
+            Destroy(child);
+        }
+        
+        RectTransform msgListRT = msgList.GetComponent<RectTransform>();
+        msgListRT.sizeDelta = new Vector2(msgListRT.sizeDelta.x, 0);
     }
 }
