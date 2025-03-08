@@ -27,6 +27,9 @@ public class TerminalManager : MonoBehaviour
         interpreter = GetComponent<Interpreter>();
         terminalInput.ActivateInputField();
         terminalInput.Select();
+    
+        List<string> asciiLogo = interpreter.LoadAsciiLogo();
+        StartCoroutine(ProcessInterpreterLines(asciiLogo, false));
     }
 
     private void Update()
@@ -124,7 +127,7 @@ public class TerminalManager : MonoBehaviour
         }
     }
 
-    IEnumerator ProcessInterpreterLines(List<string> interpretation)
+    IEnumerator ProcessInterpreterLines(List<string> interpretation, bool useTypewriterEffect = true)
     {
         for (int i = 0; i < interpretation.Count; i++)
         {
@@ -137,7 +140,14 @@ public class TerminalManager : MonoBehaviour
             TextMeshProUGUI[] texts = res.GetComponentsInChildren<TextMeshProUGUI>();
             if (texts.Length > 0)
             {
-                yield return StartCoroutine(TypewriterEffectWithColor(texts[0], interpretation[i]));
+                if (useTypewriterEffect)
+                {
+                    yield return StartCoroutine(TypewriterEffectWithColor(texts[0], interpretation[i]));
+                }
+                else
+                {
+                    texts[0].text = interpretation[i];
+                }
             }
             else
             {

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.IO;
 
 public class Interpreter : MonoBehaviour
 {
@@ -53,6 +54,10 @@ public class Interpreter : MonoBehaviour
             case "cls":
                 response.Add("CLEAR_TERMINAL");
                 break;
+            
+            case"ascii":
+                LoadTitle("ascii.txt", "#FF0000", 0);
+                break;
 
             default:
                 response.Add("<color=#FF0000>Unknown command:</color> " + args[0]);
@@ -61,6 +66,36 @@ public class Interpreter : MonoBehaviour
         }
 
         return response;
+    }
+    
+    public List<string> LoadAsciiLogo()
+    {
+        response.Clear();
+        LoadTitle("ascii.txt", "#FF0000", 0);
+        return new List<string>(response);
+    }
+
+    void LoadTitle(string path, string color, int spacing)
+    {
+        StreamReader file = new StreamReader(Path.Combine(Application.streamingAssetsPath, path));
+
+        for (int i = 0; i < spacing; i++)
+        {
+            response.Add("");
+        }
+
+        while (!file.EndOfStream)
+        {
+            response.Add($"<color={color}>{file.ReadLine()}</color>");
+        }
+        
+        for (int i = 0; i < spacing; i++)
+        {
+            response.Add("");
+        }
+        
+        file.Close();
+        
     }
 
     private List<string> FormatCommands(
