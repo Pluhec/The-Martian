@@ -9,10 +9,9 @@ public class InteractableObject : MonoBehaviour
     {
         return actions;
     }
-
+ 
     public virtual void PerformAction(string action)
     {
-        // Logika pro akce bude ve specifických skriptech
         Debug.Log($"Hráč provedl akci: {action} na objektu {gameObject.name}");
     }
 }

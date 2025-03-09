@@ -1,45 +1,44 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-
 public class PlayerInteraction2D : MonoBehaviour
 {
+    [Header("Nastavení Radial Menu")]
     public GameObject radialMenuCanvas;
     private InteractableObject currentObject;
+
+    [Header("Čas pro dlouhý stisk (otevření menu)")]
+    public float holdThreshold = 0.5f;
     private float holdTime = 0f;
-    private float holdThreshold = 0.5f; // Po jaké době se otevře menu
     private bool menuActive = false;
-    private bool isQuickAction = false;
 
     void Start()
     {
         if (radialMenuCanvas != null)
         {
-            radialMenuCanvas.SetActive(false); // Menu je na začátku skryté
+            radialMenuCanvas.SetActive(false);
         }
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.E)) // Hráč drží klávesu
+        if (Input.GetKey(KeyCode.E))
         {
             holdTime += Time.deltaTime;
-
             if (holdTime >= holdThreshold && !menuActive && currentObject != null)
             {
                 ShowRadialMenu();
-                isQuickAction = false; // Pokud se otevře menu, quick action se neprovede
             }
         }
-
-        if (Input.GetKeyUp(KeyCode.E)) // Hráč pustil klávesu
+        
+        if (Input.GetKeyUp(KeyCode.E))
         {
+            // zavolani quick action podle delky drzeni klavesy
             if (holdTime < holdThreshold && currentObject != null)
             {
                 PerformQuickAction();
             }
-
-            holdTime = 0f; // Resetujeme čas držení klávesy
+            holdTime = 0f; // restart casu
         }
     }
 
@@ -49,17 +48,25 @@ public class PlayerInteraction2D : MonoBehaviour
         {
             radialMenuCanvas.SetActive(true);
             RadialMenu menu = radialMenuCanvas.GetComponent<RadialMenu>();
-            menu.SetupMenu(currentObject);
-            menuActive = true;
+            if (menu != null)
+            {
+                menu.SetupMenu(currentObject);
+                menuActive = true;
+            }
+            else
+            {
+                Debug.LogError("PlayerInteraction2D: RadialMenu komponenta nebyla nalezena!");
+            }
         }
     }
 
-    private void HideRadialMenu()
+    public void HideRadialMenu()
     {
         if (radialMenuCanvas != null)
         {
             radialMenuCanvas.SetActive(false);
             menuActive = false;
+            holdTime = 0f;
         }
     }
 
@@ -70,7 +77,7 @@ public class PlayerInteraction2D : MonoBehaviour
             List<string> actions = currentObject.GetActions();
             if (actions.Count > 0)
             {
-                currentObject.PerformAction(actions[0]); // Provede první akci v seznamu
+                currentObject.PerformAction(actions[0]);
             }
         }
     }
