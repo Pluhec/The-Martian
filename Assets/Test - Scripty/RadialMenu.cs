@@ -8,12 +8,7 @@ public class RadialMenu : MonoBehaviour
     public GameObject buttonPrefab;
     public Transform menuCenter;
     private List<GameObject> buttons = new List<GameObject>();
-
-    void Start()
-    {
-        gameObject.SetActive(false); // Menu je na začátku skryté
-    }
-
+    
     public void SetupMenu(InteractableObject interactable)
     {
         if (interactable == null)
@@ -22,11 +17,11 @@ public class RadialMenu : MonoBehaviour
             return;
         }
 
-        gameObject.SetActive(true); // Aktivujeme menu při zobrazení
+        gameObject.SetActive(true); // aktivace menu pri zobrazeni
         ClearMenu();
 
         List<string> actions = interactable.GetActions();
-        Debug.Log($"RadialMenu: Načítám akce pro {interactable.gameObject.name}, počet akcí: {actions.Count}");
+        Debug.Log($"RadialMenu: Nacitam akce pro {interactable.gameObject.name}, pocet akci: {actions.Count}");
 
         float angleStep = 360f / actions.Count;
         float currentAngle = 0f;
@@ -34,29 +29,29 @@ public class RadialMenu : MonoBehaviour
 
         foreach (string action in actions)
         {
-            Debug.Log($"RadialMenu: Přidávám tlačítko pro akci {action}");
+            Debug.Log($"RadialMenu: Pridavam tlacitko pro akci {action}");
 
             GameObject button = Instantiate(buttonPrefab, menuCenter);
             buttons.Add(button);
 
-            // Umístění tlačítka do kruhu
+            // umisteni tlacitka do kruhu
             float x = Mathf.Cos(currentAngle * Mathf.Deg2Rad) * radius;
             float y = Mathf.Sin(currentAngle * Mathf.Deg2Rad) * radius;
             button.transform.localPosition = new Vector3(x, y, 0);
 
-            // Nastavení textu tlačítka
+            // mastaveni textu tlacitka
             TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
             if (buttonText != null)
             {
                 buttonText.text = action;
             }
 
-            // Přidání funkce pro kliknutí
+            // pridani funkce pro kliknuti
             Button btnComponent = button.GetComponent<Button>();
             btnComponent.onClick.AddListener(() =>
             {
-                interactable.PerformAction(action); // Spustíme akci
-                CloseMenu(); // Zavřeme menu po kliknutí
+                interactable.PerformAction(action);
+                CloseMenu();
             });
 
             currentAngle += angleStep;
@@ -74,6 +69,14 @@ public class RadialMenu : MonoBehaviour
 
     public void CloseMenu()
     {
-        gameObject.SetActive(false); // Vypneme menu po kliknutí na tlačítko
+        ClearMenu();
+        gameObject.SetActive(false);
+
+        // po zavreni menu restart stavu v PlayerInteraction2D
+        PlayerInteraction2D playerInteraction = FindObjectOfType<PlayerInteraction2D>();
+        if (playerInteraction != null)
+        {
+            playerInteraction.HideRadialMenu();
+        }
     }
 }
