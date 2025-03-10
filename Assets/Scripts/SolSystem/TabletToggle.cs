@@ -8,7 +8,7 @@ public class TabletToggle : MonoBehaviour
     public GameObject openTablet;
     
     [Header("Quest Tablet")]
-    public QuestTablet questTablet;
+    public QuestTablet questTablet; 
     
     private bool isOpen = false;
     
@@ -18,7 +18,7 @@ public class TabletToggle : MonoBehaviour
 
         if (isOpen)
         {
-            
+            // Při otevření deaktivujeme uzavřenou verzi a aktivujeme otevřenou
             closedTablet.SetActive(false);
             openTablet.SetActive(true);
 
@@ -27,7 +27,7 @@ public class TabletToggle : MonoBehaviour
             {
                 questTablet.UpdateQuestList();
             }
-        } 
+        }
         else
         {
             // Při zavření vrátíme aktivní pouze uzavřenou verzi
