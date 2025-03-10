@@ -58,6 +58,19 @@ public class Interpreter : MonoBehaviour
             case"ascii":
                 LoadTitle("ascii.txt", "#FF0000", 0);
                 break;
+            
+            case "showquests":
+                // Předpokládáme, že máme referenci na QuestTablet, třeba prostřednictvím TerminalManageru
+                if (TerminalManager.questTablet != null)
+                {
+                    TerminalManager.questTablet.UpdateQuestList();
+                    response.Add("<color=#00FF00>Seznam aktuálních questů byl aktualizován.</color>");
+                }
+                else
+                {
+                    response.Add("<color=#FF0000>Není možné načíst questy – chybí reference na QuestTablet.</color>");
+                }
+                break;
 
             default:
                 response.Add("<color=#FF0000>Unknown command:</color> " + args[0]);

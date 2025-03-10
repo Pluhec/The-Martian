@@ -12,7 +12,6 @@ public class QuestManager : MonoBehaviour
         activeQuests = new List<Quest>();
         foreach (Quest q in quests)
         {
-            // Pokud je potřeba, můžete zde vytvořit kopie questů
             activeQuests.Add(q);
         }
         Debug.Log("QuestManager: Inicializováno questů: " + activeQuests.Count);

@@ -4,12 +4,14 @@ using System;
 public class Quest
 {
     public string questName;
+    public string questDescription;
     public bool isCompleted;
 
     // Konstruktor pro snadnou inicializaci questů
-    public Quest(string name)
+    public Quest(string name, string description)
     {
         questName = name;
+        questDescription = description;
         isCompleted = false;
     }
 }
