@@ -7,39 +7,46 @@ public class SolSystem : MonoBehaviour
     [Header("Sol nastavení")]
     public int currentSol;
     public DateTime currentTime;
-    // Seznam definic jednotlivých solů – nastavte jej v Inspectoru (pořadí v listu definuje posloupnost)
     public List<SolData> solDataList;
 
     [Header("Reference na ostatní systémy")]
     public QuestManager questManager;
     public TimeManager timeManager;
 
+    // sposteni solo ktery je nastaven v inspektoru
     private void Start()
     {
-        // Při spuštění zkontrolujeme, zda máme nějaká data; pokud ano, spustíme první sol
         if (solDataList != null && solDataList.Count > 0)
         {
-            StartNewSol(solDataList[0].solNumber);
+            SolData foundSol = solDataList.Find(s => s.solNumber == currentSol);
+
+            if (foundSol != null)
+            {
+                StartNewSol(currentSol);
+            }
+            else
+            {
+                // pokud sol v inspektoru neni nastaveny, spusti se prvni sol v seznamu
+                Debug.LogWarning("SolSystem: Zadaný currentSol v Inspectoru (" + currentSol + ") nebyl nalezen v solDataList. Spouštím první sol v seznamu.");
+                StartNewSol(solDataList[0].solNumber);
+            }
         }
         else
         {
             Debug.LogError("SolSystem: Seznam solData je prázdný!");
         }
     }
-
-    // Inicializace nového solu
+    
     public void StartNewSol(int solNumber)
     {
         currentSol = solNumber;
-        // Nastavení počátečního času – zde 8:00 (datum je irelevantní)
         currentTime = new DateTime(1, 1, 1, 8, 0, 0);
-        Debug.Log("Spouštím Sol " + currentSol + " v čase " + currentTime.ToShortTimeString());
+        Debug.Log("spousitm Sol " + currentSol + " v case " + currentTime.ToShortTimeString());
 
-        // Vyhledání dat pro aktuální sol
+        // vyhledani dat pro dany sol
         SolData currentSolData = solDataList.Find(sol => sol.solNumber == solNumber);
         if (currentSolData != null)
         {
-            // Inicializace questů pro daný sol
             questManager.InitializeQuests(currentSolData.quests);
         }
         else
@@ -47,11 +54,11 @@ public class SolSystem : MonoBehaviour
             Debug.LogWarning("SolSystem: Data pro sol " + solNumber + " nebyla nalezena!");
         }
 
-        // Resetujeme herní čas v TimeManageru (tím nastavíme také vizuální efekty)
+        // restart herniho casu a tim se zmeni i svetlo
         timeManager.ResetTime();
     }
 
-    // Ukončí aktuální sol a spustí další
+    // ukonceni solu a prechod na dalsi
     public void EndCurrentSol()
     {
         Debug.Log("Ukončuji Sol " + currentSol);
@@ -66,7 +73,7 @@ public class SolSystem : MonoBehaviour
         }
     }
 
-    // Získá číslo dalšího solu dle pořadí v seznamu (umožňuje přeskočení některých solů)
+    // ziskani dalsiho solu v seznamu
     public int GetNextSol()
     {
         int currentIndex = solDataList.FindIndex(sol => sol.solNumber == currentSol);
@@ -74,6 +81,6 @@ public class SolSystem : MonoBehaviour
         {
             return solDataList[currentIndex + 1].solNumber;
         }
-        return -1; // není k dispozici další sol
+        return -1;
     }
 }

@@ -6,7 +6,7 @@ public class QuestManager : MonoBehaviour
     [Header("Aktivní questy")]
     public List<Quest> activeQuests = new List<Quest>();
 
-    // Načte nové questy při začátku solu
+    // nacteni questu na zacatku solu
     public void InitializeQuests(List<Quest> quests)
     {
         activeQuests = new List<Quest>();
@@ -14,10 +14,9 @@ public class QuestManager : MonoBehaviour
         {
             activeQuests.Add(q);
         }
-        Debug.Log("QuestManager: Inicializováno questů: " + activeQuests.Count);
     }
 
-    // Metoda vrací true, pokud jsou všechny questy dokončeny
+    // jestli jsou vsechny questy splene:
     public bool AreAllQuestsCompleted()
     {
         foreach (Quest quest in activeQuests)

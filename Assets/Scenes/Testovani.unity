@@ -223,7 +223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &26644328
 RectTransform:
   m_ObjectHideFlags: 0
@@ -244,7 +244,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 31, y: -90}
   m_SizeDelta: {x: 100, y: 175.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &26644329
@@ -1356,11 +1356,11 @@ RectTransform:
   - {fileID: 1239296563}
   m_Father: {fileID: 563882050}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0}
 --- !u!1 &336449785
 GameObject:
   m_ObjectHideFlags: 0
@@ -2623,10 +2623,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 830, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3039,7 +3039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &699311576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3363,7 +3363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 352.86694, y: -148}
+  m_AnchoredPosition: {x: -115, y: 7}
   m_SizeDelta: {x: 305.7599, y: 76.7381}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &838711403
@@ -3826,15 +3826,21 @@ MonoBehaviour:
     quests:
     - questName: "Doj\xEDt do Habu"
       questDescription: "P\u0159esu\u0148 se do habu!"
-      isCompleted: 0
+      isCompleted: 1
     - questName: "Vyle\u010Dit se medkitem"
       questDescription: "Najdi medkit v habu a pou\u017Eij jej, abys obnovil sv\xE9
         zdrav\xED."
-      isCompleted: 0
+      isCompleted: 1
   - solNumber: 19
     quests:
     - questName: "O\u010Di\u0161t\u011Bn\xED sol\xE1rn\xEDch panel\u016F"
       questDescription: 
+      isCompleted: 0
+  - solNumber: 20
+    quests:
+    - questName: ahoj
+      questDescription: ahojahojahojahojahojahojahojahojahojahojahojahojahoj ahoj
+        ahoj ahoj ahoj   ahoj
       isCompleted: 0
   questManager: {fileID: 1524491193}
   timeManager: {fileID: 699311576}
@@ -4323,7 +4329,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -58.2, y: 6.4}
+  m_AnchoredPosition: {x: -27.20001, y: -83.600006}
   m_SizeDelta: {x: 100, y: 495.38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1127570155
@@ -4794,7 +4800,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 352.86694, y: -148}
+  m_AnchoredPosition: {x: -115, y: 7.0000153}
   m_SizeDelta: {x: 305.7599, y: 76.7381}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1239296564
@@ -5527,11 +5533,11 @@ RectTransform:
   - {fileID: 1127570154}
   m_Father: {fileID: 563882050}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -449, y: 175}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1457968013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5545,8 +5551,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closedTablet: {fileID: 1127570153}
-  openTablet: {fileID: 26644327}
-  questTablet: {fileID: 1457968014}
+  openedTablet: {fileID: 26644327}
+  solNumberText: {fileID: 1990923396}
+  questHeaderText: {fileID: 1391106084}
+  questDescriptionText: {fileID: 2109578716}
+  solSystem: {fileID: 985487757}
+  questManager: {fileID: 1524491193}
 --- !u!114 &1457968014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7389,8 +7399,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 9
-  m_fontSizeBase: 9
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7399,7 +7409,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 42.59
+  m_characterSpacing: 23.3
   m_wordSpacing: 0
   m_lineSpacing: 12.4
   m_lineSpacingMax: 0
@@ -7786,8 +7796,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -1,14 +1,20 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class TabletToggle : MonoBehaviour
 {
-    [Header("UI prvky")]
+    [Header("Button")]
     public GameObject closedTablet;
-    public GameObject openTablet;
-    
-    [Header("Quest Tablet")]
-    public QuestTablet questTablet; 
+    public GameObject openedTablet;
+
+    [Header("Tablet texty")]
+    public TextMeshProUGUI solNumberText;
+    public TextMeshProUGUI questHeaderText;
+    public TextMeshProUGUI questDescriptionText;
+
+    [Header("Logika")]
+    public SolSystem solSystem;
+    public QuestManager questManager;
     
     private bool isOpen = false;
     
@@ -18,21 +24,60 @@ public class TabletToggle : MonoBehaviour
 
         if (isOpen)
         {
-            // Při otevření deaktivujeme uzavřenou verzi a aktivujeme otevřenou
+            openedTablet.SetActive(true);
             closedTablet.SetActive(false);
-            openTablet.SetActive(true);
+            
+            UpdateTabletUI();
+        }
+        else
+        {
+            openedTablet.SetActive(false);
+            closedTablet.SetActive(true);
+        }
+    }
 
-            // Aktualizace questů – zobrazí se pouze ty, které ještě nejsou dokončeny
-            if (questTablet != null)
+    private void UpdateTabletUI()
+    {
+        // cislo solu
+        if (solNumberText != null && solSystem != null)
+        {
+            solNumberText.text = "<rotate=90>SOL " + solSystem.currentSol;
+        }
+
+        // vyhledani prvniho nedokonceneho questu
+        Quest firstIncompleteQuest = null;
+        foreach (Quest quest in questManager.activeQuests)
+        {
+            if (!quest.isCompleted)
             {
-                questTablet.UpdateQuestList();
+                firstIncompleteQuest = quest;
+                break;
+            }
+        }
+
+        // zobrazeni nejblizsiho nedokonceneho questu
+        if (firstIncompleteQuest != null)
+        {
+            if (questHeaderText != null)
+            {
+                questHeaderText.text = firstIncompleteQuest.questName;
+            }
+            if (questDescriptionText != null)
+            {
+                questDescriptionText.text = firstIncompleteQuest.questDescription;
             }
         }
         else
         {
-            // Při zavření vrátíme aktivní pouze uzavřenou verzi
-            closedTablet.SetActive(true);
-            openTablet.SetActive(false);
+            // zadne ukoly
+            if (questHeaderText != null)
+            {
+                questHeaderText.text = "Vše splněno!";
+            }
+            if (questDescriptionText != null)
+            {
+                questDescriptionText.text = "Nemáš žádné aktivní úkoly. Jdi na počítač a ukonči sol";
+            }
         }
     }
 }

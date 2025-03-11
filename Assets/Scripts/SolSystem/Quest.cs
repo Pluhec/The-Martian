@@ -7,7 +7,7 @@ public class Quest
     public string questDescription;
     public bool isCompleted;
 
-    // Konstruktor pro snadnou inicializaci questů
+    // konstruktor pro inicializaci questu
     public Quest(string name, string description)
     {
         questName = name;
