@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MedkitTrigger : MonoBehaviour
+public class HabEntryTrigger : MonoBehaviour
 {
     [Header("Quest Settings")]
     public int questID;
@@ -13,7 +13,7 @@ public class MedkitTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            // Search for the quest by its unique ID in the active quest list
+            // vyhledani questu podle nejnizsiho ID v aktivnich questech
             Quest quest = questManager.activeQuests.Find(q => q.questID == questID);
             if (quest != null)
             {
@@ -28,7 +28,6 @@ public class MedkitTrigger : MonoBehaviour
                     Debug.Log("Quest " + quest.questName + " is already completed.");
                 }
                 
-                // Update the QuestTablet UI if available
                 if (questTablet != null)
                 {
                     questTablet.UpdateQuestList();
