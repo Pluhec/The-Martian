@@ -47,13 +47,13 @@ public class PlayerInteraction2D : MonoBehaviour
         if (radialMenuCanvas != null)
         {
             radialMenuCanvas.SetActive(true);
-            RadialMenu menu = radialMenuCanvas.GetComponent<RadialMenu>();
-            if (menu != null)
+            //RadialMenu menu = radialMenuCanvas.GetComponent<RadialMenu>();
+            //if (menu != null)
             {
-                menu.SetupMenu(currentObject);
+                //menu.SetupMenu(currentObject);
                 menuActive = true;
             }
-            else
+            //else
             {
                 Debug.LogError("PlayerInteraction2D: RadialMenu komponenta nebyla nalezena!");
             }
