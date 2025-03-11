@@ -3824,21 +3824,25 @@ MonoBehaviour:
   solDataList:
   - solNumber: 18
     quests:
-    - questName: "Doj\xEDt do Habu"
+    - questID: 0
+      questName: "Doj\xEDt do Habu"
       questDescription: "P\u0159esu\u0148 se do habu!"
       isCompleted: 1
-    - questName: "Vyle\u010Dit se medkitem"
+    - questID: 1
+      questName: "Vyle\u010Dit se medkitem"
       questDescription: "Najdi medkit v habu a pou\u017Eij jej, abys obnovil sv\xE9
         zdrav\xED."
       isCompleted: 0
   - solNumber: 19
     quests:
-    - questName: "O\u010Di\u0161t\u011Bn\xED sol\xE1rn\xEDch panel\u016F"
+    - questID: 2
+      questName: "O\u010Di\u0161t\u011Bn\xED sol\xE1rn\xEDch panel\u016F"
       questDescription: 
       isCompleted: 0
   - solNumber: 20
     quests:
-    - questName: ahoj
+    - questID: 3
+      questName: ahoj
       questDescription: ahojahojahojahojahojahojahojahojahojahojahojahojahoj ahoj
         ahoj ahoj ahoj   ahoj
       isCompleted: 0
@@ -7218,8 +7222,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3ed68d2866b4a8a8a0c1c231167aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questManager: {fileID: 1524491193}
-  questName: "Vyl\xE9\u010Dit se medkitem"
+  questToComplete:
+    questID: 1
+    questName: 
+    questDescription: 
+    isCompleted: 0
   questTablet: {fileID: 1457968014}
 --- !u!212 &1884709602
 SpriteRenderer:
