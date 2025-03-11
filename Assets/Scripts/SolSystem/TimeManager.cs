@@ -4,13 +4,13 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour
 {
     [Header("Časový cyklus")]
-    // public DateTime currentTime;
+    public DateTime currentTime;
     private DateTime startTime = new DateTime(1, 1, 1, 8, 0, 0);
     private DateTime endTime = new DateTime(1, 1, 1, 22, 0, 0);
 
     [Header("Osvětlení")]
     public Light sunLight;
-    public DateTime currentTime;
+    
 
     private void Start()
     {

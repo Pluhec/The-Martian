@@ -3,13 +3,15 @@ using System;
 [Serializable]
 public class Quest
 {
-    public string questName;
-    public string questDescription;
+    public int questID;               
+    public string questName;          
+    public string questDescription;   
     public bool isCompleted;
 
-    // konstruktor pro inicializaci questu
-    public Quest(string name, string description)
+    // konstruktor questu
+    public Quest(int id, string name, string description)
     {
+        questID = id;
         questName = name;
         questDescription = description;
         isCompleted = false;

@@ -28,4 +28,19 @@ public class QuestManager : MonoBehaviour
         }
         return true;
     }
+    
+    // oznameni splneni questu
+    public void MarkQuestAsCompletedByID(int questID)
+    {
+        foreach (Quest quest in activeQuests)
+        {
+            if (quest.questID == questID && !quest.isCompleted)
+            {
+                quest.isCompleted = true;
+                Debug.Log("QuestManager: Quest s ID " + questID + " byl označen jako splněný.");
+                return;
+            }
+        }
+        Debug.LogWarning("QuestManager: Nepodařilo se najít nesplněný quest s ID " + questID + ".");
+    }
 }

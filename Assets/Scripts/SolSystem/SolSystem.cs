@@ -69,7 +69,7 @@ public class SolSystem : MonoBehaviour
         }
         else
         {
-            Debug.Log("SolSystem: Další sol není dostupný. Hra může skončit nebo se spustí konečný stav.");
+            Debug.Log("SolSystem: dalsi sol neni dostupny");
         }
     }
 
