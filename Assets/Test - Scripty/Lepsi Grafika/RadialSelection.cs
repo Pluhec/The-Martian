@@ -14,12 +14,12 @@ public class RadialSelection : MonoBehaviour
     
     void Start()
     {
-        
+        spawnRadialPart();
     }
 
     void Update()
     {
-        spawnRadialPart();
+        
     }
 
     public void spawnRadialPart()
