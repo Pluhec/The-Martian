@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TerminalManager : MonoBehaviour
 {
@@ -64,6 +65,11 @@ public class TerminalManager : MonoBehaviour
             {
                 StartCoroutine(ProcessInterpreterLines(interpretation));
             }
+            
+            if (interpretation.Count > 0 && interpretation[0] == "EXIT_TERMINAL")
+            {
+                ExitTerminal();
+            }
 
             userInputLine.transform.SetAsLastSibling();
             terminalInput.ActivateInputField();
@@ -106,6 +112,11 @@ public class TerminalManager : MonoBehaviour
     void ClearInputField()
     {
         terminalInput.text = "";
+    }
+
+    void ExitTerminal()
+    {
+        SceneManager.LoadScene(0);
     }
 
     void AddDirectoryLine(string userInput)

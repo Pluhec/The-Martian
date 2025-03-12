@@ -379,6 +379,7 @@ MonoBehaviour:
   userInputLine: {fileID: 1088659819}
   sr: {fileID: 1667574992}
   msgList: {fileID: 658688170}
+  sceneBuildIndex: 1
   typewriterSpeed: 80
 --- !u!114 &153052154
 MonoBehaviour:

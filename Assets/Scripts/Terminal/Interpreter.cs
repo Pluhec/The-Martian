@@ -55,9 +55,14 @@ public class Interpreter : MonoBehaviour
                 response.Add("CLEAR_TERMINAL");
                 break;
             
-            case"ascii":
+            case "exit":
+                response.Add("EXIT_TERMINAL");
+                break;
+            
+            case "ascii":
                 LoadTitle("ascii.txt", "#FF0000", 0);
                 break;
+            
             
             // case "showquests":
             //     // Předpokládáme, že máme referenci na QuestTablet, třeba prostřednictvím TerminalManageru
