@@ -3,25 +3,8 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    
-    public static QuestManager Instance { get; private set; }
-    
     [Header("Aktivní questy")]
     public List<Quest> activeQuests = new List<Quest>();
-    
-    
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     // nacteni questu na zacatku solu
     public void InitializeQuests(List<Quest> quests)

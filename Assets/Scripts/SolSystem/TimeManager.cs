@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    public static TimeManager Instance { get; private set; }
-
-    
     [Header("Časový cyklus")]
     public DateTime currentTime;
     private DateTime startTime = new DateTime(1, 1, 1, 8, 0, 0);
@@ -14,19 +11,6 @@ public class TimeManager : MonoBehaviour
     [Header("Osvětlení")]
     public Light sunLight;
     
-    
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     private void Start()
     {
