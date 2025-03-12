@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SolSystem : MonoBehaviour
 {
+    
+    public static SolSystem Instance { get; private set; }
+
     [Header("Sol nastavení")]
     public int currentSol;
     public DateTime currentTime;
@@ -12,6 +15,20 @@ public class SolSystem : MonoBehaviour
     [Header("Reference na ostatní systémy")]
     public QuestManager questManager;
     public TimeManager timeManager;
+    public TerminalManager TerminalManager;
+    
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // sposteni solo ktery je nastaven v inspektoru
     private void Start()
@@ -66,6 +83,8 @@ public class SolSystem : MonoBehaviour
         if (nextSol != -1)
         {
             StartNewSol(nextSol);
+            
+            TerminalManager.DisplayGoodMorning();
         }
         else
         {

@@ -379,8 +379,8 @@ MonoBehaviour:
   userInputLine: {fileID: 1088659819}
   sr: {fileID: 1667574992}
   msgList: {fileID: 658688170}
-  sceneBuildIndex: 1
   typewriterSpeed: 80
+  interpreter: {fileID: 153052154}
 --- !u!114 &153052154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,6 +393,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 329221b207edf4f4786e72cb5f8458a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  solSystem: {fileID: 0}
+  questManager: {fileID: 0}
+  timeManager: {fileID: 0}
 --- !u!114 &153052155
 MonoBehaviour:
   m_ObjectHideFlags: 0

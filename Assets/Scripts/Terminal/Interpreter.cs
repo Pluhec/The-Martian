@@ -6,7 +6,18 @@ using System.IO;
 public class Interpreter : MonoBehaviour
 {
     List<string> response = new List<string>();
+    
+    private SolSystem solSystem;
+    private QuestManager questManager;
+    private TimeManager timeManager;
 
+    private void Awake()
+    {
+        solSystem = GameManager.Instance.solSystem;
+        questManager = GameManager.Instance.questManager;
+        timeManager = GameManager.Instance.timeManager;
+    }
+    
     public List<string> Interpret(string userInputText)
     {
         response.Clear();
@@ -62,27 +73,49 @@ public class Interpreter : MonoBehaviour
             case "ascii":
                 LoadTitle("ascii.txt", "#FF0000", 0);
                 break;
-            
-            
-            // case "showquests":
-            //     // Předpokládáme, že máme referenci na QuestTablet, třeba prostřednictvím TerminalManageru
-            //     if (terminalManager.questTablet != null)
-            //     {
-            //         terminalManager.questTablet.UpdateQuestList();
-            //         response.Add("<color=#00FF00>Seznam aktuálních questů byl aktualizován.</color>");
-            //     }
-            //     else
-            //     {
-            //         response.Add("<color=#FF0000>Není možné načíst questy – chybí reference na QuestTablet.</color>");
-            //     }
-            //     break;
 
+            case "quest":
+                response.Add("SOL " + solSystem.currentSol);
+                foreach (Quest quest in questManager.activeQuests)
+                {
+                    if (quest.isCompleted)
+                        response.Add("<color=#00FF00>" + quest.questName + " - " + quest.questDescription + "</color>");
+                    else
+                        response.Add("<color=#FFFFFF>" + quest.questName + " - " + quest.questDescription + "</color>");
+                }
+                break;
+            
+            case "endsol":
+                if (questManager.AreAllQuestsCompleted())
+                {
+                    solSystem.EndCurrentSol();
+                    response.Add("<color=#00FF00>Ending Sol...</color>");
+                }
+                else
+                {
+                    response.Add("<color=#FF0000>Not all quests are completed!</color>");
+                }
+                break;
+            
+            case "goodmorning":
+                response.Add("Good morning, Commander!");
+                response.Add("Current Time: " + timeManager.currentTime.ToShortTimeString());
+                response.Add("SOL " + solSystem.currentSol);
+                response.Add("Today's tasks:");
+                foreach (Quest quest in questManager.activeQuests)
+                {
+                    if (!quest.isCompleted)
+                    {
+                        response.Add("- " + quest.questName + ": " + quest.questDescription);
+                    }
+                }
+                break;
+            
             default:
-                response.Add("<color=#FF0000>Unknown command:</color> " + args[0]);
+                response.Add("<color=#FF0000>Unknown command: " + args[0] + "</color>");
                 response.Add("Type <color=#00FF00>help</color> to see available commands");
                 break;
         }
-
         return response;
     }
     

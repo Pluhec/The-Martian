@@ -7,21 +7,24 @@ using UnityEngine.SceneManagement;
 
 public class TerminalManager : MonoBehaviour
 {
+    [Header("Radky v terminálu")]
     public GameObject directoryLine;
     public GameObject responseLine;
-
+    
+    [Header("Terminal")]
     public TMP_InputField terminalInput;
     public GameObject userInputLine;
     public ScrollRect sr;
     public GameObject msgList;
-
+    
+    [Header("Typewriter effect")]
     public float typewriterSpeed = 80f;
     private float charDelay { get { return 1f / typewriterSpeed; } }
 
     private List<string> commandHistory = new List<string>(); 
     private int historyIndex = -1; 
 
-    Interpreter interpreter;
+    public Interpreter interpreter;
 
     private void Start()
     {
@@ -242,5 +245,12 @@ public class TerminalManager : MonoBehaviour
         
         RectTransform msgListRT = msgList.GetComponent<RectTransform>();
         msgListRT.sizeDelta = new Vector2(msgListRT.sizeDelta.x, 0);
+    }
+    
+    public void DisplayGoodMorning()
+    {
+        ClearTerminal();
+        List<string> gmLines = interpreter.Interpret("goodmorning");
+        StartCoroutine(ProcessInterpreterLines(gmLines, true));
     }
 }
