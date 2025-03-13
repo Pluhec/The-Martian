@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class PlayerInteraction2D : MonoBehaviour
 {
     [Header("Nastavení Radial Menu")]
-    public GameObject radialMenuCanvas;
+    public RadialSelection radialSelection;
     private InteractableObject currentObject;
 
     [Header("Čas pro dlouhý stisk (otevření menu)")]
@@ -14,9 +14,9 @@ public class PlayerInteraction2D : MonoBehaviour
 
     void Start()
     {
-        if (radialMenuCanvas != null)
+        if (radialSelection != null)
         {
-            radialMenuCanvas.SetActive(false);
+            radialSelection.gameObject.SetActive(false);
         }
     }
 
@@ -33,38 +33,41 @@ public class PlayerInteraction2D : MonoBehaviour
         
         if (Input.GetKeyUp(KeyCode.E))
         {
-            // zavolani quick action podle delky drzeni klavesy
             if (holdTime < holdThreshold && currentObject != null)
             {
                 PerformQuickAction();
             }
-            holdTime = 0f; // restart casu
+            holdTime = 0f;
         }
     }
 
     private void ShowRadialMenu()
     {
-        if (radialMenuCanvas != null)
+        if (radialSelection != null && currentObject != null)
         {
-            radialMenuCanvas.SetActive(true);
-            //RadialMenu menu = radialMenuCanvas.GetComponent<RadialMenu>();
-            //if (menu != null)
-            {
-                //menu.SetupMenu(currentObject);
-                menuActive = true;
-            }
-            //else
-            {
-                Debug.LogError("PlayerInteraction2D: RadialMenu komponenta nebyla nalezena!");
-            }
+            radialSelection.SetupMenu(currentObject.GetActions());
+            radialSelection.onPartSelected.AddListener(PerformRadialAction);
+            radialSelection.gameObject.SetActive(true);
+            menuActive = true;
+        }
+    }
+
+    private void PerformRadialAction(int index)
+    {
+        List<string> actions = currentObject.GetActions();
+        if (index >= 0 && index < actions.Count)
+        {
+            currentObject.PerformAction(actions[index]);
+            radialSelection.onPartSelected.RemoveListener(PerformRadialAction); // Odstranění listeneru
+            HideRadialMenu();
         }
     }
 
     public void HideRadialMenu()
     {
-        if (radialMenuCanvas != null)
+        if (radialSelection != null)
         {
-            radialMenuCanvas.SetActive(false);
+            radialSelection.gameObject.SetActive(false);
             menuActive = false;
             holdTime = 0f;
         }
@@ -79,6 +82,15 @@ public class PlayerInteraction2D : MonoBehaviour
             {
                 currentObject.PerformAction(actions[0]);
             }
+        }
+    }
+
+    private void PerformRadialAction(string action)
+    {
+        if (currentObject != null)
+        {
+            currentObject.PerformAction(action);
+            HideRadialMenu();
         }
     }
 

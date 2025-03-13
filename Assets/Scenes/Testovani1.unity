@@ -3511,7 +3511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b04294a9ccb9c42b89cb4c3d5a7b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radialMenuCanvas: {fileID: 0}
+  radialSelection: {fileID: 1693714558}
   holdThreshold: 0.5
 --- !u!1 &903743886
 GameObject:
@@ -3794,7 +3794,6 @@ GameObject:
   - component: {fileID: 1039258477}
   - component: {fileID: 1039258476}
   - component: {fileID: 1039258475}
-  - component: {fileID: 1039258479}
   m_Layer: 5
   m_Name: RadialMenuCanvas
   m_TagString: Untagged
@@ -3884,21 +3883,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1039258479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1039258474}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458f7a3a62569704f8f83196f5e36f0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 6420016354414522480, guid: b64caa1b2231232448762656e36a809d, type: 3}
-  menuCenter: {fileID: 0}
-  buttons: []
 --- !u!1 &1064220453
 GameObject:
   m_ObjectHideFlags: 0

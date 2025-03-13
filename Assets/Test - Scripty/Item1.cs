@@ -8,6 +8,7 @@ public class Item1 : InteractableObject
     {
         actions.Add("Ahoj");
         actions.Add("nevim");
+        actions.Add("nevim2");
     }
 
     public override void PerformAction(string action)
