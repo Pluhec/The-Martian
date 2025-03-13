@@ -4,17 +4,21 @@ public class MedkitTrigger : MonoBehaviour
 {
     [Header("Quest Settings")]
     public int questID;
+    
+    private QuestManager questManager;
+    private QuestTablet questTablet;
 
-    [Header("Manager References")]
-    public QuestManager questManager;
-    public QuestTablet questTablet;
+    private void Awake()
+    {
+        questManager = QuestManager.Instance;
+        questTablet = FindObjectOfType<QuestTablet>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            // Search for the quest by its unique ID in the active quest list
-            Quest quest = questManager.activeQuests.Find(q => q.questID == questID);
+            Quest quest = questManager.ActiveQuests.Find(q => q.questID == questID);
             if (quest != null)
             {
                 if (!quest.isCompleted)
@@ -28,7 +32,6 @@ public class MedkitTrigger : MonoBehaviour
                     Debug.Log("Quest " + quest.questName + " is already completed.");
                 }
                 
-                // Update the QuestTablet UI if available
                 if (questTablet != null)
                 {
                     questTablet.UpdateQuestList();

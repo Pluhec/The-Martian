@@ -5,16 +5,20 @@ public class HabEntryTrigger : MonoBehaviour
     [Header("Quest Settings")]
     public int questID;
 
-    [Header("Manager References")]
-    public QuestManager questManager;
-    public QuestTablet questTablet;
+    private QuestManager questManager;
+    private QuestTablet questTablet;
+
+    private void Awake()
+    {
+        questManager = QuestManager.Instance;
+        questTablet = FindObjectOfType<QuestTablet>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            // vyhledani questu podle nejnizsiho ID v aktivnich questech
-            Quest quest = questManager.activeQuests.Find(q => q.questID == questID);
+            Quest quest = questManager.ActiveQuests.Find(q => q.questID == questID);
             if (quest != null)
             {
                 if (!quest.isCompleted)

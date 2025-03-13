@@ -9,12 +9,17 @@ public class TabletToggle : MonoBehaviour
 
     [Header("Odkazy na text")]
     public TextMeshProUGUI solNumberText;
-
-    [Header("Odkazy na logiku")]
-    public SolSystem solSystem;
-    public QuestTablet questTablet;
+    
+    private SolSystem solSystem;
+    private QuestTablet questTablet;
 
     private bool isOpen = false;
+
+    private void Awake()
+    {
+        solSystem = SolSystem.Instance;
+        questTablet = FindObjectOfType<QuestTablet>();
+    }
 
     public void ToggleTablet()
     {

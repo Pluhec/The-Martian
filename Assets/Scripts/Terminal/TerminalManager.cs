@@ -43,7 +43,8 @@ public class TerminalManager : MonoBehaviour
 
     private void OnGUI()
     {
-        if (terminalInput.isFocused && terminalInput.text != "" && Input.GetKey(KeyCode.Return))
+        // zmena pro getkeyDOWN - protoze to slo drzet a rozbijelo se to
+        if (terminalInput.isFocused && terminalInput.text != "" && Input.GetKeyDown(KeyCode.Return))
         {
             string userInput = terminalInput.text;
             ClearInputField();

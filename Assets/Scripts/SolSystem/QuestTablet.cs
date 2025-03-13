@@ -5,26 +5,41 @@ using TMPro;
 
 public class QuestTablet : MonoBehaviour
 {
-    [Header("Reference na QuestManager")]
-    public QuestManager questManager;
+    private QuestManager questManager;
     
     [Header("UI komponenty")]
     public GameObject questEntryPrefab;
     public Transform contentPanel;
     
+    private void Awake()
+    {
+        questManager = QuestManager.Instance;
+    }
+    
+    private void OnEnable()
+    {
+        if (questManager == null)
+            questManager = QuestManager.Instance;
+    }
+    
     public void UpdateQuestList()
     {
-        // promazani celeho seznamu questu
+        // odstraneni starchy polozek
         foreach (Transform child in contentPanel)
         {
             Destroy(child.gameObject);
         }
 
-        // nejblizsi quest ktery neni hotovy
         Quest questToShow = null;
         int lowestID = int.MaxValue;
 
-        foreach (Quest quest in questManager.activeQuests)
+        if (questManager == null)
+        {
+            Debug.LogWarning("QuestTablet: QuestManager reference není nastavena!");
+            return;
+        }
+
+        foreach (Quest quest in questManager.ActiveQuests)
         {
             if (!quest.isCompleted && quest.questID < lowestID)
             {
@@ -35,21 +50,17 @@ public class QuestTablet : MonoBehaviour
         
         if (questToShow == null)
         {
-            // nejsou questy - tato zprava
             GameObject entry = Instantiate(questEntryPrefab, contentPanel);
             TextMeshProUGUI[] texts = entry.GetComponentsInChildren<TextMeshProUGUI>();
             if (texts != null && texts.Length >= 1)
             {
-                texts[0].text = "Everything's done!"; 
+                texts[0].text = "Everything's done!";
                 if (texts.Length >= 2)
-                {
                     texts[1].text = "Get back to Hab and end your sol in the terminal.";
-                }
             }
         }
         else
         {
-            // vytovreni jedine instance prefabu pro quest s nejnizsim ID
             GameObject entry = Instantiate(questEntryPrefab, contentPanel);
             TextMeshProUGUI[] texts = entry.GetComponentsInChildren<TextMeshProUGUI>();
             if (texts != null && texts.Length >= 2)
@@ -59,7 +70,7 @@ public class QuestTablet : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Quest prefab neobsahuje požadované textové komponenty (minimálně 2 TextMeshProUGUI).");
+                Debug.LogWarning("QuestTablet: Quest prefab neobsahuje minimálně 2 TextMeshProUGUI komponenty.");
             }
         }
     }

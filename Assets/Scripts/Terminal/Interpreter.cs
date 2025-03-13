@@ -5,17 +5,17 @@ using System.IO;
 
 public class Interpreter : MonoBehaviour
 {
-    List<string> response = new List<string>();
-    
     private SolSystem solSystem;
     private QuestManager questManager;
     private TimeManager timeManager;
 
+    private List<string> response = new List<string>();
+
     private void Awake()
     {
-        solSystem = GameManager.Instance.solSystem;
-        questManager = GameManager.Instance.questManager;
-        timeManager = GameManager.Instance.timeManager;
+        solSystem = GameManager.Instance.SolSystem;
+        questManager = GameManager.Instance.QuestManager;
+        timeManager = GameManager.Instance.TimeManager;
     }
     
     public List<string> Interpret(string userInputText)
@@ -76,7 +76,7 @@ public class Interpreter : MonoBehaviour
 
             case "quest":
                 response.Add("SOL " + solSystem.currentSol);
-                foreach (Quest quest in questManager.activeQuests)
+                foreach (Quest quest in questManager.ActiveQuests)
                 {
                     if (quest.isCompleted)
                         response.Add("<color=#00FF00>" + quest.questName + " - " + quest.questDescription + "</color>");
@@ -102,7 +102,7 @@ public class Interpreter : MonoBehaviour
                 response.Add("Current Time: " + timeManager.currentTime.ToShortTimeString());
                 response.Add("SOL " + solSystem.currentSol);
                 response.Add("Today's tasks:");
-                foreach (Quest quest in questManager.activeQuests)
+                foreach (Quest quest in questManager.ActiveQuests)
                 {
                     if (!quest.isCompleted)
                     {
@@ -128,7 +128,7 @@ public class Interpreter : MonoBehaviour
 
     void LoadTitle(string path, string color, int spacing)
     {
-        StreamReader file = new StreamReader(Path.Combine(Application.streamingAssetsPath, path));
+        StreamReader file = new StreamReader(System.IO.Path.Combine(Application.streamingAssetsPath, path));
 
         for (int i = 0; i < spacing; i++)
         {
@@ -146,7 +146,6 @@ public class Interpreter : MonoBehaviour
         }
         
         file.Close();
-        
     }
 
     private List<string> FormatCommands(
@@ -161,9 +160,7 @@ public class Interpreter : MonoBehaviour
         foreach (var cmd in commands)
         {
             if (!string.IsNullOrEmpty(cmd.command) && cmd.command.Length > maxCommandLength)
-            {
                 maxCommandLength = cmd.command.Length;
-            }
         }
         
         foreach (var cmd in commands)

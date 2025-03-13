@@ -1,8 +1,10 @@
-using System;
 using UnityEngine;
+using System;
 
 public class TimeManager : MonoBehaviour
 {
+    public static TimeManager Instance { get; private set; }
+
     [Header("Časový cyklus")]
     public DateTime currentTime;
     private DateTime startTime = new DateTime(1, 1, 1, 8, 0, 0);
@@ -11,7 +13,19 @@ public class TimeManager : MonoBehaviour
     [Header("Osvětlení")]
     public Light sunLight;
     
-
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     private void Start()
     {
         ResetTime();
@@ -37,16 +51,10 @@ public class TimeManager : MonoBehaviour
     {
         int hour = currentTime.Hour;
         if (hour < 12)
-        {
             sunLight.color = Color.red;
-        }
         else if (hour < 18)
-        {
             sunLight.color = Color.white;
-        }
         else
-        {
             sunLight.color = Color.blue;
-        }
     }
 }

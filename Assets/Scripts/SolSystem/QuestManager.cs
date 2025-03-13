@@ -3,32 +3,42 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    [Header("Aktivní questy")]
-    public List<Quest> activeQuests = new List<Quest>();
+    public static QuestManager Instance { get; private set; }
+    
+    private List<Quest> activeQuests = new List<Quest>();
+    
+    public List<Quest> ActiveQuests { get { return activeQuests; } }
 
-    // nacteni questu na zacatku solu
-    public void InitializeQuests(List<Quest> quests)
+    private void Awake()
     {
-        activeQuests = new List<Quest>();
-        foreach (Quest q in quests)
+        if (Instance == null)
         {
-            activeQuests.Add(q);
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
-    // jestli jsou vsechny questy splene:
+    
+    public void InitializeQuests(List<Quest> quests)
+    {
+        activeQuests = new List<Quest>(quests);
+    }
+    
+// jestli jsou vsechny questy splene:
     public bool AreAllQuestsCompleted()
     {
         foreach (Quest quest in activeQuests)
         {
             if (!quest.isCompleted)
-            {
                 return false;
-            }
         }
         return true;
     }
-    
+
     // oznameni splneni questu
     public void MarkQuestAsCompletedByID(int questID)
     {
@@ -41,6 +51,6 @@ public class QuestManager : MonoBehaviour
                 return;
             }
         }
-        Debug.LogWarning("QuestManager: Nepodařilo se najít nesplněný quest s ID " + questID + ".");
+        Debug.LogWarning("QuestManager: Nesplněný quest s ID " + questID + " nebyl nalezen.");
     }
 }
