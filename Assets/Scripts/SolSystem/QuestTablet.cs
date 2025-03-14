@@ -14,17 +14,35 @@ public class QuestTablet : MonoBehaviour
     private void Awake()
     {
         questManager = QuestManager.Instance;
+        if (questManager == null)
+        {
+            Debug.LogWarning("QuestTablet.Awake: QuestManager.Instance je null, pokouším se najít instanci pomocí FindObjectOfType.");
+            questManager = FindObjectOfType<QuestManager>();
+        }
+        else
+        {
+            Debug.Log("QuestTablet.Awake: QuestManager instance byla úspěšně získána.");
+        }
     }
     
     private void OnEnable()
     {
         if (questManager == null)
+        {
+            Debug.LogWarning("QuestTablet.OnEnable: QuestManager je stále null, pokouším se opět najít instanci.");
             questManager = QuestManager.Instance;
+            if (questManager == null)
+            {
+                questManager = FindObjectOfType<QuestManager>();
+            }
+        }
     }
     
     public void UpdateQuestList()
     {
-        // odstraneni starchy polozek
+        Debug.Log("QuestTablet.UpdateQuestList: Aktualizuji seznam questů.");
+        
+        // Smazání starých položek v seznamu
         foreach (Transform child in contentPanel)
         {
             Destroy(child.gameObject);
@@ -50,6 +68,7 @@ public class QuestTablet : MonoBehaviour
         
         if (questToShow == null)
         {
+            Debug.Log("QuestTablet.UpdateQuestList: Všechny questy jsou splněny.");
             GameObject entry = Instantiate(questEntryPrefab, contentPanel);
             TextMeshProUGUI[] texts = entry.GetComponentsInChildren<TextMeshProUGUI>();
             if (texts != null && texts.Length >= 1)
@@ -61,6 +80,7 @@ public class QuestTablet : MonoBehaviour
         }
         else
         {
+            Debug.Log("QuestTablet.UpdateQuestList: Zobrazím quest " + questToShow.questName);
             GameObject entry = Instantiate(questEntryPrefab, contentPanel);
             TextMeshProUGUI[] texts = entry.GetComponentsInChildren<TextMeshProUGUI>();
             if (texts != null && texts.Length >= 2)

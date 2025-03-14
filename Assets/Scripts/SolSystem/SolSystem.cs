@@ -61,7 +61,7 @@ public class SolSystem : MonoBehaviour
             Debug.LogWarning("SolSystem: Data pro sol " + solNumber + " nebyla nalezena!");
         }
 
-        TimeManager.Instance.ResetTime();
+        // TimeManager.Instance.ResetTime();
     }
 
     public void EndCurrentSol()
