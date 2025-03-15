@@ -40,10 +40,11 @@ public class Interpreter : MonoBehaviour
                     ("clear", "Clears the terminal"),
                     ("", ""),
                     ("rover", "Shows the rover stats"),
-                    ("endSol", "Ends the current sol"),
+                    ("endsol", "Ends the current sol"),
                     ("hab", "Shows the hab stats"),
                     ("time", "Shows the current time"),
                     ("", ""),
+                    ("listquests", "Lists all active quests"),
                     ("exit", "Exits the terminal")
                 };
                 response.AddRange(FormatCommands(commands, "#00FF00", "#FFA500"));
@@ -73,15 +74,15 @@ public class Interpreter : MonoBehaviour
             case "ascii":
                 LoadTitle("ascii.txt", "#FF0000", 0);
                 break;
-
+            
             case "quest":
                 response.Add("SOL " + solSystem.currentSol);
                 foreach (Quest quest in questManager.ActiveQuests)
                 {
                     if (quest.isCompleted)
-                        response.Add("<color=#00FF00>" + quest.questName + " - " + quest.questDescription + "</color>");
+                        response.Add("<color=#00FF00>" + quest.questName + "</color>");
                     else
-                        response.Add("<color=#FFFFFF>" + quest.questName + " - " + quest.questDescription + "</color>");
+                        response.Add("<color=#FF0000>" + quest.questName + "</color>");
                 }
                 break;
             
@@ -94,6 +95,7 @@ public class Interpreter : MonoBehaviour
                 else
                 {
                     response.Add("<color=#FF0000>Not all quests are completed!</color>");
+                    response.AddRange(ListActiveQuests());
                 }
                 break;
             
@@ -104,11 +106,15 @@ public class Interpreter : MonoBehaviour
                 response.Add("Today's tasks:");
                 foreach (Quest quest in questManager.ActiveQuests)
                 {
-                    if (!quest.isCompleted)
-                    {
-                        response.Add("- " + quest.questName + ": " + quest.questDescription);
-                    }
+                    if (quest.isCompleted)
+                        response.Add("- <color=#00FF00>" + quest.questName + "</color>");
+                    else
+                        response.Add("- <color=#FF0000>" + quest.questName + "</color>");
                 }
+                break;
+            
+            case "listquests":
+                response.AddRange(ListActiveQuests());
                 break;
             
             default:
@@ -178,5 +184,20 @@ public class Interpreter : MonoBehaviour
         }
 
         return formattedCommands;
+    }
+    
+    private List<string> ListActiveQuests()
+    {
+        List<string> questList = new List<string>();
+        List<Quest> quests = questManager.ActiveQuests;
+        
+        foreach (Quest quest in quests)
+        {
+            if (quest.isCompleted)
+                questList.Add("<color=#00FF00>" + quest.questName + "</color>");
+            else
+                questList.Add("<color=#FF0000>" + quest.questName + "</color>");
+        }
+        return questList;
     }
 }
