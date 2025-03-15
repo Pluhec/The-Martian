@@ -6,11 +6,13 @@ public class PlayerInteraction2D : MonoBehaviour
     [Header("Nastavení Radial Menu")]
     public RadialSelection radialSelection;
     private InteractableObject currentObject;
+    private Movement playerMovement; // Odkaz na pohyb hráče
 
     [Header("Čas pro dlouhý stisk (otevření menu)")]
     public float holdThreshold = 0.5f;
     private float holdTime = 0f;
     private bool menuActive = false;
+    private bool keyReleased = true; // **Nová proměnná pro kontrolu uvolnění klávesy**
 
     void Start()
     {
@@ -18,37 +20,72 @@ public class PlayerInteraction2D : MonoBehaviour
         {
             radialSelection.gameObject.SetActive(false);
         }
+        playerMovement = FindObjectOfType<Movement>(); // Najdeme skript Movement
     }
 
     void Update()
     {
         if (Input.GetKey(KeyCode.E))
         {
-            holdTime += Time.deltaTime;
-            if (holdTime >= holdThreshold && !menuActive && currentObject != null)
+            if (keyReleased) // **Ujistíme se, že hráč nejprve pustil "E", než menu otevře znovu**
             {
-                ShowRadialMenu();
+                holdTime += Time.deltaTime;
+                if (holdTime >= holdThreshold && !menuActive && currentObject != null)
+                {
+                    TryOpenRadialMenu();
+                }
             }
         }
-        
+        else
+        {
+            keyReleased = true; // **Uvolnění klávesy umožní další otevření menu**
+            holdTime = 0f; // Reset času držení
+        }
+
         if (Input.GetKeyUp(KeyCode.E))
         {
-            if (holdTime < holdThreshold && currentObject != null)
+            if (menuActive)
             {
-                PerformQuickAction();
+                HideRadialMenu();
             }
-            holdTime = 0f;
         }
     }
 
-    private void ShowRadialMenu()
+    private void TryOpenRadialMenu()
     {
-        if (radialSelection != null && currentObject != null)
+        if (currentObject == null) return; // Pokud není interaktivní objekt, nic se nestane
+
+        List<string> actions = currentObject.GetActions();
+
+        if (actions.Count >= 2)
         {
-            radialSelection.SetupMenu(currentObject.GetActions());
+            ShowRadialMenu(actions); // Otevřeme menu pouze pokud jsou 2+ akce
+        }
+        else if (actions.Count == 1)
+        {
+            PerformQuickAction(); // Pokud je jen 1 akce, rovnou ji provedeme
+        }
+
+        keyReleased = false; // **Zamezíme okamžitému znovuotevření**
+    }
+
+    private void ShowRadialMenu(List<string> actions)
+    {
+        if (radialSelection != null)
+        {
+            radialSelection.SetupMenu(actions);
             radialSelection.onPartSelected.AddListener(PerformRadialAction);
             radialSelection.gameObject.SetActive(true);
             menuActive = true;
+        }
+    }
+
+    private void HideRadialMenu()
+    {
+        if (radialSelection != null)
+        {
+            radialSelection.gameObject.SetActive(false);
+            menuActive = false;
         }
     }
 
@@ -58,18 +95,8 @@ public class PlayerInteraction2D : MonoBehaviour
         if (index >= 0 && index < actions.Count)
         {
             currentObject.PerformAction(actions[index]);
-            radialSelection.onPartSelected.RemoveListener(PerformRadialAction); // Odstranění listeneru
+            radialSelection.onPartSelected.RemoveListener(PerformRadialAction);
             HideRadialMenu();
-        }
-    }
-
-    public void HideRadialMenu()
-    {
-        if (radialSelection != null)
-        {
-            radialSelection.gameObject.SetActive(false);
-            menuActive = false;
-            holdTime = 0f;
         }
     }
 
@@ -80,17 +107,8 @@ public class PlayerInteraction2D : MonoBehaviour
             List<string> actions = currentObject.GetActions();
             if (actions.Count > 0)
             {
-                currentObject.PerformAction(actions[0]);
+                currentObject.PerformAction(actions[0]); // **Provede první akci ihned**
             }
-        }
-    }
-
-    private void PerformRadialAction(string action)
-    {
-        if (currentObject != null)
-        {
-            currentObject.PerformAction(action);
-            HideRadialMenu();
         }
     }
 

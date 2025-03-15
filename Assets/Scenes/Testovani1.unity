@@ -6095,6 +6095,7 @@ MonoBehaviour:
     rgba: 4281677109
   selectedScale: 1.1
   defaultScale: 1
+  transitionSpeed: 5
   onPartSelected:
     m_PersistentCalls:
       m_Calls: []
