@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using TMPro;
 
 [System.Serializable]
 public class RadialMenuEvent : UnityEvent<int> { }
@@ -13,16 +13,18 @@ public class RadialSelection : MonoBehaviour
     public int numberOfRadialPart;
     public GameObject radialPartPrefab;
     public Transform radialPartCanvas;
+    public TextMeshProUGUI actionText; // **Odkaz na ActionText v RadialInside**
     public float angleBetweenPart = 10;
 
     public Color32 selectedColor = new Color32(0x33, 0x33, 0x33, 0x0D);
     public Color32 defaultColor = Color.white;
     public float selectedScale = 1.1f;
     public float defaultScale = 1f;
-    public float transitionSpeed = 10f; // Rychlost animace
+    public float transitionSpeed = 10f;
 
     private List<GameObject> spawnedParts = new List<GameObject>();
     private int currentSelectedRadialPart = -1;
+    private int lastSelectedRadialPart = -1; // **Sledování poslední vybrané sekce**
     private List<string> actions = new List<string>();
 
     public RadialMenuEvent onPartSelected = new RadialMenuEvent();
@@ -50,7 +52,7 @@ public class RadialSelection : MonoBehaviour
 
             Image image = spawnedRadialPart.GetComponent<Image>();
             image.fillAmount = (1f / numberOfRadialPart) - (angleBetweenPart / 360);
-            image.raycastTarget = true; 
+            image.raycastTarget = true;
             spawnedParts.Add(spawnedRadialPart);
         }
     }
@@ -59,8 +61,9 @@ public class RadialSelection : MonoBehaviour
     {
         getSelectedRadialPart();
         AnimateSelection();
+        UpdateActionText(); // **Aktualizace textu při změně výběru**
 
-        if (Input.GetMouseButtonDown(0)) // Kliknutí levým tlačítkem myši
+        if (Input.GetMouseButtonDown(0)) 
         {
             if (currentSelectedRadialPart >= 0 && currentSelectedRadialPart < actions.Count)
             {
@@ -71,7 +74,7 @@ public class RadialSelection : MonoBehaviour
         }
     }
 
-    public void getSelectedRadialPart()
+    private void getSelectedRadialPart()
     {
         Vector3 mousePosition = Input.mousePosition;
         Vector3 centerToMouse = mousePosition - radialPartCanvas.position;
@@ -81,6 +84,22 @@ public class RadialSelection : MonoBehaviour
         if (angle < 0) angle += 360;
 
         currentSelectedRadialPart = (int)(angle * numberOfRadialPart / 360);
+    }
+
+    private void UpdateActionText()
+    {
+        if (currentSelectedRadialPart != lastSelectedRadialPart && actionText != null)
+        {
+            if (currentSelectedRadialPart >= 0 && currentSelectedRadialPart < actions.Count)
+            {
+                actionText.text = actions[currentSelectedRadialPart]; // **Přepíše text do ActionText**
+            }
+            else
+            {
+                actionText.text = ""; // **Pokud není žádná akce, text se smaže**
+            }
+            lastSelectedRadialPart = currentSelectedRadialPart; // **Uložíme poslední vybranou sekci**
+        }
     }
 
     private void AnimateSelection()
