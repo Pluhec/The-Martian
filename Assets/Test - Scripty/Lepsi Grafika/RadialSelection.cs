@@ -15,6 +15,11 @@ public class RadialSelection : MonoBehaviour
     public Transform radialPartCanvas;
     public float angleBetweenPart = 10;
 
+    public Color32 selectedColor = new Color32(0x33, 0x33, 0x33, 0x0D);
+    public Color32 defaultColor = Color.white;
+    public float selectedScale = 1.1f;
+    public float defaultScale = 1f;
+
     private List<GameObject> spawnedParts = new List<GameObject>();
     private int currentSelectedRadialPart = -1;
     private List<string> actions = new List<string>();
@@ -80,13 +85,13 @@ public class RadialSelection : MonoBehaviour
         {
             if (i == currentSelectedRadialPart)
             {
-                spawnedParts[i].GetComponent<Image>().color = Color.red;
-                spawnedParts[i].transform.localScale = 1.1f * Vector3.one;
+                spawnedParts[i].GetComponent<Image>().color = selectedColor;
+                spawnedParts[i].transform.localScale = selectedScale * Vector3.one;
             }
             else
             {
-                spawnedParts[i].GetComponent<Image>().color = Color.white;
-                spawnedParts[i].transform.localScale = 1f * Vector3.one;
+                spawnedParts[i].GetComponent<Image>().color = defaultColor;
+                spawnedParts[i].transform.localScale = defaultScale * Vector3.one;
             }
         }
     }
