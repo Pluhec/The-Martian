@@ -6087,6 +6087,17 @@ MonoBehaviour:
   radialPartPrefab: {fileID: 7510437823944098231, guid: 766fe518eb00a574b97a1db4c356cbe9, type: 3}
   radialPartCanvas: {fileID: 1039258478}
   angleBetweenPart: 10
+  selectedColor:
+    serializedVersion: 2
+    rgba: 2499739136
+  defaultColor:
+    serializedVersion: 2
+    rgba: 4281677109
+  selectedScale: 1.1
+  defaultScale: 1
+  onPartSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1713077383
 GameObject:
   m_ObjectHideFlags: 0
