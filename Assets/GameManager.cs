@@ -25,13 +25,6 @@ public class GameManager : MonoBehaviour
             solSystem = FindObjectOfType<SolSystem>();
             questManager = FindObjectOfType<QuestManager>();
             timeManager = FindObjectOfType<TimeManager>();
-
-            if (solSystem == null)
-                Debug.LogWarning("GameManager: SolSystem nebyl nalezen!");
-            if (questManager == null)
-                Debug.LogWarning("GameManager: QuestManager nebyl nalezen!");
-            if (timeManager == null)
-                Debug.LogWarning("GameManager: TimeManager nebyl nalezen!");
         }
         else
         {

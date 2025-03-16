@@ -64,18 +64,24 @@ public class TerminalManager : MonoBehaviour
 
             List<string> interpretation = interpreter.Interpret(userInput);
             
-            if (interpretation.Count > 0 && interpretation[0] == "CLEAR_TERMINAL")
+            if (interpretation.Count > 0)
             {
-                ClearTerminal();
-            }
-            else
-            {
-                StartCoroutine(ProcessInterpreterLines(interpretation));
-            }
-            
-            if (interpretation.Count > 0 && interpretation[0] == "EXIT_TERMINAL")
-            {
-                ExitTerminal();
+                if (interpretation[0] == "CLEAR_TERMINAL")
+                {
+                    ClearTerminal();
+                }
+                else if (interpretation[0] == "EXIT_TERMINAL")
+                {
+                    ExitTerminal();
+                }
+                else if (interpretation[0] == "END_SOL_SEQUENCE")
+                {
+                    StartCoroutine(EndSolSequence());
+                }
+                else
+                {
+                    StartCoroutine(ProcessInterpreterLines(interpretation));
+                }
             }
 
             userInputLine.transform.SetAsLastSibling();
@@ -144,37 +150,42 @@ public class TerminalManager : MonoBehaviour
             Debug.LogError("Expected at least 2 TextMeshProUGUI components in directoryLine prefab.");
         }
     }
-
+    
     IEnumerator ProcessInterpreterLines(List<string> interpretation, bool useTypewriterEffect = true)
     {
         for (int i = 0; i < interpretation.Count; i++)
         {
-            RectTransform msgListRT = msgList.GetComponent<RectTransform>();
-            msgListRT.sizeDelta = new Vector2(msgListRT.sizeDelta.x, msgListRT.sizeDelta.y + 25.0f);
+            yield return StartCoroutine(PrintLine(interpretation[i], useTypewriterEffect));
+        }
+    }
+    
+    IEnumerator PrintLine(string text, bool useTypewriterEffect = true)
+    {
+        RectTransform msgListRT = msgList.GetComponent<RectTransform>();
+        msgListRT.sizeDelta = new Vector2(msgListRT.sizeDelta.x, msgListRT.sizeDelta.y + 25.0f);
 
-            GameObject res = Instantiate(responseLine, msgList.transform);
-            res.transform.SetSiblingIndex(userInputLine.transform.GetSiblingIndex());
+        GameObject res = Instantiate(responseLine, msgList.transform);
+        res.transform.SetSiblingIndex(userInputLine.transform.GetSiblingIndex());
 
-            TextMeshProUGUI[] texts = res.GetComponentsInChildren<TextMeshProUGUI>();
-            if (texts.Length > 0)
+        TextMeshProUGUI[] texts = res.GetComponentsInChildren<TextMeshProUGUI>();
+        if (texts.Length > 0)
+        {
+            if (useTypewriterEffect)
             {
-                if (useTypewriterEffect)
-                {
-                    yield return StartCoroutine(TypewriterEffectWithColor(texts[0], interpretation[i]));
-                }
-                else
-                {
-                    texts[0].text = interpretation[i];
-                }
+                yield return StartCoroutine(TypewriterEffectWithColor(texts[0], text));
             }
             else
             {
-                Debug.LogError("Expected at least 1 TextMeshProUGUI component in responseLine prefab.");
+                texts[0].text = text;
             }
-
-            userInputLine.transform.SetAsLastSibling();
-            ScrollToBottom(i + 1);
         }
+        else
+        {
+            Debug.LogError("Expected at least 1 TextMeshProUGUI component in responseLine prefab.");
+        }
+
+        userInputLine.transform.SetAsLastSibling();
+        ScrollToBottom(1);
     }
 
     IEnumerator TypewriterEffectWithColor(TextMeshProUGUI textComponent, string fullText)
@@ -232,7 +243,7 @@ public class TerminalManager : MonoBehaviour
         }
     }
 
-    void ClearTerminal()
+    public void ClearTerminal()
     {
         List<GameObject> childrenToDestroy = new List<GameObject>();
         foreach (Transform child in msgList.transform)
@@ -262,7 +273,27 @@ public class TerminalManager : MonoBehaviour
             }
         }
         ClearTerminal();
-        List<string> gmLines = interpreter.Interpret("goodmorning");
+        List<string> gmLines = interpreter.GetGoodMorningMessage();
         StartCoroutine(ProcessInterpreterLines(gmLines, true));
+    }
+    
+    private IEnumerator EndSolSequence()
+    {
+        ClearTerminal();
+        yield return StartCoroutine(PrintLine("<color=#00FF00>Ending Sol...</color>"));
+        yield return new WaitForSeconds(1f);
+        
+        yield return StartCoroutine(PrintLine("<color=#00FF00>3</color>"));
+        yield return new WaitForSeconds(1f);
+        
+        yield return StartCoroutine(PrintLine("<color=#00FF00>2</color>"));
+        yield return new WaitForSeconds(1f);
+        
+        yield return StartCoroutine(PrintLine("<color=#00FF00>1</color>"));
+        yield return new WaitForSeconds(1f);
+        
+        ClearTerminal();
+        
+        SolSystem.Instance.EndCurrentSol();
     }
 }

@@ -35,7 +35,6 @@ public class SolSystem : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("SolSystem: currentSol (" + currentSol + ") nebyl nalezen. Spouštím první sol.");
                 StartNewSol(solDataList[0].solNumber);
             }
         }
@@ -49,7 +48,6 @@ public class SolSystem : MonoBehaviour
     {
         currentSol = solNumber;
         currentTime = new DateTime(1, 1, 1, 8, 0, 0);
-        Debug.Log("Spouštím Sol " + currentSol + " v čase " + currentTime.ToShortTimeString());
 
         SolData currentSolData = solDataList.Find(sol => sol.solNumber == solNumber);
         if (currentSolData != null)
@@ -60,7 +58,6 @@ public class SolSystem : MonoBehaviour
         {
             Debug.LogWarning("SolSystem: Data pro sol " + solNumber + " nebyla nalezena!");
         }
-
         // TimeManager.Instance.ResetTime();
     }
 

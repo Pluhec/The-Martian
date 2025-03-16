@@ -75,41 +75,15 @@ public class Interpreter : MonoBehaviour
                 LoadTitle("ascii.txt", "#FF0000", 0);
                 break;
             
-            case "quest":
-                response.Add("SOL " + solSystem.currentSol);
-                foreach (Quest quest in questManager.ActiveQuests)
-                {
-                    if (quest.isCompleted)
-                        response.Add("<color=#00FF00>" + quest.questName + "</color>");
-                    else
-                        response.Add("<color=#FF0000>" + quest.questName + "</color>");
-                }
-                break;
-            
             case "endsol":
                 if (questManager.AreAllQuestsCompleted())
                 {
-                    solSystem.EndCurrentSol();
-                    response.Add("<color=#00FF00>Ending Sol...</color>");
+                    response.Add("END_SOL_SEQUENCE");
                 }
                 else
                 {
                     response.Add("<color=#FF0000>Not all quests are completed!</color>");
                     response.AddRange(ListActiveQuests());
-                }
-                break;
-            
-            case "goodmorning":
-                response.Add("Good morning, Commander!");
-                response.Add("Current Time: " + timeManager.currentTime.ToShortTimeString());
-                response.Add("SOL " + solSystem.currentSol);
-                response.Add("Today's tasks:");
-                foreach (Quest quest in questManager.ActiveQuests)
-                {
-                    if (quest.isCompleted)
-                        response.Add("- <color=#00FF00>" + quest.questName + "</color>");
-                    else
-                        response.Add("- <color=#FF0000>" + quest.questName + "</color>");
                 }
                 break;
             
@@ -134,7 +108,7 @@ public class Interpreter : MonoBehaviour
 
     void LoadTitle(string path, string color, int spacing)
     {
-        StreamReader file = new StreamReader(System.IO.Path.Combine(Application.streamingAssetsPath, path));
+        StreamReader file = new StreamReader(Path.Combine(Application.streamingAssetsPath, path));
 
         for (int i = 0; i < spacing; i++)
         {
@@ -199,5 +173,22 @@ public class Interpreter : MonoBehaviour
                 questList.Add("<color=#FF0000>" + quest.questName + "</color>");
         }
         return questList;
+    }
+    
+    public List<string> GetGoodMorningMessage()
+    {
+        List<string> gmMessage = new List<string>();
+        gmMessage.Add("Good morning, Commander!");
+        gmMessage.Add("Current Time: " + timeManager.currentTime.ToShortTimeString());
+        gmMessage.Add("SOL " + solSystem.currentSol);
+        gmMessage.Add("Today's tasks:");
+        foreach (Quest quest in questManager.ActiveQuests)
+        {
+            if (quest.isCompleted)
+                gmMessage.Add("- <color=#00FF00>" + quest.questName + "</color>");
+            else
+                gmMessage.Add("- <color=#FF0000>" + quest.questName + "</color>");
+        }
+        return gmMessage;
     }
 }
