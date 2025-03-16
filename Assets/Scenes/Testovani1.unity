@@ -2483,7 +2483,7 @@ MonoBehaviour:
   IgnoreTimeScale: 0
   WorldUpOverride: {fileID: 0}
   ChannelMask: -1
-  UpdateMethod: 2
+  UpdateMethod: 0
   BlendUpdateMethod: 1
   LensModeOverride:
     Enabled: 0
@@ -6336,6 +6336,7 @@ MonoBehaviour:
   radialPartPrefab: {fileID: 7510437823944098231, guid: 766fe518eb00a574b97a1db4c356cbe9, type: 3}
   radialPartCanvas: {fileID: 1039258478}
   actionText: {fileID: 1360157359}
+  actionImage: {fileID: 244942486}
   angleBetweenPart: 5
   selectedColor:
     serializedVersion: 2

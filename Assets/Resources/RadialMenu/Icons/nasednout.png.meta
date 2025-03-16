@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 65194342679c88540ab64a9a83e72cde
+guid: eae13b8b2147a35439d70d35008493fe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8678666456067624061
-    second: Reticle-Circle2_0
+      213: -175872440700830889
+    second: nasednout_0
+  - first:
+      213: -486315831908481019
+    second: nasednout_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Reticle-Circle2_0
+      name: nasednout_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 381
-        height: 381
+        y: 158
+        width: 354
+        height: 196
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 383bdf9f6de2f8780800000000000000
-      internalID: -8678666456067624061
+      spriteID: 75bfe3e62fc2f8df0800000000000000
+      internalID: -175872440700830889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nasednout_1
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 0
+        width: 385
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5084276d3524049f0800000000000000
+      internalID: -486315831908481019
       vertices: []
       indices: 
       edges: []
@@ -138,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -147,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      nasednout_0: -175872440700830889
+      nasednout_1: -486315831908481019
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

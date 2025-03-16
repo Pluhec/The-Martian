@@ -14,6 +14,7 @@ public class RadialSelection : MonoBehaviour
     public GameObject radialPartPrefab;
     public Transform radialPartCanvas;
     public TextMeshProUGUI actionText; // **Odkaz na ActionText v RadialInside**
+    public Image actionImage; // **Odkaz na ActionImage v RadialInside**
     public float angleBetweenPart = 10;
 
     public Color32 selectedColor = new Color32(0x33, 0x33, 0x33, 0x0D);
@@ -24,7 +25,6 @@ public class RadialSelection : MonoBehaviour
 
     private List<GameObject> spawnedParts = new List<GameObject>();
     private int currentSelectedRadialPart = -1;
-    private int lastSelectedRadialPart = -1; // **Sledování poslední vybrané sekce**
     private List<string> actions = new List<string>();
 
     public RadialMenuEvent onPartSelected = new RadialMenuEvent();
@@ -61,9 +61,8 @@ public class RadialSelection : MonoBehaviour
     {
         getSelectedRadialPart();
         AnimateSelection();
-        UpdateActionText(); // **Aktualizace textu při změně výběru**
 
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0)) // Kliknutí levým tlačítkem myši
         {
             if (currentSelectedRadialPart >= 0 && currentSelectedRadialPart < actions.Count)
             {
@@ -72,9 +71,39 @@ public class RadialSelection : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+
+        UpdateActionDisplay(); // **Dynamické nastavení textu a ikony**
     }
 
-    private void getSelectedRadialPart()
+    private void UpdateActionDisplay()
+    {
+        if (currentSelectedRadialPart >= 0 && currentSelectedRadialPart < actions.Count)
+        {
+            string selectedAction = actions[currentSelectedRadialPart];
+
+            if (actionText != null)
+            {
+                actionText.text = selectedAction; // **Nastaví text podle vybrané akce**
+            }
+
+            if (actionImage != null)
+            {
+                // **Načtení ikonky z Resources složky podle názvu akce**
+                Sprite actionSprite = Resources.Load<Sprite>("RadialMenu/Icons/" + selectedAction);
+                if (actionSprite != null)
+                {
+                    actionImage.sprite = actionSprite; // **Nastavení ikonky**
+                    actionImage.enabled = true; // **Zobrazíme ikonku, pokud existuje**
+                }
+                else
+                {
+                    actionImage.enabled = false; // **Skryjeme ikonku, pokud obrázek neexistuje**
+                }
+            }
+        }
+    }
+
+    public void getSelectedRadialPart()
     {
         Vector3 mousePosition = Input.mousePosition;
         Vector3 centerToMouse = mousePosition - radialPartCanvas.position;
@@ -83,22 +112,13 @@ public class RadialSelection : MonoBehaviour
         float angle = Mathf.Atan2(centerToMouseProjected.x, centerToMouseProjected.y) * Mathf.Rad2Deg;
         if (angle < 0) angle += 360;
 
-        currentSelectedRadialPart = (int)(angle * numberOfRadialPart / 360);
-    }
-
-    private void UpdateActionText()
-    {
-        if (currentSelectedRadialPart != lastSelectedRadialPart && actionText != null)
+        int newSelectedPart = (int)(angle * numberOfRadialPart / 360);
+        
+        // **Aktualizujeme jen při změně sekce**
+        if (newSelectedPart != currentSelectedRadialPart)
         {
-            if (currentSelectedRadialPart >= 0 && currentSelectedRadialPart < actions.Count)
-            {
-                actionText.text = actions[currentSelectedRadialPart]; // **Přepíše text do ActionText**
-            }
-            else
-            {
-                actionText.text = ""; // **Pokud není žádná akce, text se smaže**
-            }
-            lastSelectedRadialPart = currentSelectedRadialPart; // **Uložíme poslední vybranou sekci**
+            currentSelectedRadialPart = newSelectedPart;
+            UpdateActionDisplay();
         }
     }
 
