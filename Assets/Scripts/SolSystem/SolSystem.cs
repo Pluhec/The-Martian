@@ -71,7 +71,11 @@ public class SolSystem : MonoBehaviour
         if (nextSol != -1)
         {
             StartNewSol(nextSol);
-            GameManager.Instance.GetComponent<TerminalManager>().DisplayGoodMorning();
+            TerminalManager tm = FindObjectOfType<TerminalManager>();
+            if (tm != null)
+            {
+                tm.DisplayGoodMorning();
+            }
         }
         else
         {

@@ -569,9 +569,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f80358ce24f45639e9a0798c421f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  solSystem: {fileID: 985487757}
-  questManager: {fileID: 1524491193}
-  timeManager: {fileID: 699311576}
 --- !u!4 &61264858
 Transform:
   m_ObjectHideFlags: 0
@@ -3088,7 +3085,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &699311576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4162,9 +4159,6 @@ MonoBehaviour:
       questDescription: ahojahojahojahojahojahojahojahojahojahojahojahojahoj ahoj
         ahoj ahoj ahoj   ahoj
       isCompleted: 0
-  questManager: {fileID: 1524491193}
-  timeManager: {fileID: 699311576}
-  TerminalManager: {fileID: 0}
 --- !u!4 &985487758
 Transform:
   m_ObjectHideFlags: 0
@@ -5738,8 +5732,6 @@ MonoBehaviour:
   closedTablet: {fileID: 1127570153}
   openedTablet: {fileID: 26644327}
   solNumberText: {fileID: 800675434}
-  solSystem: {fileID: 985487757}
-  questTablet: {fileID: 1457968014}
 --- !u!114 &1457968014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5752,7 +5744,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ceb5fb55037475293f980a2f3daf15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questManager: {fileID: 1524491193}
   questEntryPrefab: {fileID: 3458815488798855045, guid: ffb409d7ba8914cf6a72b974892095a7, type: 3}
   contentPanel: {fileID: 1564877542}
 --- !u!1 &1468843775
@@ -6193,7 +6184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8db37799334415198ad9b03996d4da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeQuests: []
 --- !u!4 &1524491194
 Transform:
   m_ObjectHideFlags: 0
@@ -7453,8 +7443,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questID: 1
-  questManager: {fileID: 1524491193}
-  questTablet: {fileID: 1457968014}
 --- !u!212 &1884709602
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7704,8 +7692,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questID: 0
-  questManager: {fileID: 1524491193}
-  questTablet: {fileID: 1457968014}
 --- !u!1 &1985853849
 GameObject:
   m_ObjectHideFlags: 0

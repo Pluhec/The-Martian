@@ -29,6 +29,10 @@ public class TerminalManager : MonoBehaviour
     private void Start()
     {
         interpreter = GetComponent<Interpreter>();
+        if (interpreter == null)
+        {
+            interpreter = FindObjectOfType<Interpreter>();
+        }
         terminalInput.ActivateInputField();
         terminalInput.Select();
     
@@ -43,7 +47,6 @@ public class TerminalManager : MonoBehaviour
 
     private void OnGUI()
     {
-        // zmena pro getkeyDOWN - protoze to slo drzet a rozbijelo se to
         if (terminalInput.isFocused && terminalInput.text != "" && Input.GetKeyDown(KeyCode.Return))
         {
             string userInput = terminalInput.text;
@@ -250,6 +253,14 @@ public class TerminalManager : MonoBehaviour
     
     public void DisplayGoodMorning()
     {
+        if (interpreter == null)
+        {
+            interpreter = GetComponent<Interpreter>();
+            if (interpreter == null)
+            {
+                interpreter = FindObjectOfType<Interpreter>();
+            }
+        }
         ClearTerminal();
         List<string> gmLines = interpreter.Interpret("goodmorning");
         StartCoroutine(ProcessInterpreterLines(gmLines, true));
