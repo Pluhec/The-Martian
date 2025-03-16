@@ -13,6 +13,7 @@ public class PlayerInteraction2D : MonoBehaviour
     private float holdTime = 0f;
     private bool menuActive = false;
     private bool keyReleased = true; // **Nová proměnná pro kontrolu uvolnění klávesy**
+    private bool actionPerformed = false; // **Nová proměnná pro kontrolu provedení akce**
 
     void Start()
     {
@@ -48,6 +49,11 @@ public class PlayerInteraction2D : MonoBehaviour
             {
                 HideRadialMenu();
             }
+            else if (holdTime < holdThreshold && currentObject != null && !actionPerformed)
+            {
+                PerformQuickAction(); // **Provede rychlou akci, pokud holdTime je menší než holdThreshold**
+            }
+            actionPerformed = false; // **Reset akce po uvolnění klávesy**
         }
     }
 
@@ -97,6 +103,7 @@ public class PlayerInteraction2D : MonoBehaviour
             currentObject.PerformAction(actions[index]);
             radialSelection.onPartSelected.RemoveListener(PerformRadialAction);
             HideRadialMenu();
+            actionPerformed = true; // **Nastavíme, že akce byla provedena**
         }
     }
 
@@ -108,6 +115,7 @@ public class PlayerInteraction2D : MonoBehaviour
             if (actions.Count > 0)
             {
                 currentObject.PerformAction(actions[0]); // **Provede první akci ihned**
+                Debug.Log("Performed quick action: " + actions[0]);
             }
         }
     }

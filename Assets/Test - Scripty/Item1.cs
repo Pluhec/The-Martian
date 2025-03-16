@@ -6,21 +6,26 @@ public class Item1 : InteractableObject
 
     void Awake()
     {
-        actions.Add("Ahoj");
-        actions.Add("nevim");
-        actions.Add("nevim2");
+        actions.Add("vycistit");
+        actions.Add("nasednout");
+        actions.Add("opravit");
     }
 
     public override void PerformAction(string action)
     {
-        if (action == "Ahoj")
+        if (action == "vycistit")
         {
-            Debug.Log($"Ahoj Item1 {itemName}!");
+            Debug.Log("Vyčištěno");
         }
         
-        if (action == "nevim")
+        if (action == "nasednout")
         {
-            Debug.Log($"nevim Item1 {itemName}!");
+            Debug.Log("Nasednuto!");
+        }
+        
+        if (action == "opravit")
+        {
+            Debug.Log("Opraveno!!");
         }
     }
 }
