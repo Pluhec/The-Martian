@@ -14,7 +14,14 @@ public class PlayerInteraction2D : MonoBehaviour
     private bool menuActive = false;
     private bool keyReleased = true; // **Nová proměnná pro kontrolu uvolnění klávesy**
     private bool actionPerformed = false; // **Nová proměnná pro kontrolu provedení akce**
+    
+    AudioManager audioManager;
 
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+    
     void Start()
     {
         if (radialSelection != null)
@@ -111,6 +118,7 @@ public class PlayerInteraction2D : MonoBehaviour
     {
         if (currentObject != null)
         {
+            audioManager.PlayRadialMenu(audioManager.doAction);
             List<string> actions = currentObject.GetActions();
             if (actions.Count > 0)
             {

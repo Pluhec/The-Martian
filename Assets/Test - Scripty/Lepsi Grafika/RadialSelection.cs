@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -28,9 +29,18 @@ public class RadialSelection : MonoBehaviour
     private List<string> actions = new List<string>();
 
     public RadialMenuEvent onPartSelected = new RadialMenuEvent();
+    
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     public void SetupMenu(List<string> actionList)
     {
+        audioManager.PlayRadialMenu(audioManager.openCloseMenu);
+        
         actions = actionList;
 
         foreach (var item in spawnedParts)
@@ -68,6 +78,7 @@ public class RadialSelection : MonoBehaviour
             {
                 Debug.Log($"Kliknuto na: {actions[currentSelectedRadialPart]}");
                 onPartSelected.Invoke(currentSelectedRadialPart);
+                audioManager.PlayRadialMenu(audioManager.doAction);
                 gameObject.SetActive(false);
             }
         }
@@ -103,7 +114,7 @@ public class RadialSelection : MonoBehaviour
         }
     }
 
-    public void getSelectedRadialPart()
+    private void getSelectedRadialPart()
     {
         Vector3 mousePosition = Input.mousePosition;
         Vector3 centerToMouse = mousePosition - radialPartCanvas.position;
@@ -113,12 +124,13 @@ public class RadialSelection : MonoBehaviour
         if (angle < 0) angle += 360;
 
         int newSelectedPart = (int)(angle * numberOfRadialPart / 360);
-        
+
         // **Aktualizujeme jen při změně sekce**
         if (newSelectedPart != currentSelectedRadialPart)
         {
             currentSelectedRadialPart = newSelectedPart;
             UpdateActionDisplay();
+            audioManager.PlayRadialMenu(audioManager.howerAction); // Přehrání zvuku při změně hoveru
         }
     }
 
