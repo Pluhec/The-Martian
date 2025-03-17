@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SolSystem : MonoBehaviour
 {
@@ -58,7 +58,6 @@ public class SolSystem : MonoBehaviour
         {
             Debug.LogWarning("SolSystem: Data pro sol " + solNumber + " nebyla nalezena!");
         }
-        // TimeManager.Instance.ResetTime();
     }
 
     public void EndCurrentSol()
@@ -68,11 +67,6 @@ public class SolSystem : MonoBehaviour
         if (nextSol != -1)
         {
             StartNewSol(nextSol);
-            TerminalManager tm = FindObjectOfType<TerminalManager>();
-            if (tm != null)
-            {
-                tm.DisplayGoodMorning();
-            }
         }
         else
         {

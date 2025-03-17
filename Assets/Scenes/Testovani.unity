@@ -3098,7 +3098,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a21531804884338a3c1d66acc5a92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sunLight: {fileID: 0}
+  dayStartTime: 8
+  dayEndTime: 22
+  timeSpeed: 10
 --- !u!4 &699311577
 Transform:
   m_ObjectHideFlags: 0
@@ -4143,6 +4145,42 @@ MonoBehaviour:
       questDescription: Get to the Hab as soon as possible!
       isCompleted: 0
     - questID: 1
+      questName: Heal with medkit
+      questDescription: 'Heal yourself with medkit to restore your health. '
+      isCompleted: 0
+    - questID: 2
+      questName: Heal with medkit
+      questDescription: 'Heal yourself with medkit to restore your health. '
+      isCompleted: 0
+    - questID: 3
+      questName: Heal with medkit
+      questDescription: 'Heal yourself with medkit to restore your health. '
+      isCompleted: 0
+    - questID: 4
+      questName: Heal with medkit
+      questDescription: 'Heal yourself with medkit to restore your health. '
+      isCompleted: 0
+    - questID: 5
+      questName: Heal with medkit
+      questDescription: 'Heal yourself with medkit to restore your health. '
+      isCompleted: 0
+    - questID: 6
+      questName: Heal with medkit
+      questDescription: 'Heal yourself with medkit to restore your health. '
+      isCompleted: 0
+    - questID: 7
+      questName: Heal with medkit
+      questDescription: 'Heal yourself with medkit to restore your health. '
+      isCompleted: 0
+    - questID: 8
+      questName: Heal with medkit
+      questDescription: 'Heal yourself with medkit to restore your health. '
+      isCompleted: 0
+    - questID: 9
+      questName: Heal with medkit
+      questDescription: 'Heal yourself with medkit to restore your health. '
+      isCompleted: 0
+    - questID: 10
       questName: Heal with medkit
       questDescription: 'Heal yourself with medkit to restore your health. '
       isCompleted: 0

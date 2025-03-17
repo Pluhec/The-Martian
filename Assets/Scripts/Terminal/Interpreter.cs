@@ -179,7 +179,7 @@ public class Interpreter : MonoBehaviour
     {
         List<string> gmMessage = new List<string>();
         gmMessage.Add("Good morning, Commander!");
-        gmMessage.Add("Current Time: " + timeManager.currentTime.ToShortTimeString());
+        // gmMessage.Add("Current Time: " + timeManager.currentTime.ToShortTimeString());
         gmMessage.Add("SOL " + solSystem.currentSol);
         gmMessage.Add("Today's tasks:");
         foreach (Quest quest in questManager.ActiveQuests)
