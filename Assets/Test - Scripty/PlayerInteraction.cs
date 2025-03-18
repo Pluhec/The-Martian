@@ -12,16 +12,17 @@ public class PlayerInteraction2D : MonoBehaviour
     public float holdThreshold = 0.5f;
     private float holdTime = 0f;
     private bool menuActive = false;
-    private bool keyReleased = true; // **Nová proměnná pro kontrolu uvolnění klávesy**
-    private bool actionPerformed = false; // **Nová proměnná pro kontrolu provedení akce**
-    
+    private bool keyReleased = true; // Kontrola uvolnění klávesy
+    private bool actionPerformed = false; // Kontrola, zda byla akce provedena
+    private bool shouldPlaySound = true; // Nová proměnná pro kontrolu přehrání zvuku
+
     AudioManager audioManager;
 
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
-    
+
     void Start()
     {
         if (radialSelection != null)
@@ -35,7 +36,7 @@ public class PlayerInteraction2D : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
-            if (keyReleased) // **Ujistíme se, že hráč nejprve pustil "E", než menu otevře znovu**
+            if (keyReleased) // Ujistíme se, že hráč nejprve pustil E, než menu otevře znovu
             {
                 holdTime += Time.deltaTime;
                 if (holdTime >= holdThreshold && !menuActive && currentObject != null)
@@ -46,7 +47,7 @@ public class PlayerInteraction2D : MonoBehaviour
         }
         else
         {
-            keyReleased = true; // **Uvolnění klávesy umožní další otevření menu**
+            keyReleased = true; // Uvolnění klávesy umožní další otevření menu
             holdTime = 0f; // Reset času držení
         }
 
@@ -58,9 +59,9 @@ public class PlayerInteraction2D : MonoBehaviour
             }
             else if (holdTime < holdThreshold && currentObject != null && !actionPerformed)
             {
-                PerformQuickAction(); // **Provede rychlou akci, pokud holdTime je menší než holdThreshold**
+                PerformQuickAction(); // Provede rychlou akci, pokud holdTime je menší než holdThreshold
             }
-            actionPerformed = false; // **Reset akce po uvolnění klávesy**
+            actionPerformed = false; // Reset akce po uvolnění klávesy
         }
     }
 
@@ -73,13 +74,15 @@ public class PlayerInteraction2D : MonoBehaviour
         if (actions.Count >= 2)
         {
             ShowRadialMenu(actions); // Otevřeme menu pouze pokud jsou 2+ akce
+            shouldPlaySound = true; // Reset přehrání zvuku při otevření menu
         }
         else if (actions.Count == 1)
         {
             PerformQuickAction(); // Pokud je jen 1 akce, rovnou ji provedeme
+            actionPerformed = true; // Nastavíme, že akce byla provedena
         }
 
-        keyReleased = false; // **Zamezíme okamžitému znovuotevření**
+        keyReleased = false; // Zamezíme okamžitému znovuotevření
     }
 
     private void ShowRadialMenu(List<string> actions)
@@ -95,10 +98,20 @@ public class PlayerInteraction2D : MonoBehaviour
 
     private void HideRadialMenu()
     {
+        // Only proceed if the menu was active
+        if (!menuActive)
+        {
+            return;
+        }
+
         if (radialSelection != null)
         {
             radialSelection.gameObject.SetActive(false);
             menuActive = false;
+            if (shouldPlaySound) // Přehrát zvuk pouze pokud by měla být
+            {
+                audioManager.PlayRadialMenu(audioManager.openCloseMenu);
+            }
         }
     }
 
@@ -109,8 +122,9 @@ public class PlayerInteraction2D : MonoBehaviour
         {
             currentObject.PerformAction(actions[index]);
             radialSelection.onPartSelected.RemoveListener(PerformRadialAction);
+            actionPerformed = true; // Action performed
+            shouldPlaySound = false; // Prevent closing sound on action selection
             HideRadialMenu();
-            actionPerformed = true; // **Nastavíme, že akce byla provedena**
         }
     }
 
@@ -122,7 +136,7 @@ public class PlayerInteraction2D : MonoBehaviour
             List<string> actions = currentObject.GetActions();
             if (actions.Count > 0)
             {
-                currentObject.PerformAction(actions[0]); // **Provede první akci ihned**
+                currentObject.PerformAction(actions[0]); // Provede první akci ihned
                 Debug.Log("Performed quick action: " + actions[0]);
             }
         }
