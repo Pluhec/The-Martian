@@ -58,6 +58,10 @@ public class QuestManager : MonoBehaviour
             {
                 quest.isCompleted = true;
                 Debug.Log("Quest " + quest.questName + " completed!");
+
+                // Po dokončení questu zavoláme ResumeTime() v TimeManager pro obnovení času
+                TimeManager.Instance.ResumeTime();
+
                 return;
             }
         }

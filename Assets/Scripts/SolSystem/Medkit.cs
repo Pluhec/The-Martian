@@ -4,7 +4,7 @@ public class MedkitTrigger : MonoBehaviour
 {
     [Header("Quest Settings")]
     public int questID;
-    
+
     private QuestManager questManager;
     private QuestTablet questTablet;
 
@@ -24,14 +24,17 @@ public class MedkitTrigger : MonoBehaviour
                 if (!quest.isCompleted)
                 {
                     Debug.Log("Before update: Quest " + quest.questName + " (ID: " + quest.questID + ") isCompleted: " + quest.isCompleted);
-                    quest.isCompleted = true;
+                    
+                    // Zavoláme MarkQuestAsCompletedByID, která za nás také zavolá ResumeTime()
+                    questManager.MarkQuestAsCompletedByID(questID);
+                    
                     Debug.Log("After update: Quest " + quest.questName + " (ID: " + quest.questID + ") isCompleted: " + quest.isCompleted);
                 }
                 else
                 {
                     Debug.Log("Quest " + quest.questName + " is already completed.");
                 }
-                
+
                 if (questTablet != null)
                 {
                     questTablet.UpdateQuestList();

@@ -35,7 +35,7 @@ public class TimeManager : MonoBehaviour
     private void Start()
     {
         // Inicializace s časem 8:00
-        currentTime = 8f; // Začínáme na 8:00
+        currentTime = dayStartTime; // Začínáme na 8:00
         Debug.Log("Initial time set to: 8:00");
     }
 
@@ -57,20 +57,26 @@ public class TimeManager : MonoBehaviour
 
     public void UpdateTime(float questCompletionPercentage)
     {
-        // Výpočet procenta splněných questů, které určují rychlost plynutí času
-        float questPercentage = questCompletionPercentage; // Hodnota od 0 do 1
+        // Dynamický výpočet pro zastavení času podle počtu splněných questů
+        float questPercentage = questCompletionPercentage;
+
+        // Rozdělíme celkový čas (14 hodin) mezi všechny questy
+        float totalDayTime = dayEndTime - dayStartTime;
+        float timePerQuest = totalDayTime / QuestManager.Instance.ActiveQuests.Count;
+
+        // Pokud máme questy, spočítáme cílový čas
+        float targetTimeForQuest = dayStartTime + timePerQuest * QuestManager.Instance.ActiveQuests.FindIndex(q => !q.isCompleted);
 
         // Dynamické zpomalování plynutí času podle splněných questů
-        // Zajištění minimálního přičítání, i když nemáme žádné splněné questy
-        float timeDelta = (dayEndTime - dayStartTime) * Mathf.Max(0.01f, questPercentage) * 0.05f; // Minimum je 0.01, aby čas plynul i bez questů
+        float timeDelta = timePerQuest * Mathf.Max(0.01f, questPercentage) * timeFlowCoefficient;
 
         // Přičítáme s koeficientem rychlosti plynutí času
         timeDelta *= timeSpeed;
 
         currentTime += timeDelta;
 
-        // Pokud je čas vyšší než hranice pro tento quest, zastavíme čas
-        if (currentTime >= QuestManager.Instance.GetQuestTargetTime())
+        // Zastavení času podle dynamického výpočtu
+        if (currentTime >= targetTimeForQuest)
         {
             isTimePaused = true; // Pauza pro čas
             Debug.Log("Time paused at: " + currentTime);
@@ -81,9 +87,6 @@ public class TimeManager : MonoBehaviour
         {
             currentTime = dayEndTime;
         }
-
-        // Ulož poslední procento dokončených questů
-        lastQuestCompletionPercentage = questCompletionPercentage;
 
         // Log pro sledování aktuálního času
         LogCurrentTime();

@@ -4148,42 +4148,6 @@ MonoBehaviour:
       questName: Heal with medkit
       questDescription: 'Heal yourself with medkit to restore your health. '
       isCompleted: 0
-    - questID: 2
-      questName: Heal with medkit
-      questDescription: 'Heal yourself with medkit to restore your health. '
-      isCompleted: 0
-    - questID: 3
-      questName: Heal with medkit
-      questDescription: 'Heal yourself with medkit to restore your health. '
-      isCompleted: 0
-    - questID: 4
-      questName: Heal with medkit
-      questDescription: 'Heal yourself with medkit to restore your health. '
-      isCompleted: 0
-    - questID: 5
-      questName: Heal with medkit
-      questDescription: 'Heal yourself with medkit to restore your health. '
-      isCompleted: 0
-    - questID: 6
-      questName: Heal with medkit
-      questDescription: 'Heal yourself with medkit to restore your health. '
-      isCompleted: 0
-    - questID: 7
-      questName: Heal with medkit
-      questDescription: 'Heal yourself with medkit to restore your health. '
-      isCompleted: 0
-    - questID: 8
-      questName: Heal with medkit
-      questDescription: 'Heal yourself with medkit to restore your health. '
-      isCompleted: 0
-    - questID: 9
-      questName: Heal with medkit
-      questDescription: 'Heal yourself with medkit to restore your health. '
-      isCompleted: 0
-    - questID: 10
-      questName: Heal with medkit
-      questDescription: 'Heal yourself with medkit to restore your health. '
-      isCompleted: 0
   - solNumber: 19
     quests:
     - questID: 2
