@@ -75,6 +75,10 @@ public class Interpreter : MonoBehaviour
                 LoadTitle("ascii.txt", "#FF0000", 0);
                 break;
             
+            case "time":
+                response.Add("Current time: " + timeManager.GetFormattedTime());
+                break;
+            
             case "endsol":
                 if (questManager.AreAllQuestsCompleted())
                 {

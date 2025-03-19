@@ -13,8 +13,8 @@ public class TimeManager : MonoBehaviour
     private float realTimeElapsed = 0f; 
     private float timeUpdateInterval = 1f;
     
-    public float timeSpeed = 10f;
-    
+    public float solDurationInRealMinutes = 10f; 
+
     private int questIndexToPause = -1;
 
     private void Awake()
@@ -41,16 +41,17 @@ public class TimeManager : MonoBehaviour
         if (isTimePaused)
             return; 
         
+        float realTimePerGameMinute = solDurationInRealMinutes / (dayEndTime - dayStartTime); 
         realTimeElapsed += Time.deltaTime;
         
         if (realTimeElapsed >= timeUpdateInterval)
         {
             realTimeElapsed = 0f; 
-            UpdateTime();
+            UpdateTime(realTimePerGameMinute);
         }
     }
 
-    public void UpdateTime()
+    public void UpdateTime(float realTimePerGameMinute)
     {
         float totalDayTime = dayEndTime - dayStartTime;
         float timePerQuest = totalDayTime / QuestManager.Instance.ActiveQuests.Count;
@@ -70,15 +71,14 @@ public class TimeManager : MonoBehaviour
         
         if (currentTime < dayEndTime)
         {
-            currentTime += (timePerQuest * timeSpeed);
+            currentTime += realTimePerGameMinute; 
         }
 
-        
         if (currentTime > dayEndTime)
         {
-            currentTime = dayEndTime;
+            currentTime = dayEndTime; 
         }
-        
+
         LogCurrentTime();
     }
 
@@ -97,7 +97,7 @@ public class TimeManager : MonoBehaviour
         int hours = Mathf.FloorToInt(currentTime);
         int minutes = Mathf.FloorToInt((currentTime - hours) * 60);
         float seconds = (currentTime - hours - minutes / 60f) * 3600f;
-        return string.Format("{0:D2}:{1:D2}:{2:F2}", hours, minutes, seconds);
+        return string.Format("{0:D2}:{1:D2}", hours, minutes);
     }
 
     public void LogCurrentTime()

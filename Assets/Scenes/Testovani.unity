@@ -3100,7 +3100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayStartTime: 8
   dayEndTime: 22
-  timeSpeed: 10
+  solDurationInRealMinutes: 2
 --- !u!4 &699311577
 Transform:
   m_ObjectHideFlags: 0
