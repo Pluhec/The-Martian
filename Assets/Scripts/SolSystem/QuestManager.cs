@@ -61,7 +61,6 @@ public class QuestManager : MonoBehaviour
 
                 // Po dokončení questu zavoláme ResumeTime() v TimeManager pro obnovení času
                 TimeManager.Instance.ResumeTime();
-
                 return;
             }
         }

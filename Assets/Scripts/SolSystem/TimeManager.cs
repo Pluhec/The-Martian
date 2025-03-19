@@ -4,20 +4,18 @@ public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance { get; private set; }
 
-    public float dayStartTime = 8f;  // Začátek Solu (8:00)
-    public float dayEndTime = 22f;   // Konec Solu (22:00)
+    public float dayStartTime = 8f; 
+    public float dayEndTime = 22f;  
 
-    private float currentTime;  // Počáteční čas
-    private float timeFlowCoefficient = 1f; // Počáteční koeficient (normální rychlost)
-    private float lastQuestCompletionPercentage = 0f;
+    private float currentTime;
+    private bool isTimePaused = false; 
 
-    private float realTimeElapsed = 0f; // Real time tracking
-    private float timeUpdateInterval = 1f; // 1 second interval to update the time
-
-    // Koeficient rychlosti plynutí času (např. 10x rychlejší než skutečný čas)
+    private float realTimeElapsed = 0f; 
+    private float timeUpdateInterval = 1f;
+    
     public float timeSpeed = 10f;
-
-    private bool isTimePaused = false; // Flag to pause/unpause time when quest is not completed
+    
+    private int questIndexToPause = -1;
 
     private void Awake()
     {
@@ -34,95 +32,76 @@ public class TimeManager : MonoBehaviour
 
     private void Start()
     {
-        // Inicializace s časem 8:00
-        currentTime = dayStartTime; // Začínáme na 8:00
+        currentTime = dayStartTime;
         Debug.Log("Initial time set to: 8:00");
     }
 
     private void Update()
     {
         if (isTimePaused)
-            return; // Pokud je čas pozastaven, neaktualizujeme čas
-
-        // Sledujeme uplynulý čas každou reálnou sekundu
+            return; 
+        
         realTimeElapsed += Time.deltaTime;
-
-        // Pokud uplynula jedna sekunda, aktualizujeme čas
+        
         if (realTimeElapsed >= timeUpdateInterval)
         {
-            realTimeElapsed = 0f; // Resetuj realTimeElapsed pro další sekundu
-            UpdateTime(QuestManager.Instance.GetQuestCompletionPercentage());
+            realTimeElapsed = 0f; 
+            UpdateTime();
         }
     }
 
-    public void UpdateTime(float questCompletionPercentage)
+    public void UpdateTime()
     {
-        // Dynamický výpočet pro zastavení času podle počtu splněných questů
-        float questPercentage = questCompletionPercentage;
-
-        // Rozdělíme celkový čas (14 hodin) mezi všechny questy
         float totalDayTime = dayEndTime - dayStartTime;
         float timePerQuest = totalDayTime / QuestManager.Instance.ActiveQuests.Count;
-
-        // Pokud máme questy, spočítáme cílový čas
-        float targetTimeForQuest = dayStartTime + timePerQuest * QuestManager.Instance.ActiveQuests.FindIndex(q => !q.isCompleted);
-
-        // Dynamické zpomalování plynutí času podle splněných questů
-        float timeDelta = timePerQuest * Mathf.Max(0.01f, questPercentage) * timeFlowCoefficient;
-
-        // Přičítáme s koeficientem rychlosti plynutí času
-        timeDelta *= timeSpeed;
-
-        currentTime += timeDelta;
-
-        // Zastavení času podle dynamického výpočtu
-        if (currentTime >= targetTimeForQuest)
+        
+        int activeQuestIndex = QuestManager.Instance.ActiveQuests.FindIndex(q => !q.isCompleted);
+        if (activeQuestIndex != -1)
         {
-            isTimePaused = true; // Pauza pro čas
-            Debug.Log("Time paused at: " + currentTime);
+            float targetTimeForQuest = dayStartTime + timePerQuest * (activeQuestIndex + 1);
+
+            if (currentTime >= targetTimeForQuest && !isTimePaused)
+            {
+                isTimePaused = true; 
+                Debug.Log("Time paused at: " + currentTime);
+                questIndexToPause = activeQuestIndex;
+            }
+        }
+        
+        if (currentTime < dayEndTime)
+        {
+            currentTime += (timePerQuest * timeSpeed);
         }
 
-        // Zajistí, že čas nikdy nevybočí mimo hranice (8:00 - 22:00)
+        
         if (currentTime > dayEndTime)
         {
             currentTime = dayEndTime;
         }
-
-        // Log pro sledování aktuálního času
+        
         LogCurrentTime();
-
-        // Zajištění, že čas není nižší než denní začátek
-        if (currentTime < dayStartTime)
-        {
-            currentTime = dayStartTime;
-        }
     }
 
-    // Formátování času na "HH:MM:SS" (např. 8:03, 8:03.95)
+    public void ResumeTime()
+    {
+        if (questIndexToPause != -1 && QuestManager.Instance.ActiveQuests[questIndexToPause].isCompleted)
+        {
+            isTimePaused = false;
+            questIndexToPause = -1;
+            Debug.Log("Time resumed at: " + currentTime);
+        }
+    }
+    
     public string GetFormattedTime()
     {
         int hours = Mathf.FloorToInt(currentTime);
         int minutes = Mathf.FloorToInt((currentTime - hours) * 60);
-        float seconds = (currentTime - hours - minutes / 60f) * 3600f; // Vypočítáme zbytek pro sekundy
+        float seconds = (currentTime - hours - minutes / 60f) * 3600f;
         return string.Format("{0:D2}:{1:D2}:{2:F2}", hours, minutes, seconds);
     }
 
-    // Veřejná vlastnost pro přístup k hodnotě currentTime
-    public float CurrentTime
-    {
-        get { return currentTime; }
-    }
-
-    // Logování aktuálního času každou sekundu
     public void LogCurrentTime()
     {
         Debug.Log("Current time: " + GetFormattedTime());
-    }
-
-    // Obnovit čas, pokud je quest splněn
-    public void ResumeTime()
-    {
-        isTimePaused = false;
-        Debug.Log("Time resumed at: " + currentTime);
     }
 }

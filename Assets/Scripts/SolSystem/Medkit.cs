@@ -25,7 +25,6 @@ public class MedkitTrigger : MonoBehaviour
                 {
                     Debug.Log("Before update: Quest " + quest.questName + " (ID: " + quest.questID + ") isCompleted: " + quest.isCompleted);
                     
-                    // Zavoláme MarkQuestAsCompletedByID, která za nás také zavolá ResumeTime()
                     questManager.MarkQuestAsCompletedByID(questID);
                     
                     Debug.Log("After update: Quest " + quest.questName + " (ID: " + quest.questID + ") isCompleted: " + quest.isCompleted);
