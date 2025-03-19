@@ -4,16 +4,16 @@ public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance { get; private set; }
 
-    public float dayStartTime = 8f; 
-    public float dayEndTime = 22f;  
+    public float dayStartTime = 8f;
+    public float dayEndTime = 22f;
 
     private float currentTime;
-    private bool isTimePaused = false; 
+    private bool isTimePaused = false;
 
-    private float realTimeElapsed = 0f; 
+    private float realTimeElapsed = 0f;
     private float timeUpdateInterval = 1f;
-    
-    public float solDurationInRealMinutes = 10f; 
+
+    public float solDurationInRealMinutes = 10f;
 
     private int questIndexToPause = -1;
 
@@ -32,21 +32,19 @@ public class TimeManager : MonoBehaviour
 
     private void Start()
     {
-        currentTime = dayStartTime;
-        Debug.Log("Initial time set to: 8:00");
+        ResetTime(); 
     }
 
     private void Update()
     {
-        if (isTimePaused)
-            return; 
-        
-        float realTimePerGameMinute = solDurationInRealMinutes / (dayEndTime - dayStartTime); 
+        if (isTimePaused) return;
+
+        float realTimePerGameMinute = solDurationInRealMinutes / (dayEndTime - dayStartTime);
         realTimeElapsed += Time.deltaTime;
-        
+
         if (realTimeElapsed >= timeUpdateInterval)
         {
-            realTimeElapsed = 0f; 
+            realTimeElapsed = 0f;
             UpdateTime(realTimePerGameMinute);
         }
     }
@@ -55,7 +53,7 @@ public class TimeManager : MonoBehaviour
     {
         float totalDayTime = dayEndTime - dayStartTime;
         float timePerQuest = totalDayTime / QuestManager.Instance.ActiveQuests.Count;
-        
+
         int activeQuestIndex = QuestManager.Instance.ActiveQuests.FindIndex(q => !q.isCompleted);
         if (activeQuestIndex != -1)
         {
@@ -63,23 +61,29 @@ public class TimeManager : MonoBehaviour
 
             if (currentTime >= targetTimeForQuest && !isTimePaused)
             {
-                isTimePaused = true; 
+                isTimePaused = true;
                 Debug.Log("Time paused at: " + currentTime);
                 questIndexToPause = activeQuestIndex;
             }
         }
-        
+
         if (currentTime < dayEndTime)
         {
-            currentTime += realTimePerGameMinute; 
+            currentTime += realTimePerGameMinute;
         }
 
         if (currentTime > dayEndTime)
         {
-            currentTime = dayEndTime; 
+            currentTime = dayEndTime;
         }
 
         LogCurrentTime();
+    }
+
+    public void PauseTime()
+    {
+        isTimePaused = true;
+        Debug.Log("Time paused at: " + currentTime);
     }
 
     public void ResumeTime()
@@ -91,12 +95,20 @@ public class TimeManager : MonoBehaviour
             Debug.Log("Time resumed at: " + currentTime);
         }
     }
-    
+
+    public void ResetTime()
+    {
+        currentTime = dayStartTime;
+        Debug.Log("Time reset to 8:00");
+        isTimePaused = false;
+        questIndexToPause = -1;
+        QuestManager.Instance.ResetQuestTimers();
+    }
+
     public string GetFormattedTime()
     {
         int hours = Mathf.FloorToInt(currentTime);
         int minutes = Mathf.FloorToInt((currentTime - hours) * 60);
-        float seconds = (currentTime - hours - minutes / 60f) * 3600f;
         return string.Format("{0:D2}:{1:D2}", hours, minutes);
     }
 

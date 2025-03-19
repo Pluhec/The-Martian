@@ -53,6 +53,7 @@ public class SolSystem : MonoBehaviour
         if (currentSolData != null)
         {
             QuestManager.Instance.InitializeQuests(currentSolData.quests);
+            TimeManager.Instance.ResetTime();
         }
         else
         {
@@ -63,6 +64,7 @@ public class SolSystem : MonoBehaviour
     public void EndCurrentSol()
     {
         Debug.Log("Ukončuji Sol " + currentSol);
+        TimeManager.Instance.PauseTime();
         int nextSol = GetNextSol();
         if (nextSol != -1)
         {
