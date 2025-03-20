@@ -4302,6 +4302,23 @@ MonoBehaviour:
   walkSpeed: 1.5
   runSpeed: 2.2
   StaminaBar: {fileID: 1239296564}
+  StaminaPoints:
+  - {fileID: 1692955307}
+  - {fileID: 697704398}
+  - {fileID: 201555650}
+  - {fileID: 662155921}
+  - {fileID: 275491614}
+  - {fileID: 817012814}
+  - {fileID: 1055041464}
+  - {fileID: 1160659120}
+  - {fileID: 1675129892}
+  - {fileID: 1714228842}
+  - {fileID: 1555361895}
+  - {fileID: 642781217}
+  - {fileID: 58773003}
+  - {fileID: 324353743}
+  - {fileID: 466369116}
+  - {fileID: 2070660047}
   Stamina: 100
   MaxStamina: 100
   RunCost: 25
