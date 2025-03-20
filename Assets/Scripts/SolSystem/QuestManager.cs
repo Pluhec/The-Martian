@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager Instance { get; private set; }
-
+    
     private List<Quest> activeQuests = new List<Quest>();
 
     public List<Quest> ActiveQuests { get { return activeQuests; } }
