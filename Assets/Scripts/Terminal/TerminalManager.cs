@@ -3,28 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TerminalManager : MonoBehaviour
 {
+    [Header("Radky v terminálu")]
     public GameObject directoryLine;
     public GameObject responseLine;
-
+    
+    [Header("Terminal")]
     public TMP_InputField terminalInput;
     public GameObject userInputLine;
     public ScrollRect sr;
     public GameObject msgList;
-
+    
+    [Header("Typewriter effect")]
     public float typewriterSpeed = 80f;
     private float charDelay { get { return 1f / typewriterSpeed; } }
 
     private List<string> commandHistory = new List<string>(); 
     private int historyIndex = -1; 
 
-    Interpreter interpreter;
+    public Interpreter interpreter;
 
     private void Start()
     {
         interpreter = GetComponent<Interpreter>();
+        if (interpreter == null)
+        {
+            interpreter = FindObjectOfType<Interpreter>();
+        }
         terminalInput.ActivateInputField();
         terminalInput.Select();
     
@@ -39,7 +47,7 @@ public class TerminalManager : MonoBehaviour
 
     private void OnGUI()
     {
-        if (terminalInput.isFocused && terminalInput.text != "" && Input.GetKey(KeyCode.Return))
+        if (terminalInput.isFocused && terminalInput.text != "" && Input.GetKeyDown(KeyCode.Return))
         {
             string userInput = terminalInput.text;
             ClearInputField();
@@ -56,13 +64,24 @@ public class TerminalManager : MonoBehaviour
 
             List<string> interpretation = interpreter.Interpret(userInput);
             
-            if (interpretation.Count > 0 && interpretation[0] == "CLEAR_TERMINAL")
+            if (interpretation.Count > 0)
             {
-                ClearTerminal();
-            }
-            else
-            {
-                StartCoroutine(ProcessInterpreterLines(interpretation));
+                if (interpretation[0] == "CLEAR_TERMINAL")
+                {
+                    ClearTerminal();
+                }
+                else if (interpretation[0] == "EXIT_TERMINAL")
+                {
+                    ExitTerminal();
+                }
+                else if (interpretation[0] == "END_SOL_SEQUENCE")
+                {
+                    StartCoroutine(EndSolSequence());
+                }
+                else
+                {
+                    StartCoroutine(ProcessInterpreterLines(interpretation));
+                }
             }
 
             userInputLine.transform.SetAsLastSibling();
@@ -108,6 +127,11 @@ public class TerminalManager : MonoBehaviour
         terminalInput.text = "";
     }
 
+    void ExitTerminal()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     void AddDirectoryLine(string userInput)
     {
         RectTransform msgListRT = msgList.GetComponent<RectTransform>();
@@ -126,37 +150,42 @@ public class TerminalManager : MonoBehaviour
             Debug.LogError("Expected at least 2 TextMeshProUGUI components in directoryLine prefab.");
         }
     }
-
+    
     IEnumerator ProcessInterpreterLines(List<string> interpretation, bool useTypewriterEffect = true)
     {
         for (int i = 0; i < interpretation.Count; i++)
         {
-            RectTransform msgListRT = msgList.GetComponent<RectTransform>();
-            msgListRT.sizeDelta = new Vector2(msgListRT.sizeDelta.x, msgListRT.sizeDelta.y + 25.0f);
+            yield return StartCoroutine(PrintLine(interpretation[i], useTypewriterEffect));
+        }
+    }
+    
+    IEnumerator PrintLine(string text, bool useTypewriterEffect = true)
+    {
+        RectTransform msgListRT = msgList.GetComponent<RectTransform>();
+        msgListRT.sizeDelta = new Vector2(msgListRT.sizeDelta.x, msgListRT.sizeDelta.y + 25.0f);
 
-            GameObject res = Instantiate(responseLine, msgList.transform);
-            res.transform.SetSiblingIndex(userInputLine.transform.GetSiblingIndex());
+        GameObject res = Instantiate(responseLine, msgList.transform);
+        res.transform.SetSiblingIndex(userInputLine.transform.GetSiblingIndex());
 
-            TextMeshProUGUI[] texts = res.GetComponentsInChildren<TextMeshProUGUI>();
-            if (texts.Length > 0)
+        TextMeshProUGUI[] texts = res.GetComponentsInChildren<TextMeshProUGUI>();
+        if (texts.Length > 0)
+        {
+            if (useTypewriterEffect)
             {
-                if (useTypewriterEffect)
-                {
-                    yield return StartCoroutine(TypewriterEffectWithColor(texts[0], interpretation[i]));
-                }
-                else
-                {
-                    texts[0].text = interpretation[i];
-                }
+                yield return StartCoroutine(TypewriterEffectWithColor(texts[0], text));
             }
             else
             {
-                Debug.LogError("Expected at least 1 TextMeshProUGUI component in responseLine prefab.");
+                texts[0].text = text;
             }
-
-            userInputLine.transform.SetAsLastSibling();
-            ScrollToBottom(i + 1);
         }
+        else
+        {
+            Debug.LogError("Expected at least 1 TextMeshProUGUI component in responseLine prefab.");
+        }
+
+        userInputLine.transform.SetAsLastSibling();
+        ScrollToBottom(1);
     }
 
     IEnumerator TypewriterEffectWithColor(TextMeshProUGUI textComponent, string fullText)
@@ -214,7 +243,7 @@ public class TerminalManager : MonoBehaviour
         }
     }
 
-    void ClearTerminal()
+    public void ClearTerminal()
     {
         List<GameObject> childrenToDestroy = new List<GameObject>();
         foreach (Transform child in msgList.transform)
@@ -231,5 +260,40 @@ public class TerminalManager : MonoBehaviour
         
         RectTransform msgListRT = msgList.GetComponent<RectTransform>();
         msgListRT.sizeDelta = new Vector2(msgListRT.sizeDelta.x, 0);
+    }
+    
+    public void DisplayGoodMorning()
+    {
+        if (interpreter == null)
+        {
+            interpreter = GetComponent<Interpreter>();
+            if (interpreter == null)
+            {
+                interpreter = FindObjectOfType<Interpreter>();
+            }
+        }
+        ClearTerminal();
+        List<string> gmLines = interpreter.GetGoodMorningMessage();
+        StartCoroutine(ProcessInterpreterLines(gmLines, true));
+    }
+    
+    private IEnumerator EndSolSequence()
+    {
+        ClearTerminal();
+        yield return StartCoroutine(PrintLine("<color=#00FF00>Ending Sol...</color>"));
+        yield return new WaitForSeconds(1f);
+        
+        yield return StartCoroutine(PrintLine("<color=#00FF00>3</color>"));
+        yield return new WaitForSeconds(1f);
+        
+        yield return StartCoroutine(PrintLine("<color=#00FF00>2</color>"));
+        yield return new WaitForSeconds(1f);
+        
+        yield return StartCoroutine(PrintLine("<color=#00FF00>1</color>"));
+        yield return new WaitForSeconds(1f);
+        
+        ClearTerminal();
+        SolSystem.Instance.EndCurrentSol();
+        DisplayGoodMorning();
     }
 }
