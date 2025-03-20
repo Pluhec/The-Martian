@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class TimeManager : MonoBehaviour
 {
@@ -6,14 +7,15 @@ public class TimeManager : MonoBehaviour
 
     public float dayStartTime = 8f;
     public float dayEndTime = 22f;
-
     private float currentTime;
-    private bool isTimePaused = false;
 
+    private bool isTimePaused = false;
     private float realTimeElapsed = 0f;
     private float timeUpdateInterval = 1f;
 
     public float solDurationInRealMinutes = 10f;
+
+    public event Action<float> WorldTimeChanged; 
 
     private int questIndexToPause = -1;
 
@@ -76,6 +78,9 @@ public class TimeManager : MonoBehaviour
         {
             currentTime = dayEndTime;
         }
+
+        
+        WorldTimeChanged?.Invoke(currentTime);
 
         LogCurrentTime();
     }
