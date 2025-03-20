@@ -10,7 +10,6 @@ public class Movement : MonoBehaviour
     public float walkSpeed = 2.0f;
     public float runSpeed = 4.0f;
 
-    public Image StaminaBar;
     public Image[] StaminaPoints; // Array for displaying stamina points
 
     public float Stamina, MaxStamina;
@@ -41,8 +40,6 @@ public class Movement : MonoBehaviour
 
     private void UpdateStaminaBar()
     {
-        // Fill the StaminaBar based on current Stamina
-        StaminaBar.fillAmount = Stamina / MaxStamina;
 
         // Update StaminaPoints based on current Stamina (similar to health points in pomocnyscript)
         for (int i = 0; i < StaminaPoints.Length; i++)
