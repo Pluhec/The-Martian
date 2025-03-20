@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: 20d9de1ed3f3e7447a172a741f789a62
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -631012950478636052
+    second: staminaBarFill_0
+  - first:
+      213: -3442035683371623753
+    second: staminaBarFill_1
+  - first:
+      213: -3803406209732004985
+    second: staminaBarFill_2
+  - first:
+      213: 8076462793702274565
+    second: staminaBarFill_3
+  - first:
+      213: 6615585002920026012
+    second: staminaBarFill_4
+  - first:
+      213: 2611316131505230877
+    second: staminaBarFill_5
+  - first:
+      213: 5838148746510190456
+    second: staminaBarFill_6
+  - first:
+      213: 116093921039229513
+    second: staminaBarFill_7
+  - first:
+      213: -660632127456668362
+    second: staminaBarFill_8
+  - first:
+      213: 1426296139453001471
+    second: staminaBarFill_9
+  - first:
+      213: 1882362681588854472
+    second: staminaBarFill_10
+  - first:
+      213: 9182715157062708972
+    second: staminaBarFill_11
+  - first:
+      213: -7828452661825271492
+    second: staminaBarFill_12
+  - first:
+      213: 6928167544630821025
+    second: staminaBarFill_13
+  - first:
+      213: -879317981232334915
+    second: staminaBarFill_14
+  - first:
+      213: 7959948757275000789
+    second: staminaBarFill_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: staminaBarFill_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 26
+        width: 45
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cebbc0690113e37f0800000000000000
+      internalID: -631012950478636052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: staminaBarFill_1
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 26
+        width: 45
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ba5a6c58ce6b30d0800000000000000
+      internalID: -3442035683371623753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: staminaBarFill_2
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 26
+        width: 45
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 783b86c1436973bc0800000000000000
+      internalID: -3803406209732004985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: staminaBarFill_3
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 26
+        width: 45
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5067844be1c551070800000000000000
+      internalID: 8076462793702274565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: staminaBarFill_4
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 25
+        width: 46
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9f137062874fcb50800000000000000
+      internalID: 6615585002920026012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: staminaBarFill_5
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 25
+        width: 46
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d14dd9eaf224d3420800000000000000
+      internalID: 2611316131505230877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: staminaBarFill_6
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 25
+        width: 45
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 877c1a56a55450150800000000000000
+      internalID: 5838148746510190456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: staminaBarFill_7
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 25
+        width: 45
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 942202c5ec27c9100800000000000000
+      internalID: 116093921039229513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: staminaBarFill_8
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 25
+        width: 45
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6351cbb8496f4d6f0800000000000000
+      internalID: -660632127456668362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: staminaBarFill_9
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 25
+        width: 45
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffe6b9038c83bc310800000000000000
+      internalID: 1426296139453001471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: staminaBarFill_10
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 26
+        width: 44
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ce2e8eb2ee7f1a10800000000000000
+      internalID: 1882362681588854472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: staminaBarFill_11
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 26
+        width: 44
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cee615288ce8f6f70800000000000000
+      internalID: 9182715157062708972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: staminaBarFill_12
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 26
+        width: 44
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3981fee7cfbb5390800000000000000
+      internalID: -7828452661825271492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: staminaBarFill_13
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 26
+        width: 44
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a04c12ccabc52060800000000000000
+      internalID: 6928167544630821025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: staminaBarFill_14
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 25
+        width: 45
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db7780474f80cc3f0800000000000000
+      internalID: -879317981232334915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: staminaBarFill_15
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 26
+        width: 78
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5df30bb983b677e60800000000000000
+      internalID: 7959948757275000789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      staminaBarFill_0: -631012950478636052
+      staminaBarFill_1: -3442035683371623753
+      staminaBarFill_10: 1882362681588854472
+      staminaBarFill_11: 9182715157062708972
+      staminaBarFill_12: -7828452661825271492
+      staminaBarFill_13: 6928167544630821025
+      staminaBarFill_14: -879317981232334915
+      staminaBarFill_15: 7959948757275000789
+      staminaBarFill_2: -3803406209732004985
+      staminaBarFill_3: 8076462793702274565
+      staminaBarFill_4: 6615585002920026012
+      staminaBarFill_5: 2611316131505230877
+      staminaBarFill_6: 5838148746510190456
+      staminaBarFill_7: 116093921039229513
+      staminaBarFill_8: -660632127456668362
+      staminaBarFill_9: 1426296139453001471
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
