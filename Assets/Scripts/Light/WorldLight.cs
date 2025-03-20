@@ -1,48 +1,57 @@
-using System;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-namespace WorldTime
+public class WorldLight : MonoBehaviour
 {
-    [RequireComponent(typeof(Light2D))]
-    public class WorldLight : MonoBehaviour
+    private Light2D _light;
+    
+    [SerializeField] private Gradient _gradient;
+    
+    private float currentPercentOfDay;
+    private float targetPercentOfDay;
+
+    private float smoothTime = 0.2f;
+    private float currentSmoothVelocity = 50.0f; 
+    private Color currentColor;
+    private Color targetColor;
+
+    private void Start()
     {
-        private Light2D _light;
-    
-        [SerializeField] private Gradient _gradient;
+        _light = GetComponent<Light2D>();
+        
+        currentPercentOfDay = TimeManager.Instance.percentOfDay;
+        targetPercentOfDay = currentPercentOfDay;
+        currentColor = _gradient.Evaluate(currentPercentOfDay / 100f);
+        _light.color = currentColor;
+        
+        TimeManager.Instance.WorldTimeChanged += OnWorldTimeChanged;
+    }
 
-        private void Start()
+    private void OnDestroy()
+    {
+        if (TimeManager.Instance != null)
         {
-            TimeManager timeManager = TimeManager.Instance;
-            if (timeManager != null)
-            {
-                timeManager.WorldTimeChanged += OnWorldTimeChanged;
-            }
-            else
-            {
-                Debug.LogError("TimeManager is not initialized. Cannot subscribe to WorldTimeChanged.");
-            }
+            TimeManager.Instance.WorldTimeChanged -= OnWorldTimeChanged;
+        }
+    }
 
-            _light = GetComponent<Light2D>();
+    // Metoda ktera se vola vzdy kdyz je zmeneny cas v hre
+    private void OnWorldTimeChanged(float currentTime)
+    {
+        if (!TimeManager.Instance.isTimePaused)
+        {
+            targetPercentOfDay = TimeManager.Instance.percentOfDay;
         }
+    }
 
-        private void OnDestroy()
-        {
-            TimeManager timeManager = TimeManager.Instance;
-            if (timeManager != null)
-            {
-                timeManager.WorldTimeChanged -= OnWorldTimeChanged;
-            }
-        }
-    
-        private void OnWorldTimeChanged(object sender, TimeSpan newTime)
-        {
-            _light.color = _gradient.Evaluate(PercentOfDay(newTime));
-        }
-
-        private float PercentOfDay(TimeSpan timeSpan)
-        {
-            return (float)timeSpan.TotalMinutes % WorldTimeConstants.MinutesInDay / WorldTimeConstants.MinutesInDay;
-        }
+    private void Update()
+    {
+        // plynuly prechod mezi procenty 
+        currentPercentOfDay = Mathf.SmoothDamp(currentPercentOfDay, targetPercentOfDay, ref currentSmoothVelocity, smoothTime);
+        
+        targetColor = _gradient.Evaluate(currentPercentOfDay / 100f);
+        currentColor = Color.Lerp(currentColor, targetColor, Time.deltaTime / smoothTime);
+        
+        _light.color = currentColor;
     }
 }

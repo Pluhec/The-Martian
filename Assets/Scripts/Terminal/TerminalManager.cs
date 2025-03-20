@@ -293,7 +293,7 @@ public class TerminalManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         
         ClearTerminal();
-        
         SolSystem.Instance.EndCurrentSol();
+        DisplayGoodMorning();
     }
 }

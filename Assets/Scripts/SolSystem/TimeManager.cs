@@ -8,8 +8,9 @@ public class TimeManager : MonoBehaviour
     public float dayStartTime = 8f;
     public float dayEndTime = 22f;
     private float currentTime;
+    public float percentOfDay;
 
-    private bool isTimePaused = false;
+    public bool isTimePaused = false;
     private float realTimeElapsed = 0f;
     private float timeUpdateInterval = 1f;
 
@@ -81,6 +82,7 @@ public class TimeManager : MonoBehaviour
 
         
         WorldTimeChanged?.Invoke(currentTime);
+        CalculatePercentOfDay(currentTime, dayStartTime, dayEndTime);
 
         LogCurrentTime();
     }
@@ -120,5 +122,11 @@ public class TimeManager : MonoBehaviour
     public void LogCurrentTime()
     {
         Debug.Log("Current time: " + GetFormattedTime());
+    }
+
+    public void CalculatePercentOfDay(float currentTime, float dayStartTime, float dayEndTime)
+    {
+        percentOfDay = (currentTime - dayStartTime) / (dayEndTime - dayStartTime) * 100;
+        Debug.Log("procento dne: " + percentOfDay);
     }
 }
