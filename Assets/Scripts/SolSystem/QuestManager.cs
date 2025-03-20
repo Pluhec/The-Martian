@@ -1,12 +1,12 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager Instance { get; private set; }
-    
+
     private List<Quest> activeQuests = new List<Quest>();
-    
+
     public List<Quest> ActiveQuests { get { return activeQuests; } }
 
     private void Awake()
@@ -22,13 +22,31 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    
     public void InitializeQuests(List<Quest> quests)
     {
         activeQuests = new List<Quest>(quests);
+        ResetQuestTimers();
     }
     
-// jestli jsou vsechny questy splene:
+    public void ResetQuestTimers()
+    {
+        foreach (var quest in activeQuests)
+        {
+            quest.isCompleted = false;
+        }
+    }
+
+    public float GetQuestCompletionPercentage()
+    {
+        int completedCount = 0;
+        foreach (Quest quest in activeQuests)
+        {
+            if (quest.isCompleted)
+                completedCount++;
+        }
+        return (float)completedCount / activeQuests.Count;
+    }
+
     public bool AreAllQuestsCompleted()
     {
         foreach (Quest quest in activeQuests)
@@ -39,7 +57,6 @@ public class QuestManager : MonoBehaviour
         return true;
     }
 
-    // oznameni splneni questu
     public void MarkQuestAsCompletedByID(int questID)
     {
         foreach (Quest quest in activeQuests)
@@ -47,10 +64,32 @@ public class QuestManager : MonoBehaviour
             if (quest.questID == questID && !quest.isCompleted)
             {
                 quest.isCompleted = true;
-                Debug.Log("QuestManager: Quest s ID " + questID + " byl označen jako splněný.");
+                Debug.Log("Quest " + quest.questName + " completed!");
+                
+                TimeManager.Instance.ResumeTime();
                 return;
             }
         }
-        Debug.LogWarning("QuestManager: Nesplněný quest s ID " + questID + " nebyl nalezen.");
+    }
+
+    public float GetQuestTargetTime()
+    {
+        int totalQuests = activeQuests.Count;
+        float totalDayTime = 14f;
+
+        if (totalQuests == 0)
+        {
+            return TimeManager.Instance.dayStartTime;
+        }
+        
+        float timePerQuest = totalDayTime / totalQuests;
+        int activeQuestIndex = activeQuests.FindIndex(q => !q.isCompleted); 
+
+        if (activeQuestIndex == -1)
+        {
+            return TimeManager.Instance.dayEndTime;
+        }
+
+        return TimeManager.Instance.dayStartTime + (activeQuestIndex + 1) * timePerQuest;
     }
 }

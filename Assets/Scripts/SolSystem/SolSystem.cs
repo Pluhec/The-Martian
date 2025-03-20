@@ -1,6 +1,6 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class SolSystem : MonoBehaviour
 {
@@ -53,26 +53,22 @@ public class SolSystem : MonoBehaviour
         if (currentSolData != null)
         {
             QuestManager.Instance.InitializeQuests(currentSolData.quests);
+            TimeManager.Instance.ResetTime();
         }
         else
         {
             Debug.LogWarning("SolSystem: Data pro sol " + solNumber + " nebyla nalezena!");
         }
-        // TimeManager.Instance.ResetTime();
     }
 
     public void EndCurrentSol()
     {
         Debug.Log("Ukončuji Sol " + currentSol);
+        TimeManager.Instance.PauseTime();
         int nextSol = GetNextSol();
         if (nextSol != -1)
         {
             StartNewSol(nextSol);
-            TerminalManager tm = FindObjectOfType<TerminalManager>();
-            if (tm != null)
-            {
-                tm.DisplayGoodMorning();
-            }
         }
         else
         {

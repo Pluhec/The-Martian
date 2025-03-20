@@ -234,7 +234,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Quest-tablet-closed_0: -3423394994178093076
+      Quest-tablet-closed_1: 2747118320743250429
+      Quest-tablet-closed_2: -241231697307721964
+      Quest-tablet-closed_3: 9175752283972904580
+      Quest-tablet-closed_4: 8504012555477075177
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

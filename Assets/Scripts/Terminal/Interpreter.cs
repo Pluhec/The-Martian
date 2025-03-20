@@ -75,6 +75,10 @@ public class Interpreter : MonoBehaviour
                 LoadTitle("ascii.txt", "#FF0000", 0);
                 break;
             
+            case "time":
+                response.Add("Current time: " + timeManager.GetFormattedTime());
+                break;
+            
             case "endsol":
                 if (questManager.AreAllQuestsCompleted())
                 {
@@ -179,8 +183,7 @@ public class Interpreter : MonoBehaviour
     {
         List<string> gmMessage = new List<string>();
         gmMessage.Add("Good morning, Commander!");
-        gmMessage.Add("Current Time: " + timeManager.currentTime.ToShortTimeString());
-        gmMessage.Add("SOL " + solSystem.currentSol);
+        gmMessage.Add("SOL " + solSystem.currentSol + "; " + timeManager.GetFormattedTime());
         gmMessage.Add("Today's tasks:");
         foreach (Quest quest in questManager.ActiveQuests)
         {
