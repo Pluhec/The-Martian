@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            Debug.Log("nevim");
 
             // dynamicky se najdou scripty
             solSystem = FindObjectOfType<SolSystem>();
@@ -29,6 +30,14 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void Update()
+    {
+        if (questManager == null)
+        {
+            Debug.Log("nevim");
         }
     }
 }
