@@ -4,31 +4,34 @@ using UnityEngine;
 public class Clean : MonoBehaviour
 {
     [Header("Main Settings")]
-    [SerializeField] private Texture2D _dirtMask;    
-    [SerializeField] private Texture2D _brush;       
-    [SerializeField] private Material _dirtMaterial; 
+    [SerializeField] private Texture2D dirtMask;    
+    [SerializeField] private Texture2D brush;       
+    [SerializeField] private Material dirtMaterial; 
     
     [Header("Brush Settings")]
     [SerializeField, Range(0.1f, 5f)] 
-    private float _brushSize = 1f;      
+    private float brushSize = 1f;      
     [SerializeField, Range(0.01f, 1f)] 
-    private float _cleanSpeed = 0.3f;   
+    private float cleanSpeed = 0.3f;   
 
-    private Texture2D _activeMask;      
-    private SpriteRenderer _renderer;   
+    private Texture2D activeMask;      
+    private SpriteRenderer renderer;
+    private float initialDirtAmount;
+    private float currentDirtAmount;
 
     private void Awake()
     {
-        _renderer = GetComponent<SpriteRenderer>();
+        renderer = GetComponent<SpriteRenderer>();
         InitializeDirtMask();
+        CalculateInitialDirtAmount();
     }
     
     private void InitializeDirtMask()
     {
         // vytvoreni nove masky
-        _activeMask = new Texture2D(
-            _dirtMask.width, 
-            _dirtMask.height, 
+        activeMask = new Texture2D(
+            dirtMask.width, 
+            dirtMask.height, 
             TextureFormat.RGBA32, 
             false
         ) {
@@ -36,10 +39,25 @@ public class Clean : MonoBehaviour
             filterMode = FilterMode.Bilinear   // vyhlazeni hran textury
         };
         
-        _activeMask.SetPixels(_dirtMask.GetPixels());
-        _activeMask.Apply();
+        activeMask.SetPixels(dirtMask.GetPixels());
+        activeMask.Apply();
         
-        _dirtMaterial.SetTexture("_DirtMask", _activeMask);
+        dirtMaterial.SetTexture("_DirtMask", activeMask);
+    }
+    
+    private void CalculateInitialDirtAmount()
+    {
+        initialDirtAmount = 0;
+        currentDirtAmount = 0;
+        
+        for (int x = 0; x < activeMask.width; x++)
+        {
+            for (int y = 0; y < activeMask.height; y++)
+            {
+                initialDirtAmount += activeMask.GetPixel(x, y).g;
+            }
+        }
+        currentDirtAmount = initialDirtAmount;
     }
 
     private void Update()
@@ -48,6 +66,8 @@ public class Clean : MonoBehaviour
         {
             CleanAtMousePosition();
         }
+
+        Debug.Log(GetRemainingDirtPercentage());
     }
 
     private void CleanAtMousePosition()
@@ -69,27 +89,29 @@ public class Clean : MonoBehaviour
         
         // zmena rozsahu na pouze 1 a 0
         Vector2 normalized = new Vector2(
-            (localPos.x / _renderer.sprite.bounds.size.x) + 0.5f,
-            (localPos.y / _renderer.sprite.bounds.size.y) + 0.5f
+            (localPos.x / renderer.sprite.bounds.size.x) + 0.5f,
+            (localPos.y / renderer.sprite.bounds.size.y) + 0.5f
         );
         
         // zmena na pixelove souradnice
         return new Vector2(
-            Mathf.RoundToInt(normalized.x * _activeMask.width),
-            Mathf.RoundToInt(normalized.y * _activeMask.height)
+            Mathf.RoundToInt(normalized.x * activeMask.width),
+            Mathf.RoundToInt(normalized.y * activeMask.height)
         );
     }
     
     private void ApplyBrush(Vector2 centerPixel)
     {
         // velikost stetce
-        int width = Mathf.RoundToInt(_brush.width * _brushSize);
-        int height = Mathf.RoundToInt(_brush.height * _brushSize);
+        int width = Mathf.RoundToInt(brush.width * brushSize);
+        int height = Mathf.RoundToInt(brush.height * brushSize);
         
-        int startX = Mathf.Clamp((int)centerPixel.x - width/2, 0, _activeMask.width-1);
-        int startY = Mathf.Clamp((int)centerPixel.y - height/2, 0, _activeMask.height-1);
-        int endX = Mathf.Clamp((int)centerPixel.x + width/2, 0, _activeMask.width-1);
-        int endY = Mathf.Clamp((int)centerPixel.y + height/2, 0, _activeMask.height-1);
+        int startX = Mathf.Clamp((int)centerPixel.x - width/2, 0, activeMask.width-1);
+        int startY = Mathf.Clamp((int)centerPixel.y - height/2, 0, activeMask.height-1);
+        int endX = Mathf.Clamp((int)centerPixel.x + width/2, 0, activeMask.width-1);
+        int endY = Mathf.Clamp((int)centerPixel.y + height/2, 0, activeMask.height-1);
+
+        float dirtRemoved = 0f;
 
         // loop pro vsechny pixely v masce
         for (int x = startX; x <= endX; x++)
@@ -99,18 +121,29 @@ public class Clean : MonoBehaviour
                 float u = (x - startX) / (float)width;
                 float v = (y - startY) / (float)height;
                 
-                float brushValue = _brush.GetPixelBilinear(u, v).g;
+                float brushValue = brush.GetPixelBilinear(u, v).g;
+                float cleanAmount = brushValue * cleanSpeed * Time.deltaTime;
                 
-                float cleanAmount = brushValue * _cleanSpeed * Time.deltaTime;
-                
-                Color currentDirt = _activeMask.GetPixel(x, y);
-                
+                Color currentDirt = activeMask.GetPixel(x, y);
                 float newValue = Mathf.Clamp01(currentDirt.g - cleanAmount);
                 
-                _activeMask.SetPixel(x, y, new Color(0, newValue, 0));
+                dirtRemoved += currentDirt.g - newValue;
+                activeMask.SetPixel(x, y, new Color(0, newValue, 0));
             }
         }
         
-        _activeMask.Apply();
+        activeMask.Apply();
+        currentDirtAmount -= dirtRemoved;
+    }
+
+    public float GetCleanPercentage()
+    {
+        if (initialDirtAmount <= 0) return 1f;
+        return 1f - (currentDirtAmount / initialDirtAmount);
+    }
+
+    public float GetRemainingDirtPercentage()
+    {
+        return 1f - GetCleanPercentage();
     }
 }
