@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer), typeof(BoxCollider2D))]
@@ -7,23 +8,28 @@ public class Clean : MonoBehaviour
     [SerializeField] private Texture2D dirtMask;    
     [SerializeField] private Texture2D brush;       
     [SerializeField] private Material dirtMaterial; 
+    [SerializeField] private CleanedUI cleanedUI;
     
     [Header("Brush Settings")]
     [SerializeField, Range(0.1f, 5f)] 
     private float brushSize = 1f;      
     [SerializeField, Range(0.01f, 1f)] 
-    private float cleanSpeed = 0.3f;   
+    private float cleanSpeed = 0.3f;
+    
+    AudioManager audioManager;
+    private bool isCleaning = false;
 
     private Texture2D activeMask;      
     private SpriteRenderer renderer;
     private float initialDirtAmount;
     private float currentDirtAmount;
-
+    
     private void Awake()
     {
         renderer = GetComponent<SpriteRenderer>();
         InitializeDirtMask();
         CalculateInitialDirtAmount();
+        audioManager = FindObjectOfType<AudioManager>();
     }
     
     private void InitializeDirtMask()
@@ -57,17 +63,30 @@ public class Clean : MonoBehaviour
                 initialDirtAmount += activeMask.GetPixel(x, y).g;
             }
         }
-        currentDirtAmount = initialDirtAmount;
+        currentDirtAmount = initialDirtAmount; 
     }
 
     private void Update()
     {
+        float cleanedPercentage = GetCleanPercentage();
+        cleanedUI.UpdateText((int)Math.Round(cleanedPercentage));
+        cleanedUI.UpdateBar(cleanedPercentage / 100f);
+        
         if (Input.GetMouseButton(0))
         {
+            if (!isCleaning)
+            {
+                isCleaning = true;
+                audioManager.PlayCleaningSolarPanel(audioManager.AirCleaningSound);
+            }
             CleanAtMousePosition();
         }
-
-        Debug.Log(GetRemainingDirtPercentage());
+        else if (isCleaning)
+        {
+            isCleaning = false;
+            audioManager.StopCleaningSolarPanel();
+        }
+        
     }
 
     private void CleanAtMousePosition()
@@ -138,12 +157,7 @@ public class Clean : MonoBehaviour
 
     public float GetCleanPercentage()
     {
-        if (initialDirtAmount <= 0) return 1f;
-        return 1f - (currentDirtAmount / initialDirtAmount);
-    }
-
-    public float GetRemainingDirtPercentage()
-    {
-        return 1f - GetCleanPercentage();
+        if (initialDirtAmount <= 0) return 0f;
+        return (1f - (currentDirtAmount / initialDirtAmount)) * 100f;
     }
 }
