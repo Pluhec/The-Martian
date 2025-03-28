@@ -2,7 +2,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] AudioSource radialMenu;
-    
+    [SerializeField] AudioSource solarPanel;
+    [SerializeField] AudioSource solarPanelDone;
     
     [Header("------ RadialMenu ------")]
     public AudioClip openCloseMenu;
@@ -11,6 +12,7 @@ public class AudioManager : MonoBehaviour
     
     [Header("------ CleaningSolarPanel ------")]
     public AudioClip AirCleaningSound;
+    public AudioClip FullyCleanedSound;
     
     public void PlayRadialMenu(AudioClip clip)
     {
@@ -19,14 +21,19 @@ public class AudioManager : MonoBehaviour
     
     public void PlayCleaningSolarPanel(AudioClip clip)
     {
-        radialMenu.clip = clip;
-        radialMenu.loop = true;
-        radialMenu.Play();
+        solarPanel.clip = clip;
+        solarPanel.loop = true;
+        solarPanel.Play();
     }
 
     public void StopCleaningSolarPanel()
     {
-        radialMenu.loop = false;
-        radialMenu.Stop();
+        solarPanel.loop = false;
+        solarPanel.Stop();
+    }
+    
+    public void PlayFullyCleanedSolarPanel(AudioClip clip)
+    {
+        solarPanelDone.PlayOneShot(clip);
     }
 }
