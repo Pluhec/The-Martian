@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7a0d6387c80484e019b3b3cfcea5671a
+guid: e3d5a11bbba394be59f4c19348357db0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7225003567020082941
-    second: OnlyDirtTexture_0
+      213: -1856164472174960352
+    second: SolaryVelke_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: OnlyDirtTexture_0
+      name: SolaryVelke_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 463
-        height: 704
+        width: 32
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df68929e67e544460800000000000000
-      internalID: 7225003567020082941
+      spriteID: 021af473f349d36e0800000000000000
+      internalID: -1856164472174960352
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      OnlyDirtTexture_0: 7225003567020082941
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
