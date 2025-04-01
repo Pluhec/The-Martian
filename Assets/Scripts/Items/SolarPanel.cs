@@ -8,10 +8,29 @@ public class SolarPanel : InteractableObject
     public GameObject playerUI;
     public GameObject questTabletUI;
     public GameObject playerMovement;
-
-    void Awake()
+    public GameObject SolarPanelMinigame;
+    
+    private AudioManager audioManager;
+    
+    private void Awake()
     {
         actions.Add("Clean");
+        audioManager = FindObjectOfType<AudioManager>();
+    }
+    
+    public void hideSolarPanelMinigame()
+    {
+        audioManager.StopCleaningSolarPanel();
+        SolarPanelMinigame.SetActive(false);
+        
+        playerUI.SetActive(true);
+        questTabletUI.SetActive(true);
+        
+        Movement movementScript = playerMovement.GetComponent<Movement>();
+        if (movementScript != null)
+        {
+            movementScript.enabled = true;
+        }
     }
 
     public override void PerformAction(string action)
