@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour
 {
@@ -15,9 +16,6 @@ public class Slot : MonoBehaviour
         if (transform.childCount <= 0)
         {
             Inventory.isFull[i] = false;
-        }
-        {
-            
         }
     }
     

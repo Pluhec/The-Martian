@@ -2,20 +2,31 @@ using UnityEngine;
 
 public class Item1 : InteractableObject
 {
-    public string itemName = "Neznámý předmět";
+    private Inventory inventory;
+    public GameObject itemButton;
 
     void Awake()
     {
-        actions.Add("vycistit");
+        actions.Add("sebrat");
         actions.Add("nasednout");
         actions.Add("opravit");
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
     }
 
     public override void PerformAction(string action)
     {
-        if (action == "vycistit")
+        if (action == "sebrat")
         {
-            Debug.Log("Vyčištěno");
+            for (int i = 0; i < inventory.slots.Length; i++)
+            {
+                if (inventory.isFull[i] == false)
+                {
+                    inventory.isFull[i] = true;
+                    Instantiate(itemButton, inventory.slots[i].transform, false);
+                    Destroy(gameObject);
+                    break;
+                }
+            }
         }
         
         if (action == "nasednout")

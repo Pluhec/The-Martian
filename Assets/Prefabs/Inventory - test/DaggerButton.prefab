@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6601950245399324899}
   - component: {fileID: 6045259560832597392}
   - component: {fileID: -8724258738104111995}
+  - component: {fileID: 2852940539364743184}
   m_Layer: 5
   m_Name: DaggerButton
   m_TagString: Untagged
@@ -133,4 +134,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a5d15e199bed78488f22f6989f1fdd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 3197437086083173418, guid: 27ecfc0e0f0a392469ab541094b6f78b, type: 3}
+  item: {fileID: 6530824892552033642, guid: e00624da5e488684fb5d687301bef048, type: 3}
+--- !u!114 &2852940539364743184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9089447296183591438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd626078e80a1214f9a4777d3489b232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
