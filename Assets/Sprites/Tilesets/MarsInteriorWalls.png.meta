@@ -105,7 +105,7 @@ TextureImporter:
         serializedVersion: 2
         x: 2
         y: 282
-        width: 161
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -125,10 +125,10 @@ TextureImporter:
       name: MarsInteriorWalls_1
       rect:
         serializedVersion: 2
-        x: 20
-        y: 280
-        width: 20
-        height: 20
+        x: 22
+        y: 282
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +147,10 @@ TextureImporter:
       name: MarsInteriorWalls_2
       rect:
         serializedVersion: 2
-        x: 40
-        y: 280
-        width: 20
-        height: 20
+        x: 42
+        y: 282
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,10 +169,10 @@ TextureImporter:
       name: MarsInteriorWalls_3
       rect:
         serializedVersion: 2
-        x: 60
-        y: 280
-        width: 20
-        height: 20
+        x: 62
+        y: 282
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,10 +191,10 @@ TextureImporter:
       name: MarsInteriorWalls_4
       rect:
         serializedVersion: 2
-        x: 80
-        y: 280
-        width: 20
-        height: 20
+        x: 82
+        y: 282
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,10 +213,10 @@ TextureImporter:
       name: MarsInteriorWalls_5
       rect:
         serializedVersion: 2
-        x: 100
-        y: 280
-        width: 20
-        height: 20
+        x: 102
+        y: 282
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,10 +235,10 @@ TextureImporter:
       name: MarsInteriorWalls_6
       rect:
         serializedVersion: 2
-        x: 120
-        y: 280
-        width: 20
-        height: 20
+        x: 122
+        y: 282
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,10 +257,10 @@ TextureImporter:
       name: MarsInteriorWalls_7
       rect:
         serializedVersion: 2
-        x: 140
-        y: 280
-        width: 20
-        height: 20
+        x: 142
+        y: 282
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,10 +279,10 @@ TextureImporter:
       name: MarsInteriorWalls_8
       rect:
         serializedVersion: 2
-        x: 160
-        y: 280
-        width: 20
-        height: 20
+        x: 162
+        y: 282
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,10 +301,10 @@ TextureImporter:
       name: MarsInteriorWalls_9
       rect:
         serializedVersion: 2
-        x: 180
-        y: 280
-        width: 20
-        height: 20
+        x: 182
+        y: 282
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,10 +323,10 @@ TextureImporter:
       name: MarsInteriorWalls_10
       rect:
         serializedVersion: 2
-        x: 200
-        y: 280
-        width: 20
-        height: 20
+        x: 202
+        y: 282
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -345,10 +345,10 @@ TextureImporter:
       name: MarsInteriorWalls_11
       rect:
         serializedVersion: 2
-        x: 220
-        y: 280
-        width: 20
-        height: 20
+        x: 222
+        y: 282
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -367,10 +367,10 @@ TextureImporter:
       name: MarsInteriorWalls_12
       rect:
         serializedVersion: 2
-        x: 240
-        y: 280
-        width: 20
-        height: 20
+        x: 242
+        y: 282
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -389,10 +389,10 @@ TextureImporter:
       name: MarsInteriorWalls_13
       rect:
         serializedVersion: 2
-        x: 260
-        y: 280
-        width: 20
-        height: 20
+        x: 262
+        y: 282
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -411,10 +411,10 @@ TextureImporter:
       name: MarsInteriorWalls_14
       rect:
         serializedVersion: 2
-        x: 0
-        y: 260
-        width: 20
-        height: 20
+        x: 2
+        y: 262
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -433,10 +433,10 @@ TextureImporter:
       name: MarsInteriorWalls_15
       rect:
         serializedVersion: 2
-        x: 20
-        y: 260
-        width: 20
-        height: 20
+        x: 22
+        y: 262
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -455,10 +455,10 @@ TextureImporter:
       name: MarsInteriorWalls_16
       rect:
         serializedVersion: 2
-        x: 40
-        y: 260
-        width: 20
-        height: 20
+        x: 42
+        y: 262
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -477,10 +477,10 @@ TextureImporter:
       name: MarsInteriorWalls_17
       rect:
         serializedVersion: 2
-        x: 60
-        y: 260
-        width: 20
-        height: 20
+        x: 62
+        y: 262
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -499,10 +499,10 @@ TextureImporter:
       name: MarsInteriorWalls_18
       rect:
         serializedVersion: 2
-        x: 80
-        y: 260
-        width: 20
-        height: 20
+        x: 82
+        y: 262
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -521,10 +521,10 @@ TextureImporter:
       name: MarsInteriorWalls_19
       rect:
         serializedVersion: 2
-        x: 100
-        y: 260
-        width: 20
-        height: 20
+        x: 102
+        y: 262
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -543,10 +543,10 @@ TextureImporter:
       name: MarsInteriorWalls_20
       rect:
         serializedVersion: 2
-        x: 120
-        y: 260
-        width: 20
-        height: 20
+        x: 122
+        y: 262
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -565,10 +565,10 @@ TextureImporter:
       name: MarsInteriorWalls_21
       rect:
         serializedVersion: 2
-        x: 140
-        y: 260
-        width: 20
-        height: 20
+        x: 142
+        y: 262
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -587,10 +587,10 @@ TextureImporter:
       name: MarsInteriorWalls_22
       rect:
         serializedVersion: 2
-        x: 160
-        y: 260
-        width: 20
-        height: 20
+        x: 162
+        y: 262
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -609,10 +609,10 @@ TextureImporter:
       name: MarsInteriorWalls_23
       rect:
         serializedVersion: 2
-        x: 180
-        y: 260
-        width: 20
-        height: 20
+        x: 182
+        y: 262
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -631,10 +631,10 @@ TextureImporter:
       name: MarsInteriorWalls_24
       rect:
         serializedVersion: 2
-        x: 200
-        y: 260
-        width: 20
-        height: 20
+        x: 202
+        y: 262
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -653,10 +653,10 @@ TextureImporter:
       name: MarsInteriorWalls_25
       rect:
         serializedVersion: 2
-        x: 220
-        y: 260
-        width: 20
-        height: 20
+        x: 222
+        y: 262
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -675,10 +675,10 @@ TextureImporter:
       name: MarsInteriorWalls_26
       rect:
         serializedVersion: 2
-        x: 240
-        y: 260
-        width: 20
-        height: 20
+        x: 242
+        y: 262
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -697,10 +697,10 @@ TextureImporter:
       name: MarsInteriorWalls_27
       rect:
         serializedVersion: 2
-        x: 260
-        y: 260
-        width: 20
-        height: 20
+        x: 262
+        y: 262
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -719,10 +719,10 @@ TextureImporter:
       name: MarsInteriorWalls_28
       rect:
         serializedVersion: 2
-        x: 0
-        y: 240
-        width: 20
-        height: 20
+        x: 2
+        y: 242
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -741,10 +741,10 @@ TextureImporter:
       name: MarsInteriorWalls_29
       rect:
         serializedVersion: 2
-        x: 20
-        y: 240
-        width: 20
-        height: 20
+        x: 22
+        y: 242
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -763,10 +763,10 @@ TextureImporter:
       name: MarsInteriorWalls_30
       rect:
         serializedVersion: 2
-        x: 40
-        y: 240
-        width: 20
-        height: 20
+        x: 42
+        y: 242
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -785,10 +785,10 @@ TextureImporter:
       name: MarsInteriorWalls_31
       rect:
         serializedVersion: 2
-        x: 60
-        y: 240
-        width: 20
-        height: 20
+        x: 62
+        y: 242
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -807,10 +807,10 @@ TextureImporter:
       name: MarsInteriorWalls_32
       rect:
         serializedVersion: 2
-        x: 80
-        y: 240
-        width: 20
-        height: 20
+        x: 82
+        y: 242
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -829,10 +829,10 @@ TextureImporter:
       name: MarsInteriorWalls_33
       rect:
         serializedVersion: 2
-        x: 100
-        y: 240
-        width: 20
-        height: 20
+        x: 102
+        y: 242
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -851,10 +851,10 @@ TextureImporter:
       name: MarsInteriorWalls_34
       rect:
         serializedVersion: 2
-        x: 120
-        y: 240
-        width: 20
-        height: 20
+        x: 122
+        y: 242
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -873,10 +873,10 @@ TextureImporter:
       name: MarsInteriorWalls_35
       rect:
         serializedVersion: 2
-        x: 140
-        y: 240
-        width: 20
-        height: 20
+        x: 142
+        y: 242
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -895,10 +895,10 @@ TextureImporter:
       name: MarsInteriorWalls_36
       rect:
         serializedVersion: 2
-        x: 160
-        y: 240
-        width: 20
-        height: 20
+        x: 162
+        y: 242
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -917,10 +917,10 @@ TextureImporter:
       name: MarsInteriorWalls_37
       rect:
         serializedVersion: 2
-        x: 180
-        y: 240
-        width: 20
-        height: 20
+        x: 182
+        y: 242
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -939,10 +939,10 @@ TextureImporter:
       name: MarsInteriorWalls_38
       rect:
         serializedVersion: 2
-        x: 200
-        y: 240
-        width: 20
-        height: 20
+        x: 202
+        y: 242
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -961,10 +961,10 @@ TextureImporter:
       name: MarsInteriorWalls_39
       rect:
         serializedVersion: 2
-        x: 220
-        y: 240
-        width: 20
-        height: 20
+        x: 222
+        y: 242
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -983,10 +983,10 @@ TextureImporter:
       name: MarsInteriorWalls_40
       rect:
         serializedVersion: 2
-        x: 240
-        y: 240
-        width: 20
-        height: 20
+        x: 242
+        y: 242
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1005,10 +1005,10 @@ TextureImporter:
       name: MarsInteriorWalls_41
       rect:
         serializedVersion: 2
-        x: 260
-        y: 240
-        width: 20
-        height: 20
+        x: 262
+        y: 242
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1027,10 +1027,10 @@ TextureImporter:
       name: MarsInteriorWalls_42
       rect:
         serializedVersion: 2
-        x: 0
-        y: 220
-        width: 20
-        height: 20
+        x: 2
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1049,10 +1049,10 @@ TextureImporter:
       name: MarsInteriorWalls_43
       rect:
         serializedVersion: 2
-        x: 20
-        y: 220
-        width: 20
-        height: 20
+        x: 22
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1071,10 +1071,10 @@ TextureImporter:
       name: MarsInteriorWalls_44
       rect:
         serializedVersion: 2
-        x: 40
-        y: 220
-        width: 20
-        height: 20
+        x: 42
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1093,10 +1093,10 @@ TextureImporter:
       name: MarsInteriorWalls_45
       rect:
         serializedVersion: 2
-        x: 60
-        y: 220
-        width: 20
-        height: 20
+        x: 62
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1115,10 +1115,10 @@ TextureImporter:
       name: MarsInteriorWalls_46
       rect:
         serializedVersion: 2
-        x: 80
-        y: 220
-        width: 20
-        height: 20
+        x: 82
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1137,10 +1137,10 @@ TextureImporter:
       name: MarsInteriorWalls_47
       rect:
         serializedVersion: 2
-        x: 100
-        y: 220
-        width: 20
-        height: 20
+        x: 102
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1159,10 +1159,10 @@ TextureImporter:
       name: MarsInteriorWalls_48
       rect:
         serializedVersion: 2
-        x: 120
-        y: 220
-        width: 20
-        height: 20
+        x: 122
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1181,10 +1181,10 @@ TextureImporter:
       name: MarsInteriorWalls_49
       rect:
         serializedVersion: 2
-        x: 140
-        y: 220
-        width: 20
-        height: 20
+        x: 142
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1203,10 +1203,10 @@ TextureImporter:
       name: MarsInteriorWalls_50
       rect:
         serializedVersion: 2
-        x: 160
-        y: 220
-        width: 20
-        height: 20
+        x: 162
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1225,10 +1225,10 @@ TextureImporter:
       name: MarsInteriorWalls_51
       rect:
         serializedVersion: 2
-        x: 180
-        y: 220
-        width: 20
-        height: 20
+        x: 182
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1247,10 +1247,10 @@ TextureImporter:
       name: MarsInteriorWalls_52
       rect:
         serializedVersion: 2
-        x: 200
-        y: 220
-        width: 20
-        height: 20
+        x: 202
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1269,10 +1269,10 @@ TextureImporter:
       name: MarsInteriorWalls_53
       rect:
         serializedVersion: 2
-        x: 220
-        y: 220
-        width: 20
-        height: 20
+        x: 222
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1291,10 +1291,10 @@ TextureImporter:
       name: MarsInteriorWalls_54
       rect:
         serializedVersion: 2
-        x: 240
-        y: 220
-        width: 20
-        height: 20
+        x: 242
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1313,10 +1313,10 @@ TextureImporter:
       name: MarsInteriorWalls_55
       rect:
         serializedVersion: 2
-        x: 260
-        y: 220
-        width: 20
-        height: 20
+        x: 262
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1335,10 +1335,10 @@ TextureImporter:
       name: MarsInteriorWalls_56
       rect:
         serializedVersion: 2
-        x: 0
-        y: 200
-        width: 20
-        height: 20
+        x: 2
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1357,10 +1357,10 @@ TextureImporter:
       name: MarsInteriorWalls_57
       rect:
         serializedVersion: 2
-        x: 20
-        y: 200
-        width: 20
-        height: 20
+        x: 22
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1379,10 +1379,10 @@ TextureImporter:
       name: MarsInteriorWalls_58
       rect:
         serializedVersion: 2
-        x: 40
-        y: 200
-        width: 20
-        height: 20
+        x: 42
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1401,10 +1401,10 @@ TextureImporter:
       name: MarsInteriorWalls_59
       rect:
         serializedVersion: 2
-        x: 60
-        y: 200
-        width: 20
-        height: 20
+        x: 62
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1423,10 +1423,10 @@ TextureImporter:
       name: MarsInteriorWalls_60
       rect:
         serializedVersion: 2
-        x: 80
-        y: 200
-        width: 20
-        height: 20
+        x: 82
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1445,10 +1445,10 @@ TextureImporter:
       name: MarsInteriorWalls_61
       rect:
         serializedVersion: 2
-        x: 100
-        y: 200
-        width: 20
-        height: 20
+        x: 102
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1467,10 +1467,10 @@ TextureImporter:
       name: MarsInteriorWalls_62
       rect:
         serializedVersion: 2
-        x: 120
-        y: 200
-        width: 20
-        height: 20
+        x: 122
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1489,10 +1489,10 @@ TextureImporter:
       name: MarsInteriorWalls_63
       rect:
         serializedVersion: 2
-        x: 140
-        y: 200
-        width: 20
-        height: 20
+        x: 142
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1511,10 +1511,10 @@ TextureImporter:
       name: MarsInteriorWalls_64
       rect:
         serializedVersion: 2
-        x: 160
-        y: 200
-        width: 20
-        height: 20
+        x: 162
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1533,10 +1533,10 @@ TextureImporter:
       name: MarsInteriorWalls_65
       rect:
         serializedVersion: 2
-        x: 180
-        y: 200
-        width: 20
-        height: 20
+        x: 182
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1555,10 +1555,10 @@ TextureImporter:
       name: MarsInteriorWalls_66
       rect:
         serializedVersion: 2
-        x: 200
-        y: 200
-        width: 20
-        height: 20
+        x: 202
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1577,10 +1577,10 @@ TextureImporter:
       name: MarsInteriorWalls_67
       rect:
         serializedVersion: 2
-        x: 220
-        y: 200
-        width: 20
-        height: 20
+        x: 222
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1599,10 +1599,10 @@ TextureImporter:
       name: MarsInteriorWalls_68
       rect:
         serializedVersion: 2
-        x: 240
-        y: 200
-        width: 20
-        height: 20
+        x: 242
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1621,10 +1621,10 @@ TextureImporter:
       name: MarsInteriorWalls_69
       rect:
         serializedVersion: 2
-        x: 260
-        y: 200
-        width: 20
-        height: 20
+        x: 262
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1643,10 +1643,10 @@ TextureImporter:
       name: MarsInteriorWalls_70
       rect:
         serializedVersion: 2
-        x: 0
-        y: 180
-        width: 20
-        height: 20
+        x: 2
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1665,10 +1665,10 @@ TextureImporter:
       name: MarsInteriorWalls_71
       rect:
         serializedVersion: 2
-        x: 20
-        y: 180
-        width: 20
-        height: 20
+        x: 22
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1687,10 +1687,10 @@ TextureImporter:
       name: MarsInteriorWalls_72
       rect:
         serializedVersion: 2
-        x: 40
-        y: 180
-        width: 20
-        height: 20
+        x: 42
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1709,10 +1709,10 @@ TextureImporter:
       name: MarsInteriorWalls_73
       rect:
         serializedVersion: 2
-        x: 60
-        y: 180
-        width: 20
-        height: 20
+        x: 62
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1731,10 +1731,10 @@ TextureImporter:
       name: MarsInteriorWalls_74
       rect:
         serializedVersion: 2
-        x: 80
-        y: 180
-        width: 20
-        height: 20
+        x: 82
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1753,10 +1753,10 @@ TextureImporter:
       name: MarsInteriorWalls_75
       rect:
         serializedVersion: 2
-        x: 100
-        y: 180
-        width: 20
-        height: 20
+        x: 102
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1775,10 +1775,10 @@ TextureImporter:
       name: MarsInteriorWalls_76
       rect:
         serializedVersion: 2
-        x: 120
-        y: 180
-        width: 20
-        height: 20
+        x: 122
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1797,10 +1797,10 @@ TextureImporter:
       name: MarsInteriorWalls_77
       rect:
         serializedVersion: 2
-        x: 140
-        y: 180
-        width: 20
-        height: 20
+        x: 142
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1819,10 +1819,10 @@ TextureImporter:
       name: MarsInteriorWalls_78
       rect:
         serializedVersion: 2
-        x: 160
-        y: 180
-        width: 20
-        height: 20
+        x: 162
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1841,10 +1841,10 @@ TextureImporter:
       name: MarsInteriorWalls_79
       rect:
         serializedVersion: 2
-        x: 180
-        y: 180
-        width: 20
-        height: 20
+        x: 182
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1863,10 +1863,10 @@ TextureImporter:
       name: MarsInteriorWalls_80
       rect:
         serializedVersion: 2
-        x: 200
-        y: 180
-        width: 20
-        height: 20
+        x: 202
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1885,10 +1885,10 @@ TextureImporter:
       name: MarsInteriorWalls_81
       rect:
         serializedVersion: 2
-        x: 220
-        y: 180
-        width: 20
-        height: 20
+        x: 222
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1907,10 +1907,10 @@ TextureImporter:
       name: MarsInteriorWalls_82
       rect:
         serializedVersion: 2
-        x: 240
-        y: 180
-        width: 20
-        height: 20
+        x: 242
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1929,10 +1929,10 @@ TextureImporter:
       name: MarsInteriorWalls_83
       rect:
         serializedVersion: 2
-        x: 260
-        y: 180
-        width: 20
-        height: 20
+        x: 262
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1951,10 +1951,10 @@ TextureImporter:
       name: MarsInteriorWalls_84
       rect:
         serializedVersion: 2
-        x: 0
-        y: 160
-        width: 20
-        height: 20
+        x: 2
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1973,10 +1973,10 @@ TextureImporter:
       name: MarsInteriorWalls_85
       rect:
         serializedVersion: 2
-        x: 20
-        y: 160
-        width: 20
-        height: 20
+        x: 22
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1995,10 +1995,10 @@ TextureImporter:
       name: MarsInteriorWalls_86
       rect:
         serializedVersion: 2
-        x: 40
-        y: 160
-        width: 20
-        height: 20
+        x: 42
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2017,10 +2017,10 @@ TextureImporter:
       name: MarsInteriorWalls_87
       rect:
         serializedVersion: 2
-        x: 60
-        y: 160
-        width: 20
-        height: 20
+        x: 62
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2039,10 +2039,10 @@ TextureImporter:
       name: MarsInteriorWalls_88
       rect:
         serializedVersion: 2
-        x: 80
-        y: 160
-        width: 20
-        height: 20
+        x: 82
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2061,10 +2061,10 @@ TextureImporter:
       name: MarsInteriorWalls_89
       rect:
         serializedVersion: 2
-        x: 100
-        y: 160
-        width: 20
-        height: 20
+        x: 102
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2083,10 +2083,10 @@ TextureImporter:
       name: MarsInteriorWalls_90
       rect:
         serializedVersion: 2
-        x: 120
-        y: 160
-        width: 20
-        height: 20
+        x: 122
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2105,10 +2105,10 @@ TextureImporter:
       name: MarsInteriorWalls_91
       rect:
         serializedVersion: 2
-        x: 140
-        y: 160
-        width: 20
-        height: 20
+        x: 142
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2127,10 +2127,10 @@ TextureImporter:
       name: MarsInteriorWalls_92
       rect:
         serializedVersion: 2
-        x: 160
-        y: 160
-        width: 20
-        height: 20
+        x: 162
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2149,10 +2149,10 @@ TextureImporter:
       name: MarsInteriorWalls_93
       rect:
         serializedVersion: 2
-        x: 180
-        y: 160
-        width: 20
-        height: 20
+        x: 182
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2171,10 +2171,10 @@ TextureImporter:
       name: MarsInteriorWalls_94
       rect:
         serializedVersion: 2
-        x: 200
-        y: 160
-        width: 20
-        height: 20
+        x: 202
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2193,10 +2193,10 @@ TextureImporter:
       name: MarsInteriorWalls_95
       rect:
         serializedVersion: 2
-        x: 220
-        y: 160
-        width: 20
-        height: 20
+        x: 222
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2215,10 +2215,10 @@ TextureImporter:
       name: MarsInteriorWalls_96
       rect:
         serializedVersion: 2
-        x: 240
-        y: 160
-        width: 20
-        height: 20
+        x: 242
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2237,10 +2237,10 @@ TextureImporter:
       name: MarsInteriorWalls_97
       rect:
         serializedVersion: 2
-        x: 260
-        y: 160
-        width: 20
-        height: 20
+        x: 262
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2259,10 +2259,10 @@ TextureImporter:
       name: MarsInteriorWalls_98
       rect:
         serializedVersion: 2
-        x: 0
-        y: 140
-        width: 20
-        height: 20
+        x: 2
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2281,10 +2281,10 @@ TextureImporter:
       name: MarsInteriorWalls_99
       rect:
         serializedVersion: 2
-        x: 20
-        y: 140
-        width: 20
-        height: 20
+        x: 22
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2303,10 +2303,10 @@ TextureImporter:
       name: MarsInteriorWalls_100
       rect:
         serializedVersion: 2
-        x: 40
-        y: 140
-        width: 20
-        height: 20
+        x: 42
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2325,10 +2325,10 @@ TextureImporter:
       name: MarsInteriorWalls_101
       rect:
         serializedVersion: 2
-        x: 60
-        y: 140
-        width: 20
-        height: 20
+        x: 62
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2347,10 +2347,10 @@ TextureImporter:
       name: MarsInteriorWalls_102
       rect:
         serializedVersion: 2
-        x: 80
-        y: 140
-        width: 20
-        height: 20
+        x: 82
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2369,10 +2369,10 @@ TextureImporter:
       name: MarsInteriorWalls_103
       rect:
         serializedVersion: 2
-        x: 100
-        y: 140
-        width: 20
-        height: 20
+        x: 102
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2391,10 +2391,10 @@ TextureImporter:
       name: MarsInteriorWalls_104
       rect:
         serializedVersion: 2
-        x: 120
-        y: 140
-        width: 20
-        height: 20
+        x: 122
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2413,10 +2413,10 @@ TextureImporter:
       name: MarsInteriorWalls_105
       rect:
         serializedVersion: 2
-        x: 140
-        y: 140
-        width: 20
-        height: 20
+        x: 142
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2435,10 +2435,10 @@ TextureImporter:
       name: MarsInteriorWalls_106
       rect:
         serializedVersion: 2
-        x: 160
-        y: 140
-        width: 20
-        height: 20
+        x: 162
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2457,10 +2457,10 @@ TextureImporter:
       name: MarsInteriorWalls_107
       rect:
         serializedVersion: 2
-        x: 180
-        y: 140
-        width: 20
-        height: 20
+        x: 182
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2479,10 +2479,10 @@ TextureImporter:
       name: MarsInteriorWalls_108
       rect:
         serializedVersion: 2
-        x: 200
-        y: 140
-        width: 20
-        height: 20
+        x: 202
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2501,10 +2501,10 @@ TextureImporter:
       name: MarsInteriorWalls_109
       rect:
         serializedVersion: 2
-        x: 0
-        y: 120
-        width: 20
-        height: 20
+        x: 2
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2523,10 +2523,10 @@ TextureImporter:
       name: MarsInteriorWalls_110
       rect:
         serializedVersion: 2
-        x: 20
-        y: 120
-        width: 20
-        height: 20
+        x: 22
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2545,10 +2545,10 @@ TextureImporter:
       name: MarsInteriorWalls_111
       rect:
         serializedVersion: 2
-        x: 40
-        y: 120
-        width: 20
-        height: 20
+        x: 42
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2567,10 +2567,10 @@ TextureImporter:
       name: MarsInteriorWalls_112
       rect:
         serializedVersion: 2
-        x: 60
-        y: 120
-        width: 20
-        height: 20
+        x: 62
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2589,10 +2589,10 @@ TextureImporter:
       name: MarsInteriorWalls_113
       rect:
         serializedVersion: 2
-        x: 80
-        y: 120
-        width: 20
-        height: 20
+        x: 82
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2611,10 +2611,10 @@ TextureImporter:
       name: MarsInteriorWalls_114
       rect:
         serializedVersion: 2
-        x: 100
-        y: 120
-        width: 20
-        height: 20
+        x: 102
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2633,10 +2633,10 @@ TextureImporter:
       name: MarsInteriorWalls_115
       rect:
         serializedVersion: 2
-        x: 120
-        y: 120
-        width: 20
-        height: 20
+        x: 122
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2655,10 +2655,10 @@ TextureImporter:
       name: MarsInteriorWalls_116
       rect:
         serializedVersion: 2
-        x: 140
-        y: 120
-        width: 20
-        height: 20
+        x: 142
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2677,10 +2677,10 @@ TextureImporter:
       name: MarsInteriorWalls_117
       rect:
         serializedVersion: 2
-        x: 160
-        y: 120
-        width: 20
-        height: 20
+        x: 162
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2699,10 +2699,10 @@ TextureImporter:
       name: MarsInteriorWalls_118
       rect:
         serializedVersion: 2
-        x: 180
-        y: 120
-        width: 20
-        height: 20
+        x: 182
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2721,10 +2721,10 @@ TextureImporter:
       name: MarsInteriorWalls_119
       rect:
         serializedVersion: 2
-        x: 260
-        y: 120
-        width: 20
-        height: 20
+        x: 262
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2743,10 +2743,10 @@ TextureImporter:
       name: MarsInteriorWalls_120
       rect:
         serializedVersion: 2
-        x: 0
-        y: 100
-        width: 20
-        height: 20
+        x: 2
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2765,10 +2765,10 @@ TextureImporter:
       name: MarsInteriorWalls_121
       rect:
         serializedVersion: 2
-        x: 20
-        y: 100
-        width: 20
-        height: 20
+        x: 22
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2787,10 +2787,10 @@ TextureImporter:
       name: MarsInteriorWalls_122
       rect:
         serializedVersion: 2
-        x: 40
-        y: 100
-        width: 20
-        height: 20
+        x: 42
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2809,10 +2809,10 @@ TextureImporter:
       name: MarsInteriorWalls_123
       rect:
         serializedVersion: 2
-        x: 60
-        y: 100
-        width: 20
-        height: 20
+        x: 62
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2831,10 +2831,10 @@ TextureImporter:
       name: MarsInteriorWalls_124
       rect:
         serializedVersion: 2
-        x: 80
-        y: 100
-        width: 20
-        height: 20
+        x: 82
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2853,10 +2853,10 @@ TextureImporter:
       name: MarsInteriorWalls_125
       rect:
         serializedVersion: 2
-        x: 100
-        y: 100
-        width: 20
-        height: 20
+        x: 102
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2875,10 +2875,10 @@ TextureImporter:
       name: MarsInteriorWalls_126
       rect:
         serializedVersion: 2
-        x: 120
-        y: 100
-        width: 20
-        height: 20
+        x: 122
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2897,10 +2897,10 @@ TextureImporter:
       name: MarsInteriorWalls_127
       rect:
         serializedVersion: 2
-        x: 140
-        y: 100
-        width: 20
-        height: 20
+        x: 142
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2919,10 +2919,10 @@ TextureImporter:
       name: MarsInteriorWalls_128
       rect:
         serializedVersion: 2
-        x: 160
-        y: 100
-        width: 20
-        height: 20
+        x: 162
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2941,10 +2941,10 @@ TextureImporter:
       name: MarsInteriorWalls_129
       rect:
         serializedVersion: 2
-        x: 200
-        y: 100
-        width: 20
-        height: 20
+        x: 202
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2963,10 +2963,10 @@ TextureImporter:
       name: MarsInteriorWalls_130
       rect:
         serializedVersion: 2
-        x: 220
-        y: 100
-        width: 20
-        height: 20
+        x: 222
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2985,10 +2985,10 @@ TextureImporter:
       name: MarsInteriorWalls_131
       rect:
         serializedVersion: 2
-        x: 240
-        y: 100
-        width: 20
-        height: 20
+        x: 242
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3007,10 +3007,10 @@ TextureImporter:
       name: MarsInteriorWalls_132
       rect:
         serializedVersion: 2
-        x: 260
-        y: 100
-        width: 20
-        height: 20
+        x: 262
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3029,10 +3029,10 @@ TextureImporter:
       name: MarsInteriorWalls_133
       rect:
         serializedVersion: 2
-        x: 0
-        y: 80
-        width: 20
-        height: 20
+        x: 2
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3051,10 +3051,10 @@ TextureImporter:
       name: MarsInteriorWalls_134
       rect:
         serializedVersion: 2
-        x: 20
-        y: 80
-        width: 20
-        height: 20
+        x: 22
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3073,10 +3073,10 @@ TextureImporter:
       name: MarsInteriorWalls_135
       rect:
         serializedVersion: 2
-        x: 40
-        y: 80
-        width: 20
-        height: 20
+        x: 42
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3095,10 +3095,10 @@ TextureImporter:
       name: MarsInteriorWalls_136
       rect:
         serializedVersion: 2
-        x: 60
-        y: 80
-        width: 20
-        height: 20
+        x: 62
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3117,10 +3117,10 @@ TextureImporter:
       name: MarsInteriorWalls_137
       rect:
         serializedVersion: 2
-        x: 80
-        y: 80
-        width: 20
-        height: 20
+        x: 82
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3139,10 +3139,10 @@ TextureImporter:
       name: MarsInteriorWalls_138
       rect:
         serializedVersion: 2
-        x: 100
-        y: 80
-        width: 20
-        height: 20
+        x: 102
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3161,10 +3161,10 @@ TextureImporter:
       name: MarsInteriorWalls_139
       rect:
         serializedVersion: 2
-        x: 120
-        y: 80
-        width: 20
-        height: 20
+        x: 122
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3183,10 +3183,10 @@ TextureImporter:
       name: MarsInteriorWalls_140
       rect:
         serializedVersion: 2
-        x: 140
-        y: 80
-        width: 20
-        height: 20
+        x: 142
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3205,10 +3205,10 @@ TextureImporter:
       name: MarsInteriorWalls_141
       rect:
         serializedVersion: 2
-        x: 220
-        y: 80
-        width: 20
-        height: 20
+        x: 222
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3227,10 +3227,10 @@ TextureImporter:
       name: MarsInteriorWalls_142
       rect:
         serializedVersion: 2
-        x: 240
-        y: 80
-        width: 20
-        height: 20
+        x: 242
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3249,10 +3249,10 @@ TextureImporter:
       name: MarsInteriorWalls_143
       rect:
         serializedVersion: 2
-        x: 260
-        y: 80
-        width: 20
-        height: 20
+        x: 262
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3271,10 +3271,10 @@ TextureImporter:
       name: MarsInteriorWalls_144
       rect:
         serializedVersion: 2
-        x: 0
-        y: 60
-        width: 20
-        height: 20
+        x: 2
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3293,10 +3293,10 @@ TextureImporter:
       name: MarsInteriorWalls_145
       rect:
         serializedVersion: 2
-        x: 20
-        y: 60
-        width: 20
-        height: 20
+        x: 22
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3315,10 +3315,10 @@ TextureImporter:
       name: MarsInteriorWalls_146
       rect:
         serializedVersion: 2
-        x: 40
-        y: 60
-        width: 20
-        height: 20
+        x: 42
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3337,10 +3337,10 @@ TextureImporter:
       name: MarsInteriorWalls_147
       rect:
         serializedVersion: 2
-        x: 60
-        y: 60
-        width: 20
-        height: 20
+        x: 62
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3359,10 +3359,10 @@ TextureImporter:
       name: MarsInteriorWalls_148
       rect:
         serializedVersion: 2
-        x: 80
-        y: 60
-        width: 20
-        height: 20
+        x: 82
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3381,10 +3381,10 @@ TextureImporter:
       name: MarsInteriorWalls_149
       rect:
         serializedVersion: 2
-        x: 100
-        y: 60
-        width: 20
-        height: 20
+        x: 102
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3403,10 +3403,10 @@ TextureImporter:
       name: MarsInteriorWalls_150
       rect:
         serializedVersion: 2
-        x: 120
-        y: 60
-        width: 20
-        height: 20
+        x: 122
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3425,10 +3425,10 @@ TextureImporter:
       name: MarsInteriorWalls_151
       rect:
         serializedVersion: 2
-        x: 200
-        y: 60
-        width: 20
-        height: 20
+        x: 202
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3447,10 +3447,10 @@ TextureImporter:
       name: MarsInteriorWalls_152
       rect:
         serializedVersion: 2
-        x: 220
-        y: 60
-        width: 20
-        height: 20
+        x: 222
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3469,10 +3469,10 @@ TextureImporter:
       name: MarsInteriorWalls_153
       rect:
         serializedVersion: 2
-        x: 240
-        y: 60
-        width: 20
-        height: 20
+        x: 242
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3491,10 +3491,10 @@ TextureImporter:
       name: MarsInteriorWalls_154
       rect:
         serializedVersion: 2
-        x: 260
-        y: 60
-        width: 20
-        height: 20
+        x: 262
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3513,10 +3513,10 @@ TextureImporter:
       name: MarsInteriorWalls_155
       rect:
         serializedVersion: 2
-        x: 0
-        y: 40
-        width: 20
-        height: 20
+        x: 2
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3535,10 +3535,10 @@ TextureImporter:
       name: MarsInteriorWalls_156
       rect:
         serializedVersion: 2
-        x: 20
-        y: 40
-        width: 20
-        height: 20
+        x: 22
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3557,10 +3557,10 @@ TextureImporter:
       name: MarsInteriorWalls_157
       rect:
         serializedVersion: 2
-        x: 40
-        y: 40
-        width: 20
-        height: 20
+        x: 42
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3579,10 +3579,10 @@ TextureImporter:
       name: MarsInteriorWalls_158
       rect:
         serializedVersion: 2
-        x: 60
-        y: 40
-        width: 20
-        height: 20
+        x: 62
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3601,10 +3601,10 @@ TextureImporter:
       name: MarsInteriorWalls_159
       rect:
         serializedVersion: 2
-        x: 80
-        y: 40
-        width: 20
-        height: 20
+        x: 82
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3623,10 +3623,10 @@ TextureImporter:
       name: MarsInteriorWalls_160
       rect:
         serializedVersion: 2
-        x: 100
-        y: 40
-        width: 20
-        height: 20
+        x: 102
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3645,10 +3645,10 @@ TextureImporter:
       name: MarsInteriorWalls_161
       rect:
         serializedVersion: 2
-        x: 180
-        y: 40
-        width: 20
-        height: 20
+        x: 182
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3667,10 +3667,10 @@ TextureImporter:
       name: MarsInteriorWalls_162
       rect:
         serializedVersion: 2
-        x: 200
-        y: 40
-        width: 20
-        height: 20
+        x: 202
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3689,10 +3689,10 @@ TextureImporter:
       name: MarsInteriorWalls_163
       rect:
         serializedVersion: 2
-        x: 220
-        y: 40
-        width: 20
-        height: 20
+        x: 222
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3711,10 +3711,10 @@ TextureImporter:
       name: MarsInteriorWalls_164
       rect:
         serializedVersion: 2
-        x: 240
-        y: 40
-        width: 20
-        height: 20
+        x: 242
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3733,10 +3733,10 @@ TextureImporter:
       name: MarsInteriorWalls_165
       rect:
         serializedVersion: 2
-        x: 260
-        y: 40
-        width: 20
-        height: 20
+        x: 262
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3755,10 +3755,10 @@ TextureImporter:
       name: MarsInteriorWalls_166
       rect:
         serializedVersion: 2
-        x: 0
-        y: 20
-        width: 20
-        height: 20
+        x: 2
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3777,10 +3777,10 @@ TextureImporter:
       name: MarsInteriorWalls_167
       rect:
         serializedVersion: 2
-        x: 20
-        y: 20
-        width: 20
-        height: 20
+        x: 22
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3799,10 +3799,10 @@ TextureImporter:
       name: MarsInteriorWalls_168
       rect:
         serializedVersion: 2
-        x: 40
-        y: 20
-        width: 20
-        height: 20
+        x: 42
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3821,10 +3821,10 @@ TextureImporter:
       name: MarsInteriorWalls_169
       rect:
         serializedVersion: 2
-        x: 60
-        y: 20
-        width: 20
-        height: 20
+        x: 62
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3843,10 +3843,10 @@ TextureImporter:
       name: MarsInteriorWalls_170
       rect:
         serializedVersion: 2
-        x: 80
-        y: 20
-        width: 20
-        height: 20
+        x: 82
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3865,10 +3865,10 @@ TextureImporter:
       name: MarsInteriorWalls_171
       rect:
         serializedVersion: 2
-        x: 160
-        y: 20
-        width: 20
-        height: 20
+        x: 162
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3887,10 +3887,10 @@ TextureImporter:
       name: MarsInteriorWalls_172
       rect:
         serializedVersion: 2
-        x: 180
-        y: 20
-        width: 20
-        height: 20
+        x: 182
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3909,10 +3909,10 @@ TextureImporter:
       name: MarsInteriorWalls_173
       rect:
         serializedVersion: 2
-        x: 200
-        y: 20
-        width: 20
-        height: 20
+        x: 202
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3931,10 +3931,10 @@ TextureImporter:
       name: MarsInteriorWalls_174
       rect:
         serializedVersion: 2
-        x: 220
-        y: 20
-        width: 20
-        height: 20
+        x: 222
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3953,10 +3953,10 @@ TextureImporter:
       name: MarsInteriorWalls_175
       rect:
         serializedVersion: 2
-        x: 240
-        y: 20
-        width: 20
-        height: 20
+        x: 242
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3975,10 +3975,10 @@ TextureImporter:
       name: MarsInteriorWalls_176
       rect:
         serializedVersion: 2
-        x: 260
-        y: 20
-        width: 20
-        height: 20
+        x: 262
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3997,10 +3997,10 @@ TextureImporter:
       name: MarsInteriorWalls_177
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 20
-        height: 20
+        x: 2
+        y: 2
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4019,10 +4019,10 @@ TextureImporter:
       name: MarsInteriorWalls_178
       rect:
         serializedVersion: 2
-        x: 20
-        y: 0
-        width: 20
-        height: 20
+        x: 22
+        y: 2
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4041,10 +4041,10 @@ TextureImporter:
       name: MarsInteriorWalls_179
       rect:
         serializedVersion: 2
-        x: 40
-        y: 0
-        width: 20
-        height: 20
+        x: 42
+        y: 2
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4063,10 +4063,10 @@ TextureImporter:
       name: MarsInteriorWalls_180
       rect:
         serializedVersion: 2
-        x: 60
-        y: 0
-        width: 20
-        height: 20
+        x: 62
+        y: 2
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4085,10 +4085,10 @@ TextureImporter:
       name: MarsInteriorWalls_181
       rect:
         serializedVersion: 2
-        x: 140
-        y: 0
-        width: 20
-        height: 20
+        x: 142
+        y: 2
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4107,10 +4107,10 @@ TextureImporter:
       name: MarsInteriorWalls_182
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
-        width: 20
-        height: 20
+        x: 162
+        y: 2
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4129,10 +4129,10 @@ TextureImporter:
       name: MarsInteriorWalls_183
       rect:
         serializedVersion: 2
-        x: 180
-        y: 0
-        width: 20
-        height: 20
+        x: 182
+        y: 2
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4151,10 +4151,10 @@ TextureImporter:
       name: MarsInteriorWalls_184
       rect:
         serializedVersion: 2
-        x: 200
-        y: 0
-        width: 20
-        height: 20
+        x: 202
+        y: 2
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4173,10 +4173,10 @@ TextureImporter:
       name: MarsInteriorWalls_185
       rect:
         serializedVersion: 2
-        x: 220
-        y: 0
-        width: 20
-        height: 20
+        x: 222
+        y: 2
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
