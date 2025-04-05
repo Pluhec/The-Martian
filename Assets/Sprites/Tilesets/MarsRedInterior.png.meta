@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,12 +103,12 @@ TextureImporter:
       name: MarsRedInterior_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 220
-        width: 20
-        height: 20
+        x: 2
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,12 +125,12 @@ TextureImporter:
       name: MarsRedInterior_1
       rect:
         serializedVersion: 2
-        x: 20
-        y: 220
-        width: 20
-        height: 20
+        x: 22
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -147,12 +147,12 @@ TextureImporter:
       name: MarsRedInterior_2
       rect:
         serializedVersion: 2
-        x: 40
-        y: 220
-        width: 20
-        height: 20
+        x: 42
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -169,12 +169,12 @@ TextureImporter:
       name: MarsRedInterior_3
       rect:
         serializedVersion: 2
-        x: 60
-        y: 220
-        width: 20
-        height: 20
+        x: 62
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -191,12 +191,12 @@ TextureImporter:
       name: MarsRedInterior_4
       rect:
         serializedVersion: 2
-        x: 80
-        y: 220
-        width: 20
-        height: 20
+        x: 82
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -213,12 +213,12 @@ TextureImporter:
       name: MarsRedInterior_5
       rect:
         serializedVersion: 2
-        x: 100
-        y: 220
-        width: 20
-        height: 20
+        x: 102
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -235,12 +235,12 @@ TextureImporter:
       name: MarsRedInterior_6
       rect:
         serializedVersion: 2
-        x: 120
-        y: 220
-        width: 20
-        height: 20
+        x: 122
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -257,12 +257,12 @@ TextureImporter:
       name: MarsRedInterior_7
       rect:
         serializedVersion: 2
-        x: 140
-        y: 220
-        width: 20
-        height: 20
+        x: 142
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -279,12 +279,12 @@ TextureImporter:
       name: MarsRedInterior_8
       rect:
         serializedVersion: 2
-        x: 160
-        y: 220
-        width: 20
-        height: 20
+        x: 162
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -301,12 +301,12 @@ TextureImporter:
       name: MarsRedInterior_9
       rect:
         serializedVersion: 2
-        x: 180
-        y: 220
-        width: 20
-        height: 20
+        x: 182
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -323,12 +323,12 @@ TextureImporter:
       name: MarsRedInterior_10
       rect:
         serializedVersion: 2
-        x: 200
-        y: 220
-        width: 20
-        height: 20
+        x: 202
+        y: 222
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -345,12 +345,12 @@ TextureImporter:
       name: MarsRedInterior_11
       rect:
         serializedVersion: 2
-        x: 0
-        y: 200
-        width: 20
-        height: 20
+        x: 2
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -367,12 +367,12 @@ TextureImporter:
       name: MarsRedInterior_12
       rect:
         serializedVersion: 2
-        x: 20
-        y: 200
-        width: 20
-        height: 20
+        x: 22
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -389,12 +389,12 @@ TextureImporter:
       name: MarsRedInterior_13
       rect:
         serializedVersion: 2
-        x: 40
-        y: 200
-        width: 20
-        height: 20
+        x: 42
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -411,12 +411,12 @@ TextureImporter:
       name: MarsRedInterior_14
       rect:
         serializedVersion: 2
-        x: 60
-        y: 200
-        width: 20
-        height: 20
+        x: 62
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -433,12 +433,12 @@ TextureImporter:
       name: MarsRedInterior_15
       rect:
         serializedVersion: 2
-        x: 80
-        y: 200
-        width: 20
-        height: 20
+        x: 82
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -455,12 +455,12 @@ TextureImporter:
       name: MarsRedInterior_16
       rect:
         serializedVersion: 2
-        x: 100
-        y: 200
-        width: 20
-        height: 20
+        x: 102
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -477,12 +477,12 @@ TextureImporter:
       name: MarsRedInterior_17
       rect:
         serializedVersion: 2
-        x: 120
-        y: 200
-        width: 20
-        height: 20
+        x: 122
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -499,12 +499,12 @@ TextureImporter:
       name: MarsRedInterior_18
       rect:
         serializedVersion: 2
-        x: 140
-        y: 200
-        width: 20
-        height: 20
+        x: 142
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -521,12 +521,12 @@ TextureImporter:
       name: MarsRedInterior_19
       rect:
         serializedVersion: 2
-        x: 160
-        y: 200
-        width: 20
-        height: 20
+        x: 162
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -543,12 +543,12 @@ TextureImporter:
       name: MarsRedInterior_20
       rect:
         serializedVersion: 2
-        x: 180
-        y: 200
-        width: 20
-        height: 20
+        x: 182
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -565,12 +565,12 @@ TextureImporter:
       name: MarsRedInterior_21
       rect:
         serializedVersion: 2
-        x: 200
-        y: 200
-        width: 20
-        height: 20
+        x: 202
+        y: 202
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -587,12 +587,12 @@ TextureImporter:
       name: MarsRedInterior_22
       rect:
         serializedVersion: 2
-        x: 0
-        y: 180
-        width: 20
-        height: 20
+        x: 2
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -609,12 +609,12 @@ TextureImporter:
       name: MarsRedInterior_23
       rect:
         serializedVersion: 2
-        x: 20
-        y: 180
-        width: 20
-        height: 20
+        x: 22
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -631,12 +631,12 @@ TextureImporter:
       name: MarsRedInterior_24
       rect:
         serializedVersion: 2
-        x: 40
-        y: 180
-        width: 20
-        height: 20
+        x: 42
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -653,12 +653,12 @@ TextureImporter:
       name: MarsRedInterior_25
       rect:
         serializedVersion: 2
-        x: 60
-        y: 180
-        width: 20
-        height: 20
+        x: 62
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -675,12 +675,12 @@ TextureImporter:
       name: MarsRedInterior_26
       rect:
         serializedVersion: 2
-        x: 80
-        y: 180
-        width: 20
-        height: 20
+        x: 82
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -697,12 +697,12 @@ TextureImporter:
       name: MarsRedInterior_27
       rect:
         serializedVersion: 2
-        x: 100
-        y: 180
-        width: 20
-        height: 20
+        x: 102
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -719,12 +719,12 @@ TextureImporter:
       name: MarsRedInterior_28
       rect:
         serializedVersion: 2
-        x: 120
-        y: 180
-        width: 20
-        height: 20
+        x: 122
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -741,12 +741,12 @@ TextureImporter:
       name: MarsRedInterior_29
       rect:
         serializedVersion: 2
-        x: 140
-        y: 180
-        width: 20
-        height: 20
+        x: 142
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -763,12 +763,12 @@ TextureImporter:
       name: MarsRedInterior_30
       rect:
         serializedVersion: 2
-        x: 160
-        y: 180
-        width: 20
-        height: 20
+        x: 162
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -785,12 +785,12 @@ TextureImporter:
       name: MarsRedInterior_31
       rect:
         serializedVersion: 2
-        x: 180
-        y: 180
-        width: 20
-        height: 20
+        x: 182
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -807,12 +807,12 @@ TextureImporter:
       name: MarsRedInterior_32
       rect:
         serializedVersion: 2
-        x: 200
-        y: 180
-        width: 20
-        height: 20
+        x: 202
+        y: 182
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -829,12 +829,12 @@ TextureImporter:
       name: MarsRedInterior_33
       rect:
         serializedVersion: 2
-        x: 0
-        y: 160
-        width: 20
-        height: 20
+        x: 2
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -851,12 +851,12 @@ TextureImporter:
       name: MarsRedInterior_34
       rect:
         serializedVersion: 2
-        x: 20
-        y: 160
-        width: 20
-        height: 20
+        x: 22
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -873,12 +873,12 @@ TextureImporter:
       name: MarsRedInterior_35
       rect:
         serializedVersion: 2
-        x: 40
-        y: 160
-        width: 20
-        height: 20
+        x: 42
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -895,12 +895,12 @@ TextureImporter:
       name: MarsRedInterior_36
       rect:
         serializedVersion: 2
-        x: 60
-        y: 160
-        width: 20
-        height: 20
+        x: 62
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -917,12 +917,12 @@ TextureImporter:
       name: MarsRedInterior_37
       rect:
         serializedVersion: 2
-        x: 80
-        y: 160
-        width: 20
-        height: 20
+        x: 82
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -939,12 +939,12 @@ TextureImporter:
       name: MarsRedInterior_38
       rect:
         serializedVersion: 2
-        x: 100
-        y: 160
-        width: 20
-        height: 20
+        x: 102
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -961,12 +961,12 @@ TextureImporter:
       name: MarsRedInterior_39
       rect:
         serializedVersion: 2
-        x: 120
-        y: 160
-        width: 20
-        height: 20
+        x: 122
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -983,12 +983,12 @@ TextureImporter:
       name: MarsRedInterior_40
       rect:
         serializedVersion: 2
-        x: 140
-        y: 160
-        width: 20
-        height: 20
+        x: 142
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1005,12 +1005,12 @@ TextureImporter:
       name: MarsRedInterior_41
       rect:
         serializedVersion: 2
-        x: 160
-        y: 160
-        width: 20
-        height: 20
+        x: 162
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1027,12 +1027,12 @@ TextureImporter:
       name: MarsRedInterior_42
       rect:
         serializedVersion: 2
-        x: 180
-        y: 160
-        width: 20
-        height: 20
+        x: 182
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1049,12 +1049,12 @@ TextureImporter:
       name: MarsRedInterior_43
       rect:
         serializedVersion: 2
-        x: 200
-        y: 160
-        width: 20
-        height: 20
+        x: 202
+        y: 162
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1071,12 +1071,12 @@ TextureImporter:
       name: MarsRedInterior_44
       rect:
         serializedVersion: 2
-        x: 0
-        y: 140
-        width: 20
-        height: 20
+        x: 2
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1093,12 +1093,12 @@ TextureImporter:
       name: MarsRedInterior_45
       rect:
         serializedVersion: 2
-        x: 20
-        y: 140
-        width: 20
-        height: 20
+        x: 22
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1115,12 +1115,12 @@ TextureImporter:
       name: MarsRedInterior_46
       rect:
         serializedVersion: 2
-        x: 40
-        y: 140
-        width: 20
-        height: 20
+        x: 42
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1137,12 +1137,12 @@ TextureImporter:
       name: MarsRedInterior_47
       rect:
         serializedVersion: 2
-        x: 60
-        y: 140
-        width: 20
-        height: 20
+        x: 62
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1159,12 +1159,12 @@ TextureImporter:
       name: MarsRedInterior_48
       rect:
         serializedVersion: 2
-        x: 80
-        y: 140
-        width: 20
-        height: 20
+        x: 82
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1181,12 +1181,12 @@ TextureImporter:
       name: MarsRedInterior_49
       rect:
         serializedVersion: 2
-        x: 100
-        y: 140
-        width: 20
-        height: 20
+        x: 102
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1203,12 +1203,12 @@ TextureImporter:
       name: MarsRedInterior_50
       rect:
         serializedVersion: 2
-        x: 120
-        y: 140
-        width: 20
-        height: 20
+        x: 122
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1225,12 +1225,12 @@ TextureImporter:
       name: MarsRedInterior_51
       rect:
         serializedVersion: 2
-        x: 140
-        y: 140
-        width: 20
-        height: 20
+        x: 142
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1247,12 +1247,12 @@ TextureImporter:
       name: MarsRedInterior_52
       rect:
         serializedVersion: 2
-        x: 160
-        y: 140
-        width: 20
-        height: 20
+        x: 162
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1269,12 +1269,12 @@ TextureImporter:
       name: MarsRedInterior_53
       rect:
         serializedVersion: 2
-        x: 180
-        y: 140
-        width: 20
-        height: 20
+        x: 182
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1291,12 +1291,12 @@ TextureImporter:
       name: MarsRedInterior_54
       rect:
         serializedVersion: 2
-        x: 200
-        y: 140
-        width: 20
-        height: 20
+        x: 202
+        y: 142
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1313,12 +1313,12 @@ TextureImporter:
       name: MarsRedInterior_55
       rect:
         serializedVersion: 2
-        x: 0
-        y: 120
-        width: 20
-        height: 20
+        x: 2
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1335,12 +1335,12 @@ TextureImporter:
       name: MarsRedInterior_56
       rect:
         serializedVersion: 2
-        x: 20
-        y: 120
-        width: 20
-        height: 20
+        x: 22
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1357,12 +1357,12 @@ TextureImporter:
       name: MarsRedInterior_57
       rect:
         serializedVersion: 2
-        x: 40
-        y: 120
-        width: 20
-        height: 20
+        x: 42
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1379,12 +1379,12 @@ TextureImporter:
       name: MarsRedInterior_58
       rect:
         serializedVersion: 2
-        x: 60
-        y: 120
-        width: 20
-        height: 20
+        x: 62
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1401,12 +1401,12 @@ TextureImporter:
       name: MarsRedInterior_59
       rect:
         serializedVersion: 2
-        x: 80
-        y: 120
-        width: 20
-        height: 20
+        x: 82
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1423,12 +1423,12 @@ TextureImporter:
       name: MarsRedInterior_60
       rect:
         serializedVersion: 2
-        x: 100
-        y: 120
-        width: 20
-        height: 20
+        x: 102
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1445,12 +1445,12 @@ TextureImporter:
       name: MarsRedInterior_61
       rect:
         serializedVersion: 2
-        x: 120
-        y: 120
-        width: 20
-        height: 20
+        x: 122
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1467,12 +1467,12 @@ TextureImporter:
       name: MarsRedInterior_62
       rect:
         serializedVersion: 2
-        x: 140
-        y: 120
-        width: 20
-        height: 20
+        x: 142
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1489,12 +1489,12 @@ TextureImporter:
       name: MarsRedInterior_63
       rect:
         serializedVersion: 2
-        x: 160
-        y: 120
-        width: 20
-        height: 20
+        x: 162
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1511,12 +1511,12 @@ TextureImporter:
       name: MarsRedInterior_64
       rect:
         serializedVersion: 2
-        x: 180
-        y: 120
-        width: 20
-        height: 20
+        x: 182
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1533,12 +1533,12 @@ TextureImporter:
       name: MarsRedInterior_65
       rect:
         serializedVersion: 2
-        x: 200
-        y: 120
-        width: 20
-        height: 20
+        x: 202
+        y: 122
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1555,12 +1555,12 @@ TextureImporter:
       name: MarsRedInterior_66
       rect:
         serializedVersion: 2
-        x: 0
-        y: 100
-        width: 20
-        height: 20
+        x: 2
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1577,12 +1577,12 @@ TextureImporter:
       name: MarsRedInterior_67
       rect:
         serializedVersion: 2
-        x: 20
-        y: 100
-        width: 20
-        height: 20
+        x: 22
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1599,12 +1599,12 @@ TextureImporter:
       name: MarsRedInterior_68
       rect:
         serializedVersion: 2
-        x: 40
-        y: 100
-        width: 20
-        height: 20
+        x: 42
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1621,12 +1621,12 @@ TextureImporter:
       name: MarsRedInterior_69
       rect:
         serializedVersion: 2
-        x: 60
-        y: 100
-        width: 20
-        height: 20
+        x: 62
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1643,12 +1643,12 @@ TextureImporter:
       name: MarsRedInterior_70
       rect:
         serializedVersion: 2
-        x: 80
-        y: 100
-        width: 20
-        height: 20
+        x: 82
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1665,12 +1665,12 @@ TextureImporter:
       name: MarsRedInterior_71
       rect:
         serializedVersion: 2
-        x: 100
-        y: 100
-        width: 20
-        height: 20
+        x: 102
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1687,12 +1687,12 @@ TextureImporter:
       name: MarsRedInterior_72
       rect:
         serializedVersion: 2
-        x: 120
-        y: 100
-        width: 20
-        height: 20
+        x: 122
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1709,12 +1709,12 @@ TextureImporter:
       name: MarsRedInterior_73
       rect:
         serializedVersion: 2
-        x: 140
-        y: 100
-        width: 20
-        height: 20
+        x: 142
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1731,12 +1731,12 @@ TextureImporter:
       name: MarsRedInterior_74
       rect:
         serializedVersion: 2
-        x: 160
-        y: 100
-        width: 20
-        height: 20
+        x: 162
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1753,12 +1753,12 @@ TextureImporter:
       name: MarsRedInterior_75
       rect:
         serializedVersion: 2
-        x: 180
-        y: 100
-        width: 20
-        height: 20
+        x: 182
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1775,12 +1775,12 @@ TextureImporter:
       name: MarsRedInterior_76
       rect:
         serializedVersion: 2
-        x: 200
-        y: 100
-        width: 20
-        height: 20
+        x: 202
+        y: 102
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1797,12 +1797,12 @@ TextureImporter:
       name: MarsRedInterior_77
       rect:
         serializedVersion: 2
-        x: 0
-        y: 80
-        width: 20
-        height: 20
+        x: 2
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1819,12 +1819,12 @@ TextureImporter:
       name: MarsRedInterior_78
       rect:
         serializedVersion: 2
-        x: 20
-        y: 80
-        width: 20
-        height: 20
+        x: 22
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1841,12 +1841,12 @@ TextureImporter:
       name: MarsRedInterior_79
       rect:
         serializedVersion: 2
-        x: 40
-        y: 80
-        width: 20
-        height: 20
+        x: 42
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1863,12 +1863,12 @@ TextureImporter:
       name: MarsRedInterior_80
       rect:
         serializedVersion: 2
-        x: 60
-        y: 80
-        width: 20
-        height: 20
+        x: 62
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1885,12 +1885,12 @@ TextureImporter:
       name: MarsRedInterior_81
       rect:
         serializedVersion: 2
-        x: 80
-        y: 80
-        width: 20
-        height: 20
+        x: 82
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1907,12 +1907,12 @@ TextureImporter:
       name: MarsRedInterior_82
       rect:
         serializedVersion: 2
-        x: 100
-        y: 80
-        width: 20
-        height: 20
+        x: 102
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1929,12 +1929,12 @@ TextureImporter:
       name: MarsRedInterior_83
       rect:
         serializedVersion: 2
-        x: 120
-        y: 80
-        width: 20
-        height: 20
+        x: 122
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1951,12 +1951,12 @@ TextureImporter:
       name: MarsRedInterior_84
       rect:
         serializedVersion: 2
-        x: 140
-        y: 80
-        width: 20
-        height: 20
+        x: 142
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1973,12 +1973,12 @@ TextureImporter:
       name: MarsRedInterior_85
       rect:
         serializedVersion: 2
-        x: 160
-        y: 80
-        width: 20
-        height: 20
+        x: 162
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1995,12 +1995,12 @@ TextureImporter:
       name: MarsRedInterior_86
       rect:
         serializedVersion: 2
-        x: 180
-        y: 80
-        width: 20
-        height: 20
+        x: 182
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2017,12 +2017,12 @@ TextureImporter:
       name: MarsRedInterior_87
       rect:
         serializedVersion: 2
-        x: 200
-        y: 80
-        width: 20
-        height: 20
+        x: 202
+        y: 82
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2039,12 +2039,12 @@ TextureImporter:
       name: MarsRedInterior_88
       rect:
         serializedVersion: 2
-        x: 0
-        y: 60
-        width: 20
-        height: 20
+        x: 2
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2061,12 +2061,12 @@ TextureImporter:
       name: MarsRedInterior_89
       rect:
         serializedVersion: 2
-        x: 20
-        y: 60
-        width: 20
-        height: 20
+        x: 22
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2083,12 +2083,12 @@ TextureImporter:
       name: MarsRedInterior_90
       rect:
         serializedVersion: 2
-        x: 40
-        y: 60
-        width: 20
-        height: 20
+        x: 42
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2105,12 +2105,12 @@ TextureImporter:
       name: MarsRedInterior_91
       rect:
         serializedVersion: 2
-        x: 60
-        y: 60
-        width: 20
-        height: 20
+        x: 62
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2127,12 +2127,12 @@ TextureImporter:
       name: MarsRedInterior_92
       rect:
         serializedVersion: 2
-        x: 80
-        y: 60
-        width: 20
-        height: 20
+        x: 82
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2149,12 +2149,12 @@ TextureImporter:
       name: MarsRedInterior_93
       rect:
         serializedVersion: 2
-        x: 100
-        y: 60
-        width: 20
-        height: 20
+        x: 102
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2171,12 +2171,12 @@ TextureImporter:
       name: MarsRedInterior_94
       rect:
         serializedVersion: 2
-        x: 120
-        y: 60
-        width: 20
-        height: 20
+        x: 122
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2193,12 +2193,12 @@ TextureImporter:
       name: MarsRedInterior_95
       rect:
         serializedVersion: 2
-        x: 140
-        y: 60
-        width: 20
-        height: 20
+        x: 142
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2215,12 +2215,12 @@ TextureImporter:
       name: MarsRedInterior_96
       rect:
         serializedVersion: 2
-        x: 160
-        y: 60
-        width: 20
-        height: 20
+        x: 162
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2237,12 +2237,12 @@ TextureImporter:
       name: MarsRedInterior_97
       rect:
         serializedVersion: 2
-        x: 180
-        y: 60
-        width: 20
-        height: 20
+        x: 182
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2259,12 +2259,12 @@ TextureImporter:
       name: MarsRedInterior_98
       rect:
         serializedVersion: 2
-        x: 200
-        y: 60
-        width: 20
-        height: 20
+        x: 202
+        y: 62
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2281,12 +2281,12 @@ TextureImporter:
       name: MarsRedInterior_99
       rect:
         serializedVersion: 2
-        x: 0
-        y: 40
-        width: 20
-        height: 20
+        x: 2
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2303,12 +2303,12 @@ TextureImporter:
       name: MarsRedInterior_100
       rect:
         serializedVersion: 2
-        x: 20
-        y: 40
-        width: 20
-        height: 20
+        x: 22
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2325,12 +2325,12 @@ TextureImporter:
       name: MarsRedInterior_101
       rect:
         serializedVersion: 2
-        x: 40
-        y: 40
-        width: 20
-        height: 20
+        x: 42
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2347,12 +2347,12 @@ TextureImporter:
       name: MarsRedInterior_102
       rect:
         serializedVersion: 2
-        x: 60
-        y: 40
-        width: 20
-        height: 20
+        x: 62
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2369,12 +2369,12 @@ TextureImporter:
       name: MarsRedInterior_103
       rect:
         serializedVersion: 2
-        x: 80
-        y: 40
-        width: 20
-        height: 20
+        x: 82
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2391,12 +2391,12 @@ TextureImporter:
       name: MarsRedInterior_104
       rect:
         serializedVersion: 2
-        x: 100
-        y: 40
-        width: 20
-        height: 20
+        x: 102
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2413,12 +2413,12 @@ TextureImporter:
       name: MarsRedInterior_105
       rect:
         serializedVersion: 2
-        x: 120
-        y: 40
-        width: 20
-        height: 20
+        x: 122
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2435,12 +2435,12 @@ TextureImporter:
       name: MarsRedInterior_106
       rect:
         serializedVersion: 2
-        x: 140
-        y: 40
-        width: 20
-        height: 20
+        x: 142
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2457,12 +2457,12 @@ TextureImporter:
       name: MarsRedInterior_107
       rect:
         serializedVersion: 2
-        x: 160
-        y: 40
-        width: 20
-        height: 20
+        x: 162
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2479,12 +2479,12 @@ TextureImporter:
       name: MarsRedInterior_108
       rect:
         serializedVersion: 2
-        x: 180
-        y: 40
-        width: 20
-        height: 20
+        x: 182
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2501,12 +2501,12 @@ TextureImporter:
       name: MarsRedInterior_109
       rect:
         serializedVersion: 2
-        x: 200
-        y: 40
-        width: 20
-        height: 20
+        x: 202
+        y: 42
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2523,12 +2523,12 @@ TextureImporter:
       name: MarsRedInterior_110
       rect:
         serializedVersion: 2
-        x: 0
-        y: 20
-        width: 20
-        height: 20
+        x: 2
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2545,12 +2545,12 @@ TextureImporter:
       name: MarsRedInterior_111
       rect:
         serializedVersion: 2
-        x: 20
-        y: 20
-        width: 20
-        height: 20
+        x: 22
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2567,12 +2567,12 @@ TextureImporter:
       name: MarsRedInterior_112
       rect:
         serializedVersion: 2
-        x: 120
-        y: 20
-        width: 20
-        height: 20
+        x: 122
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2589,12 +2589,12 @@ TextureImporter:
       name: MarsRedInterior_113
       rect:
         serializedVersion: 2
-        x: 140
-        y: 20
-        width: 20
-        height: 20
+        x: 142
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2611,12 +2611,12 @@ TextureImporter:
       name: MarsRedInterior_114
       rect:
         serializedVersion: 2
-        x: 160
-        y: 20
-        width: 20
-        height: 20
+        x: 162
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2633,12 +2633,12 @@ TextureImporter:
       name: MarsRedInterior_115
       rect:
         serializedVersion: 2
-        x: 180
-        y: 20
-        width: 20
-        height: 20
+        x: 182
+        y: 22
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
