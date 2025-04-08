@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class ItemButton : MonoBehaviour, IPointerClickHandler
 {
     public int mainSlotIndex;
-    public int slotSize = 3;
+    public int slotSize = 2;
     private Inventory inventory;
 
     private void Awake()

@@ -5,7 +5,7 @@ public class Item1 : InteractableObject
 {
     private Inventory inventory;
     public GameObject itemButton; // hlavní prefab
-    public int slotSize = 1;      // velikost itemu ve slotech
+    public int slotSize = 2;      // velikost itemu ve slotech
 
     void Awake()
     {
