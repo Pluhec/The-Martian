@@ -72,6 +72,8 @@ public class Item1 : InteractableObject
                 placeholder.AddComponent<ItemPlaceholder>().mainSlotIndex = i;
                 inventory.isFull[targetIndex] = true;
             }
+            
+            GetComponent<PersistentItem>()?.MarkCollected();    
 
             // Odstranění ze světa
             if (DroppedItemManager.Instance != null)

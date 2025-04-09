@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2401268858057955560}
   - component: {fileID: 2922116352776462062}
   - component: {fileID: 457622500316283590}
+  - component: {fileID: 3340374442737283185}
   - component: {fileID: 1103599382207337568}
   m_Layer: 0
   m_Name: Pickable Object
@@ -140,6 +141,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   itemButton: {fileID: 9089447296183591438, guid: 5d8fe256560067c40933b5aa9405ff66, type: 3}
+  slotSize: 2
+--- !u!114 &3340374442737283185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6530824892552033642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba1f9fc3618c5f468bc907d921353ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 
 --- !u!114 &1103599382207337568
 MonoBehaviour:
   m_ObjectHideFlags: 0
