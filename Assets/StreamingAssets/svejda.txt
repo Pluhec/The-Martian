@@ -1,0 +1,33 @@
+00000000000000000000000000000000000000000OOOOOOOOOOOOOOOOOOOOOOOO
+00000000000000000000000000000O00000000OO00OOOOOOOOOOOOOOOOOOOOOOO
+00000000000000000000000000000OOOOOOOO00O0000OOOOOOOOOOOOOOOOOOOOO
+000000000000000000000000Okdl:;;;:::ldkO0O00OOOOOOOOOOOOOOOOOOOOOO
+0000000000000000000000Od:'..'''......':dO0OOO00OOOOOOOOOOOOOOOOOO
+00000000000000000000kdc::ccclllc::;'.. .;xO0OO0OOOOOOOOOOOOOOOOOO
+000000000000000000Oxlclodddxxxxddddol:'. .lOOOOOOOOOOOOOOOOOOOOOO
+00000000000000000Odcloddxxxkkkkkxkxxdol:'..lO0OO0OOOOOOOOOOOOOOOO
+OO000000000000000xccodxxxxxkkkkkkkkkxxdoc. .dOO0OOOOOOOOOOOOOOOOO
+OOO0000000000000Oo;ldxxxxkkkkkkkkkkkxxdol,. ;k000OOOOOOOOOOOOOOOO
+OOOO000000000000kc;loolllodxxxdoollooolll:. .x0OOOOOOOOOOOOOOOOOO
+OOOO000000000000x;:lccc:;;:lxxo:;;;:::ccol,..lkO0OOOOOOOOOOOOOOOO
+OOOO00000000000Ol,:lc::::::cddolcc::cccodo:':loO0OOOOOOOOOOOOOOOO
+OOOOOOO000000000d:cooooooollddoooooodddddoc;oddO0OOOOOOOOOOOOOOOO
+OOOOOOOO00000000klcoodddoccldollooodxxddooc:loxO0OOOOOOOOOOOOOOOO
+OOOOOOOOO0000000Oo:cloool:;;::;:cloooddooc;:odkOOOOOOOOOOOOOOOOOO
+OOOOOOOOOOO0000OOxc:lllc:;,;;;,,;:::codoc;,cdkOOOOOOOOOOOOOOOOOOO
+OOOOOOOOOOOO000OOOo;:ll:;::cccccccc::olc:,,dOOOOOOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOOOkc',::cllc::cloddo:;;,'.:k0OOOOOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOO00O0x;..,:ll:;:codolc:,'...o00OOOOOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOO0OOOO0x,...',;;;;;;,'.''...,:oO0OOOOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOO00O0k;.................'::..lO0OOOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOOOO0d'''.. ...........;loc..;dOOOOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOOOxd:..,;,'....'''',;codo;.';,:lodxkO0OOOOOOOOOOO
+OOOOOOOOOOOOOkdl:;,,,'..;ccccllloooodxxo:.';,.'''',;lodkOOOOOOOOO
+OOOOOOOOOkdl:;,..';,,.  .,cloddxxxxxdoc'..',..'..';;''';:loxkOOOO
+OOOOOkxdll:..''..,:,..   ..;ldddddo:,... ....;;'.';,..';;.',cldkO
+OOkdoc,',:;..',..,:,......'..:dooc:'........;:'..;;...':,..;c,,:o
+dl,';,'',c,.';;..,:'..,'.';,..;cc:,...,,....,,..'c;...,c'.';,..''
+:'.':;..';'.,:'..;:'.'c;.'';,.''''...,c,...':'..'c,...,;..;:'..,,
+'...,;'.,:'.:;.'':c'.,:,...;:'.......;:'...;c'..;c,...:;.':'..,'.
+','.','.,;..,'..':;..;c,''';:'...''..::'...;;...;:'...:;.,;...;;.
+l:'.....,;..,,'',l:'':c,''';,....''.'cc,'',c:'..;:...':'......';'
