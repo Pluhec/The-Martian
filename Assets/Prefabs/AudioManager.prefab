@@ -182,7 +182,7 @@ MonoBehaviour:
   openCloseMenu: {fileID: 8300000, guid: f3c05ac3ef2f77b4c8067cdbb79bcee7, type: 3}
   howerAction: {fileID: 8300000, guid: d07d993bc6555a246b32e8f24a76b441, type: 3}
   doAction: {fileID: 8300000, guid: c145ce32a983b924997facd9b9cf0b95, type: 3}
-  AirCleaningSound: {fileID: 8300000, guid: 8fa9bd1e7284b4ce48d615441fa584b1, type: 3}
+  AirCleaningSound: {fileID: 8300000, guid: 85aa74b18463c4671a73a05e758e7d2c, type: 3}
   FullyCleanedSound: {fileID: 8300000, guid: de1c12abcae8d4f10b594a3cbcdb6c69, type: 3}
 --- !u!1 &8057766121427008992
 GameObject:
