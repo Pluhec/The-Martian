@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Terminal.unity
     guid: c57f61eda6a9f4e23a0a710f31ed3f58
+  - enabled: 1
+    path: Assets/Scenes/Testovani - Inventar.unity
+    guid: 001c959a40b75bc499c95a60a25500b7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

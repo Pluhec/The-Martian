@@ -10,6 +10,7 @@ public class TerminalManager : MonoBehaviour
     [Header("Radky v terminálu")]
     public GameObject directoryLine;
     public GameObject responseLine;
+    public int SceneIndex;
     
     [Header("Terminal")]
     public TMP_InputField terminalInput;
@@ -129,7 +130,7 @@ public class TerminalManager : MonoBehaviour
 
     void ExitTerminal()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneIndex);
     }
 
     void AddDirectoryLine(string userInput)
