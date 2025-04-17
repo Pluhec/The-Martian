@@ -1124,7 +1124,7 @@ TextureImporter:
         width: 37
         height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1133,6 +1133,94 @@ TextureImporter:
       bones: []
       spriteID: ef01ea824a761466f81c13884c147cb7
       internalID: 548663957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_42
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 188
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42cfee0aed0314a238b3fe6930fa0928
+      internalID: -434088562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_43
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 188
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b41275563a57458e893a6c62b603ced
+      internalID: 1210465241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_44
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 248
+        width: 40
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03fa3267ab6c64861836124f71540542
+      internalID: -679266192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_45
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 248
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 300fd4120fa6041d1b74dddaf82a5fb6
+      internalID: -686147555
       vertices: []
       indices: 
       edges: []
@@ -1188,6 +1276,10 @@ TextureImporter:
       MidTownB_4: -5435722801468595411
       MidTownB_40: 1782064123
       MidTownB_41: 548663957
+      MidTownB_42: -434088562
+      MidTownB_43: 1210465241
+      MidTownB_44: -679266192
+      MidTownB_45: -686147555
       MidTownB_5: 5369854317414817424
       MidTownB_6: -7717090213026606464
       MidTownB_7: -8107282811175539492
