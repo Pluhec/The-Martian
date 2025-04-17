@@ -172,8 +172,8 @@ TextureImporter:
       name: MidTownC_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 302
+        x: 103
+        y: 244
         width: 16
         height: 16
       alignment: 0
@@ -768,6 +768,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: MidTownC_27
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 13
+        width: 40
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f5590bcfb5bf404da17d38bba482494
+      internalID: -1998189132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -802,6 +824,7 @@ TextureImporter:
       MidTownC_24: -1734846010
       MidTownC_25: -120481909
       MidTownC_26: -1134537
+      MidTownC_27: -1998189132
       MidTownC_3: -8461750735352481506
       MidTownC_4: 4914407175889416409
       MidTownC_5: 4505657087041344787
