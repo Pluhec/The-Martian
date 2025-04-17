@@ -184,16 +184,20 @@ TextureImporter:
       name: Kitchen_3
       rect:
         serializedVersion: 2
-        x: 0
+        x: 100
         y: 66
-        width: 160
-        height: 51
+        width: 20
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 10, y: 16}
+        - {x: -10, y: 16}
+        - {x: -10, y: -16}
+        - {x: 10, y: -16}
       tessellationDetail: 0
       bones: []
       spriteID: b3cfaea8a66fa98a0800000000000000
