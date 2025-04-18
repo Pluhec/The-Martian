@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1322446805671614505}
   - component: {fileID: 906082535178269278}
-  - component: {fileID: 2185555797860896216}
+  - component: {fileID: 815947320075707441}
   m_Layer: 0
   m_Name: AlbertKasa
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &2185555797860896216
+--- !u!60 &815947320075707441
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,9 +134,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.023076924, y: 0.4923077}
-      - {x: -0.20769231, y: 0.16923077}
-      - {x: -0.20769231, y: -0.4923077}
-      - {x: 0.20769231, y: -0.4923077}
-      - {x: 0.20769231, y: 0.4923077}
+    - - {x: 0.20769231, y: 0.18461539}
+      - {x: 0.023076924, y: 0.18461539}
+      - {x: -0.115384616, y: 0.18461539}
+      - {x: -0.20769231, y: 0.07692308}
+      - {x: -0.20769231, y: -0.46153846}
+      - {x: 0.20769231, y: -0.46153846}
   m_UseDelaunayMesh: 0

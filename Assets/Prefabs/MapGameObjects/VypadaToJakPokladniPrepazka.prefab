@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1676247256763878183}
   - component: {fileID: 1896429405196993107}
-  - component: {fileID: 62222078748853993}
+  - component: {fileID: 3390326188807891062}
   m_Layer: 0
   m_Name: VypadaToJakPokladniPrepazka
   m_TagString: Untagged
@@ -88,8 +88,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &62222078748853993
-BoxCollider2D:
+--- !u!60 &3390326188807891062
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -132,5 +132,10 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.21538462, y: 0.9846154}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.10769231, y: 0.32307693}
+      - {x: -0.10769231, y: 0.32307693}
+      - {x: -0.10769231, y: -0.4923077}
+      - {x: 0.10769231, y: -0.4923077}
+  m_UseDelaunayMesh: 0

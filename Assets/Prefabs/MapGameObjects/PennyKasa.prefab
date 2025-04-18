@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3245205254211268775}
   - component: {fileID: 3251954609599141618}
-  - component: {fileID: 427891431195578284}
+  - component: {fileID: 6062474388871611178}
   m_Layer: 0
   m_Name: PennyKasa
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &427891431195578284
+--- !u!60 &6062474388871611178
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,9 +134,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.24615385, y: 0.5153846}
-      - {x: -0.24615385, y: -0.5153846}
-      - {x: 0.24615385, y: -0.5153846}
-      - {x: 0.24615385, y: 0.1923077}
-      - {x: 0.046153847, y: 0.5153846}
+    - - {x: 0.18461539, y: 0.115384616}
+      - {x: 0.06153846, y: 0.20769231}
+      - {x: -0.03076923, y: 0.20769231}
+      - {x: -0.24615385, y: 0.20769231}
+      - {x: -0.24615385, y: -0.46923077}
+      - {x: 0.18461539, y: -0.46923077}
   m_UseDelaunayMesh: 0

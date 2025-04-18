@@ -692,9 +692,9 @@ TextureImporter:
       name: LowTownB_22
       rect:
         serializedVersion: 2
-        x: 100
+        x: 189
         y: 73
-        width: 220
+        width: 131
         height: 106
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1049,7 +1049,7 @@ TextureImporter:
         width: 11
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1058,6 +1058,28 @@ TextureImporter:
       bones: []
       spriteID: 42a2c76f93f4249d38845a0960573451
       internalID: -585374332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_39
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 125
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46f2644c0dab948a281a346201756634
+      internalID: -808974354
       vertices: []
       indices: 
       edges: []
@@ -1109,6 +1131,7 @@ TextureImporter:
       LowTownB_36: -1599487162
       LowTownB_37: 1403865714
       LowTownB_38: -585374332
+      LowTownB_39: -808974354
       LowTownB_4: -3190556627817692683
       LowTownB_5: 288630694049123304
       LowTownB_6: 6394029496550580621
