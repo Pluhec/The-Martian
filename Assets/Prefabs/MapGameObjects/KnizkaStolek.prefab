@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3967964398019016834}
   - component: {fileID: 6830568764499417893}
-  - component: {fileID: 5343321723149500130}
+  - component: {fileID: 6699002085578538139}
   m_Layer: 0
   m_Name: KnizkaStolek
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &5343321723149500130
+--- !u!60 &6699002085578538139
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,10 +134,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.18461539, y: -0.23846154}
-      - {x: 0.16923077, y: -0.023076924}
-      - {x: -0.06153846, y: 0.23846154}
-      - {x: -0.21538462, y: 0.17692308}
+    - - {x: 0.16923077, y: -0.23846154}
+      - {x: 0.16923077, y: -0.1}
+      - {x: 0.07692308, y: -0.03846154}
+      - {x: -0.092307694, y: 0.08461539}
+      - {x: -0.21538462, y: 0.08461539}
       - {x: -0.21538462, y: -0.053846154}
       - {x: 0.03076923, y: -0.3}
       - {x: 0.06153846, y: -0.3}
