@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d5e2e09f0958e4005992d8c67683154f
+guid: 8dd6a2f6f019f49229c9099817584cf1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9049287153695707123
-    second: 64x64_Mars_Sand_Texture_0
+      213: 4214651726122306398
+    second: OutsideHab 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,40 +96,68 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 64x64_Mars_Sand_Texture_0
+      name: OutsideHab 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 417
+        height: 220
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      physicsShape:
+      - - {x: 208.5, y: -110}
+        - {x: 208.5, y: 49}
+        - {x: 152.5, y: 49}
+        - {x: 152.5, y: 100}
+        - {x: 116.5, y: 100}
+        - {x: 116.5, y: 49}
+        - {x: 60.5, y: 49}
+        - {x: 60.5, y: -8}
+        - {x: -12.5, y: -8}
+        - {x: -21.5, y: 16}
+        - {x: -44.5, y: 35}
+        - {x: -70.5, y: 37}
+        - {x: -70.5, y: 44}
+        - {x: -70.5, y: 87}
+        - {x: -89.5, y: 87}
+        - {x: -89.5, y: 87}
+        - {x: -89.5, y: 87}
+        - {x: -105.5, y: 87}
+        - {x: -106.5, y: 87}
+        - {x: -106.5, y: 43}
+        - {x: -106.5, y: 36}
+        - {x: -139.5, y: 36}
+        - {x: -164.5, y: 17}
+        - {x: -172.5, y: -6}
+        - {x: -208.5, y: -6}
+        - {x: -208.5, y: -59}
+        - {x: -172.5, y: -59}
+        - {x: -172.5, y: -78}
+        - {x: -147.5, y: -97}
+        - {x: -141.5, y: -99}
+        - {x: -39.5, y: -99}
+        - {x: -36.5, y: -98}
+        - {x: -12.5, y: -77}
+        - {x: -12.5, y: -56}
+        - {x: 60.5, y: -56}
+        - {x: 61.5, y: -110}
+        - {x: 208.5, y: -110}
+      - - {x: -105.5, y: 87}
+        - {x: -105.5, y: 87}
+        - {x: -89.5, y: 87}
+        - {x: -89.5, y: 87}
+      tessellationDetail: 0
       bones: []
-      spriteID: 3ffc98a98b6859d70800000000000000
-      internalID: 9049287153695707123
+      spriteID: e5bc18b2a637d7a30800000000000000
+      internalID: 4214651726122306398
       vertices: []
       indices: 
       edges: []
@@ -138,7 +166,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 131360ce9f18e47b3abf7bcb9ada3d88
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +176,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      64x64_Mars_Sand_Texture_0: 9049287153695707123
+      OutsideHab 1_0: 4214651726122306398
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
