@@ -23,7 +23,11 @@ public class TerminalManager : MonoBehaviour
 
     private List<string> commandHistory = new List<string>(); 
     private int historyIndex = -1; 
-
+    
+    [Header("opousteni sceny")]
+    public string exitEntranceKey = "TerminalSpawn";
+    public string returnSceneName = "Hab";
+    
     public Interpreter interpreter;
 
     private void Start()
@@ -129,7 +133,8 @@ public class TerminalManager : MonoBehaviour
 
     void ExitTerminal()
     {
-        SceneManager.LoadScene(0);
+        EntranceData.Instance.lastEntranceKey = exitEntranceKey;
+        SceneManager.LoadScene(returnSceneName);
     }
 
     void AddDirectoryLine(string userInput)

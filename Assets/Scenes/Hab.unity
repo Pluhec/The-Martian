@@ -63755,7 +63755,7 @@ MonoBehaviour:
     location: {fileID: 1950638544}
   - key: SideHabSpawn
     location: {fileID: 1278442892}
-  - key: Terminal
+  - key: TerminalSpawn
     location: {fileID: 1500225567}
   - key: SideAirlockSpawn
     location: {fileID: 1854855074}
@@ -84914,9 +84914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b09a40124b4429084e253a2f19037b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entranceKey: ToTerminal
+  entranceKey: TerminalTrigger
   targetSceneName: Terminal
-  activationKey: 0
+  activationKey: 101
   requireHold: 0
   holdDuration: 0.5
   directionKey: 0
