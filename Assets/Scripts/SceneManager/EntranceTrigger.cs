@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,93 +10,118 @@ public class EntranceTrigger : MonoBehaviour
 
     [Header("Cross‑scene interakce")]
     public KeyCode activationKey = KeyCode.E;
-    public bool requireHold = false;
-    public float holdDuration = 0.5f;
+    public bool    requireHold   = false;
+    public float   holdDuration  = 0.5f;
 
     [Header("Same‑scene teleport")]
-    public KeyCode directionKey = KeyCode.None;
-    public float directionHoldDuration = 0.1f;
+    public KeyCode directionKey           = KeyCode.None;
+    public float   directionHoldDuration  = 0.1f;
 
-    bool playerInRange;
-    bool hasTriggered;
+    [Header("Efekt odletu z Habu")]
+    public float   effectDuration = 1.3f;           // délka kouře + zvuku
+
+    bool  playerInRange, hasTriggered;
     float holdTimer;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    /* ---------- TRIGGER ENTER / EXIT ---------- */
+
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
-
-        playerInRange = true;
-        hasTriggered = false;
-        holdTimer = 0f;
+        playerInRange = true;  hasTriggered = false;  holdTimer = 0f;
     }
-
-    private void OnTriggerExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) return;
-        playerInRange = false;
+        if (other.CompareTag("Player")) playerInRange = false;
     }
 
-    private void Update()
+    /* ---------- UPDATE ---------- */
+
+    void Update()
     {
         if (!playerInRange || hasTriggered) return;
 
         bool isSameScene = SceneManager.GetActiveScene().name == targetSceneName;
 
-        if (isSameScene)
-        {
-            // teleporovani v ramci jedne sceny - musi drzet klavesu (je to podle pohybu)
-            if (directionKey == KeyCode.None) return;
+        if (isSameScene)           HandleSameSceneTeleport();
+        else                       HandleCrossSceneTeleport();
+    }
 
-            if (Input.GetKey(directionKey))
+    void HandleSameSceneTeleport()
+    {
+        if (directionKey == KeyCode.None) return;
+
+        if (Input.GetKey(directionKey))
+        {
+            holdTimer += Time.deltaTime;
+            if (holdTimer >= directionHoldDuration) DoEnter();
+        }
+        else holdTimer = 0f;
+    }
+
+    void HandleCrossSceneTeleport()
+    {
+        if (requireHold)
+        {
+            if (Input.GetKey(activationKey))
             {
                 holdTimer += Time.deltaTime;
-                if (holdTimer >= directionHoldDuration)
-                    DoEnter();
+                if (holdTimer >= holdDuration) DoEnter();
             }
-            else
-            {
-                holdTimer = 0f;
-            }
+            else holdTimer = 0f;
         }
-        else
+        else if (Input.GetKeyDown(activationKey))
         {
-            // prechod do jine sceny - musi stisknout klavesu (mozna pridam radial menu)
-            if (requireHold)
-            {
-                if (Input.GetKey(activationKey))
-                {
-                    holdTimer += Time.deltaTime;
-                    if (holdTimer >= holdDuration)
-                        DoEnter();
-                }
-                else
-                {
-                    holdTimer = 0f;
-                }
-            }
-            else
-            {
-                if (Input.GetKeyDown(activationKey))
-                    DoEnter();
-            }
+            DoEnter();
         }
     }
 
-    private void DoEnter()
+    /* ---------- HLAVNÍ AKCE ---------- */
+
+    void DoEnter()
     {
         hasTriggered = true;
 
-        // ulozeni klice pro SpawnManager (aby vedel kam ho potom spawnout)
         EntranceData.Instance.lastEntranceKey = entranceKey;
 
-        // pokud jsme ve stejne scene, tak neloadi scenu znovu, ale pouze teleportuje
-        if (SceneManager.GetActiveScene().name == targetSceneName)
+        string current = SceneManager.GetActiveScene().name;
+        bool marsToHab = current == "Mars" && targetSceneName == "Hab";
+        bool habToMars = current == "Hab"  && targetSceneName == "Mars";
+
+        if (habToMars)
         {
-            SpawnManager.Instance.TeleportPlayer(entranceKey);
+            Debug.Log("[Teleport] Odlet z Habu → Mars (log před loadem)");
+            EntranceData.Instance.logAfterLoad = false;
+            StartCoroutine(ExitWithEffectCo());   // spustíme kouř + zvuk → teprve pak LoadScene
+        }
+        else if (marsToHab)
+        {
+            EntranceData.Instance.logAfterLoad = true;   // log + efekt až v HabInterior
+            SceneManager.LoadScene(targetSceneName);
         }
         else
         {
-            SceneManager.LoadScene(targetSceneName);
+            EntranceData.Instance.logAfterLoad = false;
+            if (current == targetSceneName)
+                SpawnManager.Instance.TeleportPlayer(entranceKey);
+            else
+                SceneManager.LoadScene(targetSceneName);
         }
+    }
+
+    /* ---------- KORUTINA ODLETU Z HABU ---------- */
+
+    IEnumerator ExitWithEffectCo()
+    {
+        var effects = AirlockEffectManager.Instance;
+        effects?.Play(entranceKey);
+
+        FindObjectOfType<AudioManager>()?.PlayDecompressionSound();
+
+        yield return new WaitForSeconds(effectDuration);
+
+        effects?.Stop(entranceKey);
+
+        SceneManager.LoadScene(targetSceneName);
     }
 }

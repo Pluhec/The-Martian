@@ -4,48 +4,61 @@ public class AirlockEffectManager : MonoBehaviour
 {
     public static AirlockEffectManager Instance { get; private set; }
 
-    [Header("Main airlock effects")]
-    public ParticleSystem[] mainAirlockPS;
+    [Header("Main air‑lock")]
+    public ParticleSystem[] mainAirlock;
 
-    [Header("Second airlock effects")]
-    public ParticleSystem[] secondAirlockPS;
+    [Header("Second air‑lock")]
+    public ParticleSystem[] secondAirlock;
 
-    [Header("Side airlock effects")]
-    public ParticleSystem[] sideAirlockPS;
+    [Header("Side air‑lock")]
+    public ParticleSystem[] sideAirlock;
 
-    private void Awake()
+    void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
-    public void Play(string key)
-    {
-        ParticleSystem[] arr = GetArrayForKey(key);
-        if (arr == null) return;
-        foreach (var ps in arr) ps.Play();
-    }
+    /* ----------  API  ---------- */
 
-    public void Stop(string key)
-    {
-        ParticleSystem[] arr = GetArrayForKey(key);
-        if (arr == null) return;
-        foreach (var ps in arr) ps.Stop();
-    }
+    public void Play(string key)  => Set(key, true);
+    public void Stop(string key)  => Set(key, false);
 
-    private ParticleSystem[] GetArrayForKey(string key)
+    /* ----------  PRIVATE  ---------- */
+
+    void Set(string key, bool play)
     {
-        switch (key)
+        var arr = key switch
         {
-            case "MainAirlock":   return mainAirlockPS;
-            case "SecondAirlock": return secondAirlockPS;
-            case "SideAirlock":   return sideAirlockPS;
-            default: return null;
+            "MainAirlock"   => mainAirlock,
+            "SecondAirlock" => secondAirlock,
+            "SideAirlock"   => sideAirlock,
+            _ => null
+        };
+
+        if (arr == null)
+        {
+            Debug.LogWarning($"AirlockEffectManager: neznámý entranceKey „{key}“");
+            return;
+        }
+
+        foreach (var ps in arr)
+        {
+            if (ps == null) continue;
+
+            // pro jistotu aktivujeme GameObject
+            if (play)
+            {
+                if (!ps.gameObject.activeSelf) ps.gameObject.SetActive(true);
+                ps.Play(true);
+            }
+            else
+            {
+                ps.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+                // pokud chceš úplně schovat trysky, odkomentuj:
+                // ps.gameObject.SetActive(false);
+            }
         }
     }
 }
