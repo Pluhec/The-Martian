@@ -149,3 +149,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainSlotIndex: 0
   slotSize: 2
+  inventory: {fileID: 0}
+  storageContainer: {fileID: 0}

@@ -170,6 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 0
+  IsInventorySlot: 0
+  container: {fileID: 1677757707}
 --- !u!114 &1129109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,7 +192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -2230155327565112691, guid: 861ef15905234467b96c68190d76aa75, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2023,6 +2025,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 3
+  IsInventorySlot: 0
+  container: {fileID: 1677757707}
 --- !u!114 &426376305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2043,7 +2047,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -2230155327565112691, guid: 861ef15905234467b96c68190d76aa75, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2421,7 +2425,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473136839}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ba1f9fc3618c5f468bc907d921353ec, type: 3}
   m_Name: 
@@ -3439,7 +3443,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642579770}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ba1f9fc3618c5f468bc907d921353ec, type: 3}
   m_Name: 
@@ -4813,6 +4817,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 2
+  IsInventorySlot: 0
+  container: {fileID: 1677757707}
 --- !u!114 &1063857176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4833,7 +4839,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -2230155327565112691, guid: 861ef15905234467b96c68190d76aa75, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5791,6 +5797,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 3
+  IsInventorySlot: 1
+  container: {fileID: 0}
 --- !u!1 &1222161866
 GameObject:
   m_ObjectHideFlags: 0
@@ -6802,6 +6810,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 1
+  IsInventorySlot: 0
+  container: {fileID: 1677757707}
 --- !u!114 &1474707005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6822,7 +6832,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -2230155327565112691, guid: 861ef15905234467b96c68190d76aa75, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7523,6 +7533,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 2
+  IsInventorySlot: 1
+  container: {fileID: 0}
 --- !u!114 &1579035770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7857,13 +7869,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18784b0056b90ed4585edd9ad124277e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFull: 00000000
   slots:
   - {fileID: 2125583209}
   - {fileID: 2043227940}
   - {fileID: 1579035765}
   - {fileID: 1176689371}
-  inventoryCanvas: {fileID: 1145138566}
+  isFull: 00000000
 --- !u!4 &1654847134
 Transform:
   m_ObjectHideFlags: 0
@@ -8066,9 +8077,11 @@ GameObject:
   - component: {fileID: 1677757705}
   - component: {fileID: 1677757704}
   - component: {fileID: 1677757707}
+  - component: {fileID: 1677757709}
+  - component: {fileID: 1677757708}
   m_Layer: 0
   m_Name: Storage Container
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8103,7 +8116,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -8202,13 +8215,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b7629429c276e4f8afd60f65052461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiRoot: {fileID: 1817673466}
   slots:
   - {fileID: 1129106}
   - {fileID: 1474707002}
   - {fileID: 1063857173}
   - {fileID: 426376302}
-  isFull: 
-  canvas: {fileID: 1817673466}
+  isFull: 00000000
+--- !u!114 &1677757708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677757703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df21a30c4d5b294ea2f7d417e6a5def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: []
+--- !u!114 &1677757709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677757703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aeff57717824454da0e66e75e9dfa3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: []
 --- !u!1001 &1684117035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8728,7 +8767,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806990072}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ba1f9fc3618c5f468bc907d921353ec, type: 3}
   m_Name: 
@@ -8851,12 +8890,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820305430}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a84982386a89704ab101184c91ae95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   i: 0
+  IsInventorySlot: 1
+  container: {fileID: 0}
 --- !u!1 &1821735724
 GameObject:
   m_ObjectHideFlags: 0
@@ -9781,6 +9822,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 1
+  IsInventorySlot: 1
+  container: {fileID: 0}
 --- !u!1 &2073326826
 GameObject:
   m_ObjectHideFlags: 0
@@ -10044,6 +10087,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 0
+  IsInventorySlot: 1
+  container: {fileID: 0}
 --- !u!1001 &1126252490348588167
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class Item1 : InteractableObject
     private Inventory inventory;
     public GameObject itemButton;
     public int slotSize = 2;
+    
 
     void Awake()
     {
