@@ -4,6 +4,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource radialMenu;
     [SerializeField] AudioSource solarPanel;
     [SerializeField] AudioSource solarPanelDone;
+    [SerializeField] AudioSource decompressionSource;
     
     [Header("------ RadialMenu ------")]
     public AudioClip openCloseMenu;
@@ -13,6 +14,9 @@ public class AudioManager : MonoBehaviour
     [Header("------ CleaningSolarPanel ------")]
     public AudioClip AirCleaningSound;
     public AudioClip FullyCleanedSound;
+    
+    [Header("decompression")]
+    public AudioClip decompressionClip;
     
     public void PlayRadialMenu(AudioClip clip)
     {
@@ -35,5 +39,10 @@ public class AudioManager : MonoBehaviour
     public void PlayFullyCleanedSolarPanel(AudioClip clip)
     {
         solarPanelDone.PlayOneShot(clip);
+    }
+    
+    public void PlayDecompressionSound()
+    {
+        decompressionSource.PlayOneShot(decompressionClip);
     }
 }
