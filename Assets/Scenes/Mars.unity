@@ -455,7 +455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoints:
   - key: MainDoorSpawn
-    location: {fileID: 307286132}
+    location: {fileID: 413301290}
   - key: SecondDoorSpawn
     location: {fileID: 894829685}
   - key: SideDoorSpawn

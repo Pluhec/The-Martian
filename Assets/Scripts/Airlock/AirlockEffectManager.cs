@@ -1,64 +1,50 @@
+using System.Collections;
 using UnityEngine;
 
 public class AirlockEffectManager : MonoBehaviour
 {
     public static AirlockEffectManager Instance { get; private set; }
 
-    [Header("Main air‑lock")]
-    public ParticleSystem[] mainAirlock;
+    [Header("Airlock Smoke Particle Systems")]
+    public ParticleSystem[] mainAirlockSmoke;
 
-    [Header("Second air‑lock")]
-    public ParticleSystem[] secondAirlock;
+    public ParticleSystem[] secondAirlockSmoke;
+    public ParticleSystem[] sideAirlockSmoke;
 
-    [Header("Side air‑lock")]
-    public ParticleSystem[] sideAirlock;
-
-    void Awake()
+    private void Awake()
     {
-        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
     }
 
-    /* ----------  API  ---------- */
-
-    public void Play(string key)  => Set(key, true);
-    public void Stop(string key)  => Set(key, false);
-
-    /* ----------  PRIVATE  ---------- */
-
-    void Set(string key, bool play)
+    public void ControlSmoke(string target, float duration)
     {
-        var arr = key switch
-        {
-            "MainAirlock"   => mainAirlock,
-            "SecondAirlock" => secondAirlock,
-            "SideAirlock"   => sideAirlock,
-            _ => null
-        };
+        StartCoroutine(ControlSmokeCoroutine(target, duration));
+    }
 
-        if (arr == null)
+    // EntraceTrigger sem posila cilovou destinaci a delku celeho effektu
+    private IEnumerator ControlSmokeCoroutine(string target, float duration)
+    {
+        ParticleSystem[] selected;
+        switch (target)
         {
-            Debug.LogWarning($"AirlockEffectManager: neznámý entranceKey „{key}“");
-            return;
+            case "MainDoorSpawn":
+            case "MainDoor": selected = mainAirlockSmoke; break;
+            case "SecondDoorSpawn":
+            case "SecondDoor": selected = secondAirlockSmoke; break;
+            case "SideDoorSpawn":
+            case "SideDoor": selected = sideAirlockSmoke; break;
+            default: yield break;
         }
 
-        foreach (var ps in arr)
-        {
-            if (ps == null) continue;
+        foreach (var ps in selected)
+            if (ps != null)
+                ps.Play();
 
-            // pro jistotu aktivujeme GameObject
-            if (play)
-            {
-                if (!ps.gameObject.activeSelf) ps.gameObject.SetActive(true);
-                ps.Play(true);
-            }
-            else
-            {
-                ps.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-                // pokud chceš úplně schovat trysky, odkomentuj:
-                // ps.gameObject.SetActive(false);
-            }
-        }
+        yield return new WaitForSeconds(duration);
+
+        foreach (var ps in selected)
+            if (ps != null)
+                ps.Stop();
     }
 }

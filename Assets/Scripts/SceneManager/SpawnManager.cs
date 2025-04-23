@@ -17,8 +17,10 @@ public class SpawnManager : MonoBehaviour
     [Header("Seznam všech spawnu ve scéně")]
     public SpawnPoint[] spawnPoints;
 
-    [Header("Efekt přistání v Habu")]
-    public float effectDuration = 1.3f;
+    [Header("Efekt přistání v Habu")]
+    public float effectDuration   = 1.3f;
+    [Header("Extra prodleva pro úplné dokončení efektu")]
+    public float extraEffectDelay = 0.5f;
 
     void Awake()
     {
@@ -31,29 +33,22 @@ public class SpawnManager : MonoBehaviour
         if (Instance == this) SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    /* ---------- SCENE LOADED ---------- */
-
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         TeleportPlayer(EntranceData.Instance.lastEntranceKey);
-
         if (EntranceData.Instance.logAfterLoad)
             StartCoroutine(ReturnEffectCo());
     }
 
-    /* ---------- TELEPORT ---------- */
-
     public void TeleportPlayer(string key)
     {
         if (string.IsNullOrEmpty(key)) return;
-
         var player = GameObject.FindWithTag("Player");
         if (!player)
         {
             Debug.Log($"SpawnManager: Hráč nenalezen pro teleport '{key}'.");
             return;
         }
-
         var sp = spawnPoints.FirstOrDefault(p => p.key == key);
         if (sp?.location != null)
             player.transform.position = sp.location.position;
@@ -61,21 +56,26 @@ public class SpawnManager : MonoBehaviour
             Debug.Log($"SpawnManager: Klíč '{key}' nenašel žádný spawnPoint.");
     }
 
-    /* ---------- KORUTINA PŘISTÁNÍ V HABU ---------- */
-
     IEnumerator ReturnEffectCo()
     {
-        Debug.Log("[Teleport] Přistání v Habu (log po loadu)");
+        Debug.Log("[Teleport] Přistání v Habu (log po loadu)");
+
+        var player = GameObject.FindWithTag("Player");
+        var rb = player?.GetComponent<Rigidbody2D>();
+        RigidbodyConstraints2D originalConstraints = RigidbodyConstraints2D.None;
+        if (rb != null)
+        {
+            originalConstraints = rb.constraints;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
 
         var effects = AirlockEffectManager.Instance;
-        effects?.Play(EntranceData.Instance.lastEntranceKey);
-
+        effects?.ControlSmoke(EntranceData.Instance.lastEntranceKey, effectDuration);
         FindObjectOfType<AudioManager>()?.PlayDecompressionSound();
 
-        yield return new WaitForSeconds(effectDuration);
+        yield return new WaitForSeconds(effectDuration + extraEffectDelay);
 
-        effects?.Stop(EntranceData.Instance.lastEntranceKey);
-
-        EntranceData.Instance.logAfterLoad = false;   // reset
+        if (rb != null) rb.constraints = originalConstraints;
+        EntranceData.Instance.logAfterLoad = false;
     }
 }
