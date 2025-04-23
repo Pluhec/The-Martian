@@ -5,6 +5,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource solarPanel;
     [SerializeField] AudioSource solarPanelDone;
     [SerializeField] AudioSource decompressionSource;
+    [SerializeField] AudioSource SlidingAirlockDoorSource;
     
     [Header("------ RadialMenu ------")]
     public AudioClip openCloseMenu;
@@ -15,8 +16,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip AirCleaningSound;
     public AudioClip FullyCleanedSound;
     
-    [Header("decompression")]
+    [Header("------ Decompression ------")]
     public AudioClip decompressionClip;
+
+    [Header("------ SlidingAirlockDoor ------")]
+    public AudioClip SlidingAirlockDoor;
     
     public void PlayRadialMenu(AudioClip clip)
     {
@@ -44,5 +48,10 @@ public class AudioManager : MonoBehaviour
     public void PlayDecompressionSound()
     {
         decompressionSource.PlayOneShot(decompressionClip);
+    }
+    
+    public void PlaySlidingAirlockDoorSound()
+    {
+        SlidingAirlockDoorSource.PlayOneShot(SlidingAirlockDoor);
     }
 }

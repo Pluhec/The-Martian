@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3372137828693049565}
   - component: {fileID: 7320070320345101789}
   - component: {fileID: 604695748875798701}
+  - component: {fileID: 8197367452520740948}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -173,3 +174,16 @@ MonoBehaviour:
   tagTarget: Player
   detectedObjs: []
   DoorOpenAnimatorParamName: DoorOpen
+--- !u!114 &8197367452520740948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315057203316295451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d970b1968352431cad69b9757a9f27a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
