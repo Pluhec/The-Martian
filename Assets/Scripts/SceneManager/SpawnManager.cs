@@ -58,24 +58,28 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator ReturnEffectCo()
     {
-        Debug.Log("[Teleport] Přistání v Habu (log po loadu)");
-
-        var player = GameObject.FindWithTag("Player");
-        var rb = player?.GetComponent<Rigidbody2D>();
-        RigidbodyConstraints2D originalConstraints = RigidbodyConstraints2D.None;
-        if (rb != null)
+        var player   = GameObject.FindWithTag("Player");
+        var movement = player?.GetComponent<Movement>();
+        var animator = player?.GetComponent<Animator>();
+        
+        if (movement != null) 
+            movement.enabled = false;
+        if (animator != null)
         {
-            originalConstraints = rb.constraints;
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            animator.Play("Idle", 0, 0f);
         }
 
+        // spust kour a zvuk
         var effects = AirlockEffectManager.Instance;
         effects?.ControlSmoke(EntranceData.Instance.lastEntranceKey, effectDuration);
         FindObjectOfType<AudioManager>()?.PlayDecompressionSound();
 
+        // pocka az dojedou efekty
         yield return new WaitForSeconds(effectDuration + extraEffectDelay);
-
-        if (rb != null) rb.constraints = originalConstraints;
+        
+        if (movement != null) 
+            movement.enabled = true;
+        
         EntranceData.Instance.logAfterLoad = false;
     }
 }

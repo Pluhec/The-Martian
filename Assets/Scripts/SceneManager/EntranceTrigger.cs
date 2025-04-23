@@ -112,20 +112,17 @@ public class EntranceTrigger : MonoBehaviour
         var player    = GameObject.FindWithTag("Player");
         var movement  = player?.GetComponent<Movement>();
         var animator  = player?.GetComponent<Animator>();
-
-        if (animator == null)
-        {
-            Debug.Log("nemuzu najit animator");
-        }
         
-        if (movement != null)
+        if (movement != null) 
             movement.enabled = false;
-        
         if (animator != null)
         {
             animator.Play("Idle", 0, 0f);
-            Debug.Log("animator by mel fungovat");  
-        }
+            animator.SetFloat("MoveMagnitude", 0);
+            animator.SetFloat("MoveY", 0);
+            animator.SetFloat("MoveX", 0);
+            Debug.Log("animator by mel fungovat");   
+        } 
         
         // spust kour a zvuk
         var effects = AirlockEffectManager.Instance;
@@ -135,7 +132,7 @@ public class EntranceTrigger : MonoBehaviour
         // pocka az dojedou efekty
         yield return new WaitForSeconds(effectDuration + extraEffectDelay);
         
-        if (movement != null)
+        if (movement != null) 
             movement.enabled = true;
 
         SceneManager.LoadScene(targetSceneName);
