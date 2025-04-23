@@ -107,21 +107,34 @@ public class ItemButton : MonoBehaviour,
 
     void DropItem()
     {
+        // Kontrola existence závislostí
+        if (inventory == null || inventory.slots == null) return;
         if (DroppedItemManager.Instance == null) return;
-        var player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        if (player == null) return;
 
-        Vector2 dropPos = (Vector2)player.position + Vector2.up * 0.35f;
+        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+        Vector2 dropPosition = new Vector2(player.position.x, player.position.y + 0.35f);
 
-        /* zahoď hlavní ikonu + placeholdery */
-        RemoveOwnPlaceholders();
-        Destroy(gameObject);
+        for (int i = 0; i < slotSize; i++)
+        {
+            int index = mainSlotIndex + i;
+            
+            // Kontrola platnosti indexu
+            if (index >= inventory.slots.Length) break;
 
-        var spawn = GetComponent<Spawn>();
-        if (spawn != null)
-            DroppedItemManager.Instance.AddDroppedItem(spawn.item, dropPos);
+            Transform slot = inventory.slots[index].transform;
+            if (slot.childCount == 0) continue;
 
-        inventory?.AlignItems();
-        storageContainer?.AlignItems();
+            GameObject child = slot.GetChild(0).gameObject;
+            
+            // Hlavní item spawnuje fyzický objekt
+            if (i == 0 && child.TryGetComponent<Spawn>(out var spawn))
+            {
+                GameObject spawnedItem = Instantiate(spawn.item, dropPosition, Quaternion.identity);
+                DroppedItemManager.Instance.AddDroppedItem(spawn.item, dropPosition);
+            }
+
+            Destroy(child);
+            inventory.isFull[index] = false;
+        }
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class StorageContainer : MonoBehaviour
 {
     public GameObject uiRoot;
-
     public GameObject[] slots;
     public bool[]       isFull;
 
@@ -18,21 +17,21 @@ public class StorageContainer : MonoBehaviour
     public void Open()  => uiRoot?.SetActive(true);
     public void Close() => uiRoot?.SetActive(false);
 
-    /*────────── veřejné API ──────────*/
+    /* ─── veřejné API ─── */
 
-    public bool AddItemAt(int start, GameObject itemObj, int size)
+    public bool AddItemAt(int start, GameObject obj, int size)
     {
         CleanOrphans();
         if (start < 0 || start + size > slots.Length) return false;
 
         for (int j = 0; j < size; j++)
             if (isFull[start + j] || slots[start + j] == null)
-                return AddItem(itemObj, size);
+                return AddItem(obj, size);
 
-        return InsertItem(start, itemObj, size);
+        return InsertItem(start, obj, size);
     }
 
-    public bool AddItem(GameObject itemObj, int size)
+    public bool AddItem(GameObject obj, int size)
     {
         CleanOrphans();
         for (int i = 0; i <= slots.Length - size; i++)
@@ -42,14 +41,14 @@ public class StorageContainer : MonoBehaviour
                 if (isFull[i + j] || slots[i + j] == null) { free = false; break; }
             if (!free) continue;
 
-            return InsertItem(i, itemObj, size);
+            return InsertItem(i, obj, size);
         }
         return false;
     }
 
     public void RemoveItem(int main, int size) => VacateSlots(main, size, null);
 
-    /*────────── interní helpery ──────*/
+    /* ─── interní ─── */
 
     void CleanOrphans()
     {
@@ -60,29 +59,33 @@ public class StorageContainer : MonoBehaviour
 
             if (tf.childCount == 0) { isFull[k] = false; continue; }
 
-            if (tf.GetChild(0).GetComponent<ItemButton>() == null)
+            var ch = tf.GetChild(0);
+            bool hasBtn = ch.GetComponent<ItemButton>()      != null;
+            bool hasPh  = ch.GetComponent<ItemPlaceholder>() != null;
+
+            if (!hasBtn && !hasPh)
             {
-                Destroy(tf.GetChild(0).gameObject);
+                Destroy(ch.gameObject);
                 isFull[k] = false;
             }
         }
     }
 
-    bool InsertItem(int start, GameObject itemObj, int size)
+    bool InsertItem(int start, GameObject obj, int size)
     {
-        var srcBtn = itemObj.GetComponent<ItemButton>();
+        var srcBtn = obj.GetComponent<ItemButton>();
         if (srcBtn == null || ContainsID(srcBtn.itemID)) return false;
 
         GameObject main; ItemButton btn;
-        if (itemObj.scene.IsValid())
+        if (obj.scene.IsValid())
         {
-            main = itemObj;
+            main = obj;
             main.transform.SetParent(slots[start].transform, false);
             btn  = main.GetComponent<ItemButton>();
         }
         else
         {
-            main = Instantiate(itemObj, slots[start].transform, false);
+            main = Instantiate(obj, slots[start].transform, false);
             btn  = main.GetComponent<ItemButton>();
         }
         AlignInSlot(main);
@@ -93,7 +96,7 @@ public class StorageContainer : MonoBehaviour
         for (int j = 1; j < size; j++)
         {
             int idx = start + j;
-            var ph = Instantiate(itemObj, slots[idx].transform, false);
+            var ph = Instantiate(obj, slots[idx].transform, false);
             AlignInSlot(ph);
 
             Destroy(ph.GetComponent<ItemButton>());
@@ -114,11 +117,11 @@ public class StorageContainer : MonoBehaviour
         return true;
     }
 
-    public void VacateSlots(int mainIndex, int slotSize, GameObject keep)
+    public void VacateSlots(int main, int size, GameObject keep)
     {
-        for (int j = 0; j < slotSize; j++)
+        for (int j = 0; j < size; j++)
         {
-            int idx = mainIndex + j;
+            int idx = main + j;
             if (idx >= slots.Length) continue;
 
             var tf = slots[idx]?.transform;
@@ -126,9 +129,7 @@ public class StorageContainer : MonoBehaviour
             {
                 var g  = tf.GetChild(0).gameObject;
                 var ph = g.GetComponent<ItemPlaceholder>();
-
-                if (ph != null && ph.mainSlotIndex != mainIndex) continue; // patří jinému itemu
-
+                if (ph != null && ph.mainSlotIndex != main) continue;
                 if (g != keep) Destroy(g);
             }
             if (idx < isFull.Length) isFull[idx] = false;
@@ -136,6 +137,7 @@ public class StorageContainer : MonoBehaviour
         AlignItems();
     }
 
+    /* ─── zarovnání ─── */
 
     public void AlignItems()
     {
@@ -179,6 +181,8 @@ public class StorageContainer : MonoBehaviour
         }
         for (int k = dst; k < isFull.Length; k++) isFull[k] = false;
     }
+
+    /* ─── drobnosti ─── */
 
     bool ContainsID(string id)
     {

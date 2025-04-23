@@ -5,8 +5,8 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory Instance;
 
-    public GameObject[] slots;      // UI sloty v Inspectoru
-    public bool[]       isFull;     // stejná délka jako slots
+    public GameObject[] slots;
+    public bool[]       isFull;
 
     void Awake()
     {
@@ -14,48 +14,38 @@ public class Inventory : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    /*──────────────────────────────────────────────────────────────*/
-    /*  PUBLIC API                                                  */
-    /*──────────────────────────────────────────────────────────────*/
+    /* ─── veřejné API ─── */
 
-    /// Přidá nebo přesune item přesně na slot startIndex (drop-slot).
-    public bool AddItemAt(int startIndex, GameObject itemObj, int slotSize)
-    {
-        CleanOrphans();                                             // oprava zbytků
-        if (startIndex < 0 || startIndex + slotSize > slots.Length) return false;
-
-        for (int j = 0; j < slotSize; j++)
-            if (isFull[startIndex + j])                             // blok obsazen
-                return AddItem(itemObj, slotSize);                  // fallback
-
-        return InsertItem(startIndex, itemObj, slotSize);
-    }
-
-    /// Najde první volný blok vlevo → vloží / přesune sem.
-    public bool AddItem(GameObject itemObj, int slotSize)
+    public bool AddItemAt(int start, GameObject obj, int size)
     {
         CleanOrphans();
-        for (int i = 0; i <= slots.Length - slotSize; i++)
+        if (start < 0 || start + size > slots.Length) return false;
+
+        for (int j = 0; j < size; j++)
+            if (isFull[start + j]) return AddItem(obj, size);
+
+        return InsertItem(start, obj, size);
+    }
+
+    public bool AddItem(GameObject obj, int size)
+    {
+        CleanOrphans();
+        for (int i = 0; i <= slots.Length - size; i++)
         {
             bool free = true;
-            for (int j = 0; j < slotSize; j++)
+            for (int j = 0; j < size; j++)
                 if (isFull[i + j]) { free = false; break; }
             if (!free) continue;
 
-            return InsertItem(i, itemObj, slotSize);
+            return InsertItem(i, obj, size);
         }
         return false;
     }
 
-    /// Smaže celý předmět (hlavní i placeholdery).
-    public void RemoveItem(int mainIndex, int slotSize) =>
-        VacateSlots(mainIndex, slotSize, null);
+    public void RemoveItem(int main, int size) => VacateSlots(main, size, null);
 
-    /*──────────────────────────────────────────────────────────────*/
-    /*  PRIVATE HELPERS                                             */
-    /*──────────────────────────────────────────────────────────────*/
+    /* ─── interní ─── */
 
-    /// Odstraní “sirotčí” placeholdery, které nemají ItemButton.
     void CleanOrphans()
     {
         for (int k = 0; k < slots.Length; k++)
@@ -63,43 +53,47 @@ public class Inventory : MonoBehaviour
             var tf = slots[k].transform;
             if (tf.childCount == 0) { isFull[k] = false; continue; }
 
-            if (tf.GetChild(0).GetComponent<ItemButton>() == null)
+            var ch = tf.GetChild(0);
+            bool hasBtn = ch.GetComponent<ItemButton>()      != null;
+            bool hasPh  = ch.GetComponent<ItemPlaceholder>() != null;
+
+            if (!hasBtn && !hasPh)
             {
-                Destroy(tf.GetChild(0).gameObject);
+                Destroy(ch.gameObject);
                 isFull[k] = false;
             }
         }
     }
 
-    /// Vloží item na pozici startIndex – bez kontrol (volá jej AddItem/At).
-    bool InsertItem(int startIndex, GameObject itemObj, int slotSize)
+    bool InsertItem(int start, GameObject obj, int size)
     {
-        var srcBtn = itemObj.GetComponent<ItemButton>();
+        var srcBtn = obj.GetComponent<ItemButton>();
         if (srcBtn == null || ContainsID(srcBtn.itemID)) return false;
 
-        /* hlavní ItemButton */
-        GameObject main;
-        ItemButton btn;
-        if (itemObj.scene.IsValid())                         // přesun ve scéně
+        /* hlavní ikona */
+        GameObject main; ItemButton btn;
+        if (obj.scene.IsValid())
         {
-            main = itemObj;
-            main.transform.SetParent(slots[startIndex].transform, false);
+            main = obj;
+            main.transform.SetParent(slots[start].transform, false);
             btn  = main.GetComponent<ItemButton>();
         }
-        else                                                 // prefab pickup
+        else
         {
-            main = Instantiate(itemObj, slots[startIndex].transform, false);
+            main = Instantiate(obj, slots[start].transform, false);
             btn  = main.GetComponent<ItemButton>();
         }
+        AlignInSlot(main);
 
-        btn.Initialize(startIndex, slotSize, this, null);
-        isFull[startIndex] = true;
+        btn.Initialize(start, size, this, null);
+        isFull[start] = true;
 
         /* placeholdery */
-        for (int j = 1; j < slotSize; j++)
+        for (int j = 1; j < size; j++)
         {
-            int idx = startIndex + j;
-            var ph = Instantiate(itemObj, slots[idx].transform, false);
+            int idx = start + j;
+            var ph = Instantiate(obj, slots[idx].transform, false);
+            AlignInSlot(ph);
 
             Destroy(ph.GetComponent<ItemButton>());
             Destroy(ph.GetComponent<Button>());
@@ -113,29 +107,25 @@ public class Inventory : MonoBehaviour
             var cg = ph.GetComponent<CanvasGroup>() ?? ph.AddComponent<CanvasGroup>();
             cg.blocksRaycasts = false;
 
-            ph.AddComponent<ItemPlaceholder>().mainSlotIndex = startIndex;
+            ph.AddComponent<ItemPlaceholder>().mainSlotIndex = start;
             isFull[idx] = true;
         }
         return true;
     }
 
-    /// Uvolní blok slotů; zachová zadaný GameObject (hlavní ikonu v novém rodiči).
-    public void VacateSlots(int mainIndex, int slotSize, GameObject keep)
+    public void VacateSlots(int main, int size, GameObject keep)
     {
-        for (int j = 0; j < slotSize; j++)
+        for (int j = 0; j < size; j++)
         {
-            int idx = mainIndex + j;
+            int idx = main + j;
             if (idx >= slots.Length) continue;
 
             var tf = slots[idx].transform;
             if (tf.childCount > 0)
             {
-                var g = tf.GetChild(0).gameObject;
-
-                // je to placeholder jiného itemu? → nechat být
+                var g  = tf.GetChild(0).gameObject;
                 var ph = g.GetComponent<ItemPlaceholder>();
-                if (ph != null && ph.mainSlotIndex != mainIndex) continue;
-
+                if (ph != null && ph.mainSlotIndex != main) continue;
                 if (g != keep) Destroy(g);
             }
             isFull[idx] = false;
@@ -143,8 +133,7 @@ public class Inventory : MonoBehaviour
         AlignItems();
     }
 
-
-    /// Zarovná ikony “doleva”.
+    /* ─── zarovnání ─── */
     public void AlignItems()
     {
         int dst = 0, i = 0;
@@ -186,6 +175,8 @@ public class Inventory : MonoBehaviour
         for (int k = dst; k < isFull.Length; k++) isFull[k] = false;
     }
 
+    /* ─── utils ─── */
+
     bool ContainsID(string id)
     {
         foreach (var s in slots)
@@ -195,5 +186,23 @@ public class Inventory : MonoBehaviour
             if (b != null && b.itemID == id) return true;
         }
         return false;
+    }
+
+    void AlignInSlot(GameObject go)
+    {
+        var rt = go.GetComponent<RectTransform>();
+        if (rt != null)
+        {
+            rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0.5f,0.5f);
+            rt.anchoredPosition = Vector2.zero;
+            rt.localRotation    = Quaternion.identity;
+            rt.localScale       = Vector3.one;
+        }
+        else
+        {
+            go.transform.localPosition = Vector3.zero;
+            go.transform.localRotation = Quaternion.identity;
+            go.transform.localScale    = Vector3.one;
+        }
     }
 }
