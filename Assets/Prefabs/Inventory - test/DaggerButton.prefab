@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6045259560832597392}
   - component: {fileID: -8724258738104111995}
   - component: {fileID: 2852940539364743184}
+  - component: {fileID: 367626994187847574}
   m_Layer: 5
   m_Name: DaggerButton
   m_TagString: Untagged
@@ -151,3 +152,15 @@ MonoBehaviour:
   slotSize: 2
   inventory: {fileID: 0}
   storageContainer: {fileID: 0}
+--- !u!225 &367626994187847574
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9089447296183591438}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

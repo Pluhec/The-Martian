@@ -1,84 +1,91 @@
+using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ItemButton : MonoBehaviour,
     IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public string itemID = "";
+
     [HideInInspector] public int mainSlotIndex;
     [HideInInspector] public int slotSize = 1;
 
-    // teď PRIVATE, nepřetahuješ je v inspektoru
-    [HideInInspector] public Inventory inventory;
+    [HideInInspector] public Inventory        inventory;
     [HideInInspector] public StorageContainer storageContainer;
 
-    private Transform originalParent;
-    private Canvas canvas;
-    private CanvasGroup canvasGroup;
+    Transform   originalParent;
+    Canvas      canvas;
+    CanvasGroup cg;
 
+    /*──────────────────────────────*/
+    /*  INIT                        */
+    /*──────────────────────────────*/
     void Awake()
     {
-        // vždycky bezpečně najdeme singleton
+        if (string.IsNullOrEmpty(itemID))
+            itemID = Guid.NewGuid().ToString();
+
         inventory = Inventory.Instance;
-        // canvas najdeme na scéně jednou (tvůj hlavní UI canvas)
-        canvas = FindObjectOfType<Canvas>();
-        canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        canvas    = FindObjectOfType<Canvas>();
+        cg        = GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
     }
 
-    // volá se z Inventory.AddItem / StorageContainer.AddItem
     public void Initialize(int slotIdx, int size, Inventory inv, StorageContainer cont)
     {
-        mainSlotIndex = slotIdx;
-        slotSize = size;
-        inventory = inv;
+        mainSlotIndex    = slotIdx;
+        slotSize         = size;
+        inventory        = inv;
         storageContainer = cont;
+        originalParent   = transform.parent;
     }
 
-    public void OnPointerClick(PointerEventData e)
+    /*──────────────────────────────*/
+    /*  HELPERS                     */
+    /*──────────────────────────────*/
+    void RemoveOwnPlaceholders()
     {
-        if (e.button == PointerEventData.InputButton.Right)
-            DropItem();
-    }
-
-    private void DropItem()
-    {
-        if (inventory == null || DroppedItemManager.Instance == null) return;
-        var player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        if (player == null) return;
-        var dropPos = (Vector2)player.position + Vector2.up * 0.35f;
-
-        // Pro každý slot části itemu
-        for (int k = 0; k < slotSize; k++)
+        for (int j = 0; j < slotSize; j++)
         {
-            int idx = mainSlotIndex + k;
-            Transform slotTf = null;
-            if (inventory != null && idx < inventory.slots.Length)
-                slotTf = inventory.slots[idx].transform;
-            else if (storageContainer != null && idx < storageContainer.slots.Length)
-                slotTf = storageContainer.slots[idx].transform;
-            if (slotTf == null || slotTf.childCount == 0) continue;
+            int idx = mainSlotIndex + j;
 
-            var child = slotTf.GetChild(0).gameObject;
-            if (k == 0 && child.TryGetComponent<Spawn>(out var sp))
+            if (inventory != null && idx < inventory.slots.Length)
             {
-                var dropped = Instantiate(sp.item, dropPos, Quaternion.identity);
-                DroppedItemManager.Instance.AddDroppedItem(sp.item, dropPos);
+                var tf = inventory.slots[idx].transform;
+                if (tf.childCount > 0)
+                {
+                    var ph = tf.GetChild(0).GetComponent<ItemPlaceholder>();
+                    if (ph != null && ph.mainSlotIndex == mainSlotIndex)
+                        Destroy(tf.GetChild(0).gameObject);
+                }
+                inventory.isFull[idx] = false;
             }
 
-            Destroy(child);
-            if (inventory != null) inventory.isFull[idx] = false;
-            else storageContainer.isFull[idx] = false;
+            if (storageContainer != null && idx < storageContainer.slots.Length)
+            {
+                var tf = storageContainer.slots[idx].transform;
+                if (tf.childCount > 0)
+                {
+                    var ph = tf.GetChild(0).GetComponent<ItemPlaceholder>();
+                    if (ph != null && ph.mainSlotIndex == mainSlotIndex)
+                        Destroy(tf.GetChild(0).gameObject);
+                }
+                storageContainer.isFull[idx] = false;
+            }
         }
-
-        inventory?.AlignItems();
-        storageContainer?.AlignItems();
     }
 
+    /*──────────────────────────────*/
+    /*  DRAG & DROP                 */
+    /*──────────────────────────────*/
     public void OnBeginDrag(PointerEventData e)
     {
+        /* zruš placeholdery ve starém kontejneru */
+        RemoveOwnPlaceholders();
+
         originalParent = transform.parent;
         transform.SetParent(canvas.transform);
-        canvasGroup.blocksRaycasts = false;
+        cg.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData e) => transform.position = e.position;
@@ -87,6 +94,34 @@ public class ItemButton : MonoBehaviour,
     {
         transform.SetParent(originalParent);
         transform.localPosition = Vector3.zero;
-        canvasGroup.blocksRaycasts = true;
+        cg.blocksRaycasts = true;
+    }
+
+    /*──────────────────────────────*/
+    /*  PRAVÝ KLIK = DROP           */
+    /*──────────────────────────────*/
+    public void OnPointerClick(PointerEventData e)
+    {
+        if (e.button == PointerEventData.InputButton.Right) DropItem();
+    }
+
+    void DropItem()
+    {
+        if (DroppedItemManager.Instance == null) return;
+        var player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        if (player == null) return;
+
+        Vector2 dropPos = (Vector2)player.position + Vector2.up * 0.35f;
+
+        /* zahoď hlavní ikonu + placeholdery */
+        RemoveOwnPlaceholders();
+        Destroy(gameObject);
+
+        var spawn = GetComponent<Spawn>();
+        if (spawn != null)
+            DroppedItemManager.Instance.AddDroppedItem(spawn.item, dropPos);
+
+        inventory?.AlignItems();
+        storageContainer?.AlignItems();
     }
 }
