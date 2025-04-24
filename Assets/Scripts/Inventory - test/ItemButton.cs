@@ -80,13 +80,19 @@ public class ItemButton : MonoBehaviour,
     /*──────────────────────────────*/
     public void OnBeginDrag(PointerEventData e)
     {
-        /* zruš placeholdery ve starém kontejneru */
-        RemoveOwnPlaceholders();
+        /* 1) zjisti platný Canvas */
+        if (canvas == null || !canvas)                    // null nebo zničen
+            canvas = FindObjectOfType<Canvas>();
 
+        if (canvas == null) return;   // ani v nové scéně Canvas není → nic netahej
+
+        /* 2) standardní logika */
+        RemoveOwnPlaceholders();
         originalParent = transform.parent;
         transform.SetParent(canvas.transform);
         cg.blocksRaycasts = false;
     }
+
 
     public void OnDrag(PointerEventData e) => transform.position = e.position;
 
@@ -113,6 +119,38 @@ public class ItemButton : MonoBehaviour,
 
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
         Vector2 dropPosition = new Vector2(player.position.x, player.position.y + 0.35f);
+        
+        if (TryGetComponent<ContainerSpawn>(out var csp))
+        {
+            // 1) fyzicky ji přesuneme do scény
+            Vector2 dropPos = (Vector2)player.position + Vector2.up * 0.35f;
+            csp.SpawnContainer(dropPos);
+
+            // Iterate through each slot used by the item
+            for (int j = 0; j < slotSize; j++)
+            {
+                int idx = mainSlotIndex + j;
+                if (idx >= inventory.slots.Length) continue;
+
+                // Remove all children that carry a placeholder with matching mainSlotIndex
+                Transform slotTransform = inventory.slots[idx].transform;
+                for (int k = slotTransform.childCount - 1; k >= 0; k--)
+                {
+                    var child = slotTransform.GetChild(k).gameObject;
+                    var ph = child.GetComponent<ItemPlaceholder>();
+                    if (ph != null && ph.mainSlotIndex == mainSlotIndex)
+                    {
+                        Destroy(child);
+                    }
+                }
+
+                // Mark the slot as free
+                inventory.isFull[idx] = false;
+            }
+
+            inventory.AlignItems();
+            Destroy(gameObject);
+        }
 
         for (int i = 0; i < slotSize; i++)
         {
