@@ -134,7 +134,7 @@ public class TerminalManager : MonoBehaviour
     void ExitTerminal()
     {
         EntranceData.Instance.lastEntranceKey = exitEntranceKey;
-        SceneManager.LoadScene(returnSceneName);
+        SceneFader.Instance.FadeToScene(returnSceneName);
     }
 
     void AddDirectoryLine(string userInput)

@@ -95,7 +95,7 @@ public class EntranceTrigger : MonoBehaviour
         else if (marsToHab)
         {
             EntranceData.Instance.logAfterLoad = true;
-            SceneManager.LoadScene(targetSceneName);
+            SceneFader.Instance.FadeToScene(targetSceneName);
         }
         else
         {
@@ -103,7 +103,7 @@ public class EntranceTrigger : MonoBehaviour
             if (current == targetSceneName)
                 SpawnManager.Instance.TeleportPlayer(entranceKey);
             else
-                SceneManager.LoadScene(targetSceneName);
+               SceneFader.Instance.FadeToScene(targetSceneName);
         }
     }
 
@@ -135,6 +135,6 @@ public class EntranceTrigger : MonoBehaviour
         if (movement != null) 
             movement.enabled = true;
 
-        SceneManager.LoadScene(targetSceneName);
+        SceneFader.Instance.FadeToScene(targetSceneName);
     }
 }
