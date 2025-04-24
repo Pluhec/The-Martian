@@ -1,56 +1,28 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class SlidingAirlockDoorTrigger : MonoBehaviour
 {
-    [SerializeField] private AudioManager audioManager;
-    
-    private bool isPlaying = false;
-    private bool exitRequested = false;
-    private float clipLength;
+    private static readonly int SideDoorOpenHash = Animator.StringToHash("SideDoorOpen");
+    private Animator animator;
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        GetComponent<BoxCollider2D>().isTrigger = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        {
-            exitRequested = false;
-            TryPlayDoorSound();
-        }
+            animator.SetBool(SideDoorOpenHash, true);
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        {
-            if (!isPlaying)
-            {
-                TryPlayDoorSound();
-            }
-            else
-            {
-                exitRequested = true;
-            }
-        }
-    }
-
-    private void TryPlayDoorSound()
-    {
-        if (!isPlaying)
-            StartCoroutine(PlayDoorSoundCoroutine());
-    }
-
-    private IEnumerator PlayDoorSoundCoroutine()
-    {
-        isPlaying = true;
-        audioManager.PlaySlidingAirlockDoorSound();
-        yield return new WaitForSeconds(clipLength);
-        isPlaying = false;
-
-        if (exitRequested)
-        {
-            exitRequested = false;
-            StartCoroutine(PlayDoorSoundCoroutine());
-        }
+            animator.SetBool(SideDoorOpenHash, false);
     }
 }
