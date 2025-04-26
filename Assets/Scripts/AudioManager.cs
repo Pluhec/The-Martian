@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] AudioSource radialMenu;
@@ -7,7 +6,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource solarPanelDone;
     [SerializeField] AudioSource decompressionSource;
     [SerializeField] AudioSource SlidingAirlockDoorSource;
-    [SerializeField] AudioSource footstepSource;
     
     [Header("------ RadialMenu ------")]
     public AudioClip openCloseMenu;
@@ -23,14 +21,6 @@ public class AudioManager : MonoBehaviour
 
     [Header("------ SlidingAirlockDoor ------")]
     public AudioClip SlidingAirlockDoor;
-    
-    [Header("------ Kroky ------")]
-    public AudioClip walkingOnMetal;
-    public AudioClip walkingOnSand;
-    [Tooltip("Výška tónu při chůzi (výchozí 1)")]
-    public float walkFootstepPitch = 1f;
-    [Tooltip("Výška tónu při běhu (výchozí 1.1)")]
-    public float runFootstepPitch = 1.1f;
     
     public void PlayRadialMenu(AudioClip clip)
     {
@@ -64,33 +54,4 @@ public class AudioManager : MonoBehaviour
     {
         SlidingAirlockDoorSource.PlayOneShot(SlidingAirlockDoor);
     }
-    
-    private AudioClip currentFootstep;
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        switch (scene.name)
-        {
-            case "WalkingOnMetal":
-                currentFootstep = walkingOnMetal;
-                break;
-            case "WalkingOnSand":
-                currentFootstep = walkingOnSand;
-                break;
-            default:
-                currentFootstep = walkingOnMetal;
-                break;
-        }
-    }
-
-    public void PlayFootstep(bool isRunning)
-    {
-        if (currentFootstep == null || footstepSource == null)
-            return;
-
-        footstepSource.pitch = isRunning ? runFootstepPitch : walkFootstepPitch;
-        footstepSource.PlayOneShot(currentFootstep);
-    }
-
-    
 }
