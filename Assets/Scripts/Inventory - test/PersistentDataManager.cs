@@ -29,4 +29,13 @@ public class PersistentDataManager : MonoBehaviour
     {
         return collectedItems.Contains(itemID);
     }
+
+    /*──────── EXPORT / IMPORT pro SaveLoad ────────*/
+    public List<string> ExportCollected() => new List<string>(collectedItems);
+
+    public void ImportCollected(List<string> list)
+    {
+        if (list == null) return;
+        collectedItems = new HashSet<string>(list);
+    }
 }

@@ -58,14 +58,18 @@ public class DroppedItemManager : MonoBehaviour
         }
     }
     
+    /*──────── EXPORT ───────*/
     public List<SaveLoadManager.DroppedData> ExportDropped()
     {
         var list = new List<SaveLoadManager.DroppedData>();
         foreach (var d in droppedItems)
         {
+            var def = d.prefab.GetComponent<ItemDefinition>();
+            if (def == null) continue;
+
             list.Add(new SaveLoadManager.DroppedData
             {
-                prefabID = d.prefab.GetComponent<ItemButton>()?.itemID,
+                prefabID = def.itemID,
                 position = d.position,
                 scene    = d.sceneName
             });
@@ -73,6 +77,7 @@ public class DroppedItemManager : MonoBehaviour
         return list;
     }
 
+/*──────── IMPORT ───────*/
     public void ImportDropped(List<SaveLoadManager.DroppedData> list)
     {
         if (list == null) return;
@@ -80,8 +85,8 @@ public class DroppedItemManager : MonoBehaviour
 
         foreach (var d in list)
         {
-            GameObject prefab = /* lookup podle d.prefabID */ null;
-            if (prefab == null) continue;
+            GameObject prefab = PrefabRegistry.Instance?.Get(d.prefabID);
+            if (prefab == null) { Debug.LogWarning($"[Dropped] prefabKey \"{d.prefabID}\" nenalezen"); continue; }
 
             droppedItems.Add(new DroppedItemData
             {
@@ -91,5 +96,6 @@ public class DroppedItemManager : MonoBehaviour
             });
         }
     }
+
 
 }

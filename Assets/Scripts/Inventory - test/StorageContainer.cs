@@ -214,6 +214,7 @@ public class StorageContainer : MonoBehaviour
         }
     }
     
+    /*──────── EXPORT ───────*/
     public SaveLoadManager.ContainerData ExportContainer()
     {
         var data = new SaveLoadManager.ContainerData
@@ -229,12 +230,14 @@ public class StorageContainer : MonoBehaviour
             if (tf.childCount > 0)
             {
                 var btn = tf.GetChild(0).GetComponent<ItemButton>();
-                if (btn != null)
+                var def = tf.GetChild(0).GetComponent<ItemDefinition>();
+                if (btn != null && def != null)
                 {
                     data.items.Add(new SaveLoadManager.ItemData
                     {
-                        itemID   = btn.itemID,
-                        slotSize = btn.slotSize
+                        prefabKey = def.itemID,
+                        uniqueID  = btn.itemID,
+                        slotSize  = btn.slotSize
                     });
                     i += btn.slotSize;
                     continue;
@@ -245,15 +248,16 @@ public class StorageContainer : MonoBehaviour
         return data;
     }
 
+/*──────── IMPORT ───────*/
     public void ImportContainer(List<SaveLoadManager.ContainerData> list)
     {
         var id = GetComponent<PersistentItem>()?.itemID;
-        if (string.IsNullOrEmpty(id)) return;
+        if (string.IsNullOrEmpty(id) || list == null) return;
 
         var found = list.Find(c => c.containerID == id);
         if (found == null) return;
 
-        /* vyčistit */
+        /* vyprázdni */
         for (int k = 0; k < slots.Length; k++)
         {
             if (slots[k].transform.childCount > 0)
@@ -261,11 +265,17 @@ public class StorageContainer : MonoBehaviour
             isFull[k] = false;
         }
 
+        /* vlož položky */
         foreach (var it in found.items)
         {
-            GameObject prefab = /* lookup podle it.itemID */ null;
-            if (prefab == null) continue;
-            AddItem(prefab, it.slotSize);
+            GameObject prefab = PrefabRegistry.Instance?.Get(it.prefabKey);
+            if (prefab == null) { Debug.LogWarning($"[Container] prefabKey \"{it.prefabKey}\" nenalezen"); continue; }
+
+            var obj = Instantiate(prefab);
+            var btn = obj.GetComponent<ItemButton>();
+            if (btn != null) btn.itemID = it.uniqueID;
+
+            AddItem(obj, it.slotSize);
         }
     }
 

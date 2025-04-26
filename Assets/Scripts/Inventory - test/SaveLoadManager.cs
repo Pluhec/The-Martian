@@ -5,15 +5,13 @@ using UnityEngine;
 public class SaveLoadManager : MonoBehaviour
 {
     public static SaveLoadManager Instance;
-
     const string FILE = "savegame.json";
 
-    /*──────── cesta podle platformy ────────*/
     string BaseDir =>
 #if UNITY_EDITOR
-        Path.Combine(Application.dataPath, "Saves");      // zapisuje do Assets/Saves
+        Path.Combine(Application.dataPath, "Saves");
 #else
-        Application.persistentDataPath;                   // build – bezpečné místo pro zápis
+        Application.persistentDataPath;
 #endif
 
     void Awake()
@@ -21,61 +19,64 @@ public class SaveLoadManager : MonoBehaviour
         if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
         else { Destroy(gameObject); return; }
 
-        Load();
+        Load();                      // načti při startu
     }
 
     void OnApplicationQuit() => Save();
 
-    /*──────── datové třídy ────────*/
-    [System.Serializable] public class ItemData       { public string itemID;  public int slotSize; }
-    [System.Serializable] public class ContainerData  { public string containerID; public List<ItemData> items = new(); }
-    [System.Serializable] public class DroppedData    { public string prefabID;   public Vector3 position; public string scene; }
+    /*──────────────── datové třídy ─────────────*/
+    [System.Serializable] public class ItemData      { public string prefabKey; public string uniqueID; public int slotSize; }
+    [System.Serializable] public class ContainerData { public string containerID; public List<ItemData> items = new(); }
+    [System.Serializable] public class DroppedData   { public string prefabID;  public Vector3 position; public string scene; }
 
     [System.Serializable] class SaveData
     {
-        public List<ItemData>     inventory  = new();
+        public List<ItemData>      inventory  = new();
         public List<ContainerData> containers = new();
-        public List<DroppedData>  dropped    = new();
+        public List<DroppedData>   dropped    = new();
+        public List<string>        collected  = new();   // ★ nově uložené Persistent data
     }
 
-    /*──────── SAVE ────────*/
+    /*──────────────── SAVE ─────────────*/
     public void Save()
     {
         var data = new SaveData
         {
-            inventory  = Inventory.Instance.ExportInventory(),                 // NEW
-            dropped    = DroppedItemManager.Instance.ExportDropped()           // NEW
+            inventory = Inventory.Instance.ExportInventory(),
+            dropped   = DroppedItemManager.Instance.ExportDropped(),
+            collected = PersistentDataManager.Instance.ExportCollected()  // ★
         };
 
         foreach (var box in FindObjectsOfType<StorageContainer>(true))
-            data.containers.Add(box.ExportContainer());                       // NEW
+            data.containers.Add(box.ExportContainer());
 
-        if (!Directory.Exists(BaseDir))
-            Directory.CreateDirectory(BaseDir);
-
-        string json = JsonUtility.ToJson(data, true);
-        File.WriteAllText(Path.Combine(BaseDir, FILE), json);
+        if (!Directory.Exists(BaseDir)) Directory.CreateDirectory(BaseDir);
+        File.WriteAllText(Path.Combine(BaseDir, FILE), JsonUtility.ToJson(data, true));
+#if UNITY_EDITOR
+        Debug.Log($"[SaveLoad] Uloženo: {BaseDir}/{FILE}");
+#endif
     }
 
-    /*──────── LOAD ────────*/
+    /*──────────────── LOAD ─────────────*/
     public void Load()
     {
         string path = Path.Combine(BaseDir, FILE);
         if (!File.Exists(path)) return;
 
-        string json = File.ReadAllText(path);
-        var data = JsonUtility.FromJson<SaveData>(json);
-        if (data == null) return;
+        var data = JsonUtility.FromJson<SaveData>(File.ReadAllText(path));
+        if (data == null) { Debug.LogWarning("[SaveLoad] Chybný JSON!"); return; }
 
-        Inventory.Instance.ImportInventory(data.inventory);                    // NEW
-        DroppedItemManager.Instance.ImportDropped(data.dropped);               // NEW
+        Inventory.Instance.ImportInventory(data.inventory);
+        DroppedItemManager.Instance.ImportDropped(data.dropped);
+        PersistentDataManager.Instance.ImportCollected(data.collected);      // ★ obnov jednorázové předměty
+
         StartCoroutine(DelayContainers(data.containers));
     }
 
     System.Collections.IEnumerator DelayContainers(List<ContainerData> list)
     {
-        yield return null; // počkej jeden frame, ať se všechny bedny stihnou spawnout
+        yield return null;    // 1 frame
         foreach (var box in FindObjectsOfType<StorageContainer>(true))
-            box.ImportContainer(list);                                         // NEW
+            box.ImportContainer(list);
     }
 }

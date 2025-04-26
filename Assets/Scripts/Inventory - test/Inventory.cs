@@ -207,8 +207,7 @@ public class Inventory : MonoBehaviour
         }
     }
     
-    /*──────────────── SAVE/LOAD ─────────────*/
-
+    /*──────── EXPORT ───────*/
     public List<SaveLoadManager.ItemData> ExportInventory()
     {
         var list = new List<SaveLoadManager.ItemData>();
@@ -219,12 +218,14 @@ public class Inventory : MonoBehaviour
             if (tf.childCount > 0)
             {
                 var btn = tf.GetChild(0).GetComponent<ItemButton>();
-                if (btn != null)
+                var def = tf.GetChild(0).GetComponent<ItemDefinition>();
+                if (btn != null && def != null)
                 {
                     list.Add(new SaveLoadManager.ItemData
                     {
-                        itemID   = btn.itemID,
-                        slotSize = btn.slotSize
+                        prefabKey = def.itemID,   // lookup klíč
+                        uniqueID  = btn.itemID,   // zachovat GUID
+                        slotSize  = btn.slotSize
                     });
                     i += btn.slotSize;
                     continue;
@@ -235,11 +236,12 @@ public class Inventory : MonoBehaviour
         return list;
     }
 
+/*──────── IMPORT ───────*/
     public void ImportInventory(List<SaveLoadManager.ItemData> list)
     {
         if (list == null || list.Count == 0) return;
 
-        /* vyčistit */
+        /* vyprázdni inventář */
         for (int k = 0; k < slots.Length; k++)
         {
             if (slots[k].transform.childCount > 0)
@@ -247,14 +249,20 @@ public class Inventory : MonoBehaviour
             isFull[k] = false;
         }
 
+        /* znovu vlož */
         foreach (var it in list)
         {
-            // z nějaké tvé mapy itemID → prefab ikony; minimálně vezmi obecný prefab
-            GameObject prefab = /* tvůj lookup */ null;
-            if (prefab == null) continue;
+            GameObject prefab = PrefabRegistry.Instance?.Get(it.prefabKey);
+            if (prefab == null) { Debug.LogWarning($"[Inventory] prefabKey \"{it.prefabKey}\" nenalezen"); continue; }
 
-            AddItem(prefab, it.slotSize);
+            // vytvoř ikonu
+            var obj = Instantiate(prefab);
+            var btn = obj.GetComponent<ItemButton>();
+            if (btn != null) btn.itemID = it.uniqueID;          // obnov GUID
+
+            AddItem(obj, it.slotSize);                          // AddItem si ikonu přemístí
         }
     }
+
 
 }
