@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class StorageContainer : MonoBehaviour
 {
@@ -212,4 +213,60 @@ public class StorageContainer : MonoBehaviour
             go.transform.localScale    = Vector3.one;
         }
     }
+    
+    public SaveLoadManager.ContainerData ExportContainer()
+    {
+        var data = new SaveLoadManager.ContainerData
+        {
+            containerID = GetComponent<PersistentItem>()?.itemID
+        };
+        if (string.IsNullOrEmpty(data.containerID)) return data;
+
+        int i = 0;
+        while (i < slots.Length)
+        {
+            var tf = slots[i].transform;
+            if (tf.childCount > 0)
+            {
+                var btn = tf.GetChild(0).GetComponent<ItemButton>();
+                if (btn != null)
+                {
+                    data.items.Add(new SaveLoadManager.ItemData
+                    {
+                        itemID   = btn.itemID,
+                        slotSize = btn.slotSize
+                    });
+                    i += btn.slotSize;
+                    continue;
+                }
+            }
+            i++;
+        }
+        return data;
+    }
+
+    public void ImportContainer(List<SaveLoadManager.ContainerData> list)
+    {
+        var id = GetComponent<PersistentItem>()?.itemID;
+        if (string.IsNullOrEmpty(id)) return;
+
+        var found = list.Find(c => c.containerID == id);
+        if (found == null) return;
+
+        /* vyčistit */
+        for (int k = 0; k < slots.Length; k++)
+        {
+            if (slots[k].transform.childCount > 0)
+                Destroy(slots[k].transform.GetChild(0).gameObject);
+            isFull[k] = false;
+        }
+
+        foreach (var it in found.items)
+        {
+            GameObject prefab = /* lookup podle it.itemID */ null;
+            if (prefab == null) continue;
+            AddItem(prefab, it.slotSize);
+        }
+    }
+
 }

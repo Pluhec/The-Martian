@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour
 {
@@ -205,4 +206,55 @@ public class Inventory : MonoBehaviour
             go.transform.localScale    = Vector3.one;
         }
     }
+    
+    /*──────────────── SAVE/LOAD ─────────────*/
+
+    public List<SaveLoadManager.ItemData> ExportInventory()
+    {
+        var list = new List<SaveLoadManager.ItemData>();
+        int i = 0;
+        while (i < slots.Length)
+        {
+            var tf = slots[i].transform;
+            if (tf.childCount > 0)
+            {
+                var btn = tf.GetChild(0).GetComponent<ItemButton>();
+                if (btn != null)
+                {
+                    list.Add(new SaveLoadManager.ItemData
+                    {
+                        itemID   = btn.itemID,
+                        slotSize = btn.slotSize
+                    });
+                    i += btn.slotSize;
+                    continue;
+                }
+            }
+            i++;
+        }
+        return list;
+    }
+
+    public void ImportInventory(List<SaveLoadManager.ItemData> list)
+    {
+        if (list == null || list.Count == 0) return;
+
+        /* vyčistit */
+        for (int k = 0; k < slots.Length; k++)
+        {
+            if (slots[k].transform.childCount > 0)
+                Destroy(slots[k].transform.GetChild(0).gameObject);
+            isFull[k] = false;
+        }
+
+        foreach (var it in list)
+        {
+            // z nějaké tvé mapy itemID → prefab ikony; minimálně vezmi obecný prefab
+            GameObject prefab = /* tvůj lookup */ null;
+            if (prefab == null) continue;
+
+            AddItem(prefab, it.slotSize);
+        }
+    }
+
 }

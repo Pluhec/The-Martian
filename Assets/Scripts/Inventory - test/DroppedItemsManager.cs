@@ -57,4 +57,39 @@ public class DroppedItemManager : MonoBehaviour
             }
         }
     }
+    
+    public List<SaveLoadManager.DroppedData> ExportDropped()
+    {
+        var list = new List<SaveLoadManager.DroppedData>();
+        foreach (var d in droppedItems)
+        {
+            list.Add(new SaveLoadManager.DroppedData
+            {
+                prefabID = d.prefab.GetComponent<ItemButton>()?.itemID,
+                position = d.position,
+                scene    = d.sceneName
+            });
+        }
+        return list;
+    }
+
+    public void ImportDropped(List<SaveLoadManager.DroppedData> list)
+    {
+        if (list == null) return;
+        droppedItems.Clear();
+
+        foreach (var d in list)
+        {
+            GameObject prefab = /* lookup podle d.prefabID */ null;
+            if (prefab == null) continue;
+
+            droppedItems.Add(new DroppedItemData
+            {
+                prefab    = prefab,
+                position  = d.position,
+                sceneName = d.scene
+            });
+        }
+    }
+
 }
