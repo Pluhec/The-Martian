@@ -1,0 +1,24 @@
+{
+    "inventory": [],
+    "containers": [
+        {
+            "containerID": "Storage Container_(-1.071, -1.168, 0.000)",
+            "items": [
+                {
+                    "prefabKey": "daggerButtom",
+                    "uniqueID": "cfb4b1a2-83e5-4421-ad3f-8694f15094e8",
+                    "slotSize": 2
+                },
+                {
+                    "prefabKey": "daggerButtom",
+                    "uniqueID": "f92f1d5d-d3f2-4297-bf8e-43f5c6fd5d88",
+                    "slotSize": 2
+                }
+            ]
+        }
+    ],
+    "dropped": [],
+    "collected": [
+        "Pickable Object (1)_(-1.979, -0.196, 0.000)"
+    ]
+}

@@ -375,6 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directoryLine: {fileID: 6912677651267500440, guid: 5203aa941ce2e4485aac48cefeca6cb5, type: 3}
   responseLine: {fileID: 4598635372445870588, guid: fd14ecee0f5934501a47b9a1972cab43, type: 3}
+  SceneIndex: 2
   terminalInput: {fileID: 843066074}
   userInputLine: {fileID: 1088659819}
   sr: {fileID: 1667574992}
@@ -393,9 +394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 329221b207edf4f4786e72cb5f8458a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  solSystem: {fileID: 0}
-  questManager: {fileID: 0}
-  timeManager: {fileID: 0}
 --- !u!114 &153052155
 MonoBehaviour:
   m_ObjectHideFlags: 0
