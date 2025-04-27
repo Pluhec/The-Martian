@@ -10,7 +10,6 @@ public class TerminalManager : MonoBehaviour
     [Header("Radky v terminálu")]
     public GameObject directoryLine;
     public GameObject responseLine;
-    public int SceneIndex;
     
     [Header("Terminal")]
     public TMP_InputField terminalInput;
@@ -24,7 +23,11 @@ public class TerminalManager : MonoBehaviour
 
     private List<string> commandHistory = new List<string>(); 
     private int historyIndex = -1; 
-
+    
+    [Header("opousteni sceny")]
+    public string exitEntranceKey = "TerminalSpawn";
+    public string returnSceneName = "Hab";
+    
     public Interpreter interpreter;
 
     private void Start()
@@ -130,7 +133,8 @@ public class TerminalManager : MonoBehaviour
 
     void ExitTerminal()
     {
-        SceneManager.LoadScene(SceneIndex);
+        EntranceData.Instance.lastEntranceKey = exitEntranceKey;
+        SceneFader.Instance.FadeToScene(returnSceneName);
     }
 
     void AddDirectoryLine(string userInput)

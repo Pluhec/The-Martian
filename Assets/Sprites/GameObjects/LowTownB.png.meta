@@ -1,0 +1,1145 @@
+fileFormatVersion: 2
+guid: 13783c012309641a187126184d2efd10
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4870770246083723236
+    second: LowTownB_0
+  - first:
+      213: -7638675012824940009
+    second: LowTownB_1
+  - first:
+      213: 1711915767629021319
+    second: LowTownB_2
+  - first:
+      213: -7239190250314712004
+    second: LowTownB_3
+  - first:
+      213: -3190556627817692683
+    second: LowTownB_4
+  - first:
+      213: 288630694049123304
+    second: LowTownB_5
+  - first:
+      213: 6394029496550580621
+    second: LowTownB_6
+  - first:
+      213: 7439681401519872850
+    second: LowTownB_7
+  - first:
+      213: 1795848317714816645
+    second: LowTownB_8
+  - first:
+      213: 1565734572975100605
+    second: LowTownB_9
+  - first:
+      213: -5115308746067590364
+    second: LowTownB_10
+  - first:
+      213: 6229346418341543020
+    second: LowTownB_11
+  - first:
+      213: -6576727527235672711
+    second: LowTownB_12
+  - first:
+      213: 5385971510265346465
+    second: LowTownB_13
+  - first:
+      213: 1088134672851093525
+    second: LowTownB_14
+  - first:
+      213: 416669798435192232
+    second: LowTownB_15
+  - first:
+      213: 3631625284474577087
+    second: LowTownB_16
+  - first:
+      213: 1265376517501922282
+    second: LowTownB_17
+  - first:
+      213: -7479728723836879523
+    second: LowTownB_18
+  - first:
+      213: -804473669682382663
+    second: LowTownB_19
+  - first:
+      213: 2140732362186775839
+    second: LowTownB_20
+  - first:
+      213: 6446353535324035871
+    second: LowTownB_21
+  - first:
+      213: -5479791155880133534
+    second: LowTownB_22
+  - first:
+      213: -4794630831563244202
+    second: LowTownB_23
+  - first:
+      213: 4118181908199575106
+    second: LowTownB_24
+  - first:
+      213: 1779904253389456800
+    second: LowTownB_25
+  - first:
+      213: 3993819948460580079
+    second: LowTownB_26
+  - first:
+      213: 1623764585152673731
+    second: LowTownB_27
+  - first:
+      213: -7055901684266169366
+    second: LowTownB_28
+  - first:
+      213: -6918212548278712951
+    second: LowTownB_29
+  - first:
+      213: -5913590583075041933
+    second: LowTownB_30
+  - first:
+      213: 8695402185070082683
+    second: LowTownB_31
+  - first:
+      213: -7082596936684468988
+    second: LowTownB_32
+  - first:
+      213: -7175453415385559596
+    second: LowTownB_33
+  - first:
+      213: 6380421757985278575
+    second: LowTownB_34
+  - first:
+      213: -5650538554450031541
+    second: LowTownB_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 65
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: LowTownB_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 302
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4efbc5c7bb3789340800000000000000
+      internalID: 4870770246083723236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 280
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 712cae91c89fdf590800000000000000
+      internalID: -7638675012824940009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 260
+        width: 80
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7800bee0252f1c710800000000000000
+      internalID: 1711915767629021319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_3
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 269
+        width: 17
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3c358c72da398b90800000000000000
+      internalID: -7239190250314712004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_4
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 280
+        width: 17
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f1882bb6add8b3d0800000000000000
+      internalID: -3190556627817692683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_5
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 284
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eb8216461c610400800000000000000
+      internalID: 288630694049123304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_6
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 287
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d81644933f72cb850800000000000000
+      internalID: 6394029496550580621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_7
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 283
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25b1cab41de0f3760800000000000000
+      internalID: 7439681401519872850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 40
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58edfd7b7822ce810800000000000000
+      internalID: 1795848317714816645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_9
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 260
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db29aba6c4b9ab510800000000000000
+      internalID: 1565734572975100605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_10
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 220
+        width: 36
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 423413a2cc5c209b0800000000000000
+      internalID: -5115308746067590364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_11
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 215
+        width: 37
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6c79102095137650800000000000000
+      internalID: 6229346418341543020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_12
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 240
+        width: 80
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 975a592b825cab4a0800000000000000
+      internalID: -6576727527235672711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_13
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 229
+        width: 36
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a97dbf6d80deba40800000000000000
+      internalID: 5385971510265346465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_14
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 229
+        width: 36
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 518431348b4d91f00800000000000000
+      internalID: 1088134672851093525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_15
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 229
+        width: 36
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8adfc5c59fe48c500800000000000000
+      internalID: 416669798435192232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_16
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 209
+        width: 16
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb02f6e74ff166230800000000000000
+      internalID: 3631625284474577087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_17
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 220
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeba2d80d358f8110800000000000000
+      internalID: 1265376517501922282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 74
+        width: 40
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5dba6fda5aa23890800000000000000
+      internalID: -7479728723836879523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_19
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 188
+        width: 110
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b83d6fa57fe5d4f0800000000000000
+      internalID: -804473669682382663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_20
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 163
+        width: 156
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1d5357cdb865bd10800000000000000
+      internalID: 2140732362186775839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_21
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 148
+        width: 52
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1b9299d26c067950800000000000000
+      internalID: 6446353535324035871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_22
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 73
+        width: 131
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26cff661afed3f3b0800000000000000
+      internalID: -5479791155880133534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_23
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 125
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65d798769ac067db0800000000000000
+      internalID: -4794630831563244202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_24
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 124
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24e0dae50a8b62930800000000000000
+      internalID: 4118181908199575106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_25
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 75
+        width: 49
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a54c75fc7d73b810800000000000000
+      internalID: 1779904253389456800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7
+        width: 40
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fec9cdc3516ec6730800000000000000
+      internalID: 3993819948460580079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_27
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 9
+        width: 37
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c772e08945c88610800000000000000
+      internalID: 1623764585152673731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_28
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 11
+        width: 15
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeb0c3b4dc6641e90800000000000000
+      internalID: -7055901684266169366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_29
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 6
+        width: 12
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 985823377529dff90800000000000000
+      internalID: -6918212548278712951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_30
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 0
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37d87bc32b4beeda0800000000000000
+      internalID: -5913590583075041933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_31
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 13
+        width: 62
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7af14497364ca870800000000000000
+      internalID: 8695402185070082683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_32
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40507ad7c9f85bd90800000000000000
+      internalID: -7082596936684468988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_33
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 0
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dd8499c22bab6c90800000000000000
+      internalID: -7175453415385559596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_34
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 13
+        width: 62
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6ac2e1b8cfcb8850800000000000000
+      internalID: 6380421757985278575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_35
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 0
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4c4b506f114591b0800000000000000
+      internalID: -5650538554450031541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_36
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 9
+        width: 37
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 067c0ca881aab4dec9bff0ae27b32236
+      internalID: -1599487162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_37
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 149
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55cd92201c96540c1849595efedc613b
+      internalID: 1403865714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_38
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 265
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42a2c76f93f4249d38845a0960573451
+      internalID: -585374332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowTownB_39
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 125
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46f2644c0dab948a281a346201756634
+      internalID: -808974354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 1b45b41d39253416abe5f2f38396d2d0
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      LowTownB_0: 4870770246083723236
+      LowTownB_1: -7638675012824940009
+      LowTownB_10: -5115308746067590364
+      LowTownB_11: 6229346418341543020
+      LowTownB_12: -6576727527235672711
+      LowTownB_13: 5385971510265346465
+      LowTownB_14: 1088134672851093525
+      LowTownB_15: 416669798435192232
+      LowTownB_16: 3631625284474577087
+      LowTownB_17: 1265376517501922282
+      LowTownB_18: -7479728723836879523
+      LowTownB_19: -804473669682382663
+      LowTownB_2: 1711915767629021319
+      LowTownB_20: 2140732362186775839
+      LowTownB_21: 6446353535324035871
+      LowTownB_22: -5479791155880133534
+      LowTownB_23: -4794630831563244202
+      LowTownB_24: 4118181908199575106
+      LowTownB_25: 1779904253389456800
+      LowTownB_26: 3993819948460580079
+      LowTownB_27: 1623764585152673731
+      LowTownB_28: -7055901684266169366
+      LowTownB_29: -6918212548278712951
+      LowTownB_3: -7239190250314712004
+      LowTownB_30: -5913590583075041933
+      LowTownB_31: 8695402185070082683
+      LowTownB_32: -7082596936684468988
+      LowTownB_33: -7175453415385559596
+      LowTownB_34: 6380421757985278575
+      LowTownB_35: -5650538554450031541
+      LowTownB_36: -1599487162
+      LowTownB_37: 1403865714
+      LowTownB_38: -585374332
+      LowTownB_39: -808974354
+      LowTownB_4: -3190556627817692683
+      LowTownB_5: 288630694049123304
+      LowTownB_6: 6394029496550580621
+      LowTownB_7: 7439681401519872850
+      LowTownB_8: 1795848317714816645
+      LowTownB_9: 1565734572975100605
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

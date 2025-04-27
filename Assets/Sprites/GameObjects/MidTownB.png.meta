@@ -1,0 +1,1292 @@
+fileFormatVersion: 2
+guid: 49aa7caf4530e4888bda1bf442d2cf83
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4864196385265614614
+    second: MidTownB_0
+  - first:
+      213: -3785834170559786886
+    second: MidTownB_1
+  - first:
+      213: 500601838364278482
+    second: MidTownB_2
+  - first:
+      213: 1692770227740181561
+    second: MidTownB_3
+  - first:
+      213: -5435722801468595411
+    second: MidTownB_4
+  - first:
+      213: 5369854317414817424
+    second: MidTownB_5
+  - first:
+      213: -7717090213026606464
+    second: MidTownB_6
+  - first:
+      213: -8107282811175539492
+    second: MidTownB_7
+  - first:
+      213: -4334927127129245146
+    second: MidTownB_8
+  - first:
+      213: -7111801531296736044
+    second: MidTownB_9
+  - first:
+      213: -7997251930220129130
+    second: MidTownB_10
+  - first:
+      213: -7519672993687210140
+    second: MidTownB_11
+  - first:
+      213: 8728136218381941896
+    second: MidTownB_12
+  - first:
+      213: 4876546435977639569
+    second: MidTownB_13
+  - first:
+      213: 5524094532763366024
+    second: MidTownB_14
+  - first:
+      213: 6157421379421545210
+    second: MidTownB_15
+  - first:
+      213: -6559644637427378856
+    second: MidTownB_16
+  - first:
+      213: 4969567426311839552
+    second: MidTownB_17
+  - first:
+      213: 926776736301068635
+    second: MidTownB_18
+  - first:
+      213: -3417132020867881446
+    second: MidTownB_19
+  - first:
+      213: 3784916156956388998
+    second: MidTownB_20
+  - first:
+      213: -6294216017821333230
+    second: MidTownB_21
+  - first:
+      213: 6845172817634861037
+    second: MidTownB_22
+  - first:
+      213: -475095089145907162
+    second: MidTownB_23
+  - first:
+      213: 4569635387095972052
+    second: MidTownB_24
+  - first:
+      213: 5480354177484542739
+    second: MidTownB_25
+  - first:
+      213: 3288224170728803792
+    second: MidTownB_26
+  - first:
+      213: -4060815421473797714
+    second: MidTownB_27
+  - first:
+      213: 6694054988078604320
+    second: MidTownB_28
+  - first:
+      213: -9042971010023309866
+    second: MidTownB_29
+  - first:
+      213: -7525187001657664805
+    second: MidTownB_30
+  - first:
+      213: -3266440549458998366
+    second: MidTownB_31
+  - first:
+      213: -8840541773351781019
+    second: MidTownB_32
+  - first:
+      213: 4242595177535057210
+    second: MidTownB_33
+  - first:
+      213: -6521028449387420146
+    second: MidTownB_34
+  - first:
+      213: 9106435053970504399
+    second: MidTownB_35
+  - first:
+      213: -5328842776164389181
+    second: MidTownB_36
+  - first:
+      213: 9152978515703071880
+    second: MidTownB_37
+  - first:
+      213: -173261080801942693
+    second: MidTownB_38
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 65
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MidTownB_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 302
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae00182c827ee7cb0800000000000000
+      internalID: -4864196385265614614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 280
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a709f3d41e3067bc0800000000000000
+      internalID: -3785834170559786886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 260
+        width: 80
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2de3c9d38be72f600800000000000000
+      internalID: 500601838364278482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_3
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 220
+        width: 36
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9348fcead8ded7710800000000000000
+      internalID: 1692770227740181561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_4
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 284
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2329f869ee6094b0800000000000000
+      internalID: -5435722801468595411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 287
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09e9b1d0d0e858a40800000000000000
+      internalID: 5369854317414817424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_6
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 289
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 082d7e0965367e490800000000000000
+      internalID: -7717090213026606464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_7
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 286
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdc604acc352d7f80800000000000000
+      internalID: -8107282811175539492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_8
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 290
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62ab14ccebe37d3c0800000000000000
+      internalID: -4334927127129245146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 40
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dc9afdef2ecd4d90800000000000000
+      internalID: -7111801531296736044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_10
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 260
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6941cef9dbd040190800000000000000
+      internalID: -7997251930220129130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_11
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 215
+        width: 37
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 467fc20d041c4a790800000000000000
+      internalID: -7519672993687210140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_12
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 240
+        width: 80
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88c70ef95a1902970800000000000000
+      internalID: 8728136218381941896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_13
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 229
+        width: 36
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 196f42f7529fca340800000000000000
+      internalID: 4876546435977639569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_14
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 229
+        width: 36
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 882b90ba5b689ac40800000000000000
+      internalID: 5524094532763366024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_15
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 229
+        width: 36
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af221d40f1e837550800000000000000
+      internalID: 6157421379421545210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_16
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 209
+        width: 16
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 855585de4f577f4a0800000000000000
+      internalID: -6559644637427378856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_17
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 220
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04f5bac8e3377f440800000000000000
+      internalID: 4969567426311839552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_18
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 150
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b51325908829cdc00800000000000000
+      internalID: 926776736301068635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_19
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 188
+        width: 110
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a16ae812888e390d0800000000000000
+      internalID: -3417132020867881446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_20
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 163
+        width: 156
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68ea5000139b68430800000000000000
+      internalID: 3784916156956388998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_21
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 148
+        width: 52
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2198f2641e376a8a0800000000000000
+      internalID: -6294216017821333230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_22
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 124
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: def194d0960fefe50800000000000000
+      internalID: 6845172817634861037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_23
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 74
+        width: 200
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 628fce8988f1869f0800000000000000
+      internalID: -475095089145907162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 74
+        width: 40
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d8f8e07c2b9a6f30800000000000000
+      internalID: 4569635387095972052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_25
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 125
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3135b4896112e0c40800000000000000
+      internalID: 5480354177484542739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_26
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 124
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ddc426267e12ad20800000000000000
+      internalID: 3288224170728803792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_27
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 73
+        width: 44
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea940a8a3e515a7c0800000000000000
+      internalID: -4060815421473797714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_28
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 73
+        width: 13
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0206b578b8f06ec50800000000000000
+      internalID: 6694054988078604320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7
+        width: 40
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ddb76137c9e08280800000000000000
+      internalID: -9042971010023309866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_30
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 9
+        width: 37
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdadec9ca4a219790800000000000000
+      internalID: -7525187001657664805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_31
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 11
+        width: 15
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ab809960a54ba2d0800000000000000
+      internalID: -3266440549458998366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_32
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 6
+        width: 12
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56d7d59a816105580800000000000000
+      internalID: -8840541773351781019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_33
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 0
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3d23c2f5d9b0ea30800000000000000
+      internalID: 4242595177535057210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_34
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 13
+        width: 62
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e06eb08dc27a085a0800000000000000
+      internalID: -6521028449387420146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_35
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcab3120f6e806e70800000000000000
+      internalID: 9106435053970504399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_36
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 0
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cea0de7ab52c06b0800000000000000
+      internalID: -5328842776164389181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_37
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 13
+        width: 32
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88483492779e50f70800000000000000
+      internalID: 9152978515703071880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_38
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 0
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b53666907f3789df0800000000000000
+      internalID: -173261080801942693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_39
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 286
+        width: 19
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0781876df6e2a4ab0b9dc7f6e350566f
+      internalID: -1634862615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_40
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 13
+        width: 30
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db25cc187c7cc419099ce34d523ef1fa
+      internalID: 1782064123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_41
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 9
+        width: 37
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef01ea824a761466f81c13884c147cb7
+      internalID: 548663957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_42
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 188
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42cfee0aed0314a238b3fe6930fa0928
+      internalID: -434088562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_43
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 188
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b41275563a57458e893a6c62b603ced
+      internalID: 1210465241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_44
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 248
+        width: 40
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03fa3267ab6c64861836124f71540542
+      internalID: -679266192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidTownB_45
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 248
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 300fd4120fa6041d1b74dddaf82a5fb6
+      internalID: -686147555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 1cc1f52b0e2654e2f9ea06056d0bad25
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      MidTownB_0: -4864196385265614614
+      MidTownB_1: -3785834170559786886
+      MidTownB_10: -7997251930220129130
+      MidTownB_11: -7519672993687210140
+      MidTownB_12: 8728136218381941896
+      MidTownB_13: 4876546435977639569
+      MidTownB_14: 5524094532763366024
+      MidTownB_15: 6157421379421545210
+      MidTownB_16: -6559644637427378856
+      MidTownB_17: 4969567426311839552
+      MidTownB_18: 926776736301068635
+      MidTownB_19: -3417132020867881446
+      MidTownB_2: 500601838364278482
+      MidTownB_20: 3784916156956388998
+      MidTownB_21: -6294216017821333230
+      MidTownB_22: 6845172817634861037
+      MidTownB_23: -475095089145907162
+      MidTownB_24: 4569635387095972052
+      MidTownB_25: 5480354177484542739
+      MidTownB_26: 3288224170728803792
+      MidTownB_27: -4060815421473797714
+      MidTownB_28: 6694054988078604320
+      MidTownB_29: -9042971010023309866
+      MidTownB_3: 1692770227740181561
+      MidTownB_30: -7525187001657664805
+      MidTownB_31: -3266440549458998366
+      MidTownB_32: -8840541773351781019
+      MidTownB_33: 4242595177535057210
+      MidTownB_34: -6521028449387420146
+      MidTownB_35: 9106435053970504399
+      MidTownB_36: -5328842776164389181
+      MidTownB_37: 9152978515703071880
+      MidTownB_38: -173261080801942693
+      MidTownB_39: -1634862615
+      MidTownB_4: -5435722801468595411
+      MidTownB_40: 1782064123
+      MidTownB_41: 548663957
+      MidTownB_42: -434088562
+      MidTownB_43: 1210465241
+      MidTownB_44: -679266192
+      MidTownB_45: -686147555
+      MidTownB_5: 5369854317414817424
+      MidTownB_6: -7717090213026606464
+      MidTownB_7: -8107282811175539492
+      MidTownB_8: -4334927127129245146
+      MidTownB_9: -7111801531296736044
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

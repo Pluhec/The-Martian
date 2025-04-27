@@ -3052,6 +3052,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4471636452353415900, guid: 83d69400d6c60490c8d511b57b995f47, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8528617261604539914, guid: 83d69400d6c60490c8d511b57b995f47, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -6255,7 +6259,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.38, y: 0.33}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.38, y: 0.33}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6327,8 +6331,8 @@ Transform:
   m_GameObject: {fileID: 1481004218}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.304, y: -3.293, z: 0}
-  m_LocalScale: {x: 4.34, y: 4.34, z: 4.34}
+  m_LocalPosition: {x: -0.62, y: -3.17, z: 0}
+  m_LocalScale: {x: 1.15, y: 1.15, z: 1.15}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -8544,9 +8548,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 59602997}
   - {fileID: 619394802}
   - {fileID: 1801318085}
-  - {fileID: 59602997}
   - {fileID: 955441542}
   - {fileID: 1157027254}
   - {fileID: 1450226878}
