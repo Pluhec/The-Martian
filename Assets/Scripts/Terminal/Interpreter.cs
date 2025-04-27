@@ -75,6 +75,18 @@ public class Interpreter : MonoBehaviour
                 LoadTitle("ascii.txt", "#FF0000", 0);
                 break;
             
+            case "nemec":
+                LoadTitle("nemec.txt", "#ffffff", 0);
+                break;
+            
+            case "vrablik":
+                LoadTitle("vrablik.txt", "#ffffff", 0);
+                break;
+            
+            case "svejda":
+                LoadTitle("svejda.txt", "#ffffff", 0);
+                break; 
+            
             case "time":
                 response.Add("Current time: " + timeManager.GetFormattedTime());
                 break;
