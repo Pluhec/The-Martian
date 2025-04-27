@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 8504289609004842736}
   - component: {fileID: 1427290998300935232}
   - component: {fileID: 899769927228739706}
+  - component: {fileID: 7466024648819887120}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -322,3 +323,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radialSelection: {fileID: 0}
   holdThreshold: 0.5
+--- !u!114 &7466024648819887120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8312465754160185224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aae4bdb1fcd945629049870f590268a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
