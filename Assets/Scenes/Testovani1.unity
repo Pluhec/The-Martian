@@ -1548,8 +1548,6 @@ MonoBehaviour:
   arrowRectTransform: {fileID: 342074780}
   canvas: {fileID: 2077901576}
   screenEdgeBuffer: 30
-  playerTransform: {fileID: 1317379705}
-  outlineDistance: 2
 --- !u!114 &342074782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3346,7 +3344,6 @@ GameObject:
   - component: {fileID: 667741723}
   - component: {fileID: 667741722}
   - component: {fileID: 667741721}
-  - component: {fileID: 667741726}
   m_Layer: 0
   m_Name: Medkit (1)
   m_TagString: Interactable
@@ -3512,20 +3509,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &667741726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667741719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf448296b8a494c81914424110639d09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineColor: {r: 0, g: 0.99607843, b: 0.99607843, a: 1}
-  outlineScale: {x: 13.59, y: 17.59, z: 0}
 --- !u!1 &691441000
 GameObject:
   m_ObjectHideFlags: 0
@@ -8054,7 +8037,6 @@ GameObject:
   - component: {fileID: 1884709604}
   - component: {fileID: 1884709605}
   - component: {fileID: 1884709606}
-  - component: {fileID: 1884709607}
   m_Layer: 0
   m_Name: Medkit
   m_TagString: Interactable
@@ -8220,20 +8202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questID: 0
   myTransform: {fileID: 1884709603}
---- !u!114 &1884709607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884709599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf448296b8a494c81914424110639d09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineColor: {r: 0, g: 0.99607843, b: 0.99607843, a: 1}
-  outlineScale: {x: 1.1, y: 1.1, z: 1}
 --- !u!1 &1901224056
 GameObject:
   m_ObjectHideFlags: 0
