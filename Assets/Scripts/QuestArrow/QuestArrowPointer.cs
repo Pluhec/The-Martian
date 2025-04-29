@@ -9,42 +9,60 @@ public class QuestArrowPointer : MonoBehaviour
 
     private Camera mainCamera;
     private Transform target;
-    private float canvasScaleFactor;
+    private RectTransform canvasRect;
+    private Image arrowImage;
 
     void Start()
     {
         if (arrowRectTransform == null)
             arrowRectTransform = GetComponent<RectTransform>();
+        arrowImage = arrowRectTransform.GetComponent<Image>();
         mainCamera = Camera.main;
-        canvasScaleFactor = canvas != null ? canvas.scaleFactor : 1f;
-        arrowRectTransform.gameObject.SetActive(false);
+        canvasRect = canvas.GetComponent<RectTransform>();
+        
+        arrowImage.enabled = false;
     }
 
     void Update()
     {
-        if (target == null) return;
+        if (target == null)
+            return;
+        
+        Vector3 viewPos = mainCamera.WorldToViewportPoint(target.position);
 
-        Vector3 screenPos = mainCamera.WorldToScreenPoint(target.position);
-        bool isBehind = screenPos.z < 0;
-        if (isBehind) screenPos *= -1f;
-
-        Vector2 clamped = new Vector2(
-            Mathf.Clamp(screenPos.x, screenEdgeBuffer, Screen.width - screenEdgeBuffer),
-            Mathf.Clamp(screenPos.y, screenEdgeBuffer, Screen.height - screenEdgeBuffer)
-        );
-
-        arrowRectTransform.position = clamped / canvasScaleFactor;
-        arrowRectTransform.gameObject.SetActive(true);
-
-        Vector2 fromCenter = clamped - new Vector2(Screen.width/2f, Screen.height/2f);
-        float angle = Mathf.Atan2(fromCenter.y, fromCenter.x) * Mathf.Rad2Deg;
-        if (isBehind) angle += 180f;
-        arrowRectTransform.rotation = Quaternion.Euler(0, 0, angle);
+        // detekce jestli je objekt na obrazovce
+        bool onScreen = viewPos.z > 0
+                        && viewPos.x > 0 && viewPos.x < 1
+                        && viewPos.y > 0 && viewPos.y < 1;
+        if (onScreen)
+        {
+            arrowImage.enabled = false;
+            return;
+        }
+        
+        arrowImage.enabled = true;
+        
+        viewPos.x = Mathf.Clamp(viewPos.x, 0f, 1f);
+        viewPos.y = Mathf.Clamp(viewPos.y, 0f, 1f);
+        
+        float x = viewPos.x * canvasRect.sizeDelta.x;
+        float y = viewPos.y * canvasRect.sizeDelta.y;
+        Vector2 canvasPos = new Vector2(x, y);
+        
+        canvasPos -= canvasRect.sizeDelta * 0.5f;
+        
+        Vector2 toCenter = canvasPos.normalized;
+        canvasPos = toCenter * (canvasRect.sizeDelta * 0.5f - Vector2.one * screenEdgeBuffer);
+        
+        arrowRectTransform.anchoredPosition = canvasPos;
+        
+        float angle = Mathf.Atan2(toCenter.y, toCenter.x) * Mathf.Rad2Deg;
+        arrowRectTransform.localEulerAngles = new Vector3(0, 0, angle);
     }
-
+    
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
-        arrowRectTransform.gameObject.SetActive(target != null);
+        arrowImage.enabled = (target != null);
     }
 }

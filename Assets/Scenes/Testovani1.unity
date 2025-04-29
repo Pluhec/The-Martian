@@ -1531,7 +1531,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &342074781
 MonoBehaviour:
@@ -1547,7 +1547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowRectTransform: {fileID: 342074780}
   canvas: {fileID: 2077901576}
-  screenEdgeBuffer: 30
+  screenEdgeBuffer: 93
 --- !u!114 &342074782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1568,7 +1568,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 609439330203869409, guid: 1ca345aad532d4479957f88994166bc6, type: 3}
+  m_Sprite: {fileID: -1112199516216130427, guid: 78efcb5d13c4c4d09b519532960e9a81, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8711,7 +8711,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
