@@ -4,10 +4,12 @@ using System.Collections.Generic;
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager Instance { get; private set; }
+    public QuestArrowPointer arrowPointer;
     
     private List<Quest> activeQuests = new List<Quest>();
-
+    
     public List<Quest> ActiveQuests { get { return activeQuests; } }
+    private int currentQuestIndex = 0;
 
     private void Awake()
     {
@@ -16,16 +18,64 @@ public class QuestManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        else Destroy(gameObject);
     }
 
     public void InitializeQuests(List<Quest> quests)
     {
         activeQuests = new List<Quest>(quests);
-        ResetQuestTimers();
+        currentQuestIndex = 0;
+        foreach (var q in activeQuests)
+            q.isCompleted = false;
+
+        // Nastav první quest
+        ActivateCurrentQuest();
+    }
+
+    private void ActivateCurrentQuest()
+    {
+        if (currentQuestIndex < activeQuests.Count)
+        {
+            var quest = activeQuests[currentQuestIndex];
+            quest.currentTargetIndex = 0;
+            arrowPointer.SetTarget(quest.GetCurrentTarget());
+        }
+        else
+        {
+            // Všechny questy hotové
+            arrowPointer.SetTarget(null);
+        }
+    }
+
+    // Volá se při dosažení podcíle
+    public void NotifyTargetReached(int questID, Transform reachedTarget)
+    {
+        var quest = activeQuests.Find(q => q.questID == questID);
+        if (quest == null || quest.isCompleted) return;
+
+        // Ověření, že jde o aktuální cíl
+        if (quest.GetCurrentTarget() == reachedTarget)
+        {
+            quest.currentTargetIndex++;
+
+            // Jestli už nejsou další cíle
+            if (quest.currentTargetIndex >= quest.targets.Count)
+            {
+                // Quest dokončen
+                quest.isCompleted = true;
+                Debug.Log($"Quest {quest.questName} (ID:{quest.questID}) completed.");
+                TimeManager.Instance.ResumeTime();
+
+                // Přepneme na další quest
+                currentQuestIndex++;
+                ActivateCurrentQuest();
+            }
+            else
+            {
+                // Nastavíme další cíl
+                arrowPointer.SetTarget(quest.GetCurrentTarget());
+            }
+        }
     }
     
     public void ResetQuestTimers()
