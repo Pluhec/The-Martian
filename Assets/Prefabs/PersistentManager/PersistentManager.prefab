@@ -1,0 +1,348 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3612860038296474764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4604261795482259671}
+  - component: {fileID: 5601671586471851630}
+  m_Layer: 0
+  m_Name: TimeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4604261795482259671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3612860038296474764}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -30.068495, y: -3.2420506, z: -3.4794245}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4052271121750076450}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5601671586471851630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3612860038296474764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a21531804884338a3c1d66acc5a92c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayStartTime: 8
+  dayEndTime: 22
+  percentOfDay: 0
+  isTimePaused: 0
+  solDurationInRealMinutes: 10
+--- !u!1 &5720325861045110370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7266819189197591732}
+  - component: {fileID: 8743014002861168055}
+  m_Layer: 0
+  m_Name: SolSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7266819189197591732
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5720325861045110370}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -28.491005, y: -3.870223, z: -3.4461799}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4052271121750076450}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8743014002861168055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5720325861045110370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc4aa66999e2343dcb289d6f44990e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentSol: 18
+  solDataList:
+  - solNumber: 18
+    quests:
+    - questID: 0
+      questName: Get to the Hab
+      questDescription: Get to the Hab as soon as possible!
+      isCompleted: 0
+      targets:
+      - {fileID: 0}
+      - {fileID: 0}
+    - questID: 1
+      questName: Heal with medkit
+      questDescription: 'Heal yourself with medkit to restore your health. '
+      isCompleted: 0
+      targets: []
+  - solNumber: 19
+    quests:
+    - questID: 2
+      questName: Clean solar panels
+      questDescription: 
+      isCompleted: 0
+      targets: []
+    - questID: 2
+      questName: nevim, test kotevnich bodu casu
+      questDescription: 
+      isCompleted: 0
+      targets: []
+    - questID: 2
+      questName: nevim, test kotevnich bodu casu
+      questDescription: 
+      isCompleted: 0
+      targets: []
+    - questID: 2
+      questName: nevim, test kotevnich bodu casu
+      questDescription: 
+      isCompleted: 0
+      targets: []
+    - questID: 2
+      questName: nevim, test kotevnich bodu casu
+      questDescription: 
+      isCompleted: 0
+      targets: []
+    - questID: 2
+      questName: nevim, test kotevnich bodu casu
+      questDescription: 
+      isCompleted: 0
+      targets: []
+    - questID: 2
+      questName: nevim, test kotevnich bodu casu
+      questDescription: 
+      isCompleted: 0
+      targets: []
+    - questID: 2
+      questName: nevim, test kotevnich bodu casu
+      questDescription: 
+      isCompleted: 0
+      targets: []
+    - questID: 2
+      questName: nevim, test kotevnich bodu casu
+      questDescription: 
+      isCompleted: 0
+      targets: []
+    - questID: 2
+      questName: nevim, test kotevnich bodu casu
+      questDescription: 
+      isCompleted: 0
+      targets: []
+    - questID: 2
+      questName: nevim, test kotevnich bodu casu
+      questDescription: 
+      isCompleted: 0
+      targets: []
+    - questID: 2
+      questName: nevim, test kotevnich bodu casu
+      questDescription: 
+      isCompleted: 0
+      targets: []
+    - questID: 2
+      questName: nevim, test kotevnich bodu casu
+      questDescription: 
+      isCompleted: 0
+      targets: []
+    - questID: 2
+      questName: nevim, test kotevnich bodu casu
+      questDescription: 
+      isCompleted: 0
+      targets: []
+    - questID: 2
+      questName: nevim, test kotevnich bodu casu
+      questDescription: 
+      isCompleted: 0
+      targets: []
+  - solNumber: 20
+    quests:
+    - questID: 3
+      questName: ahoj
+      questDescription: ahojahojahojahojahojahojahojahojahojahojahojahojahoj ahoj
+        ahoj ahoj ahoj   ahoj
+      isCompleted: 0
+      targets: []
+    - questID: 4
+      questName: ahoj
+      questDescription: ahojahojahojahojahojahojahojahojahojahojahojahojahoj ahoj
+        ahoj ahoj ahoj   ahoj
+      isCompleted: 0
+      targets: []
+    - questID: 5
+      questName: ahoj
+      questDescription: ahojahojahojahojahojahojahojahojahojahojahojahojahoj ahoj
+        ahoj ahoj ahoj   ahoj
+      isCompleted: 0
+      targets: []
+    - questID: 6
+      questName: ahoj
+      questDescription: ahojahojahojahojahojahojahojahojahojahojahojahojahoj ahoj
+        ahoj ahoj ahoj   ahoj
+      isCompleted: 0
+      targets: []
+    - questID: 7
+      questName: ahoj
+      questDescription: ahojahojahojahojahojahojahojahojahojahojahojahojahoj ahoj
+        ahoj ahoj ahoj   ahoj
+      isCompleted: 0
+      targets: []
+    - questID: 8
+      questName: ahoj
+      questDescription: ahojahojahojahojahojahojahojahojahojahojahojahojahoj ahoj
+        ahoj ahoj ahoj   ahoj
+      isCompleted: 0
+      targets: []
+    - questID: 9
+      questName: ahoj
+      questDescription: ahojahojahojahojahojahojahojahojahojahojahojahojahoj ahoj
+        ahoj ahoj ahoj   ahoj
+      isCompleted: 0
+      targets: []
+    - questID: 10
+      questName: ahoj
+      questDescription: ahojahojahojahojahojahojahojahojahojahojahojahojahoj ahoj
+        ahoj ahoj ahoj   ahoj
+      isCompleted: 0
+      targets: []
+    - questID: 11
+      questName: ahoj
+      questDescription: ahojahojahojahojahojahojahojahojahojahojahojahojahoj ahoj
+        ahoj ahoj ahoj   ahoj
+      isCompleted: 0
+      targets: []
+    - questID: 12
+      questName: ahoj
+      questDescription: ahojahojahojahojahojahojahojahojahojahojahojahojahoj ahoj
+        ahoj ahoj ahoj   ahoj
+      isCompleted: 0
+      targets: []
+    - questID: 9
+      questName: ahoj
+      questDescription: ahojahojahojahojahojahojahojahojahojahojahojahojahoj ahoj
+        ahoj ahoj ahoj   ahoj
+      isCompleted: 0
+      targets: []
+--- !u!1 &7014775222564301965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8847391034797960774}
+  - component: {fileID: 6957874159580500343}
+  m_Layer: 0
+  m_Name: QuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8847391034797960774
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014775222564301965}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -30.068495, y: -3.2420506, z: -3.4794245}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4052271121750076450}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6957874159580500343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014775222564301965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca8db37799334415198ad9b03996d4da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPointer: {fileID: 0}
+--- !u!1 &7972382156300349071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4052271121750076450}
+  - component: {fileID: 8905748889130929925}
+  m_Layer: 0
+  m_Name: PersistentManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4052271121750076450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7972382156300349071}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 27.467485, y: 3.9392455, z: -0.05877167}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7266819189197591732}
+  - {fileID: 8847391034797960774}
+  - {fileID: 4604261795482259671}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8905748889130929925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7972382156300349071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f80358ce24f45639e9a0798c421f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

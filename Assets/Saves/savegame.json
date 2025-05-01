@@ -1,15 +1,6 @@
 {
     "inventory": [],
-    "containers": [
-        {
-            "containerID": "Storage Container_(-1.071, -1.168, 0.000)",
-            "items": []
-        }
-    ],
+    "containers": [],
     "dropped": [],
-    "collected": [
-        "Pickable Object (1)_(-1.979, -0.196, 0.000)",
-        "Pickable Object_(-1.751, -0.996, 0.000)",
-        "Storage Container_(-1.071, -1.168, 0.000)"
-    ]
+    "collected": []
 }
