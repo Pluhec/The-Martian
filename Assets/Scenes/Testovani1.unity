@@ -1531,7 +1531,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 10}
+  m_SizeDelta: {x: 15, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &342074781
 MonoBehaviour:
@@ -1547,7 +1547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowRectTransform: {fileID: 342074780}
   canvas: {fileID: 2077901576}
-  screenEdgeBuffer: 93
+  screenEdgeBuffer: 30
 --- !u!114 &342074782
 MonoBehaviour:
   m_ObjectHideFlags: 0
