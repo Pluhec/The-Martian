@@ -107053,9 +107053,10 @@ GameObject:
   - component: {fileID: 1888594554}
   - component: {fileID: 1888594553}
   - component: {fileID: 1888594552}
+  - component: {fileID: 1888594555}
   m_Layer: 0
   m_Name: MainDoorTrigger
-  m_TagString: Untagged
+  m_TagString: QuestFallback
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107142,6 +107143,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 240401973}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1888594555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888594551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927ba9e04efca42bdac65375eec6533a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 0
+  subTargetIndex: 0
 --- !u!1 &1992930300
 GameObject:
   m_ObjectHideFlags: 0

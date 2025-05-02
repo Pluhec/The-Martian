@@ -1,68 +1,77 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Ukazuje šipku na okraji obrazovky směrem k aktuálnímu cíli.
+/// </summary>
 public class QuestArrowPointer : MonoBehaviour
 {
-    public RectTransform arrowRectTransform;
-    public Canvas canvas;
-    public float screenEdgeBuffer = 30f;
+    [Header("UI References")]
+    public RectTransform arrowRectTransform;  // Drag & drop UI Image
+    public Canvas canvas;                     // Screen Space – Overlay
+    [Header("Settings")]
+    public float screenEdgeBuffer = 30f;      // pixely od okraje
 
     private Camera mainCamera;
     private Transform target;
     private RectTransform canvasRect;
     private Image arrowImage;
 
-    void Start()
+    void Awake()
     {
-        if (arrowRectTransform == null)
-            arrowRectTransform = GetComponent<RectTransform>();
+        arrowRectTransform = arrowRectTransform ?? GetComponent<RectTransform>();
         arrowImage = arrowRectTransform.GetComponent<Image>();
         mainCamera = Camera.main;
         canvasRect = canvas.GetComponent<RectTransform>();
-        
+    }
+
+    void Start()
+    {
         arrowImage.enabled = false;
     }
 
     void Update()
     {
         if (target == null)
-            return;
-        
-        Vector3 viewPos = mainCamera.WorldToViewportPoint(target.position);
+        {
+            var fbGO = GameObject.FindWithTag("QuestFallback");
+            target = fbGO != null ? fbGO.transform : null;
+        }
+        if (target == null) return;
 
-        // detekce jestli je objekt na obrazovce
-        bool onScreen = viewPos.z > 0
-                        && viewPos.x > 0 && viewPos.x < 1
-                        && viewPos.y > 0 && viewPos.y < 1;
+        Vector3 vp = mainCamera.WorldToViewportPoint(target.position);
+        bool onScreen = vp.z > 0 && vp.x > 0 && vp.x < 1 && vp.y > 0 && vp.y < 1;
         if (onScreen)
         {
             arrowImage.enabled = false;
             return;
         }
-        
+
         arrowImage.enabled = true;
-        
-        viewPos.x = Mathf.Clamp(viewPos.x, 0f, 1f);
-        viewPos.y = Mathf.Clamp(viewPos.y, 0f, 1f);
-        
-        float x = viewPos.x * canvasRect.sizeDelta.x;
-        float y = viewPos.y * canvasRect.sizeDelta.y;
-        Vector2 canvasPos = new Vector2(x, y);
-        
-        canvasPos -= canvasRect.sizeDelta * 0.5f;
-        
-        Vector2 toCenter = canvasPos.normalized;
-        canvasPos = toCenter * (canvasRect.sizeDelta * 0.5f - Vector2.one * screenEdgeBuffer);
-        
-        arrowRectTransform.anchoredPosition = canvasPos;
-        
-        float angle = Mathf.Atan2(toCenter.y, toCenter.x) * Mathf.Rad2Deg;
+        vp.x = Mathf.Clamp01(vp.x);
+        vp.y = Mathf.Clamp01(vp.y);
+
+        float x = vp.x * canvasRect.sizeDelta.x;
+        float y = vp.y * canvasRect.sizeDelta.y;
+        Vector2 pos = new Vector2(x, y) - canvasRect.sizeDelta * 0.5f;
+
+        Vector2 dir = pos.normalized;
+        Vector2 inside = (canvasRect.sizeDelta * 0.5f) - Vector2.one * screenEdgeBuffer;
+        pos = dir * inside;
+
+        arrowRectTransform.anchoredPosition = pos;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         arrowRectTransform.localEulerAngles = new Vector3(0, 0, angle);
     }
-    
+
+    /// <summary>
+    /// Nový questový cíl; šipka se přepne okamžitě.
+    /// </summary>
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
+        if (arrowImage == null)
+            arrowImage = arrowRectTransform.GetComponent<Image>();
         arrowImage.enabled = (target != null);
     }
 }

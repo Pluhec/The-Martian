@@ -1,5 +1,11 @@
 {
-    "inventory": [],
+    "inventory": [
+        {
+            "prefabKey": "daggerButtom",
+            "uniqueID": "aa6908dd-db80-42e1-8d73-6711d60bfda2",
+            "slotSize": 2
+        }
+    ],
     "containers": [],
     "dropped": [],
     "collected": []
