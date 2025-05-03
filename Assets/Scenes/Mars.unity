@@ -318,6 +318,10 @@ PrefabInstance:
       value: PersistentManager
       objectReference: {fileID: 0}
     - target: {fileID: 8743014002861168055, guid: 9a541985102a94bd1a8c048937333d1d, type: 3}
+      propertyPath: solDataList.Array.data[1].quests.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743014002861168055, guid: 9a541985102a94bd1a8c048937333d1d, type: 3}
       propertyPath: solDataList.Array.data[0].quests.Array.data[0].targets.Array.size
       value: 0
       objectReference: {fileID: 0}
