@@ -18,32 +18,33 @@ public class HabEntryTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Quest quest = questManager.ActiveQuests.Find(q => q.questID == questID);
-            if (quest != null)
+            if (questManager == null)
             {
-                if (!quest.isCompleted)
-                {
-                    Debug.Log("Before update: Quest " + quest.questName + " (ID: " + quest.questID + ") isCompleted: " + quest.isCompleted);
-                    
-                    // Zavoláme MarkQuestAsCompletedByID, která za nás také zavolá ResumeTime()
-                    questManager.MarkQuestAsCompletedByID(questID);
-                    
-                    Debug.Log("After update: Quest " + quest.questName + " (ID: " + quest.questID + ") isCompleted: " + quest.isCompleted);
-                }
-                else
-                {
-                    Debug.Log("Quest " + quest.questName + " is already completed.");
-                }
+                Debug.LogError("QuestManager is not initialized.");
+                return;
+            }
 
-                if (questTablet != null)
-                {
-                    questTablet.UpdateQuestList();
-                }
+            Quest quest = questManager.ActiveQuests?.Find(q => q.questID == questID);
+            if (quest == null)
+            {
+                Debug.LogWarning("Quest with ID " + questID + " was not found in active quests.");
+                return;
+            }
+
+            if (!quest.isCompleted)
+            {
+                Debug.Log("Before update: Quest " + quest.questName + " (ID: " + quest.questID + ") isCompleted: " + quest.isCompleted);
+
+                questManager.MarkQuestAsCompletedByID(questID);
+
+                Debug.Log("After update: Quest " + quest.questName + " (ID: " + quest.questID + ") isCompleted: " + quest.isCompleted);
             }
             else
             {
-                Debug.LogWarning("Quest with ID " + questID + " was not found in active quests.");
+                Debug.Log("Quest " + quest.questName + " is already completed.");
             }
-        }
+
+            questTablet?.UpdateQuestList();
+        } 
     }
 }

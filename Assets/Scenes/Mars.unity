@@ -319,7 +319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8743014002861168055, guid: 9a541985102a94bd1a8c048937333d1d, type: 3}
       propertyPath: solDataList.Array.data[0].quests.Array.data[0].targets.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8743014002861168055, guid: 9a541985102a94bd1a8c048937333d1d, type: 3}
       propertyPath: 'solDataList.Array.data[0].quests.Array.data[0].targets.Array.data[0]'
@@ -107053,6 +107053,9 @@ GameObject:
   - component: {fileID: 1888594554}
   - component: {fileID: 1888594553}
   - component: {fileID: 1888594552}
+  - component: {fileID: 1888594555}
+  - component: {fileID: 1888594557}
+  - component: {fileID: 1888594556}
   m_Layer: 0
   m_Name: MainDoorTrigger
   m_TagString: Untagged
@@ -107142,6 +107145,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 240401973}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1888594555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888594551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5031fa586ff437bb6713ed2d8d4cbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1888594556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888594551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6b1572977ae497583c783ca626c45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 0
+--- !u!114 &1888594557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888594551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb6a8f33925a4b64b18a1b11ac754a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 0
+  targetIndex: 0
 --- !u!1 &1992930300
 GameObject:
   m_ObjectHideFlags: 0

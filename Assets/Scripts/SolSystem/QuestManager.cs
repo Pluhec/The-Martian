@@ -1,14 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager Instance { get; private set; }
+
+    [Tooltip("Šipku můžeš nechat prázdnou – pokud je null, skript ji sám vyhledá ve scéně.")]
     public QuestArrowPointer arrowPointer;
-    
+
     private List<Quest> activeQuests = new List<Quest>();
-    
-    public List<Quest> ActiveQuests { get { return activeQuests; } }
+    public List<Quest> ActiveQuests => activeQuests;
     private int currentQuestIndex = 0;
 
     private void Awake()
@@ -18,7 +20,64 @@ public class QuestManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void Start()
+    {
+        FindArrowPointerInScene();
+        UpdateArrowTargetAfterSceneLoad();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        FindArrowPointerInScene();
+        UpdateArrowTargetAfterSceneLoad();
+    }
+
+    private void FindArrowPointerInScene()
+    {
+        if (arrowPointer == null)
+        {
+            arrowPointer = FindObjectOfType<QuestArrowPointer>();
+            if (arrowPointer == null)
+                Debug.LogWarning("QuestManager: Nenalezl jsem QuestArrowPointer ve scéně " 
+                                 + SceneManager.GetActiveScene().name);
+        }
+    }
+
+    private void UpdateArrowTargetAfterSceneLoad()
+    {
+        if (activeQuests == null || activeQuests.Count == 0)
+            return;
+
+        if (currentQuestIndex >= activeQuests.Count)
+        {
+            arrowPointer?.SetTarget(null);
+            return;
+        }
+
+        var quest = activeQuests[currentQuestIndex];
+        Transform t = QuestTargetResolver.Instance.Resolve(
+            quest.questID, quest.currentTargetIndex
+        );
+        if (t == null)
+            t = QuestTargetResolver.Instance.FallbackTarget;
+        arrowPointer?.SetTarget(t);
     }
 
     public void InitializeQuests(List<Quest> quests)
@@ -27,8 +86,6 @@ public class QuestManager : MonoBehaviour
         currentQuestIndex = 0;
         foreach (var q in activeQuests)
             q.isCompleted = false;
-
-        // Nastav první quest
         ActivateCurrentQuest();
     }
 
@@ -38,108 +95,114 @@ public class QuestManager : MonoBehaviour
         {
             var quest = activeQuests[currentQuestIndex];
             quest.currentTargetIndex = 0;
-            arrowPointer.SetTarget(quest.GetCurrentTarget());
+
+            Transform t = QuestTargetResolver.Instance.Resolve(
+                quest.questID, quest.currentTargetIndex
+            );
+            if (t == null)
+                t = QuestTargetResolver.Instance.FallbackTarget;
+
+            arrowPointer?.SetTarget(t);
         }
         else
         {
-            // Všechny questy hotové
-            arrowPointer.SetTarget(null);
+            arrowPointer?.SetTarget(null);
         }
     }
 
-    // Volá se při dosažení podcíle
     public void NotifyTargetReached(int questID, Transform reachedTarget)
     {
         var quest = activeQuests.Find(q => q.questID == questID);
         if (quest == null || quest.isCompleted) return;
 
-        // Ověření, že jde o aktuální cíl
-        if (quest.GetCurrentTarget() == reachedTarget)
+        // tady se používá stará quest.targets logika, pokud ji nechceš, 
+        // stačí spíš volat MarkQuestAsCompletedByID
+        if (quest.currentTargetIndex < quest.targets.Count
+            && quest.GetCurrentTarget() == reachedTarget)
         {
             quest.currentTargetIndex++;
-
-            // Jestli už nejsou další cíle
             if (quest.currentTargetIndex >= quest.targets.Count)
             {
-                // Quest dokončen
                 quest.isCompleted = true;
                 Debug.Log($"Quest {quest.questName} (ID:{quest.questID}) completed.");
                 TimeManager.Instance.ResumeTime();
 
-                // Přepneme na další quest
                 currentQuestIndex++;
                 ActivateCurrentQuest();
             }
             else
             {
-                // Nastavíme další cíl
-                arrowPointer.SetTarget(quest.GetCurrentTarget());
+                Transform t = QuestTargetResolver.Instance.Resolve(
+                    quest.questID, quest.currentTargetIndex
+                );
+                if (t == null)
+                    t = QuestTargetResolver.Instance.FallbackTarget;
+                arrowPointer?.SetTarget(t);
             }
         }
     }
-    
+
+    /// <summary>
+    /// Značí quest questID jako dokončený a pokud to byl právě aktivní quest,
+    /// hned se posune na další a aktualizuje šipku.
+    /// </summary>
+    public void MarkQuestAsCompletedByID(int questID)
+    {
+        for (int i = 0; i < activeQuests.Count; i++)
+        {
+            var quest = activeQuests[i];
+            if (quest.questID == questID && !quest.isCompleted)
+            {
+                quest.isCompleted = true;
+                Debug.Log($"Quest {quest.questName} (ID:{quest.questID}) completed via MarkQuestAsCompletedByID.");
+                TimeManager.Instance.ResumeTime();
+
+                // pokud to byl právě aktivní quest, posuň ukazatel
+                if (i == currentQuestIndex)
+                {
+                    currentQuestIndex++;
+                    ActivateCurrentQuest();
+                }
+                return;
+            }
+        }
+    }
+
     public void ResetQuestTimers()
     {
         foreach (var quest in activeQuests)
-        {
             quest.isCompleted = false;
-        }
     }
 
     public float GetQuestCompletionPercentage()
     {
         int completedCount = 0;
-        foreach (Quest quest in activeQuests)
-        {
+        foreach (var quest in activeQuests)
             if (quest.isCompleted)
                 completedCount++;
-        }
         return (float)completedCount / activeQuests.Count;
     }
 
     public bool AreAllQuestsCompleted()
     {
-        foreach (Quest quest in activeQuests)
-        {
+        foreach (var quest in activeQuests)
             if (!quest.isCompleted)
                 return false;
-        }
         return true;
-    }
-
-    public void MarkQuestAsCompletedByID(int questID)
-    {
-        foreach (Quest quest in activeQuests)
-        {
-            if (quest.questID == questID && !quest.isCompleted)
-            {
-                quest.isCompleted = true;
-                Debug.Log("Quest " + quest.questName + " completed!");
-                
-                TimeManager.Instance.ResumeTime();
-                return;
-            }
-        }
     }
 
     public float GetQuestTargetTime()
     {
         int totalQuests = activeQuests.Count;
         float totalDayTime = 14f;
-
         if (totalQuests == 0)
-        {
             return TimeManager.Instance.dayStartTime;
-        }
-        
+
         float timePerQuest = totalDayTime / totalQuests;
-        int activeQuestIndex = activeQuests.FindIndex(q => !q.isCompleted); 
-
-        if (activeQuestIndex == -1)
-        {
+        int idx = activeQuests.FindIndex(q => !q.isCompleted);
+        if (idx == -1)
             return TimeManager.Instance.dayEndTime;
-        }
 
-        return TimeManager.Instance.dayStartTime + (activeQuestIndex + 1) * timePerQuest;
+        return TimeManager.Instance.dayStartTime + (idx + 1) * timePerQuest;
     }
 }

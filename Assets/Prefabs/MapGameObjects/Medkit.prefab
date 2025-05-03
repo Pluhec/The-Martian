@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5591505765429631429}
   - component: {fileID: 8371326793566814840}
   - component: {fileID: 1186940371046538561}
+  - component: {fileID: 3215191398050705987}
   m_Layer: 0
   m_Name: Medkit
   m_TagString: Untagged
@@ -134,3 +135,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.16923077, y: 0.13846155}
   m_EdgeRadius: 0
+--- !u!114 &3215191398050705987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2396415419901120222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb6a8f33925a4b64b18a1b11ac754a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 1
+  targetIndex: 0
