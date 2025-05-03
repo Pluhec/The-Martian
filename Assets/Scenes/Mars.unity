@@ -318,6 +318,10 @@ PrefabInstance:
       value: PersistentManager
       objectReference: {fileID: 0}
     - target: {fileID: 8743014002861168055, guid: 9a541985102a94bd1a8c048937333d1d, type: 3}
+      propertyPath: currentSol
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743014002861168055, guid: 9a541985102a94bd1a8c048937333d1d, type: 3}
       propertyPath: solDataList.Array.data[1].quests.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1107,6 +1111,25 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83d69400d6c60490c8d511b57b995f47, type: 3}
+--- !u!1 &499970394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7012738628498414628, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
+  m_PrefabInstance: {fileID: 1027755102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &499970400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499970394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb6a8f33925a4b64b18a1b11ac754a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 2
+  targetIndex: 0
 --- !u!1001 &504140435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106045,6 +106068,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1010284767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7012738628498414628, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
+  m_PrefabInstance: {fileID: 1086466431}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1010284773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010284767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb6a8f33925a4b64b18a1b11ac754a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 2
+  targetIndex: 1
 --- !u!1 &1017365530
 GameObject:
   m_ObjectHideFlags: 0
@@ -106270,7 +106312,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7012738628498414628, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 499970400}
   m_SourcePrefab: {fileID: 100100000, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
 --- !u!114 &1039934059 stripped
 MonoBehaviour:
@@ -106338,7 +106383,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7012738628498414628, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1010284773}
   m_SourcePrefab: {fileID: 100100000, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
 --- !u!1001 &1131630085
 PrefabInstance:
