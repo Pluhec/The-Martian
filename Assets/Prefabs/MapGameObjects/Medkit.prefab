@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5591505765429631429}
   - component: {fileID: 8371326793566814840}
   - component: {fileID: 1186940371046538561}
-  - component: {fileID: 7674089853869484862}
+  - component: {fileID: 5037953458082329477}
   - component: {fileID: 1419932596253083870}
   - component: {fileID: 3215191398050705987}
   m_Layer: 0
@@ -137,7 +137,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.16923077, y: 0.13846155}
   m_EdgeRadius: 0
---- !u!114 &7674089853869484862
+--- !u!114 &5037953458082329477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   itemName: "Nezn\xE1m\xFD p\u0159edm\u011Bt"
-  questID: 0
+  questID: 1
 --- !u!114 &1419932596253083870
 MonoBehaviour:
   m_ObjectHideFlags: 0
