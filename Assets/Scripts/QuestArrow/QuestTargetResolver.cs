@@ -2,17 +2,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
-/// <summary>
-/// Drží mapu všech QuestTarget a jednoho FallbackTarget
-/// v právě aktivní scéně.
-/// </summary>
 public class QuestTargetResolver : MonoBehaviour
 {
     public static QuestTargetResolver Instance { get; private set; }
 
-    // klíč je "questID:targetIndex"
+    // existující mapa „questID:targetIndex → Transform“
     private Dictionary<string, Transform> targets = new Dictionary<string, Transform>();
     private Transform fallback;
+    private Transform terminal;   // <-- nově
 
     private void Awake()
     {
@@ -29,49 +26,41 @@ public class QuestTargetResolver : MonoBehaviour
     }
 
     private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
+        => SceneManager.sceneLoaded += OnSceneLoaded;
     private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
+        => SceneManager.sceneLoaded -= OnSceneLoaded;
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        RegisterSceneTargets();
-    }
+        => RegisterSceneTargets();
 
     private void RegisterSceneTargets()
     {
         targets.Clear();
         fallback = null;
+        terminal = null;  // <-- reset
 
+        // 1) načti všechna QuestTarget
         foreach (var qt in FindObjectsOfType<QuestTarget>())
         {
             string key = qt.questID + ":" + qt.targetIndex;
             targets[key] = qt.transform;
         }
 
+        // 2) fallback
         var fb = FindObjectOfType<FallbackTarget>();
-        if (fb != null)
-            fallback = fb.transform;
+        if (fb != null) fallback = fb.transform;
+
+        // 3) terminal target
+        var tt = FindObjectOfType<TerminalTarget>();
+        if (tt != null) terminal = tt.transform;
     }
 
-    /// <summary>
-    /// Vrátí Transform pro daný questID + targetIndex,
-    /// nebo null, pokud v dané scéně neexistuje.
-    /// </summary>
     public Transform Resolve(int questID, int targetIndex)
     {
-        string key = questID + ":" + targetIndex;
-        targets.TryGetValue(key, out var t);
+        targets.TryGetValue(questID + ":" + targetIndex, out var t);
         return t;
     }
 
-    /// <summary>
-    /// Vrátí transform z FallbackTarget (nebo null).
-    /// </summary>
     public Transform FallbackTarget => fallback;
+    public Transform TerminalTarget => terminal;  // <-- nově
 }

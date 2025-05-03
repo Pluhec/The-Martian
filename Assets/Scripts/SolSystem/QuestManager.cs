@@ -40,89 +40,102 @@ public class QuestManager : MonoBehaviour
     private void Start()
     {
         FindArrowPointerInScene();
-        UpdateArrowTargetAfterSceneLoad();
+        UpdateArrowAfterSceneLoad();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         FindArrowPointerInScene();
-        UpdateArrowTargetAfterSceneLoad();
+        UpdateArrowAfterSceneLoad();
     }
 
+    /// <summary>
+    /// Pokud reference na šipku chybí, najde ji ve scéně.
+    /// </summary>
     private void FindArrowPointerInScene()
     {
         if (arrowPointer == null)
         {
             arrowPointer = FindObjectOfType<QuestArrowPointer>();
             if (arrowPointer == null)
-                Debug.LogWarning("QuestManager: Nenalezl jsem QuestArrowPointer ve scéně " 
-                                 + SceneManager.GetActiveScene().name);
+                Debug.LogWarning($"QuestManager: nenalezl jsem QuestArrowPointer ve scéně {SceneManager.GetActiveScene().name}");
         }
     }
 
-    private void UpdateArrowTargetAfterSceneLoad()
+    /// <summary>
+    /// Po načtení scény nebo na startu přenastaví šipku podle stavu questů:
+    /// - pokud jsou dokončeny všechny questy → na TerminalTarget
+    /// - jinak → na aktuální podquest nebo FallbackTarget
+    /// </summary>
+    private void UpdateArrowAfterSceneLoad()
     {
         if (activeQuests == null || activeQuests.Count == 0)
             return;
 
+        // 1) pokud jsou všechny questy hotové → ukazuj na terminal
         if (currentQuestIndex >= activeQuests.Count)
         {
-            arrowPointer?.SetTarget(null);
+            Transform term = QuestTargetResolver.Instance.TerminalTarget;
+            arrowPointer?.SetTarget(term);
             return;
         }
 
-        var quest = activeQuests[currentQuestIndex];
-        Transform t = QuestTargetResolver.Instance.Resolve(
-            quest.questID, quest.currentTargetIndex
-        );
-        if (t == null)
-            t = QuestTargetResolver.Instance.FallbackTarget;
+        // 2) jinak ukazuj na právě aktivní podquest
+        var q = activeQuests[currentQuestIndex];
+        Transform t = QuestTargetResolver.Instance.Resolve(q.questID, q.currentTargetIndex)
+                     ?? QuestTargetResolver.Instance.FallbackTarget;
         arrowPointer?.SetTarget(t);
     }
 
+    /// <summary>
+    /// Inicializuje seznam questů pro nový Sol.
+    /// </summary>
     public void InitializeQuests(List<Quest> quests)
     {
         activeQuests = new List<Quest>(quests);
         currentQuestIndex = 0;
         foreach (var q in activeQuests)
             q.isCompleted = false;
+
         ActivateCurrentQuest();
     }
 
+    /// <summary>
+    /// Nastaví šipku na začátek právě aktivního questu (nebo na terminal).
+    /// </summary>
     private void ActivateCurrentQuest()
     {
         if (currentQuestIndex < activeQuests.Count)
         {
             var quest = activeQuests[currentQuestIndex];
             quest.currentTargetIndex = 0;
-
-            Transform t = QuestTargetResolver.Instance.Resolve(
-                quest.questID, quest.currentTargetIndex
-            );
-            if (t == null)
-                t = QuestTargetResolver.Instance.FallbackTarget;
-
+            Transform t = QuestTargetResolver.Instance.Resolve(quest.questID, quest.currentTargetIndex)
+                         ?? QuestTargetResolver.Instance.FallbackTarget;
             arrowPointer?.SetTarget(t);
         }
         else
         {
-            arrowPointer?.SetTarget(null);
+            // všechny questy hotové → šipka na terminal
+            Transform term = QuestTargetResolver.Instance.TerminalTarget;
+            arrowPointer?.SetTarget(term);
         }
     }
 
+    /// <summary>
+    /// Volá se při dosažení podcíle (pokud používáš Notify).
+    /// </summary>
     public void NotifyTargetReached(int questID, Transform reachedTarget)
     {
         var quest = activeQuests.Find(q => q.questID == questID);
         if (quest == null || quest.isCompleted) return;
 
-        // tady se používá stará quest.targets logika, pokud ji nechceš, 
-        // stačí spíš volat MarkQuestAsCompletedByID
         if (quest.currentTargetIndex < quest.targets.Count
             && quest.GetCurrentTarget() == reachedTarget)
         {
             quest.currentTargetIndex++;
             if (quest.currentTargetIndex >= quest.targets.Count)
             {
+                // dokončení tohoto questu
                 quest.isCompleted = true;
                 Debug.Log($"Quest {quest.questName} (ID:{quest.questID}) completed.");
                 TimeManager.Instance.ResumeTime();
@@ -134,30 +147,27 @@ public class QuestManager : MonoBehaviour
             {
                 Transform t = QuestTargetResolver.Instance.Resolve(
                     quest.questID, quest.currentTargetIndex
-                );
-                if (t == null)
-                    t = QuestTargetResolver.Instance.FallbackTarget;
+                ) ?? QuestTargetResolver.Instance.FallbackTarget;
                 arrowPointer?.SetTarget(t);
             }
         }
     }
 
     /// <summary>
-    /// Značí quest questID jako dokončený a pokud to byl právě aktivní quest,
-    /// hned se posune na další a aktualizuje šipku.
+    /// Označí quest jako dokončený ručně a posune ukazatel,
+    /// pokud to byl právě aktivní quest.
     /// </summary>
     public void MarkQuestAsCompletedByID(int questID)
     {
         for (int i = 0; i < activeQuests.Count; i++)
         {
-            var quest = activeQuests[i];
-            if (quest.questID == questID && !quest.isCompleted)
+            var q = activeQuests[i];
+            if (q.questID == questID && !q.isCompleted)
             {
-                quest.isCompleted = true;
-                Debug.Log($"Quest {quest.questName} (ID:{quest.questID}) completed via MarkQuestAsCompletedByID.");
+                q.isCompleted = true;
+                Debug.Log($"Quest {q.questName} (ID:{q.questID}) completed via MarkQuestAsCompletedByID.");
                 TimeManager.Instance.ResumeTime();
 
-                // pokud to byl právě aktivní quest, posuň ukazatel
                 if (i == currentQuestIndex)
                 {
                     currentQuestIndex++;
