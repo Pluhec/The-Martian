@@ -11,10 +11,12 @@ GameObject:
   - component: {fileID: 5591505765429631429}
   - component: {fileID: 8371326793566814840}
   - component: {fileID: 1186940371046538561}
+  - component: {fileID: 7674089853869484862}
+  - component: {fileID: 1419932596253083870}
   - component: {fileID: 3215191398050705987}
   m_Layer: 0
   m_Name: Medkit
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +121,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -135,6 +137,34 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.16923077, y: 0.13846155}
   m_EdgeRadius: 0
+--- !u!114 &7674089853869484862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2396415419901120222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f348e09542e50e041950f497e82587b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: []
+  itemName: "Nezn\xE1m\xFD p\u0159edm\u011Bt"
+  questID: 0
+--- !u!114 &1419932596253083870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2396415419901120222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df21a30c4d5b294ea2f7d417e6a5def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: []
 --- !u!114 &3215191398050705987
 MonoBehaviour:
   m_ObjectHideFlags: 0
