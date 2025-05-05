@@ -36,6 +36,19 @@ public class SpawnManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         TeleportPlayer(EntranceData.Instance.lastEntranceKey);
+
+        // prepinani uvnitr vennku pro footstepManager - audio
+        var player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            var footstepManager = player.GetComponent<FootstepManager>();
+            if (footstepManager != null)
+            {
+                footstepManager.isOutside = scene.name == "Mars"; 
+            }
+        }
+
+        // Efekt při návratu do Habu
         if (EntranceData.Instance.logAfterLoad)
             StartCoroutine(ReturnEffectCo());
     }
