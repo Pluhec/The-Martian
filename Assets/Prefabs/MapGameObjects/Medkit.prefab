@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5037953458082329477}
   - component: {fileID: 1419932596253083870}
   - component: {fileID: 3215191398050705987}
+  - component: {fileID: 1157503920630922316}
   m_Layer: 0
   m_Name: Medkit
   m_TagString: Interactable
@@ -179,3 +180,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questID: 1
   targetIndex: 0
+--- !u!114 &1157503920630922316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2396415419901120222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba1f9fc3618c5f468bc907d921353ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 

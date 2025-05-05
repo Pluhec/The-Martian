@@ -339,7 +339,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &153052152
 RectTransform:
@@ -375,7 +375,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directoryLine: {fileID: 6912677651267500440, guid: 5203aa941ce2e4485aac48cefeca6cb5, type: 3}
   responseLine: {fileID: 4598635372445870588, guid: fd14ecee0f5934501a47b9a1972cab43, type: 3}
-  SceneIndex: 2
   terminalInput: {fileID: 843066074}
   userInputLine: {fileID: 1088659819}
   sr: {fileID: 1667574992}
