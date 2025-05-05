@@ -26,32 +26,30 @@ public class Medkit : InteractableObject
         // Inicializace QuestManager a QuestTablet
         questManager = QuestManager.Instance;
         if (questManager == null)
-        {
             Debug.LogError("QuestManager instance not found.");
-        }
 
         questTablet = FindObjectOfType<QuestTablet>();
         if (questTablet == null)
-        {
             Debug.LogError("QuestTablet instance not found.");
-        }
 
-        actions.Add("Pick Up");
+        // Přidáme akce pro tento objekt:
+        // první akce (Heal) se použije při quick‐action,
+        // druhá (Pick Up) se objeví v radiálním menu.
         actions.Add("Heal");
+        actions.Add("Pick Up");
     }
 
     public override void PerformAction(string action)
     {
         if (action == "Pick Up")
         {
-            if (inventory.slots == null) return;
+            if (inventory.slots == null)
+                return;
 
-            // Bezpečný průchod sloty
+            // Najdeme první volný blok o velikosti slotSize
             for (int i = 0; i <= inventory.slots.Length - slotSize; i++)
             {
                 bool isSpaceFree = true;
-
-                // Kontrola volných slotů
                 for (int j = 0; j < slotSize; j++)
                 {
                     if (i + j >= inventory.slots.Length || inventory.isFull[i + j])
@@ -60,20 +58,21 @@ public class Medkit : InteractableObject
                         break;
                     }
                 }
-
                 if (!isSpaceFree) continue;
 
-                // Vytvoření hlavního tlačítka
+                // 1) Vytvoříme hlavní tlačítko v UI
                 GameObject mainItem = Instantiate(itemButton, inventory.slots[i].transform, false);
                 inventory.isFull[i] = true;
 
-                ItemButton itemScript = mainItem.GetComponent<ItemButton>();
-                if (itemScript == null) continue;
+                var itemScript = mainItem.GetComponent<ItemButton>();
+                if (itemScript != null)
+                {
+                    itemScript.mainSlotIndex = i;
+                    itemScript.slotSize      = slotSize;
+                    itemScript.sourceObject  = this;
+                }
 
-                itemScript.mainSlotIndex = i;
-                itemScript.slotSize = slotSize;
-
-                // Vytvoření placeholderů
+                // 2) Vytvoříme placeholdery pro zbylá políčka
                 for (int j = 1; j < slotSize; j++)
                 {
                     int targetIndex = i + j;
@@ -81,31 +80,30 @@ public class Medkit : InteractableObject
 
                     GameObject placeholder = Instantiate(itemButton, inventory.slots[targetIndex].transform, false);
 
-                    // Zneškodnění placeholdera
                     Destroy(placeholder.GetComponent<ItemButton>());
                     Destroy(placeholder.GetComponent<Button>());
 
-                    Image img = placeholder.GetComponent<Image>();
-                    if (img != null) img.color = new Color(1, 1, 1, 0.35f);
+                    var img = placeholder.GetComponent<Image>();
+                    if (img != null)
+                        img.color         = new Color(1, 1, 1, 0.35f);
 
                     placeholder.AddComponent<ItemPlaceholder>().mainSlotIndex = i;
                     inventory.isFull[targetIndex] = true;
                 }
 
+                // 3) Označíme jako sebráno a odstraníme z kódu světa
                 GetComponent<PersistentItem>()?.MarkCollected();
+                DroppedItemManager.Instance?.RemoveDroppedItem(gameObject);
 
-                // Odstranění ze světa
-                if (DroppedItemManager.Instance != null)
-                    DroppedItemManager.Instance.RemoveDroppedItem(gameObject);
-
-                Destroy(gameObject);
-                break;
+                // 4) Deaktivujeme světový objekt, ale necháme ho pro quick‐action z inventáře
+                gameObject.SetActive(false);
+                return;
             }
         }
-
-        if (action == "Heal")
+        else if (action == "Heal")
         {
-            Debug.Log("Heal");
+            // Quick‐action (E) i použití z inventáře
+            Debug.Log("Medkit: Heal");
 
             if (questManager == null)
             {
@@ -113,36 +111,20 @@ public class Medkit : InteractableObject
                 return;
             }
 
+            // Najdeme a dokončíme questu
             Quest quest = questManager.ActiveQuests.Find(q => q.questID == questID);
-            if (quest != null)
+            if (quest != null && !quest.isCompleted)
             {
-                if (!quest.isCompleted)
-                {
-                    Debug.Log("Before update: Quest " + quest.questName + " (ID: " + quest.questID + ") isCompleted: " + quest.isCompleted);
-
-                    questManager.MarkQuestAsCompletedByID(questID);
-
-                    Debug.Log("After update: Quest " + quest.questName + " (ID: " + quest.questID + ") isCompleted: " + quest.isCompleted);
-                }
-                else
-                {
-                    Debug.Log("Quest " + quest.questName + " is already completed.");
-                }
-
-                if (questTablet != null)
-                {
-                    questTablet.UpdateQuestList();
-                }
-                else
-                {
-                    Debug.LogError("QuestTablet is not initialized.");
-                }
+                Debug.Log($"Before heal: Quest {quest.questName} (ID {quest.questID}) isCompleted? {quest.isCompleted}");
+                questManager.MarkQuestAsCompletedByID(questID);
+                Debug.Log($" After heal: Quest {quest.questName} isCompleted? {quest.isCompleted}");
             }
-            else
-            {
-                Debug.LogWarning("Quest with ID " + questID + " was not found in active quests.");
-            }
-            
+
+            // Aktualizujeme UI questu
+            if (questTablet != null)
+                questTablet.UpdateQuestList();
+
+            // 5) Odstraníme světový objekt (pokud byl deaktivovaný, znova ho zničíme)
             Destroy(gameObject);
         }
     }
