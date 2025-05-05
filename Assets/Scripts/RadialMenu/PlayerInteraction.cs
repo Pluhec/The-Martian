@@ -128,7 +128,7 @@ public class PlayerInteraction2D : MonoBehaviour
         }
     }
 
-    private void PerformQuickAction()
+    public void PerformQuickAction()
     {
         if (currentObject != null)
         {
@@ -139,6 +139,28 @@ public class PlayerInteraction2D : MonoBehaviour
                 currentObject.PerformAction(actions[0]); // Provede první akci ihned
                 Debug.Log("Performed quick action: " + actions[0]);
             }
+        }
+    }
+
+    public void PerformQuickActionInInventory()
+    {
+        if (currentObject != null)
+        {
+            audioManager.PlayRadialMenu(audioManager.doAction);
+            List<string> actions = currentObject.GetActions();
+            if (actions.Count > 0)
+            {
+                currentObject.PerformAction(actions[0]); // Provede první akci ihned
+                Debug.Log("Performed quick action: " + actions[0]);
+            }
+            else 
+            {
+                Debug.LogWarning("neco se dojebalo");
+            }
+        }
+        else 
+        {
+            Debug.LogWarning("current Object je null");
         }
     }
 

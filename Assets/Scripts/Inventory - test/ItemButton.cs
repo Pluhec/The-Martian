@@ -8,41 +8,42 @@ public class ItemButton : MonoBehaviour,
 {
     public string itemID = "";
 
+    [HideInInspector] public InteractableObject sourceObject;
     [HideInInspector] public int mainSlotIndex;
     [HideInInspector] public int slotSize = 1;
 
-    [HideInInspector] public Inventory        inventory;
+    [HideInInspector] public Inventory inventory;
     [HideInInspector] public StorageContainer storageContainer;
 
-    Transform   originalParent;
-    Canvas      canvas;
-    CanvasGroup cg;
+    private Transform originalParent;
+    private Canvas canvas;
+    private CanvasGroup cg;
 
-    /*──────────────────────────────*/
-    /*  INIT                        */
-    /*──────────────────────────────*/
+    private PlayerInteraction2D playerInteraction;
+
     void Awake()
     {
         if (string.IsNullOrEmpty(itemID))
             itemID = Guid.NewGuid().ToString();
 
         inventory = Inventory.Instance;
-        canvas    = FindObjectOfType<Canvas>();
-        cg        = GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
+        canvas = FindObjectOfType<Canvas>();
+        cg = GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
+
+        playerInteraction = FindObjectOfType<PlayerInteraction2D>();
+        if (playerInteraction == null)
+            Debug.LogError("PlayerInteraction2D instance not found!");
     }
 
     public void Initialize(int slotIdx, int size, Inventory inv, StorageContainer cont)
     {
-        mainSlotIndex    = slotIdx;
-        slotSize         = size;
-        inventory        = inv;
+        mainSlotIndex = slotIdx;
+        slotSize = size;
+        inventory = inv;
         storageContainer = cont;
-        originalParent   = transform.parent;
+        originalParent = transform.parent;
     }
 
-    /*──────────────────────────────*/
-    /*  HELPERS                     */
-    /*──────────────────────────────*/
     void RemoveOwnPlaceholders()
     {
         for (int j = 0; j < slotSize; j++)
@@ -75,24 +76,16 @@ public class ItemButton : MonoBehaviour,
         }
     }
 
-    /*──────────────────────────────*/
-    /*  DRAG & DROP                 */
-    /*──────────────────────────────*/
     public void OnBeginDrag(PointerEventData e)
     {
-        /* 1) zjisti platný Canvas */
-        if (canvas == null || !canvas)                    // null nebo zničen
-            canvas = FindObjectOfType<Canvas>();
+        if (canvas == null) canvas = FindObjectOfType<Canvas>();
+        if (canvas == null) return;
 
-        if (canvas == null) return;   // ani v nové scéně Canvas není → nic netahej
-
-        /* 2) standardní logika */
         RemoveOwnPlaceholders();
         originalParent = transform.parent;
         transform.SetParent(canvas.transform);
         cg.blocksRaycasts = false;
     }
-
 
     public void OnDrag(PointerEventData e) => transform.position = e.position;
 
@@ -103,36 +96,64 @@ public class ItemButton : MonoBehaviour,
         cg.blocksRaycasts = true;
     }
 
-    /*──────────────────────────────*/
-    /*  PRAVÝ KLIK = DROP           */
-    /*──────────────────────────────*/
     public void OnPointerClick(PointerEventData e)
     {
-        if (e.button == PointerEventData.InputButton.Right) DropItem();
+        if (e.button == PointerEventData.InputButton.Right)
+            DropItem();
+        else if (e.button == PointerEventData.InputButton.Left)
+            UseItem();
+    }
+
+    private void UseItem()
+    {
+        if (sourceObject == null)
+        {
+            Debug.LogWarning("sourceObject není nastavený.");
+            return;
+        }
+
+        var actions = sourceObject.GetActions();
+        if (actions.Count == 0)
+        {
+            Debug.LogWarning("Tento item nemá definovanou žádnou akci.");
+            return;
+        }
+        
+        sourceObject.PerformAction(actions[0]);
+
+        for (int i = 0; i < slotSize; i++)
+        {
+            int index = mainSlotIndex + i;
+            if (index >= inventory.slots.Length) break;
+
+            Transform slot = inventory.slots[index].transform;
+            if (slot.childCount == 0) continue;
+
+            GameObject child = slot.GetChild(0).gameObject;
+            
+            Destroy(child);
+            inventory.isFull[index] = false;
+        }
     }
 
     void DropItem()
     {
-        // Kontrola existence závislostí
         if (inventory == null || inventory.slots == null) return;
         if (DroppedItemManager.Instance == null) return;
 
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
         Vector2 dropPosition = new Vector2(player.position.x, player.position.y + 0.35f);
-        
+
         if (TryGetComponent<ContainerSpawn>(out var csp))
         {
-            // 1) fyzicky ji přesuneme do scény
             Vector2 dropPos = (Vector2)player.position + Vector2.up * 0.35f;
             csp.SpawnContainer(dropPos);
 
-            // Iterate through each slot used by the item
             for (int j = 0; j < slotSize; j++)
             {
                 int idx = mainSlotIndex + j;
                 if (idx >= inventory.slots.Length) continue;
 
-                // Remove all children that carry a placeholder with matching mainSlotIndex
                 Transform slotTransform = inventory.slots[idx].transform;
                 for (int k = slotTransform.childCount - 1; k >= 0; k--)
                 {
@@ -144,7 +165,6 @@ public class ItemButton : MonoBehaviour,
                     }
                 }
 
-                // Mark the slot as free
                 inventory.isFull[idx] = false;
             }
 
@@ -155,16 +175,12 @@ public class ItemButton : MonoBehaviour,
         for (int i = 0; i < slotSize; i++)
         {
             int index = mainSlotIndex + i;
-            
-            // Kontrola platnosti indexu
             if (index >= inventory.slots.Length) break;
 
             Transform slot = inventory.slots[index].transform;
             if (slot.childCount == 0) continue;
 
             GameObject child = slot.GetChild(0).gameObject;
-            
-            // Hlavní item spawnuje fyzický objekt
             if (i == 0 && child.TryGetComponent<Spawn>(out var spawn))
             {
                 GameObject spawnedItem = Instantiate(spawn.item, dropPosition, Quaternion.identity);

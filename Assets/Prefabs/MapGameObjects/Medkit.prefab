@@ -152,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   itemButton: {fileID: 5179468945055144031, guid: a24d402ab2a5a45ebbdc058fa30b0d24, type: 3}
-  slotSize: 1
+  slotSize: 3
   itemName: "Nezn\xE1m\xFD p\u0159edm\u011Bt"
   questID: 1
 --- !u!114 &1419932596253083870
