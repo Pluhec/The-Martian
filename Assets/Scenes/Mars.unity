@@ -53532,6 +53532,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 240401973}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &753185474 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1474450585729342427, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+  m_PrefabInstance: {fileID: 1185756970}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &767804291 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4606899482107782096, guid: 83d69400d6c60490c8d511b57b995f47, type: 3}
@@ -106358,6 +106363,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1054335342 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6182727062301220274, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+  m_PrefabInstance: {fileID: 1185756970}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1086466431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106578,6 +106588,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5216894451980356117, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216894451980356117, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+      propertyPath: sandSource
+      value: 
+      objectReference: {fileID: 1054335342}
+    - target: {fileID: 5216894451980356117, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+      propertyPath: metalSource
+      value: 
+      objectReference: {fileID: 753185474}
+    - target: {fileID: 5216894451980356117, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+      propertyPath: metalFootsteps.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216894451980356117, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+      propertyPath: 'metalFootsteps.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: e4b561cb06dcf483aa9cf9875ff9fcd2, type: 3}
+    - target: {fileID: 5216894451980356117, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+      propertyPath: 'metalFootsteps.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: dc01e695d71084715bcf84b14f4aa197, type: 3}
+    - target: {fileID: 5216894451980356117, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+      propertyPath: 'metalFootsteps.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 5e8e4c1824e2740efbfdb725ccbbd6f2, type: 3}
+    - target: {fileID: 5216894451980356117, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+      propertyPath: 'metalFootsteps.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 70348e855da174ddabf6b51233931747, type: 3}
     - target: {fileID: 8312465754160185224, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
       propertyPath: m_Name
       value: Player
@@ -106658,12 +106700,13 @@ PrefabInstance:
       propertyPath: 'StaminaPoints.Array.data[15]'
       value: 
       objectReference: {fileID: 1803842092}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8312465754160185224, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
-      insertIndex: 6
+      insertIndex: -1
       addedObject: {fileID: 678254457}
   m_SourcePrefab: {fileID: 100100000, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
 --- !u!114 &1230012248 stripped

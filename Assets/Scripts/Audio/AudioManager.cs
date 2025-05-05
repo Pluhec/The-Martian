@@ -7,8 +7,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource solarPanelDone;
     [SerializeField] private AudioSource decompressionSource;
     [SerializeField] private AudioSource SlidingAirlockDoorSource;
-    [SerializeField] private AudioSource sandSource;   
-    [SerializeField] private AudioSource metalSource; 
 
     [Header("------ RadialMenu ------")]
     public AudioClip openCloseMenu;
@@ -24,10 +22,6 @@ public class AudioManager : MonoBehaviour
 
     [Header("------ SlidingAirlockDoor ------")]
     public AudioClip SlidingAirlockDoor;
-
-    [Header("------ Footstep ------")]
-    public AudioClip sandSoundClip;  
-    public AudioClip metalSoundClip; 
 
     public void PlayRadialMenu(AudioClip clip)
     {
@@ -62,15 +56,4 @@ public class AudioManager : MonoBehaviour
         SlidingAirlockDoorSource.PlayOneShot(SlidingAirlockDoor);
     }
     
-    public void PlaySandStep(float volume = 1f, float pitch = 1f)
-    {
-        sandSource.pitch = pitch;
-        sandSource.PlayOneShot(sandSoundClip, volume);
-    }
-    
-    public void PlayMetalStep(float volume = 1f, float pitch = 1f)
-    {
-        metalSource.pitch = pitch;
-        metalSource.PlayOneShot(metalSoundClip, volume);
-    }
 }
