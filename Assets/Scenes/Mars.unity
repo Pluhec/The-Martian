@@ -250,6 +250,17 @@ Transform:
   - {fileID: 894829685}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &124315705 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3884239047227882590, guid: 6fa9034009b79df49b1812e9272aaeea, type: 3}
+  m_PrefabInstance: {fileID: 1451322141}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f8404ee7748d44dbb868843e4bf8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &156738284 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6474607532129304368, guid: 610e4b9df901d40509ac583ce5d287a3, type: 3}
@@ -838,6 +849,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &429940089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8312465754160185224, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+  m_PrefabInstance: {fileID: 1185756970}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &446949927
 GameObject:
   m_ObjectHideFlags: 0
@@ -53247,6 +53263,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5097247746345874330, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
   m_PrefabInstance: {fileID: 1185756970}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &678254457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429940089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b04294a9ccb9c42b89cb4c3d5a7b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radialSelection: {fileID: 124315705}
+  holdThreshold: 0.5
 --- !u!114 &704867162 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6024304135029164883, guid: 83d69400d6c60490c8d511b57b995f47, type: 3}
@@ -106631,7 +106661,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8312465754160185224, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 678254457}
   m_SourcePrefab: {fileID: 100100000, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
 --- !u!114 &1230012248 stripped
 MonoBehaviour:
@@ -106857,9 +106890,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: RadialSelection
       objectReference: {fileID: 0}
+    - target: {fileID: 5428004031797065353, guid: 6fa9034009b79df49b1812e9272aaeea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7910748146685739811, guid: 6fa9034009b79df49b1812e9272aaeea, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8839995449373788838, guid: 6fa9034009b79df49b1812e9272aaeea, type: 3}
       propertyPath: m_LocalPosition.x
