@@ -1005,6 +1005,10 @@ PrefabInstance:
       value: SolaryVelke_Sprite+minihra 6
       objectReference: {fileID: 0}
     - target: {fileID: 7678078029309850565, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
+      propertyPath: questID
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678078029309850565, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
       propertyPath: playerUI
       value: 
       objectReference: {fileID: 1848326874}
@@ -54018,6 +54022,10 @@ PrefabInstance:
       value: SolaryVelke_Sprite+minihra 4
       objectReference: {fileID: 0}
     - target: {fileID: 7678078029309850565, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
+      propertyPath: questID
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678078029309850565, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
       propertyPath: playerUI
       value: 
       objectReference: {fileID: 1848326874}
@@ -106477,6 +106485,10 @@ PrefabInstance:
       value: SolaryVelke_Sprite+minihra 3
       objectReference: {fileID: 0}
     - target: {fileID: 7678078029309850565, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
+      propertyPath: questID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678078029309850565, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
       propertyPath: playerUI
       value: 
       objectReference: {fileID: 1848326874}
@@ -106888,7 +106900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 367343035255249904, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.408
+      value: 10.27
       objectReference: {fileID: 0}
     - target: {fileID: 367343035255249904, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -106941,6 +106953,10 @@ PrefabInstance:
     - target: {fileID: 7012738628498414628, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
       propertyPath: m_Name
       value: SolaryVelke_Sprite+minihra 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678078029309850565, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
+      propertyPath: questID
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7678078029309850565, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
       propertyPath: playerUI
@@ -107824,6 +107840,10 @@ PrefabInstance:
       value: SolaryVelke_Sprite+minihra 5
       objectReference: {fileID: 0}
     - target: {fileID: 7678078029309850565, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
+      propertyPath: questID
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678078029309850565, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
       propertyPath: playerUI
       value: 
       objectReference: {fileID: 1848326874}
@@ -108149,7 +108169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 367343035255249904, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.07
+      value: 11.05
       objectReference: {fileID: 0}
     - target: {fileID: 367343035255249904, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -108202,6 +108222,10 @@ PrefabInstance:
     - target: {fileID: 7012738628498414628, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
       propertyPath: m_Name
       value: SolaryVelke_Sprite+minihra 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678078029309850565, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
+      propertyPath: questID
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7678078029309850565, guid: 2791cff6e611b47018db9212fb99edc4, type: 3}
       propertyPath: playerUI

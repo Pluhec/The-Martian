@@ -10,6 +10,8 @@ public class SolarPanel : InteractableObject
     public GameObject playerMovement;
     public GameObject SolarPanelMinigame;
     public GameObject inventoryUI;
+
+    public int questID;
     
     private AudioManager audioManager;
     
@@ -48,6 +50,22 @@ public class SolarPanel : InteractableObject
             if (movementScript != null)
             {
                 movementScript.enabled = false;
+            }
+            
+            QuestManager questManager = QuestManager.Instance;
+            if (questManager != null)
+            {
+                Quest quest = questManager.ActiveQuests.Find(q => q.questID == questID);
+                if (quest != null && !quest.isCompleted)
+                {
+                    Debug.Log($"Before clean: Quest {quest.questName} (ID {quest.questID}) isCompleted? {quest.isCompleted}");
+                    questManager.MarkQuestAsCompletedByID(questID);
+                    Debug.Log($" After clean: Quest {quest.questName} isCompleted? {quest.isCompleted}");
+                }
+            }
+            else
+            {
+                Debug.LogError("QuestManager instance not found.");
             }
         }
     }
