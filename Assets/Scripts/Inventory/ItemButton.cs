@@ -183,6 +183,17 @@ public class ItemButton : MonoBehaviour,
             GameObject child = slot.GetChild(0).gameObject;
             if (i == 0 && child.TryGetComponent<Spawn>(out var spawn))
             {
+                // Kontrola zakázané oblasti (např. HabArea)
+                LayerMask forbiddenZone = LayerMask.GetMask("NoDropZone");
+                Collider2D overlap = Physics2D.OverlapPoint(dropPosition, forbiddenZone);
+
+                if (overlap != null)
+                {
+                    Debug.Log("❌ Nelze položit item – oblast zakázaná.");
+                    return; // Zruší drop
+                }
+
+                // Pokračuj s běžným dropem
                 GameObject spawnedItem = Instantiate(spawn.item, dropPosition, Quaternion.identity);
                 DroppedItemManager.Instance.AddDroppedItem(spawn.item, dropPosition);
             }
