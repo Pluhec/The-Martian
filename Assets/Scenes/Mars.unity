@@ -353,11 +353,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8743014002861168055, guid: 9a541985102a94bd1a8c048937333d1d, type: 3}
       propertyPath: solDataList.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8743014002861168055, guid: 9a541985102a94bd1a8c048937333d1d, type: 3}
       propertyPath: solDataList.Array.data[1].solNumber
       value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743014002861168055, guid: 9a541985102a94bd1a8c048937333d1d, type: 3}
+      propertyPath: solDataList.Array.data[2].solNumber
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 8743014002861168055, guid: 9a541985102a94bd1a8c048937333d1d, type: 3}
       propertyPath: solDataList.Array.data[3].solNumber
