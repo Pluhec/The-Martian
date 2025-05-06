@@ -156,8 +156,17 @@ public class Clean : MonoBehaviour
     }
 
     public float GetCleanPercentage()
+{
+    if (initialDirtAmount <= 0) return 100f;
+
+    float remainingDirtPercentage = currentDirtAmount / initialDirtAmount;
+
+    // zjednoduseni minihry
+    if (remainingDirtPercentage <= 0.0314f)
     {
-        if (initialDirtAmount <= 0) return 0f;
-        return (1f - (currentDirtAmount / initialDirtAmount)) * 100f;
+        return 100f;
     }
+
+    return (1f - remainingDirtPercentage) * 100f;
+}
 }
