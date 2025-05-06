@@ -11,9 +11,13 @@ GameObject:
   - component: {fileID: 3245205254211268775}
   - component: {fileID: 3251954609599141618}
   - component: {fileID: 6062474388871611178}
+  - component: {fileID: 7612294555606471646}
+  - component: {fileID: 1957114764389339328}
+  - component: {fileID: -3900913134258457432}
+  - component: {fileID: 468634852058216706}
   m_Layer: 0
   m_Name: PennyKasa
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,3 +145,90 @@ PolygonCollider2D:
       - {x: -0.24615385, y: -0.46923077}
       - {x: 0.18461539, y: -0.46923077}
   m_UseDelaunayMesh: 0
+--- !u!114 &7612294555606471646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232559990759214989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e717f1058ff36b409baac85fac674f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: []
+  itemButton: {fileID: 5462466614591213022, guid: abd33214beda69a47b7d6f4a07f3bf5c, type: 3}
+  slotSize: 4
+--- !u!114 &1957114764389339328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232559990759214989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df21a30c4d5b294ea2f7d417e6a5def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: []
+--- !u!114 &-3900913134258457432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232559990759214989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba1f9fc3618c5f468bc907d921353ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 
+--- !u!61 &468634852058216706
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232559990759214989}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4923077, y: 1.0307692}
+    newSize: {x: 0.4923077, y: 1.0307692}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.4923077, y: 1.0307692}
+  m_EdgeRadius: 0
