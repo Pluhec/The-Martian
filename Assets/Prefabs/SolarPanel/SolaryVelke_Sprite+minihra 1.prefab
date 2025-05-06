@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4018561187063823988
 Transform:
   m_ObjectHideFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 665865373144193918}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.6136177, y: 1.1537131, z: -0.7128791}
+  m_LocalPosition: {x: 2.6136177, y: 1.12, z: -0.7128791}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -787,15 +787,15 @@ RectTransform:
   m_GameObject: {fileID: 6821702902038414620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.25, y: 2.25, z: 2.25}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5784637139743671158}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 821.25, y: 479.1}
+  m_SizeDelta: {x: 21.25, y: -162.43527}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1444219657402657048
 CanvasRenderer:
@@ -991,6 +991,7 @@ MonoBehaviour:
   questTabletUI: {fileID: 0}
   playerMovement: {fileID: 0}
   SolarPanelMinigame: {fileID: 665865373144193918}
+  inventoryUI: {fileID: 0}
 --- !u!114 &2436312257591999603
 MonoBehaviour:
   m_ObjectHideFlags: 0

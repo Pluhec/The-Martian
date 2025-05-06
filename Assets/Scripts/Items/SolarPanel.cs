@@ -9,6 +9,7 @@ public class SolarPanel : InteractableObject
     public GameObject questTabletUI;
     public GameObject playerMovement;
     public GameObject SolarPanelMinigame;
+    public GameObject inventoryUI;
     
     private AudioManager audioManager;
     
@@ -25,6 +26,7 @@ public class SolarPanel : InteractableObject
         
         playerUI.SetActive(true);
         questTabletUI.SetActive(true);
+        inventoryUI.SetActive(true);
         
         Movement movementScript = playerMovement.GetComponent<Movement>();
         if (movementScript != null)
@@ -40,6 +42,7 @@ public class SolarPanel : InteractableObject
             solarPanel.SetActive(true);
             playerUI.SetActive(false);
             questTabletUI.SetActive(false);
+            inventoryUI.SetActive(false);
 
             Movement movementScript = playerMovement.GetComponent<Movement>();
             if (movementScript != null)
