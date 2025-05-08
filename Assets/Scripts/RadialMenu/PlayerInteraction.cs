@@ -117,6 +117,13 @@ public class PlayerInteraction2D : MonoBehaviour
 
     private void PerformRadialAction(int index)
     {
+        if (currentObject == null)
+        {
+            Debug.LogWarning("Attempted to perform radial action, but currentObject is null.");
+            radialSelection.onPartSelected.RemoveListener(PerformRadialAction);
+            return;
+        }
+
         List<string> actions = currentObject.GetActions();
         if (index >= 0 && index < actions.Count)
         {

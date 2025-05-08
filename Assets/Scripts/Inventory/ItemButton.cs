@@ -118,9 +118,15 @@ public class ItemButton : MonoBehaviour,
             Debug.LogWarning("Tento item nemá definovanou žádnou akci.");
             return;
         }
-        
+
+        // 1️⃣ Spusť akci
         sourceObject.PerformAction(actions[0]);
 
+        // 2️⃣ Nenič tlačítko, pokud je to nástroj
+        if (actions[0] == "Use")   // lopata, sekera…  nech v inventáři
+            return;
+
+        // 3️⃣ Spotřební věci (léky, jídlo…) smaž jako dřív
         for (int i = 0; i < slotSize; i++)
         {
             int index = mainSlotIndex + i;
@@ -130,11 +136,11 @@ public class ItemButton : MonoBehaviour,
             if (slot.childCount == 0) continue;
 
             GameObject child = slot.GetChild(0).gameObject;
-            
             Destroy(child);
             inventory.isFull[index] = false;
         }
     }
+
 
     void DropItem()
     {

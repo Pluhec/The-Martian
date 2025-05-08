@@ -37,6 +37,9 @@ public class HabAreaChecker : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        // Skip if the gameObject is being destroyed (scene unload)
+        if (!gameObject.scene.isLoaded) return;
+
         if (other.CompareTag("Interactable"))
         {
             objectsInArea.Remove(other);
