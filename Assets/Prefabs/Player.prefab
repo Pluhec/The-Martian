@@ -545,15 +545,17 @@ MonoBehaviour:
   - {fileID: 0}
   OxygenBar: {fileID: 0}
   screenFade: {fileID: 0}
-  Stamina: 100
   MaxStamina: 100
-  Oxygen: 180
   MaxOxygen: 180
+  Stamina: 100
+  Oxygen: 180
   alive: 1
   RunCost: 15
   RechargeRate: 10
   OxygenDepletionRate: 1
   OxygenTimeBeforeDeath: 10
+  toastPrefab: {fileID: 6632250610760257460, guid: 1469e67f2b1084107bf9f2aeaf0947e3, type: 3}
+  notificationsParent: {fileID: 5756155987644100599, guid: 1469e67f2b1084107bf9f2aeaf0947e3, type: 3}
 --- !u!61 &1427290998300935232
 BoxCollider2D:
   m_ObjectHideFlags: 0
