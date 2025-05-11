@@ -52,7 +52,7 @@ public class RoverUIController : MonoBehaviour
     {
         if (rover.transmission.currentGear != TransmissionSystem.Gear.P)
         {
-            Debug.Log("Nelze vypnout motor, není zařazený parking!");
+            Debug.Log("Nelze vypnout motor, není zařazený parking! notification");
             return;
         }
         

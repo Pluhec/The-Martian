@@ -1,3 +1,4 @@
+// BoostSystem.cs
 using UnityEngine;
 
 public class BoostSystem : MonoBehaviour
@@ -8,9 +9,10 @@ public class BoostSystem : MonoBehaviour
     public float consumptionMultiplier = 2f;
 
     private float cooldownTimer = 0f;
-    private bool boosting = false;
+    public bool boosting = false;
 
     public float CooldownRatio => Mathf.Clamp01(cooldownTimer / boostCooldown);
+    public bool IsBoosting => boosting;
 
     private void Update()
     {

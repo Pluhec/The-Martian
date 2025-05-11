@@ -1,5 +1,3 @@
-// Rover.cs
-
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +11,9 @@ public class Rover : InteractableObject
     public BatterySystem battery;
     public BoostSystem boost;
     public TransmissionSystem transmission;
+
+    [Header("Engine Consumption")]
+    public float engineConsumptionRate = 0.02f; 
 
     private bool driverInside = false;
     public bool IsDriverInside => driverInside;
@@ -40,7 +41,14 @@ public class Rover : InteractableObject
         if (action == "Enter Rover" && !driverInside)
             EnterRover();
         else if (action == "Exit Rover" && driverInside)
-            ExitRover();
+        {
+            if (transmission.currentGear != TransmissionSystem.Gear.P)
+            {
+                Debug.Log("Nelze vystoupit, není zařazený parking! notification");
+                return;
+            }
+            ExitRover();            
+        }
     }
 
     private void EnterRover()
@@ -72,5 +80,32 @@ public class Rover : InteractableObject
 
         roverUICanvas.SetActive(false);
         driverInside = false;
+    }
+
+    private void Update()
+    {
+        if (!driverInside)
+            return;
+
+        // motor papa energii i kdyz je nastartovany
+        if (transmission.isEngineOn)
+        {
+            float consume = engineConsumptionRate * Time.deltaTime;
+            if (boost.IsBoosting)
+                consume *= boost.consumptionMultiplier;
+
+            bool hasPower = battery.Consume(consume);
+            if (!hasPower)
+            {
+                Debug.Log("[Rover] Baterie vybitá, motor vypínám");
+                transmission.ToggleEngine();
+            }
+        }
+        
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Debug.Log("[Rover] Shift stisknut – pokus o boost");
+            boost.TryBoost();
+        }
     }
 }
