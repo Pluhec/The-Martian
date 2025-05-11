@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5556308341111290834}
   - component: {fileID: 1481403215559137654}
   - component: {fileID: 4359819410118340668}
+  - component: {fileID: 7425950879629073998}
   m_Layer: 0
   m_Name: Rover
   m_TagString: Untagged
@@ -186,6 +187,7 @@ MonoBehaviour:
   battery: {fileID: 5556308341111290834}
   boost: {fileID: 1481403215559137654}
   transmission: {fileID: 4359819410118340668}
+  engineConsumptionRate: 0.02
 --- !u!114 &1123773653392971248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxEnergy: 100
   currentEnergy: 100
+  consumptionRatePerSecond: 1
 --- !u!114 &1481403215559137654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +231,7 @@ MonoBehaviour:
   boostDuration: 2
   boostCooldown: 5
   consumptionMultiplier: 2
+  boosting: 0
 --- !u!114 &4359819410118340668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +246,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGear: 0
   isEngineOn: 0
+--- !u!114 &7425950879629073998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635626677119769037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 162cb31cb9c5e43e59b9bd796fc6a27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  driveSpeed: 5
+  reverseSpeed: 3
+  turnSpeed: 100
 --- !u!1 &4590135145577291710
 GameObject:
   m_ObjectHideFlags: 0

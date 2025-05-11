@@ -16,7 +16,7 @@ public class BatterySystem : MonoBehaviour
     {
         currentEnergy -= amount;
         currentEnergy = Mathf.Max(currentEnergy, 0f);
-        Debug.Log($"[Battery] Consumed {amount:F2}, left {currentEnergy:F2}");
+        // Debug.Log($"[Battery] Consumed {amount:F2}, left {currentEnergy:F2}");
         return currentEnergy > 0f;
     }
     

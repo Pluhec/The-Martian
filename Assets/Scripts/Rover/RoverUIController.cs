@@ -31,7 +31,7 @@ public class RoverUIController : MonoBehaviour
 
     private void OnEnable()
     {
-        // registrace listener na UI až se spusti canvas
+        // registrace listener na UI az se spusti canvas
         startStopBtn.onClick.AddListener(OnStartStopClicked);
         btnP.onClick.AddListener(() => DoGear(TransmissionSystem.Gear.P));
         btnR.onClick.AddListener(() => DoGear(TransmissionSystem.Gear.R));
