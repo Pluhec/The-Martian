@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 7fba7b6820409472ba97a53d5ba20c7b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5988144946921024767
+    second: RoverBatteryUI_0
+  - first:
+      213: -5947412976101505704
+    second: RoverBatteryUI_1
+  - first:
+      213: 4801361574723696403
+    second: RoverBatteryUI_2
+  - first:
+      213: -3972980749014042056
+    second: RoverBatteryUI_3
+  - first:
+      213: -2400516882569425995
+    second: RoverBatteryUI_4
+  - first:
+      213: -6880975005962516965
+    second: RoverBatteryUI_5
+  - first:
+      213: 8419840053745779450
+    second: RoverBatteryUI_6
+  - first:
+      213: 7586574024389693686
+    second: RoverBatteryUI_7
+  - first:
+      213: 5819140555255201640
+    second: RoverBatteryUI_8
+  - first:
+      213: 3920734165949373755
+    second: RoverBatteryUI_9
+  - first:
+      213: 2697199612754247343
+    second: RoverBatteryUI_10
+  - first:
+      213: 886212210428282532
+    second: RoverBatteryUI_11
+  - first:
+      213: -4053125928721805490
+    second: RoverBatteryUI_12
+  - first:
+      213: 1896055882123904230
+    second: RoverBatteryUI_13
+  - first:
+      213: 255941221496780218
+    second: RoverBatteryUI_14
+  - first:
+      213: 7139063537248451259
+    second: RoverBatteryUI_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RoverBatteryUI_0
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 282
+        width: 44
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 103d837b5e5d5eca0800000000000000
+      internalID: -5988144946921024767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoverBatteryUI_1
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 282
+        width: 44
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 855cbe2b86b867da0800000000000000
+      internalID: -5947412976101505704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoverBatteryUI_2
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 282
+        width: 44
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 317bd9bd9ecd1a240800000000000000
+      internalID: 4801361574723696403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoverBatteryUI_3
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 282
+        width: 43
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83a7d8bfe032dd8c0800000000000000
+      internalID: -3972980749014042056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoverBatteryUI_4
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 282
+        width: 43
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bb0f112d96afaed0800000000000000
+      internalID: -2400516882569425995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoverBatteryUI_5
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 282
+        width: 43
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b16434560bdd180a0800000000000000
+      internalID: -6880975005962516965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoverBatteryUI_6
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 282
+        width: 43
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af28f1d2be749d470800000000000000
+      internalID: 8419840053745779450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoverBatteryUI_7
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 282
+        width: 43
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f014f931ece84960800000000000000
+      internalID: 7586574024389693686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoverBatteryUI_8
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 282
+        width: 43
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86f3e0ef08db1c050800000000000000
+      internalID: 5819140555255201640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoverBatteryUI_9
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 282
+        width: 43
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3d562473fe396630800000000000000
+      internalID: 3920734165949373755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoverBatteryUI_10
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 282
+        width: 43
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faeb986e1c06e6520800000000000000
+      internalID: 2697199612754247343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoverBatteryUI_11
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 282
+        width: 44
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a6013e5f457c4c00800000000000000
+      internalID: 886212210428282532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoverBatteryUI_12
+      rect:
+        serializedVersion: 2
+        x: 1173
+        y: 282
+        width: 44
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4f8c94317760c7c0800000000000000
+      internalID: -4053125928721805490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoverBatteryUI_13
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 282
+        width: 44
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e4094077c4205a10800000000000000
+      internalID: 1896055882123904230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoverBatteryUI_14
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 282
+        width: 44
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab5f1b65f294d8300800000000000000
+      internalID: 255941221496780218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoverBatteryUI_15
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 281
+        width: 77
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bba33a6767c031360800000000000000
+      internalID: 7139063537248451259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      RoverBatteryUI_0: -5988144946921024767
+      RoverBatteryUI_1: -5947412976101505704
+      RoverBatteryUI_10: 2697199612754247343
+      RoverBatteryUI_11: 886212210428282532
+      RoverBatteryUI_12: -4053125928721805490
+      RoverBatteryUI_13: 1896055882123904230
+      RoverBatteryUI_14: 255941221496780218
+      RoverBatteryUI_15: 7139063537248451259
+      RoverBatteryUI_2: 4801361574723696403
+      RoverBatteryUI_3: -3972980749014042056
+      RoverBatteryUI_4: -2400516882569425995
+      RoverBatteryUI_5: -6880975005962516965
+      RoverBatteryUI_6: 8419840053745779450
+      RoverBatteryUI_7: 7586574024389693686
+      RoverBatteryUI_8: 5819140555255201640
+      RoverBatteryUI_9: 3920734165949373755
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
