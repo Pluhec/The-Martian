@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 using Unity.Cinemachine;
 
 public class PathfinderHexInput : MonoBehaviour
@@ -12,6 +11,7 @@ public class PathfinderHexInput : MonoBehaviour
     [Header("Výstup")]
     private string currentHexInput = "";
     private string fullMessage = "";
+    private bool isFirstCharacter = true;
 
     [Header("Externí odkazy")]
     public Movement playerMovement;
@@ -34,8 +34,8 @@ public class PathfinderHexInput : MonoBehaviour
         currentHexInput = "";
         fullMessage = "";
         currentIndex = 0;
-
-        RotatePointerTo(currentIndex);
+        isFirstCharacter = true;
+        pointer.rotation = Quaternion.identity;
         Debug.Log("Pathfinder aktivní.");
     }
 
@@ -56,18 +56,26 @@ public class PathfinderHexInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             string value = GetCurrentHexValue();
-            currentHexInput += value;
-            Debug.Log($"Vybral jsi: {value}");
 
-            if (currentHexInput.Length == 2)
+            if (isFirstCharacter)
             {
-                int ascii = System.Convert.ToInt32(currentHexInput, 16);
-                char character = (char)ascii;
-                fullMessage += character;
-
-                Debug.Log($"Znak: '{character}' | Zpráva: \"{fullMessage}\"");
-                currentHexInput = "";
+                currentHexInput = value;
+                isFirstCharacter = false;
             }
+            else
+            {
+                currentHexInput += value;
+                // Convert hex pair to ASCII character
+                int asciiValue = int.Parse(currentHexInput, System.Globalization.NumberStyles.HexNumber);
+                char character = (char)asciiValue;
+                Debug.Log($"ASCII znak: {character}");
+            
+                // Reset for next pair
+                currentHexInput = "";
+                isFirstCharacter = true;
+            }
+
+            Debug.Log($"Vybral jsi: {value}");
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -78,34 +86,19 @@ public class PathfinderHexInput : MonoBehaviour
 
     private void RotatePointerTo(int index)
     {
-        float targetAngle = -90f - (index * rotationStep); // CCW od horní pozice
+        float targetAngle = -(index * rotationStep);
         pointer.rotation = Quaternion.Euler(0, 0, targetAngle);
     }
 
     private string GetCurrentHexValue()
     {
-        if (hexLabels == null || hexLabels.Length != 16)
-        {
-            Debug.LogError("Chybí cedule nebo není správný počet.");
-            return "?";
-        }
-
-        Transform selected = hexLabels[currentIndex];
-
-        TextMeshProUGUI labelText = selected.GetComponentInChildren<TextMeshProUGUI>();
-        if (labelText != null)
-        {
-            return labelText.text.Trim().ToUpper(); // bezpečný převod
-        }
-
-        return selected.name; // fallback, když není text
+        return currentIndex.ToString("X");
     }
 
     private void ExitPathfinder()
     {
         isActive = false;
 
-        // Obnovení ovládání a kamery
         if (playerMovement != null)
             playerMovement.enabled = true;
 
