@@ -21,7 +21,6 @@ public class RoverMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
         if (!transmission.isEngineOn)
         {
             rb.linearVelocity = Vector2.zero;
@@ -29,12 +28,16 @@ public class RoverMovement : MonoBehaviour
             return;
         }
         
+        float moveInput = Input.GetAxis("Vertical");
         float turnInput = Input.GetAxis("Horizontal");
-        rb.angularVelocity = -turnInput * turnSpeed;
+
+        // nejde se otace pokud neni v pohybu
+        if (Mathf.Abs(moveInput) > 0.1f)
+            rb.angularVelocity = -turnInput * turnSpeed;
+        else
+            rb.angularVelocity = 0f;
         
-        float moveInput = Input.GetAxis("Vertical");  
         float speed = 0f;
-        
         if (moveInput > 0f && transmission.currentGear == TransmissionSystem.Gear.D)
             speed = driveSpeed;
         else if (moveInput < 0f && transmission.currentGear == TransmissionSystem.Gear.R)

@@ -1,29 +1,38 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
 
 public class Rover : InteractableObject
 {
-    [Header("UI & Seat")]
+    [Header("UI & Seat")] 
     public Transform seat;
     public GameObject roverUICanvas;
 
-    [Header("Subsystems")]
+    [Header("Subsystems")] 
     public BatterySystem battery;
     public BoostSystem boost;
     public TransmissionSystem transmission;
 
-    [Header("Engine Consumption")]
+    [Header("Cargo Transforms")] 
+    public Transform cargoZone; 
+    public Transform cargo; 
+
+    [Header("Engine Consumption")] 
     public float engineConsumptionRate = 0.02f;
 
-    [Header("Camera Zoom")]
+    [Header("Camera Zoom")] 
     public CinemachineCamera vcam;
     public float outsideOrthoSize = 5f;
     public float insideOrthoSize = 8f;
-    public float zoomDuration = 0.75f; 
+    public float zoomDuration = 0.75f;
     private float originalOrthoSize;
     private Coroutine cameraZoomCoroutine;
+
+    [Header("Cargo Zone Settings")] 
+    public float loadRadius = 1.5f; 
+    private bool showCargoZone = false; 
+    private LoadableItem currentCargo = null;
+    private CargoZoneOutline outline;
 
     private bool driverInside = false;
     public bool IsDriverInside => driverInside;
@@ -32,6 +41,13 @@ public class Rover : InteractableObject
     private Movement playerMovement;
     private PlayerInteraction2D playerInteract;
 
+    private void Awake()
+    {
+        actions.Add("Enter Rover");
+        actions.Add("Hide/Show Cargo Zone");
+        actions.Add("Load/Unload Cargo");
+    }
+
     private void Start()
     {
         if (roverUICanvas != null)
@@ -39,20 +55,33 @@ public class Rover : InteractableObject
 
         if (vcam != null)
             originalOrthoSize = vcam.Lens.OrthographicSize;
-    }
+        
+        if (cargoZone != null)
+            outline = cargoZone.GetComponentInChildren<CargoZoneOutline>();
 
-    private void Awake()
-    {
-        actions.Add("Enter Rover");
-        actions.Add("Exit Rover");
-        // actions.Add("Load Cargo"); // potom dodelat to nakladani atd..
+        Debug.Log($"[Rover] Start(): cargoZone={cargoZone}, cargo={cargo}, outline={outline}");
     }
 
     public override void PerformAction(string action)
     {
         Debug.Log($"[Rover] PerformAction: '{action}', inside={driverInside}");
+
         if (action == "Enter Rover" && !driverInside)
+        {
             EnterRover();
+        }
+        else if (action == "Hide/Show Cargo Zone")
+        {
+            showCargoZone = !showCargoZone;
+            outline.ToggleOutline(showCargoZone);
+        }
+        else if (action == "Load/Unload Cargo")
+        {
+            if (currentCargo == null)
+                TryLoadCargo();
+            else
+                UnloadCargo();
+        }
         else if (action == "Exit Rover" && driverInside)
         {
             if (transmission.currentGear != TransmissionSystem.Gear.P)
@@ -60,8 +89,52 @@ public class Rover : InteractableObject
                 Debug.Log("Nelze vystoupit, není zařazený parking! notification");
                 return;
             }
+
             ExitRover();
         }
+    }
+
+    private void TryLoadCargo()
+    {
+        if (cargoZone == null) return;
+        var hits = Physics2D.OverlapCircleAll(cargoZone.position, loadRadius);
+        foreach (var c2d in hits)
+        {
+            var item = c2d.GetComponent<LoadableItem>();
+            if (item != null && !item.isLoaded)
+            {
+                LoadCargo(item);
+                return;
+            }
+        }
+
+        Debug.Log("[Rover] zadny item neni v zone! notifications");
+    }
+
+    private void LoadCargo(LoadableItem item)
+    {
+        // parentuje na cargo 
+        item.transform.SetParent(cargo, false);
+        item.transform.localPosition = Vector3.zero;
+        item.transform.localScale = Vector3.one * 0.5f;
+        item.isLoaded = true;
+        var col = item.GetComponent<Collider2D>();
+        if (col != null) col.enabled = false;
+        currentCargo = item;
+        Debug.Log($"[Rover] nalozil jsem: {item.name}");
+    }
+
+    private void UnloadCargo()
+    {
+        if (currentCargo == null) return;
+        // odparentujeme
+        currentCargo.transform.SetParent(null, true);
+        // vylozeni na transform cargoZone
+        currentCargo.transform.position = cargoZone.position + Vector3.right * 1f;
+        currentCargo.isLoaded = false;
+        var col = currentCargo.GetComponent<Collider2D>();
+        if (col != null) col.enabled = true;
+        currentCargo = null;
     }
 
     private void EnterRover()
@@ -71,7 +144,7 @@ public class Rover : InteractableObject
         playerMovement = playerGO.GetComponent<Movement>();
         playerInteract = playerGO.GetComponent<PlayerInteraction2D>();
 
-        // vypnuti jen pohybu a ne celeho hrace - avg fix na 20 minut
+        // vypnuti jen pohybu a ne celeho hrace
         playerMovement.enabled = false;
 
         playerGO.transform.SetParent(seat, false);
@@ -80,13 +153,14 @@ public class Rover : InteractableObject
         roverUICanvas.SetActive(true);
         driverInside = true;
 
-        // cam scale
         if (vcam != null)
         {
             vcam.Follow = transform;
             if (cameraZoomCoroutine != null)
                 StopCoroutine(cameraZoomCoroutine);
-            cameraZoomCoroutine = StartCoroutine(SmoothCameraZoom(vcam.Lens.OrthographicSize, insideOrthoSize));
+            cameraZoomCoroutine = StartCoroutine(
+                SmoothCameraZoom(vcam.Lens.OrthographicSize, insideOrthoSize)
+            );
         }
     }
 
@@ -96,41 +170,40 @@ public class Rover : InteractableObject
         if (transmission.isEngineOn)
             transmission.ToggleEngine();
         transmission.SetGear(TransmissionSystem.Gear.P);
-        
+
         playerGO.transform.SetParent(null);
-        
-        Vector3 exitPosition = transform.position - transform.right * 0.8f;
-        playerGO.transform.position = exitPosition;
-        
+        var exitPos = transform.position - transform.right * 0.8f;
+        playerGO.transform.position = exitPos;
         playerGO.transform.rotation = Quaternion.identity;
 
         playerMovement.enabled = true;
-
         roverUICanvas.SetActive(false);
         driverInside = false;
-        
+
         if (vcam != null)
         {
             vcam.Follow = playerGO.transform;
             if (cameraZoomCoroutine != null)
                 StopCoroutine(cameraZoomCoroutine);
-            cameraZoomCoroutine = StartCoroutine(SmoothCameraZoom(vcam.Lens.OrthographicSize, originalOrthoSize));
+            cameraZoomCoroutine = StartCoroutine(
+                SmoothCameraZoom(vcam.Lens.OrthographicSize, originalOrthoSize)
+            );
         }
     }
 
-    // Turbovypocet pro zoom a unzoom, ale vypada to mega toptier
     private IEnumerator SmoothCameraZoom(float startSize, float targetSize)
     {
-        float elapsedTime = 0;
+        var elapsedTime = 0f;
         while (elapsedTime < zoomDuration)
         {
             elapsedTime += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsedTime / zoomDuration);
-            float smoothT = Mathf.SmoothStep(0, 1, t);
-            float newSize = Mathf.Lerp(startSize, targetSize, smoothT);
+            var t = Mathf.Clamp01(elapsedTime / zoomDuration);
+            var smoothT = Mathf.SmoothStep(0f, 1f, t);
+            var newSize = Mathf.Lerp(startSize, targetSize, smoothT);
             vcam.Lens.OrthographicSize = newSize;
             yield return null;
         }
+
         vcam.Lens.OrthographicSize = targetSize;
     }
 
@@ -142,11 +215,11 @@ public class Rover : InteractableObject
         // motor papa energii i kdyz je nastartovany
         if (transmission.isEngineOn)
         {
-            float consume = engineConsumptionRate * Time.deltaTime;
+            var consume = engineConsumptionRate * Time.deltaTime;
             if (boost.IsBoosting)
                 consume *= boost.consumptionMultiplier;
 
-            bool hasPower = battery.Consume(consume);
+            var hasPower = battery.Consume(consume);
             if (!hasPower)
             {
                 Debug.Log("[Rover] Baterie vybitá, motor vypínám");
