@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7071938071862348053}
   - component: {fileID: 8552191560116827840}
   - component: {fileID: 5884211522325471797}
-  - component: {fileID: 3367877267267785958}
+  - component: {fileID: -5069132634011806573}
   m_Layer: 0
   m_Name: Kamen3_0
   m_TagString: Untagged
@@ -116,7 +116,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &3367877267267785958
+--- !u!60 &-5069132634011806573
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,10 +167,10 @@ PolygonCollider2D:
       - {x: 0.3203125, y: 0.0234375}
       - {x: 0.2890625, y: 0.1015625}
       - {x: 0.2578125, y: 0.1484375}
-      - {x: 0.1953125, y: 0.2265625}
-      - {x: 0.1171875, y: 0.3046875}
-      - {x: -0.0703125, y: 0.3046875}
-      - {x: -0.1640625, y: 0.2421875}
+      - {x: 0.1953125, y: 0.1484375}
+      - {x: 0.1171875, y: 0.1484375}
+      - {x: -0.0546875, y: 0.1484375}
+      - {x: -0.2578125, y: 0.1484375}
       - {x: -0.3203125, y: 0.1015625}
       - {x: -0.3515625, y: -0.0078125}
       - {x: -0.3515625, y: -0.1328125}
