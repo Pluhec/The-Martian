@@ -8,7 +8,6 @@ public class PathfinderHexInput : MonoBehaviour
     public Transform pointer;                  // Ručička
     public Transform[] hexLabels;              // Cedule 0–F (musí být v pořadí CCW)
     public float rotationStep = 22.5f;         // 360 / 16
-    public float rotationSpeed = 10f;          // Rychlost rotace
 
     [Header("Výstup")]
     private string currentHexInput = "";
@@ -102,7 +101,7 @@ public class PathfinderHexInput : MonoBehaviour
         return selected.name; // fallback, když není text
     }
 
-    public void ExitPathfinder()
+    private void ExitPathfinder()
     {
         isActive = false;
 
