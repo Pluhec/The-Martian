@@ -1,4 +1,3 @@
-// BoostSystem.cs
 using UnityEngine;
 
 public class BoostSystem : MonoBehaviour

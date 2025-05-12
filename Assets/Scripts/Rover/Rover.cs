@@ -1,19 +1,29 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class Rover : InteractableObject
 {
-    [Header("UI & Seat")] 
+    [Header("UI & Seat")]
     public Transform seat;
     public GameObject roverUICanvas;
 
-    [Header("Subsystems")] 
+    [Header("Subsystems")]
     public BatterySystem battery;
     public BoostSystem boost;
     public TransmissionSystem transmission;
 
     [Header("Engine Consumption")]
-    public float engineConsumptionRate = 0.02f; 
+    public float engineConsumptionRate = 0.02f;
+
+    [Header("Camera Zoom")]
+    public CinemachineCamera vcam;
+    public float outsideOrthoSize = 5f;
+    public float insideOrthoSize = 8f;
+    public float zoomDuration = 0.75f; 
+    private float originalOrthoSize;
+    private Coroutine cameraZoomCoroutine;
 
     private bool driverInside = false;
     public bool IsDriverInside => driverInside;
@@ -26,6 +36,9 @@ public class Rover : InteractableObject
     {
         if (roverUICanvas != null)
             roverUICanvas.SetActive(false);
+
+        if (vcam != null)
+            originalOrthoSize = vcam.Lens.OrthographicSize;
     }
 
     private void Awake()
@@ -47,7 +60,7 @@ public class Rover : InteractableObject
                 Debug.Log("Nelze vystoupit, není zařazený parking! notification");
                 return;
             }
-            ExitRover();            
+            ExitRover();
         }
     }
 
@@ -66,6 +79,15 @@ public class Rover : InteractableObject
 
         roverUICanvas.SetActive(true);
         driverInside = true;
+
+        // cam scale
+        if (vcam != null)
+        {
+            vcam.Follow = transform;
+            if (cameraZoomCoroutine != null)
+                StopCoroutine(cameraZoomCoroutine);
+            cameraZoomCoroutine = StartCoroutine(SmoothCameraZoom(vcam.Lens.OrthographicSize, insideOrthoSize));
+        }
     }
 
     private void ExitRover()
@@ -74,12 +96,42 @@ public class Rover : InteractableObject
         if (transmission.isEngineOn)
             transmission.ToggleEngine();
         transmission.SetGear(TransmissionSystem.Gear.P);
-
+        
         playerGO.transform.SetParent(null);
+        
+        Vector3 exitPosition = transform.position - transform.right * 0.8f;
+        playerGO.transform.position = exitPosition;
+        
+        playerGO.transform.rotation = Quaternion.identity;
+
         playerMovement.enabled = true;
 
         roverUICanvas.SetActive(false);
         driverInside = false;
+        
+        if (vcam != null)
+        {
+            vcam.Follow = playerGO.transform;
+            if (cameraZoomCoroutine != null)
+                StopCoroutine(cameraZoomCoroutine);
+            cameraZoomCoroutine = StartCoroutine(SmoothCameraZoom(vcam.Lens.OrthographicSize, originalOrthoSize));
+        }
+    }
+
+    // Turbovypocet pro zoom a unzoom, ale vypada to mega toptier
+    private IEnumerator SmoothCameraZoom(float startSize, float targetSize)
+    {
+        float elapsedTime = 0;
+        while (elapsedTime < zoomDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / zoomDuration);
+            float smoothT = Mathf.SmoothStep(0, 1, t);
+            float newSize = Mathf.Lerp(startSize, targetSize, smoothT);
+            vcam.Lens.OrthographicSize = newSize;
+            yield return null;
+        }
+        vcam.Lens.OrthographicSize = targetSize;
     }
 
     private void Update()
@@ -101,7 +153,7 @@ public class Rover : InteractableObject
                 transmission.ToggleEngine();
             }
         }
-        
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             Debug.Log("[Rover] Shift stisknut – pokus o boost");
