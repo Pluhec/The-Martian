@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.Cinemachine;
+using TMPro;
 
 public class PathfinderHexInput : MonoBehaviour
 {
@@ -17,6 +18,14 @@ public class PathfinderHexInput : MonoBehaviour
     public Movement playerMovement;
     public CinemachineCamera cmPlayerCam;
     public CinemachineCamera cmPathfinderCam;
+
+    [Header("Zpráva")]
+    public TextMeshProUGUI messageDisplay;
+    public string targetMessage = "HELLO";
+
+    private int currentCharIndex = 0;
+    private bool[] correctChars;
+    private bool[] attemptedChars;
 
     private int currentIndex = 0;
     private bool isActive = false;
@@ -36,7 +45,43 @@ public class PathfinderHexInput : MonoBehaviour
         currentIndex = 0;
         isFirstCharacter = true;
         pointer.rotation = Quaternion.identity;
+
+        currentCharIndex = 0;
+        correctChars = new bool[targetMessage.Length];
+        attemptedChars = new bool[targetMessage.Length];
+
+        UpdateMessageDisplay();
         Debug.Log("Pathfinder aktivní.");
+    }
+
+    private void UpdateMessageDisplay()
+    {
+        string result = "";
+
+        for (int i = 0; i < targetMessage.Length; i++)
+        {
+            char c = targetMessage[i];
+
+            if (i < currentCharIndex)
+            {
+                result += correctChars[i]
+                    ? $"<color=green>{c}</color>"
+                    : $"<color=red>{c}</color>";
+            }
+            else if (i == currentCharIndex && attemptedChars[i])
+            {
+                result += correctChars[i]
+                    ? $"<color=green>{c}</color>"
+                    : $"<color=red>{c}</color>";
+            }
+            else
+            {
+                result += c;
+            }
+        }
+
+        if (messageDisplay != null)
+            messageDisplay.text = result;
     }
 
     private void HandleInput()
@@ -65,12 +110,37 @@ public class PathfinderHexInput : MonoBehaviour
             else
             {
                 currentHexInput += value;
-                // Convert hex pair to ASCII character
                 int asciiValue = int.Parse(currentHexInput, System.Globalization.NumberStyles.HexNumber);
-                char character = (char)asciiValue;
-                Debug.Log($"ASCII znak: {character}");
-            
-                // Reset for next pair
+                char enteredChar = (char)asciiValue;
+
+                Debug.Log($"Zadal jsi znak: {enteredChar}");
+
+                if (currentCharIndex < targetMessage.Length)
+                {
+                    char expectedChar = targetMessage[currentCharIndex];
+                    attemptedChars[currentCharIndex] = true;
+
+                    if (enteredChar == expectedChar)
+                    {
+                        correctChars[currentCharIndex] = true;
+                        currentCharIndex++;
+                    }
+                    else
+                    {
+                        correctChars[currentCharIndex] = false;
+                    }
+
+                    UpdateMessageDisplay();
+
+                    if (currentCharIndex >= targetMessage.Length)
+                    {
+                        if (System.Array.TrueForAll(correctChars, c => c))
+                        {
+                            Debug.Log("✅ Zpráva byla správně zadána!");
+                        }
+                    }
+                }
+
                 currentHexInput = "";
                 isFirstCharacter = true;
             }
