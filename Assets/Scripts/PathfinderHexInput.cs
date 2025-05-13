@@ -5,9 +5,9 @@ using TMPro;
 public class PathfinderHexInput : MonoBehaviour
 {
     [Header("Nastavení")]
-    public Transform pointer;                  // Ručička
-    public Transform[] hexLabels;              // Cedule 0–F (musí být v pořadí CCW)
-    public float rotationStep = 22.5f;         // 360 / 16
+    public Transform pointer;                  
+    public Transform[] hexLabels;              
+    public float rotationStep = 22.5f;         
 
     [Header("Výstup")]
     private string currentHexInput = "";
@@ -19,9 +19,11 @@ public class PathfinderHexInput : MonoBehaviour
     public CinemachineCamera cmPlayerCam;
     public CinemachineCamera cmPathfinderCam;
     public GameObject pathfinderCanvas;
-    public GameObject playerUICanvas;      // Add this
-    public GameObject inventoryCanvas;     // Add this
+    public GameObject playerUICanvas;      
+    public GameObject inventoryCanvas;     
     public GameObject questUICanvas;
+    public GameObject toastPrefab;
+    public Transform notificationsParent;
 
     [Header("Zpráva")]
     public TextMeshProUGUI messageDisplay;
@@ -33,6 +35,7 @@ public class PathfinderHexInput : MonoBehaviour
 
     private int currentIndex = 0;
     private bool isActive = false;
+    private bool tutorialShown = false;
 
     private void Update()
     {
@@ -54,7 +57,6 @@ public class PathfinderHexInput : MonoBehaviour
         correctChars = new bool[targetMessage.Length];
         attemptedChars = new bool[targetMessage.Length];
 
-        // Show pathfinder UI, hide other UIs
         if (pathfinderCanvas != null)
             pathfinderCanvas.SetActive(true);
         if (playerUICanvas != null)
@@ -63,6 +65,13 @@ public class PathfinderHexInput : MonoBehaviour
             inventoryCanvas.SetActive(false);
         if (questUICanvas != null)
             questUICanvas.SetActive(false);
+
+        if (!tutorialShown && toastPrefab != null && notificationsParent != null)
+        {
+            var tutorial = Instantiate(toastPrefab, notificationsParent);
+            tutorial.GetComponent<Toast>().Show("info", "Controls: A/D = Rotate | SPACE = Confirm | F = Exit");
+            tutorialShown = true;
+        }
 
         UpdateMessageDisplay();
         Debug.Log("Pathfinder aktivní.");
@@ -162,7 +171,7 @@ public class PathfinderHexInput : MonoBehaviour
             Debug.Log($"Vybral jsi: {value}");
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             ExitPathfinder();
         }
@@ -192,7 +201,6 @@ public class PathfinderHexInput : MonoBehaviour
         if (cmPathfinderCam != null)
             cmPathfinderCam.Priority = 5;
 
-        // Hide pathfinder UI, show other UIs
         if (pathfinderCanvas != null)
             pathfinderCanvas.SetActive(false);
         if (playerUICanvas != null)
