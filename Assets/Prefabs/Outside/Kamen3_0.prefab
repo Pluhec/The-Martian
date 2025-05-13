@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 7071938071862348053}
   - component: {fileID: 8552191560116827840}
   - component: {fileID: 5884211522325471797}
-  - component: {fileID: 3367877267267785958}
+  - component: {fileID: -5069132634011806573}
+  - component: {fileID: -7827497633934734867}
   m_Layer: 0
   m_Name: Kamen3_0
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +117,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &3367877267267785958
+--- !u!60 &-5069132634011806573
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +147,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -167,10 +168,10 @@ PolygonCollider2D:
       - {x: 0.3203125, y: 0.0234375}
       - {x: 0.2890625, y: 0.1015625}
       - {x: 0.2578125, y: 0.1484375}
-      - {x: 0.1953125, y: 0.2265625}
-      - {x: 0.1171875, y: 0.3046875}
-      - {x: -0.0703125, y: 0.3046875}
-      - {x: -0.1640625, y: 0.2421875}
+      - {x: 0.1953125, y: 0.1484375}
+      - {x: 0.1171875, y: 0.1484375}
+      - {x: -0.0546875, y: 0.1484375}
+      - {x: -0.2578125, y: 0.1484375}
       - {x: -0.3203125, y: 0.1015625}
       - {x: -0.3515625, y: -0.0078125}
       - {x: -0.3515625, y: -0.1328125}
@@ -180,3 +181,16 @@ PolygonCollider2D:
       - {x: 0.0703125, y: -0.3046875}
       - {x: 0.1953125, y: -0.3046875}
   m_UseDelaunayMesh: 0
+--- !u!114 &-7827497633934734867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707713149563759101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507bf7ace70764177ba29804f6b4d709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLoaded: 0

@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 6036368211453031951}
   - component: {fileID: 3301276731215389152}
   - component: {fileID: 5584808369016782958}
-  - component: {fileID: 1426541067728347186}
+  - component: {fileID: 3059003907691950493}
+  - component: {fileID: -9062631074893405769}
   m_Layer: 0
   m_Name: Kamen2_0
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +117,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &1426541067728347186
+--- !u!60 &3059003907691950493
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +147,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -168,10 +169,10 @@ PolygonCollider2D:
       - {x: 0.3125, y: -0.09375}
       - {x: 0.3125, y: 0}
       - {x: 0.203125, y: 0.171875}
-      - {x: 0.1875, y: 0.234375}
-      - {x: 0.140625, y: 0.359375}
-      - {x: -0.140625, y: 0.359375}
-      - {x: -0.28125, y: 0.3125}
+      - {x: 0.15625, y: 0.171875}
+      - {x: 0.03125, y: 0.171875}
+      - {x: -0.125, y: 0.171875}
+      - {x: -0.21875, y: 0.171875}
       - {x: -0.3125, y: 0.171875}
       - {x: -0.390625, y: -0.015625}
       - {x: -0.390625, y: -0.21875}
@@ -185,8 +186,20 @@ PolygonCollider2D:
       - {x: 0.078125, y: -0.359375}
       - {x: 0.203125, y: -0.265625}
       - {x: 0.234375, y: -0.3125}
-    - - {x: 0.21875, y: 0.1875}
-      - {x: 0.21875, y: 0.1875}
-      - {x: 0.21875, y: 0.1875}
-      - {x: 0.21875, y: 0.1875}
+    - - {x: 0.203125, y: 0.171875}
+      - {x: 0.203125, y: 0.171875}
+      - {x: 0.203125, y: 0.171875}
   m_UseDelaunayMesh: 0
+--- !u!114 &-9062631074893405769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5832040260556999346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507bf7ace70764177ba29804f6b4d709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLoaded: 0
