@@ -5,9 +5,9 @@ using TMPro;
 public class PathfinderHexInput : MonoBehaviour
 {
     [Header("Nastavení")]
-    public Transform pointer;                  
-    public Transform[] hexLabels;              
-    public float rotationStep = 22.5f;         
+    public Transform pointer;
+    public Transform[] hexLabels;
+    public float rotationStep = 22.5f;
 
     [Header("Výstup")]
     private string currentHexInput = "";
@@ -19,28 +19,70 @@ public class PathfinderHexInput : MonoBehaviour
     public CinemachineCamera cmPlayerCam;
     public CinemachineCamera cmPathfinderCam;
     public GameObject pathfinderCanvas;
-    public GameObject playerUICanvas;      
-    public GameObject inventoryCanvas;     
+    public GameObject playerUICanvas;
+    public GameObject inventoryCanvas;
     public GameObject questUICanvas;
     public GameObject toastPrefab;
     public Transform notificationsParent;
 
     [Header("Zpráva")]
     public TextMeshProUGUI messageDisplay;
-    public string targetMessage = "HELLO";
+    [SerializeField] private PathfinderMessage[] questMessages;
 
+    [Header("Quest Settings")]
+    public int minQuestID = 10;
+    public int maxQuestID = 20;
+    public int currentQuestID = 10;
+
+    [System.Serializable]
+    public class PathfinderMessage
+    {
+        public int questID;
+        public string message;
+    }
+
+    private string targetMessage = "TEST";
     private int currentCharIndex = 0;
     private bool[] correctChars;
     private bool[] attemptedChars;
-
     private int currentIndex = 0;
     private bool isActive = false;
     private bool tutorialShown = false;
+    private bool questCompleted = false;
+    private QuestManager questManager;
+
+    private void Awake()
+    {
+        if (GameManager.Instance != null)
+        {
+            questManager = GameManager.Instance.QuestManager;
+        }
+        else
+        {
+            Debug.LogError("GameManager.Instance is null!");
+        }
+
+        InitializeDefaultMessages();
+    }
+
+    private void InitializeDefaultMessages()
+    {
+        if (questMessages == null || questMessages.Length == 0)
+        {
+            questMessages = new PathfinderMessage[]
+            {
+                new PathfinderMessage { questID = 10, message = "HELLO" },
+                new PathfinderMessage { questID = 12, message = "OXYGEN" },
+                new PathfinderMessage { questID = 14, message = "SURVIVE" },
+                new PathfinderMessage { questID = 16, message = "MARS" },
+                new PathfinderMessage { questID = 18, message = "RESCUE" }
+            };
+        }
+    }
 
     private void Update()
     {
         if (!isActive) return;
-
         HandleInput();
     }
 
@@ -52,6 +94,19 @@ public class PathfinderHexInput : MonoBehaviour
         currentIndex = 0;
         isFirstCharacter = true;
         pointer.rotation = Quaternion.identity;
+        questCompleted = false;
+
+        foreach (Quest quest in questManager.ActiveQuests)
+        {
+            if (!quest.isCompleted && quest.questID >= minQuestID &&
+                quest.questID <= maxQuestID && quest.questID % 2 == 0)
+            {
+                currentQuestID = quest.questID;
+                var message = System.Array.Find(questMessages, m => m.questID == currentQuestID);
+                targetMessage = message != null ? message.message : "TEST";
+                break;
+            }
+        }
 
         currentCharIndex = 0;
         correctChars = new bool[targetMessage.Length];
@@ -74,35 +129,28 @@ public class PathfinderHexInput : MonoBehaviour
         }
 
         UpdateMessageDisplay();
-        Debug.Log("Pathfinder aktivní.");
+        Debug.Log($"Pathfinder aktivní. Quest ID: {currentQuestID}, Message: {targetMessage}");
     }
 
     private void UpdateMessageDisplay()
     {
         string result = "";
-
         for (int i = 0; i < targetMessage.Length; i++)
         {
             char c = targetMessage[i];
-
             if (i < currentCharIndex)
             {
-                result += correctChars[i]
-                    ? $"<color=green>{c}</color>"
-                    : $"<color=red>{c}</color>";
+                result += correctChars[i] ? $"<color=green>{c}</color>" : $"<color=red>{c}</color>";
             }
             else if (i == currentCharIndex && attemptedChars[i])
             {
-                result += correctChars[i]
-                    ? $"<color=green>{c}</color>"
-                    : $"<color=red>{c}</color>";
+                result += correctChars[i] ? $"<color=green>{c}</color>" : $"<color=red>{c}</color>";
             }
             else
             {
                 result += c;
             }
         }
-
         if (messageDisplay != null)
             messageDisplay.text = result;
     }
@@ -136,8 +184,6 @@ public class PathfinderHexInput : MonoBehaviour
                 int asciiValue = int.Parse(currentHexInput, System.Globalization.NumberStyles.HexNumber);
                 char enteredChar = (char)asciiValue;
 
-                Debug.Log($"Zadal jsi znak: {enteredChar}");
-
                 if (currentCharIndex < targetMessage.Length)
                 {
                     char expectedChar = targetMessage[currentCharIndex];
@@ -155,25 +201,36 @@ public class PathfinderHexInput : MonoBehaviour
 
                     UpdateMessageDisplay();
 
-                    if (currentCharIndex >= targetMessage.Length)
+                    if (currentCharIndex >= targetMessage.Length && System.Array.TrueForAll(correctChars, c => c))
                     {
-                        if (System.Array.TrueForAll(correctChars, c => c))
-                        {
-                            Debug.Log("✅ Zpráva byla správně zadána!");
-                        }
+                        CompletePathfinderQuest();
                     }
                 }
 
                 currentHexInput = "";
                 isFirstCharacter = true;
             }
-
-            Debug.Log($"Vybral jsi: {value}");
         }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
             ExitPathfinder();
+        }
+    }
+
+    private void CompletePathfinderQuest()
+    {
+        Quest quest = questManager.ActiveQuests.Find(q => q.questID == currentQuestID);
+        if (quest != null && !quest.isCompleted)
+        {
+            questManager.MarkQuestAsCompletedByID(currentQuestID);
+            questCompleted = true;
+
+            if (toastPrefab != null && notificationsParent != null)
+            {
+                var toast = Instantiate(toastPrefab, notificationsParent);
+                toast.GetComponent<Toast>().Show("success", "Zpráva úspěšně zadána! Přejděte k terminálu a zadejte příkaz /message.");
+            }
         }
     }
 
@@ -194,13 +251,10 @@ public class PathfinderHexInput : MonoBehaviour
 
         if (playerMovement != null)
             playerMovement.enabled = true;
-
         if (cmPlayerCam != null)
             cmPlayerCam.Priority = 20;
-
         if (cmPathfinderCam != null)
             cmPathfinderCam.Priority = 5;
-
         if (pathfinderCanvas != null)
             pathfinderCanvas.SetActive(false);
         if (playerUICanvas != null)
@@ -211,6 +265,5 @@ public class PathfinderHexInput : MonoBehaviour
             questUICanvas.SetActive(true);
 
         this.enabled = false;
-        Debug.Log("Opustil jsi Pathfinder.");
     }
 }
