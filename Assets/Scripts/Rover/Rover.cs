@@ -129,8 +129,9 @@ public class Rover : InteractableObject
         if (currentCargo == null) return;
         // odparentujeme
         currentCargo.transform.SetParent(null, true);
-        // vylozeni na transform cargoZone
-        currentCargo.transform.position = cargoZone.position + Vector3.right * 1f;
+        // vylozeni presne na pozici cargoZone s nulovou rotaci
+        currentCargo.transform.position = cargoZone.position;
+        currentCargo.transform.rotation = Quaternion.identity;
         currentCargo.isLoaded = false;
         var col = currentCargo.GetComponent<Collider2D>();
         if (col != null) col.enabled = true;
@@ -146,7 +147,8 @@ public class Rover : InteractableObject
 
         // vypnuti jen pohybu a ne celeho hrace
         playerMovement.enabled = false;
-
+        
+        playerGO.SetActive(false);
         playerGO.transform.SetParent(seat, false);
         playerGO.transform.localPosition = Vector3.zero;
 
@@ -177,6 +179,7 @@ public class Rover : InteractableObject
         playerGO.transform.rotation = Quaternion.identity;
 
         playerMovement.enabled = true;
+        playerGO.SetActive(true);
         roverUICanvas.SetActive(false);
         driverInside = false;
 

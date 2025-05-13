@@ -32,7 +32,7 @@ public class CargoZoneOutline : MonoBehaviour
         {
             t += Time.deltaTime;
             // puls alpha mezi 0.2 a 0.8
-            var alpha = (Mathf.Sin(t * 2f) + 1f) * 0.3f + 0.2f;
+            var alpha = (Mathf.Sin(t * 2f) + 1f) * 0.9f + 0.2f;
             var c = sr.color;
             sr.color = new Color(c.r, c.g, c.b, alpha);
             yield return null;
