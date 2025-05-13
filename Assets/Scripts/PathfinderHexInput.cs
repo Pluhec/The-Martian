@@ -18,6 +18,10 @@ public class PathfinderHexInput : MonoBehaviour
     public Movement playerMovement;
     public CinemachineCamera cmPlayerCam;
     public CinemachineCamera cmPathfinderCam;
+    public GameObject pathfinderCanvas;
+    public GameObject playerUICanvas;      // Add this
+    public GameObject inventoryCanvas;     // Add this
+    public GameObject questUICanvas;
 
     [Header("Zpráva")]
     public TextMeshProUGUI messageDisplay;
@@ -49,6 +53,16 @@ public class PathfinderHexInput : MonoBehaviour
         currentCharIndex = 0;
         correctChars = new bool[targetMessage.Length];
         attemptedChars = new bool[targetMessage.Length];
+
+        // Show pathfinder UI, hide other UIs
+        if (pathfinderCanvas != null)
+            pathfinderCanvas.SetActive(true);
+        if (playerUICanvas != null)
+            playerUICanvas.SetActive(false);
+        if (inventoryCanvas != null)
+            inventoryCanvas.SetActive(false);
+        if (questUICanvas != null)
+            questUICanvas.SetActive(false);
 
         UpdateMessageDisplay();
         Debug.Log("Pathfinder aktivní.");
@@ -177,6 +191,16 @@ public class PathfinderHexInput : MonoBehaviour
 
         if (cmPathfinderCam != null)
             cmPathfinderCam.Priority = 5;
+
+        // Hide pathfinder UI, show other UIs
+        if (pathfinderCanvas != null)
+            pathfinderCanvas.SetActive(false);
+        if (playerUICanvas != null)
+            playerUICanvas.SetActive(true);
+        if (inventoryCanvas != null)
+            inventoryCanvas.SetActive(true);
+        if (questUICanvas != null)
+            questUICanvas.SetActive(true);
 
         this.enabled = false;
         Debug.Log("Opustil jsi Pathfinder.");
