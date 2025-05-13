@@ -35,6 +35,9 @@ public class Rover : InteractableObject
     private bool showCargoZone = false; 
     private LoadableItem currentCargo = null;
     private CargoZoneOutline outline;
+    
+    [Header("Audio")]
+    public RoverAudioController audioController;
 
     private bool driverInside = false;
     public bool IsDriverInside => driverInside;

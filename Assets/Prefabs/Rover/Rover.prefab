@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1481403215559137654}
   - component: {fileID: 4359819410118340668}
   - component: {fileID: 7425950879629073998}
+  - component: {fileID: 956734252331597427}
   m_Layer: 0
   m_Name: Rover
   m_TagString: Untagged
@@ -200,6 +201,7 @@ MonoBehaviour:
   insideOrthoSize: 8
   zoomDuration: 0.75
   loadRadius: 1.5
+  audioController: {fileID: 0}
 --- !u!114 &1123773653392971248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +275,30 @@ MonoBehaviour:
   driveSpeed: 5
   reverseSpeed: 3
   turnSpeed: 100
+--- !u!114 &956734252331597427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635626677119769037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd270b8f86444ab297a6e36223cced8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startSound: {fileID: 8300000, guid: e2c55614a8b0e4a399773e678c9774eb, type: 3}
+  stopSound: {fileID: 8300000, guid: 3b591be47562b494da840aec33d365dd, type: 3}
+  idleSound: {fileID: 8300000, guid: e2a927d311b6d4c7a96c76e72087ddbc, type: 3}
+  goingSound: {fileID: 8300000, guid: 57fbc7025ad7e40f5954c2aa1e1210ac, type: 3}
+  boostSound: {fileID: 8300000, guid: 4ed33109b15de424d8550bf365b95c08, type: 3}
+  shiftSound: {fileID: 8300000, guid: fd85a554bd5d24a3687ed19e3da9abc0, type: 3}
+  startVolume: 0.3
+  stopVolume: 0.3
+  idleVolume: 0.2
+  goingVolume: 0.2
+  boostVolume: 0.2
+  shiftVolume: 0.7
 --- !u!1 &1389870493401175940
 GameObject:
   m_ObjectHideFlags: 0

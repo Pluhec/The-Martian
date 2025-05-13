@@ -17,6 +17,7 @@ public class TransmissionSystem : MonoBehaviour
     public void SetGear(Gear g)
     {
         currentGear = g;
+        GetComponent<RoverAudioController>().PlayShiftSound();
         Debug.Log($"Prevodovka: prechod na  {g}");
     }
 }
