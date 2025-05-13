@@ -120,6 +120,7 @@ public class Rover : InteractableObject
         item.transform.localPosition = Vector3.zero;
         item.transform.localScale = Vector3.one * 0.5f;
         item.isLoaded = true;
+        outline.ToggleOutline(false);
         var col = item.GetComponent<Collider2D>();
         if (col != null) col.enabled = false;
         currentCargo = item;
