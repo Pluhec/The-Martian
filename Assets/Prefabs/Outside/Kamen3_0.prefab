@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8552191560116827840}
   - component: {fileID: 5884211522325471797}
   - component: {fileID: -5069132634011806573}
+  - component: {fileID: -7827497633934734867}
   m_Layer: 0
   m_Name: Kamen3_0
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,7 +147,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -180,3 +181,16 @@ PolygonCollider2D:
       - {x: 0.0703125, y: -0.3046875}
       - {x: 0.1953125, y: -0.3046875}
   m_UseDelaunayMesh: 0
+--- !u!114 &-7827497633934734867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707713149563759101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507bf7ace70764177ba29804f6b4d709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLoaded: 0

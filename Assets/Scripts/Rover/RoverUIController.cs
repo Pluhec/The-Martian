@@ -25,6 +25,9 @@ public class RoverUIController : MonoBehaviour
     [Header("Exit Button")] 
     public Button exitBtn;
 
+    [Header("Park Asistent")]
+    public Button parkAssistBtn;
+    
     private Rover rover;
 
     private void Awake()
@@ -40,6 +43,7 @@ public class RoverUIController : MonoBehaviour
         btnN.onClick.AddListener(() => DoGear(TransmissionSystem.Gear.N));
         btnD.onClick.AddListener(() => DoGear(TransmissionSystem.Gear.D));
         exitBtn.onClick.AddListener(OnExitClicked);
+        parkAssistBtn.onClick.AddListener(OnParkAssistClicked);
     }
 
     private void OnDisable()
@@ -50,6 +54,12 @@ public class RoverUIController : MonoBehaviour
         btnN.onClick.RemoveAllListeners();
         btnD.onClick.RemoveAllListeners();
         exitBtn.onClick.RemoveAllListeners();
+        parkAssistBtn.onClick.RemoveAllListeners();
+    }
+
+    private void OnParkAssistClicked()
+    {
+        rover.PerformAction("Hide/Show Cargo Zone");
     }
     
     private void OnStartStopClicked()

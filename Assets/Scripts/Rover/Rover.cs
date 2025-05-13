@@ -7,6 +7,8 @@ public class Rover : InteractableObject
     [Header("UI & Seat")] 
     public Transform seat;
     public GameObject roverUICanvas;
+    public GameObject playerUI;         
+    public GameObject inventoryUI; 
 
     [Header("Subsystems")] 
     public BatterySystem battery;
@@ -145,6 +147,10 @@ public class Rover : InteractableObject
         playerMovement = playerGO.GetComponent<Movement>();
         playerInteract = playerGO.GetComponent<PlayerInteraction2D>();
 
+        // vypnuti UI stejně jako v SolarPanel
+        playerUI.SetActive(false);
+        inventoryUI.SetActive(false);
+
         // vypnuti jen pohybu a ne celeho hrace
         playerMovement.enabled = false;
         
@@ -177,6 +183,10 @@ public class Rover : InteractableObject
         var exitPos = transform.position - transform.right * 0.8f;
         playerGO.transform.position = exitPos;
         playerGO.transform.rotation = Quaternion.identity;
+
+        // zapnuti UI stejně jako v SolarPanel
+        playerUI.SetActive(true);
+        inventoryUI.SetActive(true);
 
         playerMovement.enabled = true;
         playerGO.SetActive(true);
