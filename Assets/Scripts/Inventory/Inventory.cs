@@ -178,7 +178,7 @@ public class Inventory : MonoBehaviour
 
     /* ─── utils ─── */
 
-    bool ContainsID(string id)
+    public bool ContainsID(string id)
     {
         foreach (var s in slots)
         {
