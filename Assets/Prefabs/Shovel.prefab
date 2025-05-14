@@ -150,9 +150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: []
-  diggableTile: {fileID: 11400000, guid: bf01e44907d1d4bfab275809b5838bf6, type: 2}
   dugTile: {fileID: 11400000, guid: 73a39c4f577064257b9bc5226a448ab4, type: 2}
-  dirtItemPrefab: {fileID: 9089447296183591438, guid: 5d8fe256560067c40933b5aa9405ff66, type: 3}
+  dirtItemPrefab: {fileID: 6215840973986730485, guid: eb0629bd175bc4783b8e321448446740, type: 3}
   itemButton: {fileID: 7799081065214111287, guid: 1ed304c2156130d4497e2cda947a1647, type: 3}
   slotSize: 1
 --- !u!114 &2567156634889871158

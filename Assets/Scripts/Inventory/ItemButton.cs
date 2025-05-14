@@ -143,69 +143,78 @@ public class ItemButton : MonoBehaviour,
 
 
     void DropItem()
+{
+    if (inventory == null || inventory.slots == null) return;
+    if (DroppedItemManager.Instance == null) return;
+
+    Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+    Vector2 dropPosition = new Vector2(player.position.x, player.position.y + 0.35f);
+
+    if (TryGetComponent<ContainerSpawn>(out var csp))
     {
-        if (inventory == null || inventory.slots == null) return;
-        if (DroppedItemManager.Instance == null) return;
+        Vector2 dropPos = (Vector2)player.position + Vector2.up * 0.35f;
+        csp.SpawnContainer(dropPos);
 
-        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
-        Vector2 dropPosition = new Vector2(player.position.x, player.position.y + 0.35f);
-
-        if (TryGetComponent<ContainerSpawn>(out var csp))
+        for (int j = 0; j < slotSize; j++)
         {
-            Vector2 dropPos = (Vector2)player.position + Vector2.up * 0.35f;
-            csp.SpawnContainer(dropPos);
+            int idx = mainSlotIndex + j;
+            if (idx >= inventory.slots.Length) continue;
 
-            for (int j = 0; j < slotSize; j++)
+            Transform slotTransform = inventory.slots[idx].transform;
+            for (int k = slotTransform.childCount - 1; k >= 0; k--)
             {
-                int idx = mainSlotIndex + j;
-                if (idx >= inventory.slots.Length) continue;
-
-                Transform slotTransform = inventory.slots[idx].transform;
-                for (int k = slotTransform.childCount - 1; k >= 0; k--)
+                var child = slotTransform.GetChild(k).gameObject;
+                var ph = child.GetComponent<ItemPlaceholder>();
+                if (ph != null && ph.mainSlotIndex == mainSlotIndex)
                 {
-                    var child = slotTransform.GetChild(k).gameObject;
-                    var ph = child.GetComponent<ItemPlaceholder>();
-                    if (ph != null && ph.mainSlotIndex == mainSlotIndex)
-                    {
-                        Destroy(child);
-                    }
+                    Destroy(child);
                 }
-
-                inventory.isFull[idx] = false;
             }
 
-            inventory.AlignItems();
-            Destroy(gameObject);
+            inventory.isFull[idx] = false;
         }
 
-        for (int i = 0; i < slotSize; i++)
-        {
-            int index = mainSlotIndex + i;
-            if (index >= inventory.slots.Length) break;
-
-            Transform slot = inventory.slots[index].transform;
-            if (slot.childCount == 0) continue;
-
-            GameObject child = slot.GetChild(0).gameObject;
-            if (i == 0 && child.TryGetComponent<Spawn>(out var spawn))
-            {
-                // Kontrola zakázané oblasti (např. HabArea)
-                LayerMask forbiddenZone = LayerMask.GetMask("NoDropZone");
-                Collider2D overlap = Physics2D.OverlapPoint(dropPosition, forbiddenZone);
-
-                if (overlap != null)
-                {
-                    Debug.Log("❌ Nelze položit item – oblast zakázaná.");
-                    return; // Zruší drop
-                }
-
-                // Pokračuj s běžným dropem
-                GameObject spawnedItem = Instantiate(spawn.item, dropPosition, Quaternion.identity);
-                DroppedItemManager.Instance.AddDroppedItem(spawn.item, dropPosition);
-            }
-
-            Destroy(child);
-            inventory.isFull[index] = false;
-        }
+        inventory.AlignItems();
+        Destroy(gameObject);
     }
+
+    for (int i = 0; i < slotSize; i++)
+    {
+        int index = mainSlotIndex + i;
+        if (index >= inventory.slots.Length) break;
+
+        Transform slot = inventory.slots[index].transform;
+        if (slot.childCount == 0) continue;
+
+        GameObject child = slot.GetChild(0).gameObject;
+        if (i == 0 && child.TryGetComponent<Spawn>(out var spawn))
+        { 
+            // Kontrola, zda se jedná o hlínu (sand)
+            bool isSand = false;
+            var itemDef = spawn.GetComponent<ItemDefinition>();
+            if (itemDef != null && itemDef.itemID == "Dirt")
+            {
+                isSand = true;
+            }
+
+            // Kontrola zakázané oblasti (např. HabArea)
+            LayerMask forbiddenZone = LayerMask.GetMask("NoDropZone");
+            Collider2D overlap = Physics2D.OverlapPoint(dropPosition, forbiddenZone);
+
+            // Pokud to není hlína a je v zakázané zóně, zabráníme dropnutí
+            if (overlap != null && !isSand)
+            {
+                Debug.Log("❌ Nelze položit item – oblast zakázaná.");
+                return; // Zruší drop
+            }
+
+            // Pokračuj s běžným dropem
+            GameObject spawnedItem = Instantiate(spawn.item, dropPosition, Quaternion.identity);
+            DroppedItemManager.Instance.AddDroppedItem(spawn.item, dropPosition);
+        }
+
+        Destroy(child);
+        inventory.isFull[index] = false;
+    }
+}
 }
