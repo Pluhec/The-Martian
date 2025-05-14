@@ -30,11 +30,9 @@ public class Interpreter : MonoBehaviour
         // Add messages for pathfinder quests
         // Quest IDs are even numbers (10, 12, 14, etc.)
         // Terminal quest IDs are odd numbers (11, 13, 15, etc.)
-        pathfinderMessages.Add(10, "System initialized. First contact established.");
-        pathfinderMessages.Add(12, "Life support systems operational. Oxygen levels stabilized.");
-        pathfinderMessages.Add(14, "Resource management protocols enabled. Survival mode activated.");
-        pathfinderMessages.Add(16, "Planetary scan complete. Mars surface data analyzed.");
-        pathfinderMessages.Add(18, "Distress signal received. Rescue mission coordinated.");
+        pathfinderMessages.Add(40, "We hear you loud and clear, Mark. Coordinating your return as we speak. Stay safe out there.");
+        pathfinderMessages.Add(42, "Fuel tanks are full and all systems are green. The rocket is prepped and ready for launch whenever you are.");
+        pathfinderMessages.Add(44, "The launch PIN is 4832. Once you have it, begin preparations immediately. We're all rooting for you.");
     }
     
     public List<string> Interpret(string userInputText)

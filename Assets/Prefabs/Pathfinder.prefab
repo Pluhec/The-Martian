@@ -1104,11 +1104,13 @@ MonoBehaviour:
   messageDisplay: {fileID: 6054175741736100721}
   questMessages:
   - questID: 40
-    message: Deda
+    message: I am alive. Status good. Need rocket info.
   - questID: 42
-    message: Lebeda
+    message: Systems checked. Fuel? Ready?
+  - questID: 44
+    message: Send PIN to launch. Want home.
   minQuestID: 40
-  maxQuestID: 42
+  maxQuestID: 44
   currentQuestID: 40
 --- !u!1 &3651339086071414751
 GameObject:
