@@ -7,15 +7,23 @@ public class ChargingStation : InteractableObject
     [Header("Charging Station")]
     public float chargeRatePerSecond = 50f;
 
+    [Header("Notifications")]
+    public GameObject toastPrefab;
+    public Transform notificationsParent;
+
     private Rover rover;
+    private Coroutine chargingCoroutine;
 
     private void Start()
     {
         rover = FindObjectOfType<Rover>();
         if (rover == null)
-            Debug.LogError("ChargingStation: nenalezen Rover ve scéně!");
+            Debug.LogError("ChargingStation: Rover not found in scene!");
+        
+        if (notificationsParent == null)
+            notificationsParent = GameObject.FindGameObjectWithTag("NotificationsParent")?.transform;
     }
-    
+
     private void Awake()
     {
         actions.Add("Charge");
@@ -24,17 +32,67 @@ public class ChargingStation : InteractableObject
     public override void PerformAction(string action)
     {
         if (action == "Charge")
-            StartCoroutine(QuickCharge());
+            StartChargingCoroutine();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Rover detectedRover = other.GetComponent<Rover>();
+        if (detectedRover != null && detectedRover == rover)
+        {
+            Debug.Log("[ChargingStation] Rover detected, starting charging");
+            StartChargingCoroutine();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // konec nabijeni kdyz opusti nabijeci zonu
+        Rover detectedRover = other.GetComponent<Rover>();
+        if (detectedRover != null && detectedRover == rover)
+        {
+            StopChargingCoroutine();
+        }
+    }
+
+    private void StartChargingCoroutine()
+    {
+        StopChargingCoroutine();
+
+        // notifikace na start nabijeni
+        if (toastPrefab != null && notificationsParent != null)
+        {
+            var go = Instantiate(toastPrefab, notificationsParent);
+            float batteryPercentage = (rover.battery.currentEnergy / rover.battery.maxEnergy) * 100;
+            go.GetComponent<Toast>().Show("info", $"Rover charging started ({Mathf.RoundToInt(batteryPercentage)}%)");
+        }
+
+        chargingCoroutine = StartCoroutine(QuickCharge());
+    }
+
+    private void StopChargingCoroutine()
+    {
+        if (chargingCoroutine != null)
+        {
+            StopCoroutine(chargingCoroutine);
+            chargingCoroutine = null;
+        }
     }
 
     private IEnumerator QuickCharge()
     {
-        Debug.Log("[ChargingStation] Začínám dobíjet");
         while (rover.battery.currentEnergy < rover.battery.maxEnergy)
         {
             rover.battery.Recharge(chargeRatePerSecond * Time.deltaTime);
             yield return null;
         }
-        Debug.Log("[ChargingStation] Baterie naplněna");
+
+        if (toastPrefab != null && notificationsParent != null)
+        {
+            var go = Instantiate(toastPrefab, notificationsParent);
+            go.GetComponent<Toast>().Show("info", "Rover is fully Charged");
+        }
+
+        chargingCoroutine = null;
     }
 }
