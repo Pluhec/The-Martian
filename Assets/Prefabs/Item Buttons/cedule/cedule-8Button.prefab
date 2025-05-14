@@ -103,7 +103,7 @@ PrefabInstance:
     - target: {fileID: 7160027885984424985, guid: e80a0f528bfa2f6499b24e70b69f4374, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 2678316785573349738, guid: da3133178dce67f48acd04c31bfdf40a, type: 3}
+      objectReference: {fileID: 2678316785573349738, guid: f85db7adc10d094449e75aa9ed462625, type: 3}
     - target: {fileID: 7185547863177512550, guid: e80a0f528bfa2f6499b24e70b69f4374, type: 3}
       propertyPath: itemID
       value: cedule-8
