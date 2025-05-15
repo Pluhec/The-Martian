@@ -18,6 +18,9 @@ public class Slot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData e)
     {
+        // Kontrola, zda je přetahování povoleno
+        if (!ItemButton.isDragEnabled) return;
+    
         var go = e.pointerDrag;
         if (go == null) return;
 
@@ -26,33 +29,44 @@ public class Slot : MonoBehaviour, IDropHandler
 
         int size = item.slotSize;
         int src  = item.mainSlotIndex;
-        bool ok;
-
+        
+        // Ověř, zda slot není příliš blízko konci
+        int targetIndex = i;
+        bool ok = false;
+        
         if (IsInventorySlot)
         {
-            ok = inventory.AddItemAt(i, go, size);
+            // Uprav cílový index pokud je slot příliš blízko konci inventáře
+            if (targetIndex + size > inventory.slots.Length)
+                targetIndex = inventory.slots.Length - size;
+            
+            ok = inventory.AddItemAt(targetIndex, go, size);
             if (ok)
             {
                 item.storageContainer?.VacateSlots(src, size, go);
-                item.inventory        = inventory;
+                item.inventory = inventory;
                 item.storageContainer = null;
             }
         }
         else
         {
-            ok = container.AddItemAt(i, go, size);
+            // Podobná úprava pro kontejnery
+            if (targetIndex + size > container.slots.Length)
+                targetIndex = container.slots.Length - size;
+                
+            ok = container.AddItemAt(targetIndex, go, size);
             if (ok)
             {
                 item.inventory?.VacateSlots(src, size, go);
                 item.storageContainer = container;
-                item.inventory        = null;
+                item.inventory = null;
             }
         }
 
         if (!ok)
         {
             if (IsInventorySlot) inventory.VacateSlots(i, size, null);
-            else                 container.VacateSlots(i, size, null);
+            else container.VacateSlots(i, size, null);
 
             item.inventory?.AlignItems();
             item.storageContainer?.AlignItems();

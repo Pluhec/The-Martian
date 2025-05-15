@@ -15,8 +15,17 @@ public class StorageContainer : MonoBehaviour
     }
 
     void Start() => Close();
-    public void Open()  => uiRoot?.SetActive(true);
-    public void Close() => uiRoot?.SetActive(false);
+    public void Open() 
+    {
+        uiRoot?.SetActive(true);
+        ItemButton.isDragEnabled = true; // Zapni drag & drop
+    }
+    
+    public void Close() 
+    {
+        uiRoot?.SetActive(false);
+        ItemButton.isDragEnabled = false; // Vypni drag & drop
+    }
 
     /* ─── veřejné API ─── */
 

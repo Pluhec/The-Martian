@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PickableObjectHab : InteractableObject
+public class PickableObject : InteractableObject
 {
     private Inventory inventory;
     public GameObject itemButton;
