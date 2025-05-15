@@ -23,7 +23,6 @@ public class ContainerItem : InteractableObject
 
         actions.Add("sebrat");
         actions.Add("otevřít");
-        actions.Add("zavřít");
     }
 
     public override void PerformAction(string action)
@@ -31,7 +30,6 @@ public class ContainerItem : InteractableObject
         switch (action)
         {
             case "otevřít":  box?.Open();  break;
-            case "zavřít":   box?.Close(); break;
             case "sebrat":   TryPickUp();  break;
         }
     }
