@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   dugTile: {fileID: 11400000, guid: 73a39c4f577064257b9bc5226a448ab4, type: 2}
-  dirtItemPrefab: {fileID: 6215840973986730485, guid: eb0629bd175bc4783b8e321448446740, type: 3}
+  dirtItemPrefab: {fileID: 2215787617564957303, guid: c557f3256e2b84ebd92d3dfa55deb31a, type: 3}
   itemButton: {fileID: 7799081065214111287, guid: 1ed304c2156130d4497e2cda947a1647, type: 3}
   slotSize: 1
 --- !u!114 &2567156634889871158
