@@ -2,22 +2,29 @@ using UnityEngine;
 
 public class SoilQuestManager : MonoBehaviour
 {
-    [Header("Quest Settings")]
-    [Tooltip("ID questu, pro který se UI zobrazí až po splnění předchozího")]
     public int questID;
-
-    [Header("UI Elements")]
-    [Tooltip("Panel (nebo jiný GameObject), který se má zobrazit/skrýt")]
+    
     public GameObject questUIPanel;
+    
+    public SoilRevealManager soilRevealManager;
 
     private QuestManager questManager;
+    private QuestTablet questTablet;
     private int myQuestIndex = -1;
+    private bool questCompleted = false;
 
     private void Awake()
     {
         questManager = QuestManager.Instance;
         if (questManager == null)
-            Debug.LogError("SoilQuestManager: QuestManager.Instance je null!");
+            Debug.LogError("questManager neni");
+
+        questTablet = FindObjectOfType<QuestTablet>();
+        if (questTablet == null)
+            Debug.LogWarning("questTablet neni");
+
+        if (soilRevealManager == null)
+            soilRevealManager = FindObjectOfType<SoilRevealManager>();
     }
 
     private void Update()
@@ -26,21 +33,51 @@ public class SoilQuestManager : MonoBehaviour
             return;
 
         var quests = questManager.ActiveQuests;
-        
+
         if (myQuestIndex < 0)
             myQuestIndex = quests.FindIndex(q => q.questID == questID);
 
         bool shouldShow = false;
 
-        if (myQuestIndex == 0)
+        if (myQuestIndex >= 0 && myQuestIndex < quests.Count)
         {
-            shouldShow = true;
-        }
-        else if (myQuestIndex > 0 && quests[myQuestIndex - 1].isCompleted)
-        {
-            shouldShow = true;
+            if (!quests[myQuestIndex].isCompleted)
+            {
+                if (myQuestIndex == 0)
+                {
+                    shouldShow = true;
+                }
+                else if (myQuestIndex > 0 && quests[myQuestIndex - 1].isCompleted)
+                {
+                    shouldShow = true;
+                }
+            }
         }
 
-        questUIPanel.SetActive(shouldShow); 
+        questUIPanel.SetActive(shouldShow);
+        
+        CheckQuestCompletion();
+    }
+
+    private void CheckQuestCompletion()
+    {
+        if (questCompleted || soilRevealManager == null || questManager == null)
+            return;
+        
+        if (soilRevealManager.currentSoilAmount >= soilRevealManager.maxSoilAmount)
+        {
+            Quest quest = questManager.ActiveQuests.Find(q => q.questID == questID);
+            if (quest != null && !quest.isCompleted)
+            {
+                questManager.MarkQuestAsCompletedByID(questID);
+                
+                if (questTablet != null)
+                    questTablet.UpdateQuestList();
+                
+                TimeManager.Instance.ResumeTime();
+                
+                questCompleted = true;
+            }
+        }
     }
 }
