@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - Audio
+  - NotificationSystem
   layers:
   - Default
   - TransparentFX
