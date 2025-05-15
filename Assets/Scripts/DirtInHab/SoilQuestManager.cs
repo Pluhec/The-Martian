@@ -165,7 +165,28 @@ public class SoilQuestManager : MonoBehaviour
                 
             // Vypnout komponenty
             SetComponentsActive(false);
+<<<<<<< Updated upstream
         }
     }
     
+=======
+            
+            // Zvýraznit/upozornit hráče na dokončení
+            StartCoroutine(ShowCompletionEffect());
+        }
+    }
+    
+    private IEnumerator ShowCompletionEffect()
+    {
+        // Zde by mohl být kód pro nějaký vizuální efekt dokončení
+        // Např. krátká animace, zvukový efekt, atd.
+        yield return new WaitForSeconds(1.0f);
+    }
+    
+    // Metoda, kterou lze volat z jiných skriptů nebo událostí
+    public void ForceCompleteQuest()
+    {
+        CompleteQuest();
+    }
+>>>>>>> Stashed changes
 }
