@@ -101,6 +101,8 @@ MonoBehaviour:
   displayDuration: 7
   hiddenY: -80
   visibleY: 25
+  bounceStrength: 0.15
+  bounceDuration: 0.2
 --- !u!1 &3049674466005365902
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +389,7 @@ GameObject:
   - component: {fileID: 190404316709344930}
   m_Layer: 5
   m_Name: NotificationsCanvas
-  m_TagString: Untagged
+  m_TagString: NotificationSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
