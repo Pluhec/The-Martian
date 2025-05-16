@@ -7,6 +7,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource solarPanelDone;
     [SerializeField] private AudioSource decompressionSource;
     [SerializeField] private AudioSource SlidingAirlockDoorSource;
+    [SerializeField] private AudioSource menuMusic;
+    [SerializeField] private AudioSource menuButtons;
 
     [Header("------ RadialMenu ------")]
     public AudioClip openCloseMenu;
@@ -22,6 +24,13 @@ public class AudioManager : MonoBehaviour
 
     [Header("------ SlidingAirlockDoor ------")]
     public AudioClip SlidingAirlockDoor;
+    
+    [Header("------ MainMenuMusic ------")]
+    public AudioClip mainMenuMusic;
+    
+    [Header("------ MainMenuMusic ------")]
+    public AudioClip hoverButton;
+    public AudioClip clickButton;
 
     public void PlayRadialMenu(AudioClip clip)
     {
@@ -55,5 +64,23 @@ public class AudioManager : MonoBehaviour
     {
         SlidingAirlockDoorSource.PlayOneShot(SlidingAirlockDoor);
     }
+
+    public void PlayMenuMusic(AudioClip clip)
+    {
+        menuMusic.clip = clip;
+        menuMusic.loop = true;
+        menuMusic.Play();
+    }
+    
+    public void PlayHoverButtonSound()
+    {
+        menuButtons.PlayOneShot(hoverButton);
+    }
+
+    public void PlayClickButtonSound()
+    {
+        menuButtons.PlayOneShot(clickButton);
+    }
+    
     
 }
