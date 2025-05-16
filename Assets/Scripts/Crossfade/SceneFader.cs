@@ -22,7 +22,7 @@ public class SceneFader : MonoBehaviour
     private IEnumerator FadeAndLoad(string scene)
     {
         animator.SetTrigger("Start");
-        yield return new WaitForSeconds(1f); // musi byt stejne dlouhy jak animace
+        yield return new WaitForSeconds(1f);
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
         while (!asyncLoad.isDone)

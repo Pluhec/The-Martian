@@ -95,4 +95,33 @@ public class SpawnManager : MonoBehaviour
         
         EntranceData.Instance.logAfterLoad = false;
     }
+    
+    public void LoadSceneFromMenu(string sceneName)
+    {
+        if (string.IsNullOrEmpty(sceneName))
+        {
+            Debug.LogWarning("SpawnManager: Nelze načíst scénu - název scény je prázdný.");
+            return;
+        }
+        
+        if (EntranceData.Instance != null)
+        {
+            EntranceData.Instance.lastEntranceKey = string.Empty;
+            EntranceData.Instance.logAfterLoad  = false;
+        }
+        else
+        {
+            Debug.LogWarning("SpawnManager: EntranceData.Instance je null.");
+        }
+
+        if (SceneFader.Instance != null)
+        {
+            SceneFader.Instance.FadeToScene(sceneName);
+        }
+        else
+        {
+            Debug.LogWarning("SpawnManager: SceneFader.Instance je null, dělám klasické načtení.");
+            SceneManager.LoadScene(sceneName);
+        }
+    }
 }
