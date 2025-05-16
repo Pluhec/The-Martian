@@ -1,16 +1,25 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public AudioMixer audioMixer;
+    
+    public void ExitGame()
     {
-        
+
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #else
+            Application.Quit();
+    #endif
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateVolume(float volume)
     {
-        
+        audioMixer.SetFloat("Volume", volume);
     }
+    
+    
+    
 }
