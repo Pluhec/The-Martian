@@ -12,7 +12,6 @@ public class InputSlotHandler : MonoBehaviour, IDropHandler
         var go = e.pointerDrag;
         if (go == null) return;
 
-        // Musíme mít ItemButton + ItemDefinition
         var btn = go.GetComponent<ItemButton>();
         var def = go.GetComponent<ItemDefinition>();
         if (btn == null || def == null)
@@ -31,6 +30,9 @@ public class InputSlotHandler : MonoBehaviour, IDropHandler
         // 1) Vytvoříme kopii ikonky a přidáme ji pod input
         Debug.Log("[InputSlot] Instantiating new icon under input slot");
         currentIcon = Instantiate(go, transform);
+        currentIcon.name = go.name; // hezčí pojmenování
+
+        // Reset lokální RectTransform na (0,0)
         var rt = currentIcon.GetComponent<RectTransform>();
         if (rt != null)
         {
@@ -41,16 +43,18 @@ public class InputSlotHandler : MonoBehaviour, IDropHandler
             rt.localScale       = Vector3.one;
         }
 
-        // 2) Zablokujeme další raycasty na té nové ikoně
+        // 2) **Nezablokujeme** raycast – aby šla ikona znovu draggovat
         var cgNew = currentIcon.GetComponent<CanvasGroup>();
-        if (cgNew != null) cgNew.blocksRaycasts = false;
+        if (cgNew == null) cgNew = currentIcon.AddComponent<CanvasGroup>();
+        cgNew.blocksRaycasts = true;
+        cgNew.interactable   = true;
 
-        // 3) Původní ikonku z inventáře odstraníme naprosto
+        // 3) Odeber originál z inventáře (placeholdery i originální tlačítko)
         Debug.Log($"[InputSlot] Removing original from inventory at {btn.mainSlotIndex}");
         Inventory.Instance.RemoveItem(btn.mainSlotIndex, btn.slotSize);
-        Debug.Log("[InputSlot] Inventory.RemoveItem called, placeholdery by měly být pryč");
+        Debug.Log("[InputSlot] Inventory.RemoveItem called");
 
-        // 4) Původní drag icon zničíme
+        // 4) Znič originální drag-GO
         Debug.Log("[InputSlot] Destroying original dragged icon");
         Destroy(go);
 
