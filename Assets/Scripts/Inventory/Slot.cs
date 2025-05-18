@@ -72,4 +72,12 @@ public class Slot : MonoBehaviour, IDropHandler
             item.storageContainer?.AlignItems();
         }
     }
+    
+    public void OnDirectAdd(GameObject icon, int size)
+    {
+        icon.transform.SetParent(transform, false);
+        var btn = icon.GetComponent<ItemButton>();
+        btn.mainSlotIndex = i;
+        btn.slotSize = size;
+    }
 }
