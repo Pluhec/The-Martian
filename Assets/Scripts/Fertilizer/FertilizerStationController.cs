@@ -14,8 +14,8 @@ public class FertilizerStationController : MonoBehaviour
     public Button unwrapButton;            // tlačítko „Rozbalit“
 
     [Header("ItemDefinition IDs")]
-    public string shitPackID;   // nastav v Inspectoru přesné itemID z ItemDefinition
-    public GameObject compostPrefab; // prefab Compost (s ItemDefinition & ItemButton)
+    public string shitPackID;              // nastav v Inspectoru přesné itemID
+    public GameObject compostPrefab;       // prefab Compost (s ItemDefinition & ItemButton)
 
     // stav mini-hry
     bool hasPackInInput;
@@ -23,6 +23,7 @@ public class FertilizerStationController : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log("[Station] Awake: disabling UI, hooking up callbacks");
         uiRoot.SetActive(false);
         unwrapButton.interactable = false;
 
@@ -34,71 +35,80 @@ public class FertilizerStationController : MonoBehaviour
 
     void OnDestroy()
     {
+        Debug.Log("[Station] OnDestroy: removing unwrap listener");
         unwrapButton.onClick.RemoveListener(OnClickUnwrap);
     }
 
-    // otevřít / zavřít UI dle hráče v triggeru
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log($"[Station] OnTriggerEnter2D called with {other.name}");
         if (other.CompareTag("Player"))
         {
+            Debug.Log("[Station] Player entered station area → showing UI & enabling drag");
             uiRoot.SetActive(true);
             ItemButton.isDragEnabled = true;
         }
     }
+
     void OnTriggerExit2D(Collider2D other)
     {
+        Debug.Log($"[Station] OnTriggerExit2D called with {other.name}");
         if (other.CompareTag("Player"))
         {
+            Debug.Log("[Station] Player left station area → hiding UI & disabling drag");
             uiRoot.SetActive(false);
             ItemButton.isDragEnabled = false;
             ResetStation();
         }
     }
 
-    // volá InputSlotHandler, když do něj hráč přetáhne ShitPack z inventáře
     public void OnShitPackReceived(ItemButton btn)
     {
+        Debug.Log($"[Station] OnShitPackReceived: got {btn.itemID} in inputSlot");
         hasPackInInput = true;
-        // ikonku nech v inputSlotu – InputSlotHandler ji automaticky rodičovství změní
     }
 
-    // volá WorkAreaDropHandler, když hráč přetáhne z inputSlotu na pracovní plochu
     public void OnWorkAreaDrop(GameObject go)
     {
+        Debug.Log($"[Station] OnWorkAreaDrop: object {go.name} dropped onto workArea");
         hasPackOnWorkArea = true;
         unwrapButton.interactable = true;
     }
 
-    // kliknutí na "Rozbalit balíček"
     void OnClickUnwrap()
     {
+        Debug.Log("[Station] OnClickUnwrap: button pressed");
         unwrapButton.interactable = false;
 
-        // tady později spustíme animaci...
-        // ale pro UI fázi právě jen přesuň ikonu do outputSlot
-
-        // 1) odstran inputSlot obsah
         if (hasPackInInput)
         {
+            Debug.Log("[Station] Clearing inputSlot");
             inputSlot.Clear();
             hasPackInInput = false;
         }
+        else
+        {
+            Debug.LogWarning("[Station] OnClickUnwrap called but hasPackInInput is false");
+        }
 
-        // 2) výsledek do outputSlot – vytvoř instanci Compost ikony
+        if (compostPrefab == null)
+        {
+            Debug.LogError("[Station] compostPrefab is null!");
+            return;
+        }
+
+        Debug.Log("[Station] Instantiating compostPrefab into outputSlot");
         var obj = Instantiate(compostPrefab);
-        // outputSlot je klasický Slot, takže stačí drag&drop – ale pro UI fázi:
         outputSlot.OnDirectAdd(obj, 1);
-
         hasPackOnWorkArea = false;
     }
 
-    // reset stavu (když hráč UI zavře)
     void ResetStation()
     {
+        Debug.Log("[Station] ResetStation: resetting internal state and UI");
         hasPackInInput = hasPackOnWorkArea = false;
         unwrapButton.interactable = false;
         inputSlot.Clear();
-        // outputSlot nechte, hráč si to může vzít ven
+        // outputSlot ponecháme, hráč si může vzít výstup
     }
 }

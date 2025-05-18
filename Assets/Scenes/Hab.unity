@@ -22483,7 +22483,7 @@ PrefabInstance:
       objectReference: {fileID: 2062029804}
     - target: {fileID: 4665288557442556204, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 155.0747
+      value: -244.7778
       objectReference: {fileID: 0}
     - target: {fileID: 5261776835199444737, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
       propertyPath: m_SortingOrder
@@ -153838,7 +153838,7 @@ MonoBehaviour:
   outputSlot: {fileID: 682962659}
   unwrapButton: {fileID: 682962657}
   shitPackID: PoopPack
-  compostPrefab: {fileID: 6566625751879988618, guid: b1f00fbd617a24c09ba5737d60d9609b, type: 3}
+  compostPrefab: {fileID: 5462466614591213022, guid: 53259165eb2f847229578d74ca32b9bb, type: 3}
 --- !u!61 &2062029806
 BoxCollider2D:
   m_ObjectHideFlags: 0
