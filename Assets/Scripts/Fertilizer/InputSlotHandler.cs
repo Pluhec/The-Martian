@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,9 +10,18 @@ public class InputSlotHandler : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData e)
     {
         var go = e.pointerDrag;
-        if (go == null) return;
+        if (go == null)
+        {
+            Debug.LogWarning("GO je null");
+            return;
+        }
+        
         var btn = go.GetComponent<ItemButton>();
-        if (btn == null) return;
+        if (btn == null)
+        {
+            Debug.LogWarning("No item button selected");
+            return;
+        }
 
         // přijímáme jen ShitPack
         if (btn.itemID != station.shitPackID) return;

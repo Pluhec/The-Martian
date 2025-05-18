@@ -22473,13 +22473,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4027368113013618762, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4027368113013618762, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2062029804}
+    - target: {fileID: 4665288557442556204, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 155.0747
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261776835199444737, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6458018622881577166, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
       propertyPath: m_Name
       value: CanvasFertilizerStation
       objectReference: {fileID: 0}
     - target: {fileID: 6458018622881577166, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -160303,107 +160319,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02e68a2e1898b4d49a46497f564f8381, type: 3}
---- !u!1001 &7802866809475734405
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695963216965096520, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6458018622881577166, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_Name
-      value: CanvasFertilizerStation
-      objectReference: {fileID: 0}
-    - target: {fileID: 6458018622881577166, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
 --- !u!1001 &7885940590278464049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -160651,5 +160566,4 @@ SceneRoots:
   - {fileID: 1709132509}
   - {fileID: 944230057}
   - {fileID: 1410038880}
-  - {fileID: 7802866809475734405}
   - {fileID: 2062029807}
