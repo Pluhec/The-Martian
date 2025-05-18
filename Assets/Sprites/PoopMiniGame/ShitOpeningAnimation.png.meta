@@ -1,0 +1,614 @@
+fileFormatVersion: 2
+guid: 9d01a12f0572a4b8dbbc2e8bb522bd89
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2829462731344019915
+    second: ShitOpeningAnimation_0
+  - first:
+      213: -7543089885592870910
+    second: ShitOpeningAnimation_1
+  - first:
+      213: -8894671605739968376
+    second: ShitOpeningAnimation_2
+  - first:
+      213: 8294612627116878738
+    second: ShitOpeningAnimation_3
+  - first:
+      213: 5422262676911598462
+    second: ShitOpeningAnimation_4
+  - first:
+      213: 2220993823576762396
+    second: ShitOpeningAnimation_5
+  - first:
+      213: -1716150873892067219
+    second: ShitOpeningAnimation_6
+  - first:
+      213: 1214762353318987225
+    second: ShitOpeningAnimation_7
+  - first:
+      213: 7756448843695895997
+    second: ShitOpeningAnimation_8
+  - first:
+      213: -9122713305851585943
+    second: ShitOpeningAnimation_9
+  - first:
+      213: 6358313026897178022
+    second: ShitOpeningAnimation_10
+  - first:
+      213: 5141478272242295181
+    second: ShitOpeningAnimation_11
+  - first:
+      213: 6729532549075835418
+    second: ShitOpeningAnimation_12
+  - first:
+      213: -3922282059317484332
+    second: ShitOpeningAnimation_13
+  - first:
+      213: -4803243173638647340
+    second: ShitOpeningAnimation_14
+  - first:
+      213: -1915439286363074958
+    second: ShitOpeningAnimation_15
+  - first:
+      213: 318916578587717364
+    second: ShitOpeningAnimation_16
+  - first:
+      213: -5221829369477899556
+    second: ShitOpeningAnimation_17
+  - first:
+      213: 8628822561352072283
+    second: ShitOpeningAnimation_18
+  - first:
+      213: 2550563355685055927
+    second: ShitOpeningAnimation_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 79
+        width: 102
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc187feec55444720800000000000000
+      internalID: 2829462731344019915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_1
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 79
+        width: 102
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 200256cc6bf815790800000000000000
+      internalID: -7543089885592870910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_2
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 79
+        width: 102
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 888ad12fc47cf8480800000000000000
+      internalID: -8894671605739968376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_3
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 79
+        width: 102
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29b65c4dc326c1370800000000000000
+      internalID: 8294612627116878738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_4
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 79
+        width: 102
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7bac202d2fbf3b40800000000000000
+      internalID: 5422262676911598462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_5
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 95
+        width: 102
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1821ae7d1e82de10800000000000000
+      internalID: 2220993823576762396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_6
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 64
+        width: 140
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d68efac6fd10f28e0800000000000000
+      internalID: -1716150873892067219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_7
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 69
+        width: 142
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d5881c9ce3bbd010800000000000000
+      internalID: 1214762353318987225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_8
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 78
+        width: 132
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db5bbfeb02174ab60800000000000000
+      internalID: 7756448843695895997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_9
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 49
+        width: 149
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96a9cf0259c956180800000000000000
+      internalID: -9122713305851585943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_10
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 52
+        width: 139
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ade1fa92044d3850800000000000000
+      internalID: 6358313026897178022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_11
+      rect:
+        serializedVersion: 2
+        x: 1563
+        y: 83
+        width: 104
+        height: 117
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8124657f333a5740800000000000000
+      internalID: 5141478272242295181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_12
+      rect:
+        serializedVersion: 2
+        x: 1691
+        y: 77
+        width: 104
+        height: 123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1a1814e23a146d50800000000000000
+      internalID: 6729532549075835418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_13
+      rect:
+        serializedVersion: 2
+        x: 1819
+        y: 80
+        width: 104
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d46e798f314199c0800000000000000
+      internalID: -3922282059317484332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_14
+      rect:
+        serializedVersion: 2
+        x: 1947
+        y: 70
+        width: 104
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d1d27148c3775db0800000000000000
+      internalID: -4803243173638647340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_15
+      rect:
+        serializedVersion: 2
+        x: 2075
+        y: 54
+        width: 104
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27e40831e1efa65e0800000000000000
+      internalID: -1915439286363074958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_16
+      rect:
+        serializedVersion: 2
+        x: 2204
+        y: 40
+        width: 103
+        height: 163
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fe24b340f40d6400800000000000000
+      internalID: 318916578587717364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_17
+      rect:
+        serializedVersion: 2
+        x: 2332
+        y: 29
+        width: 103
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cda519adad55887b0800000000000000
+      internalID: -5221829369477899556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShitOpeningAnimation_18
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 3
+        width: 103
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5c344fe66cbfb770800000000000000
+      internalID: 8628822561352072283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: be1e702ae87d345328145fcdad7d35a5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ShitOpeningAnimation_0: 2829462731344019915
+      ShitOpeningAnimation_1: -7543089885592870910
+      ShitOpeningAnimation_10: 6358313026897178022
+      ShitOpeningAnimation_11: 5141478272242295181
+      ShitOpeningAnimation_12: 6729532549075835418
+      ShitOpeningAnimation_13: -3922282059317484332
+      ShitOpeningAnimation_14: -4803243173638647340
+      ShitOpeningAnimation_15: -1915439286363074958
+      ShitOpeningAnimation_16: 318916578587717364
+      ShitOpeningAnimation_17: -5221829369477899556
+      ShitOpeningAnimation_18: 8628822561352072283
+      ShitOpeningAnimation_2: -8894671605739968376
+      ShitOpeningAnimation_3: 8294612627116878738
+      ShitOpeningAnimation_4: 5422262676911598462
+      ShitOpeningAnimation_5: 2220993823576762396
+      ShitOpeningAnimation_6: -1716150873892067219
+      ShitOpeningAnimation_7: 1214762353318987225
+      ShitOpeningAnimation_8: 7756448843695895997
+      ShitOpeningAnimation_9: -9122713305851585943
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
