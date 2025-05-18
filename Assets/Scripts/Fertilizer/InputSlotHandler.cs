@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,39 +8,60 @@ public class InputSlotHandler : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData e)
     {
+        Debug.Log($"[InputSlot] OnDrop called, pointerDrag = {e.pointerDrag?.name}");
         var go = e.pointerDrag;
-        if (go == null)
-        {
-            Debug.LogWarning("GO je null");
-            return;
-        }
-        
+        if (go == null) return;
+
+        // Musíme mít ItemButton + ItemDefinition
         var btn = go.GetComponent<ItemButton>();
-        if (btn == null)
+        var def = go.GetComponent<ItemDefinition>();
+        if (btn == null || def == null)
         {
-            Debug.LogWarning("No item button selected");
+            Debug.LogWarning("[InputSlot] Dropped object není ItemButton+ItemDefinition");
             return;
         }
 
-        // přijímáme jen ShitPack
-        if (btn.itemID != station.shitPackID) return;
+        Debug.Log($"[InputSlot] Dropped definition ID = {def.itemID}, expected = {station.shitPackID}");
+        if (def.itemID != station.shitPackID)
+        {
+            Debug.LogWarning("[InputSlot] Není to ShitPack, abort");
+            return;
+        }
 
-        // 1) odstraň ze skutečného inventáře
+        // 1) Vytvoříme kopii ikonky a přidáme ji pod input
+        Debug.Log("[InputSlot] Instantiating new icon under input slot");
+        currentIcon = Instantiate(go, transform);
+        var rt = currentIcon.GetComponent<RectTransform>();
+        if (rt != null)
+        {
+            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.pivot     = new Vector2(0.5f, 0.5f);
+            rt.anchoredPosition = Vector2.zero;
+            rt.localRotation    = Quaternion.identity;
+            rt.localScale       = Vector3.one;
+        }
+
+        // 2) Zablokujeme další raycasty na té nové ikoně
+        var cgNew = currentIcon.GetComponent<CanvasGroup>();
+        if (cgNew != null) cgNew.blocksRaycasts = false;
+
+        // 3) Původní ikonku z inventáře odstraníme naprosto
+        Debug.Log($"[InputSlot] Removing original from inventory at {btn.mainSlotIndex}");
         Inventory.Instance.RemoveItem(btn.mainSlotIndex, btn.slotSize);
+        Debug.Log("[InputSlot] Inventory.RemoveItem called, placeholdery by měly být pryč");
 
-        // 2) zafixuj ikonku v našem slotu
-        currentIcon = go;
-        currentIcon.transform.SetParent(transform, false);
-        currentIcon.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        // 4) Původní drag icon zničíme
+        Debug.Log("[InputSlot] Destroying original dragged icon");
+        Destroy(go);
 
+        // 5) Notifikujeme stanici
         station.OnShitPackReceived(btn);
     }
 
-    // vyčistí slot, vrátí se do prázdného stavu
     public void Clear()
     {
-        if (currentIcon != null)
-            Destroy(currentIcon);
+        Debug.Log("[InputSlot] Clear called");
+        if (currentIcon != null) Destroy(currentIcon);
         currentIcon = null;
     }
 }
