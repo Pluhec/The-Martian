@@ -148788,6 +148788,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8977360642b4648f2be1e62f784b0596, type: 3}
+--- !u!114 &1974701083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5340447815873010133, guid: 8e551f48fa0514218aa312b27b1c563a, type: 3}
+  m_PrefabInstance: {fileID: 682962656}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2002966141
 GameObject:
   m_ObjectHideFlags: 0
@@ -153839,6 +153850,29 @@ MonoBehaviour:
   unwrapButton: {fileID: 682962657}
   shitPackID: PoopPack
   compostPrefab: {fileID: 5462466614591213022, guid: 53259165eb2f847229578d74ca32b9bb, type: 3}
+  unwrapAnimImage: {fileID: 1974701083}
+  unwrapFrames:
+  - {fileID: 2829462731344019915, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: -7543089885592870910, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: -8894671605739968376, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: 8294612627116878738, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: 5422262676911598462, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: 2220993823576762396, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: -1716150873892067219, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: 1214762353318987225, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: 7756448843695895997, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: -9122713305851585943, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: 6358313026897178022, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: 5141478272242295181, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: 6729532549075835418, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: -3922282059317484332, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: -4803243173638647340, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: -1915439286363074958, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: 318916578587717364, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: -5221829369477899556, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  - {fileID: 8628822561352072283, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
+  frameRate: 12
+  hasPackInInput: 0
 --- !u!61 &2062029806
 BoxCollider2D:
   m_ObjectHideFlags: 0

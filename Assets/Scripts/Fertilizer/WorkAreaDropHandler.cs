@@ -7,15 +7,8 @@ public class WorkAreaDropHandler : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData e)
     {
-        Debug.Log($"[WorkArea] OnDrop called, pointerDrag = {e.pointerDrag?.name}");
         var go = e.pointerDrag;
-        if (go == null)
-        {
-            Debug.LogWarning("[WorkArea] pointerDrag is null");
-            return;
-        }
-
-        Debug.Log("[WorkArea] Accepting drop from InputSlot");
+        if (go == null) return;
         station.OnWorkAreaDrop(go);
     }
 }
