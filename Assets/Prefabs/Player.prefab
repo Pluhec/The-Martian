@@ -459,6 +459,7 @@ GameObject:
   - component: {fileID: 8504289609004842736}
   - component: {fileID: 1427290998300935232}
   - component: {fileID: 5216894451980356117}
+  - component: {fileID: 6039182506863802369}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -630,7 +631,6 @@ MonoBehaviour:
   RechargeRate: 10
   OxygenDepletionRate: 1
   OxygenTimeBeforeDeath: 10
-  bloodOverlayImage: {fileID: 5748058554322747257}
 --- !u!61 &1427290998300935232
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -709,6 +709,19 @@ MonoBehaviour:
   walkStepRate: 0.45
   runStepRate: 0.35
   isOutside: 1
+--- !u!114 &6039182506863802369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8312465754160185224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac809f2254ea1984ab62b6c7fac91772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodOverlayImage: {fileID: 5748058554322747257}
 --- !u!1 &8958129132251530238
 GameObject:
   m_ObjectHideFlags: 0
