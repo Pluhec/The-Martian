@@ -19,24 +19,52 @@ public class SolarPanel : InteractableObject
     {
         actions.Add("Clean");
         audioManager = FindObjectOfType<AudioManager>();
-        
-        FindInventory();
+        if (inventoryUI == null)
+            FindInventory();
     }
     
     private void FindInventory()
     {
+        inventoryUI = GameObject.Find("InventoryManager")
+            ?? FindObjectOfType<Inventory>()?.gameObject;
+    }
+
+    public override void PerformAction(string action)
+    {
+        if (action != "Clean") 
+            return;
+        
         if (inventoryUI == null)
+            FindInventory();
+        
+        var clean = SolarPanelMinigame.GetComponentInChildren<Clean>();
+        
+        var qm = QuestManager.Instance;
+        var quest = qm?
+            .ActiveQuests
+            .Find(q => q.questID == questID);
+        
+        if (quest != null && !quest.isCompleted)
+            clean.ResetToDirty();
+        else
+            clean.ClearDirtPermanently();
+        
+        solarPanel.SetActive(true);
+        playerUI.SetActive(false);
+        questTabletUI.SetActive(false);
+        inventoryUI.SetActive(false);
+        var move = playerMovement.GetComponent<Movement>();
+        if (move != null) move.enabled = false;
+        
+        if (qm != null && quest != null && !quest.isCompleted)
         {
-            inventoryUI = GameObject.Find("InventoryManager");
-            
-            if (inventoryUI == null)
-            {
-                var inventoryManager = FindObjectOfType<Inventory>();
-                if (inventoryManager != null)
-                {
-                    inventoryUI = inventoryManager.gameObject;
-                }
-            }
+            Debug.Log($"Before clean: Quest {quest.questName} isCompleted? {quest.isCompleted}");
+            qm.MarkQuestAsCompletedByID(questID);
+            Debug.Log($" After clean: Quest {quest.questName} isCompleted? {quest.isCompleted}");
+        }
+        else if (qm == null)
+        {
+            Debug.LogError("QuestManager instance not found.");
         }
     }
 
@@ -44,49 +72,10 @@ public class SolarPanel : InteractableObject
     {
         audioManager.StopCleaningSolarPanel();
         SolarPanelMinigame.SetActive(false);
-
         playerUI.SetActive(true);
         questTabletUI.SetActive(true);
         inventoryUI.SetActive(true);
-
-        var movementScript = playerMovement.GetComponent<Movement>();
-        if (movementScript != null)
-            movementScript.enabled = true;
-    }
-
-    public override void PerformAction(string action)
-    {
-        if (action == "Clean")
-        {
-            if (inventoryUI == null)
-            {
-                FindInventory();
-            }
-            
-            solarPanel.SetActive(true);
-            playerUI.SetActive(false);
-            questTabletUI.SetActive(false);
-            inventoryUI.SetActive(false);
-
-            var movementScript = playerMovement.GetComponent<Movement>();
-            if (movementScript != null)
-                movementScript.enabled = false;
-
-            var questManager = QuestManager.Instance;
-            if (questManager != null)
-            {
-                var quest = questManager.ActiveQuests.Find(q => q.questID == questID);
-                if (quest != null && !quest.isCompleted)
-                {
-                    Debug.Log($"Before clean: Quest {quest.questName} (ID {quest.questID}) isCompleted? {quest.isCompleted}");
-                    questManager.MarkQuestAsCompletedByID(questID);
-                    Debug.Log($" After clean: Quest {quest.questName} isCompleted? {quest.isCompleted}");
-                }
-            }
-            else
-            {
-                Debug.LogError("QuestManager instance not found.");
-            }
-        }
+        var move = playerMovement.GetComponent<Movement>();
+        if (move != null) move.enabled = true;
     }
 }

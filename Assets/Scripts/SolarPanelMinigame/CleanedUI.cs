@@ -6,6 +6,7 @@ public class CleanedUI : MonoBehaviour
 {
     public Image Bar;
     public TextMeshProUGUI CleanedText;
+
     private AudioManager audioManager;
     private bool hasPlayedFullyCleanedSound = false;
 
@@ -21,10 +22,7 @@ public class CleanedUI : MonoBehaviour
 
     public void UpdateText(int cleaned)
     {
-        if (cleaned >= 100)
-        {
-            cleaned = 100;
-        }
+        if (cleaned >= 100) cleaned = 100;
 
         if (cleaned == 100 && !hasPlayedFullyCleanedSound)
         {
@@ -38,5 +36,10 @@ public class CleanedUI : MonoBehaviour
     private void PlayFullyCleanedSound()
     {
         audioManager.PlayFullyCleanedSolarPanel(audioManager.FullyCleanedSound);
+    }
+    
+    public void ResetSoundFlag()
+    {
+        hasPlayedFullyCleanedSound = false;
     }
 }
