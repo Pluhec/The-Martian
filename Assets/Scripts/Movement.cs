@@ -21,6 +21,7 @@ public class Movement : MonoBehaviour
     public float RechargeRate = 5f;
     public float OxygenDepletionRate = 1f;
     public float OxygenTimeBeforeDeath = 10f;
+    public Canvas bloodOverlayImage;
     
     private GameObject toastPrefab;
     private Transform notificationsParent;
@@ -48,6 +49,12 @@ public class Movement : MonoBehaviour
         else
         {
             Debug.LogWarning("Notification canvas s tagem 'notificationSystem' nebyl nalezen.");
+        }
+        
+        if (PlayerPrefs.GetInt("BloodOverlayDisabled", 0) == 1)
+        {
+            if (bloodOverlayImage != null)
+                bloodOverlayImage.enabled = false;
         }
     }
 

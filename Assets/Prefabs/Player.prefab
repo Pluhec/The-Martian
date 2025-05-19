@@ -630,8 +630,7 @@ MonoBehaviour:
   RechargeRate: 10
   OxygenDepletionRate: 1
   OxygenTimeBeforeDeath: 10
-  toastPrefab: {fileID: 6632250610760257460, guid: 1469e67f2b1084107bf9f2aeaf0947e3, type: 3}
-  notificationsParent: {fileID: 5756155987644100599, guid: 1469e67f2b1084107bf9f2aeaf0947e3, type: 3}
+  bloodOverlayImage: {fileID: 5748058554322747257}
 --- !u!61 &1427290998300935232
 BoxCollider2D:
   m_ObjectHideFlags: 0

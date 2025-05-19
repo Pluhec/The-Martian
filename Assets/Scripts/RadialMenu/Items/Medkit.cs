@@ -7,10 +7,9 @@ public class Medkit : InteractableObject
     public GameObject itemButton;
     public int slotSize = 2;
     
-    [SerializeField] private Image bloodOverlayImage;
-
-    public string itemName = "Neznámý předmět";
     public int questID;
+    
+    public Canvas bloodOverlayImage;
 
     private QuestManager questManager;
     private QuestTablet questTablet;
@@ -125,22 +124,13 @@ public class Medkit : InteractableObject
             // Aktualizujeme UI questu
             if (questTablet != null)
                 questTablet.UpdateQuestList();
+            
+            PlayerPrefs.SetInt("BloodOverlayDisabled", 1);
+            PlayerPrefs.Save();
             bloodOverlayImage.enabled = false;
 
             // 5) Odstraníme světový objekt (pokud byl deaktivovaný, znova ho zničíme)
             Destroy(gameObject);
-        }
-    }
-    
-    public void DisableBloodOverlay()
-    {
-        if (bloodOverlayImage != null)
-        {
-            bloodOverlayImage.enabled = false;
-        }
-        else
-        {
-            Debug.LogError("Blood overlay image reference is missing in PlayerUI");
         }
     }
     
