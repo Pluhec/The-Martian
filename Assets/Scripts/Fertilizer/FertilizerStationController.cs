@@ -126,9 +126,10 @@ public class FertilizerStationController : MonoBehaviour
 
     void ResetStation()
     {
-        hasPackInInput = hasPackOnWorkArea = isAnimating = false;
+        // hasPackInInput = hasPackOnWorkArea = isAnimating = false;
+        hasPackOnWorkArea = isAnimating = false;
         unwrapButton.interactable = false;
         unwrapAnimImage.gameObject.SetActive(false);
-        inputSlot.Clear();
+        // inputSlot.Clear();
     }
 }
