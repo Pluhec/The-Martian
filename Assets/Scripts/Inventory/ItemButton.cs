@@ -20,9 +20,13 @@ public class ItemButton : MonoBehaviour,
     private CanvasGroup cg;
 
     private PlayerInteraction2D playerInteraction;
-    
+
     // Statická proměnná pro sledování stavu otevření kontejneru
     public static bool isDragEnabled = false;
+
+    // --- Notifikační systém ---
+    private GameObject toastPrefab;
+    private Transform notificationsParent;
 
     void Awake()
     {
@@ -36,6 +40,19 @@ public class ItemButton : MonoBehaviour,
         playerInteraction = FindObjectOfType<PlayerInteraction2D>();
         if (playerInteraction == null)
             Debug.LogError("PlayerInteraction2D instance not found!");
+
+        // Najdi NotificationCanvas podle tagu
+        var notifCanvas = GameObject.FindGameObjectWithTag("NotificationSystem");
+        if (notifCanvas != null)
+        {
+            // Najdi Toast prefab a notificationsParent v canvasu
+            toastPrefab = notifCanvas.GetComponentInChildren<Toast>(true)?.gameObject;
+            notificationsParent = notifCanvas.transform.Find("NotificationContainer") ?? notifCanvas.transform;
+        }
+        else
+        {
+            Debug.LogWarning("Notification canvas s tagem 'notificationSystem' nebyl nalezen.");
+        }
     }
 
     public void Initialize(int slotIdx, int size, Inventory inv, StorageContainer cont)
@@ -86,7 +103,7 @@ public class ItemButton : MonoBehaviour,
             e.Use(); // Konzumuje událost, aby Unity nepokračovala s drag operací
             return;
         }
-    
+
         if (canvas == null) canvas = FindObjectOfType<Canvas>();
         if (canvas == null) return;
 
@@ -103,7 +120,7 @@ public class ItemButton : MonoBehaviour,
             e.Use(); // Konzumuje událost
             return;
         }
-    
+
         transform.position = e.position;
     }
 
@@ -114,7 +131,7 @@ public class ItemButton : MonoBehaviour,
             e.Use(); // Konzumuje událost
             return;
         }
-    
+
         transform.SetParent(originalParent);
         transform.localPosition = Vector3.zero;
         cg.blocksRaycasts = true;
@@ -224,10 +241,20 @@ public class ItemButton : MonoBehaviour,
                 LayerMask forbiddenZone = LayerMask.GetMask("NoDropZone");
                 Collider2D overlap = Physics2D.OverlapPoint(dropPosition, forbiddenZone);
 
-                // Pokud to není hlína a je v zakázané zóně, zabráníme dropnutí
+                // Pokud to není hlína a je v zakázané zóně, zabráníme dropnutí a zobrazíme notifikaci
                 if (overlap != null && !isSand)
                 {
-                    Debug.Log("❌ Nelze položit item – oblast zakázaná.");
+                    if (toastPrefab != null && notificationsParent != null)
+                    {
+                        var toastGO = Instantiate(toastPrefab, notificationsParent);
+                        var toast = toastGO.GetComponent<Toast>();
+                        if (toast != null)
+                            toast.Show("warning", "Zde nejdou dropovat itemy!");
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Toast prefab nebo notificationsParent není nastaven.");
+                    }
                     return; // Zruší drop
                 }
 

@@ -21,9 +21,9 @@ public class Movement : MonoBehaviour
     public float RechargeRate = 5f;
     public float OxygenDepletionRate = 1f;
     public float OxygenTimeBeforeDeath = 10f;
-    public GameObject toastPrefab;
-    public Transform notificationsParent;
-
+    
+    private GameObject toastPrefab;
+    private Transform notificationsParent;
     private Coroutine recharge;
     private float oxygenDepletionTimer = 0f;
     private Vector2 input;
@@ -38,6 +38,17 @@ public class Movement : MonoBehaviour
         footstepManager = GetComponent<FootstepManager>();
         Stamina = MaxStamina;
         Oxygen = MaxOxygen;
+        
+        var notifCanvas = GameObject.FindGameObjectWithTag("NotificationSystem");
+        if (notifCanvas != null)
+        {
+            toastPrefab = notifCanvas.GetComponentInChildren<Toast>(true)?.gameObject;
+            notificationsParent = notifCanvas.transform.Find("NotificationContainer") ?? notifCanvas.transform;
+        }
+        else
+        {
+            Debug.LogWarning("Notification canvas s tagem 'notificationSystem' nebyl nalezen.");
+        }
     }
 
     void Update()
@@ -83,18 +94,23 @@ public class Movement : MonoBehaviour
             if (Oxygen < 0) Oxygen = 0;
             float ratio = Oxygen / MaxOxygen;
             OxygenBar.fillAmount = ratio;
-            
-            // posilani do popupu 
+
             if (!alertShown && ratio <= 0.05f)
             {
-                var go = Instantiate(toastPrefab, notificationsParent);
-                go.GetComponent<Toast>().Show("alert", $"Critical oxygen level! ({Mathf.RoundToInt(ratio * 100)}%)");
+                if (toastPrefab != null && notificationsParent != null)
+                {
+                    var go = Instantiate(toastPrefab, notificationsParent);
+                    go.GetComponent<Toast>().Show("alert", $"Critical oxygen level! ({Mathf.RoundToInt(ratio * 100)}%)");
+                }
                 alertShown = true;
             }
             else if (!warningShown && ratio <= 0.3f)
             {
-                var go = Instantiate(toastPrefab, notificationsParent);
-                go.GetComponent<Toast>().Show("warning", $"Your oxygen is low ({Mathf.RoundToInt(ratio * 100)}%)");
+                if (toastPrefab != null && notificationsParent != null)
+                {
+                    var go = Instantiate(toastPrefab, notificationsParent);
+                    go.GetComponent<Toast>().Show("warning", $"Your oxygen is low ({Mathf.RoundToInt(ratio * 100)}%)");
+                }
                 warningShown = true;
             }
         }

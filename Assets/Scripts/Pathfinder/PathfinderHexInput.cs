@@ -22,8 +22,6 @@ public class PathfinderHexInput : MonoBehaviour
     public GameObject playerUICanvas;
     public GameObject inventoryCanvas;
     public GameObject questUICanvas;
-    public GameObject toastPrefab;
-    public Transform notificationsParent;
 
     [Header("Zpráva")]
     public TextMeshProUGUI messageDisplay;
@@ -50,6 +48,8 @@ public class PathfinderHexInput : MonoBehaviour
     private bool tutorialShown = false;
     private bool questCompleted = false;
     private QuestManager questManager;
+    private GameObject toastPrefab;
+    private Transform notificationsParent;
 
     private void Awake()
     {
@@ -63,6 +63,17 @@ public class PathfinderHexInput : MonoBehaviour
         }
 
         InitializeDefaultMessages();
+        
+        var notifCanvas = GameObject.FindGameObjectWithTag("NotificationSystem");
+        if (notifCanvas != null)
+        {
+            toastPrefab = notifCanvas.GetComponentInChildren<Toast>(true)?.gameObject;
+            notificationsParent = notifCanvas.transform.Find("NotificationContainer") ?? notifCanvas.transform;
+        }
+        else
+        {
+            Debug.LogWarning("Notification canvas s tagem 'notificationSystem' nebyl nalezen.");
+        }
     }
 
     private void InitializeDefaultMessages()
