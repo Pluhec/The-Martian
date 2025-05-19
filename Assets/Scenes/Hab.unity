@@ -153873,6 +153873,7 @@ MonoBehaviour:
   - {fileID: 8628822561352072283, guid: 9d01a12f0572a4b8dbbc2e8bb522bd89, type: 3}
   frameRate: 12
   hasPackInInput: 0
+  hasPackOnWorkArea: 0
 --- !u!61 &2062029806
 BoxCollider2D:
   m_ObjectHideFlags: 0

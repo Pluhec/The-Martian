@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class FertilizerStationController : MonoBehaviour
 {
+    public static FertilizerStationController Instance { get; private set; }
+
     [Header("UI Root (Canvas), start inactive)")]
     public GameObject uiRoot;
 
@@ -13,7 +15,7 @@ public class FertilizerStationController : MonoBehaviour
     public WorkAreaDropHandler workArea;
     public Slot outputSlot;
     public Button unwrapButton;
-    
+
     [Header("ItemDefinition IDs")]
     public string shitPackID;
     public GameObject compostPrefab;
@@ -22,13 +24,22 @@ public class FertilizerStationController : MonoBehaviour
     public Image unwrapAnimImage;
     public Sprite[] unwrapFrames;
     public float frameRate = 12f;
-    
+
     [HideInInspector] public bool hasPackInInput;
     [HideInInspector] public bool hasPackOnWorkArea;
     bool isAnimating;
 
     void Awake()
     {
+        // Singleton
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        
         uiRoot.SetActive(false);
         unwrapButton.interactable = false;
         unwrapAnimImage.gameObject.SetActive(false);
@@ -40,6 +51,8 @@ public class FertilizerStationController : MonoBehaviour
 
     void OnDestroy()
     {
+        if (Instance == this)
+            Instance = null;
         unwrapButton.onClick.RemoveListener(OnClickUnwrap);
     }
 
@@ -61,19 +74,19 @@ public class FertilizerStationController : MonoBehaviour
             ResetStation();
         }
     }
-    
+
     public void OnShitPackReceived(ItemButton btn)
     {
         hasPackInInput = true;
     }
-    
+
     public void OnWorkAreaDrop(GameObject go)
     {
         if (hasPackOnWorkArea || isAnimating) return;
 
         hasPackOnWorkArea = true;
         unwrapButton.interactable = true;
-        
+
         unwrapAnimImage.sprite = unwrapFrames[0];
         unwrapAnimImage.gameObject.SetActive(true);
     }
@@ -95,15 +108,15 @@ public class FertilizerStationController : MonoBehaviour
             unwrapAnimImage.sprite = frame;
             yield return new WaitForSeconds(delay);
         }
-        
+
         unwrapAnimImage.gameObject.SetActive(false);
-        
+
         if (hasPackInInput)
         {
             inputSlot.Clear();
             hasPackInInput = false;
         }
-        
+
         GameObject result = Instantiate(compostPrefab);
         outputSlot.OnDirectAdd(result, 1);
 
