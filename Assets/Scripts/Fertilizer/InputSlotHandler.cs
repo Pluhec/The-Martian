@@ -8,29 +8,18 @@ public class InputSlotHandler : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData e)
     {
-        Debug.Log($"[InputSlot] OnDrop called, pointerDrag = {e.pointerDrag?.name}");
+        if (station.hasPackInInput) return;
+
         var go = e.pointerDrag;
         if (go == null) return;
 
-        // Musíme mít ItemButton + ItemDefinition
         var btn = go.GetComponent<ItemButton>();
         var def = go.GetComponent<ItemDefinition>();
-        if (btn == null || def == null)
-        {
-            Debug.LogWarning("[InputSlot] Dropped object není ItemButton+ItemDefinition");
-            return;
-        }
-
-        Debug.Log($"[InputSlot] Dropped definition ID = {def.itemID}, expected = {station.shitPackID}");
-        if (def.itemID != station.shitPackID)
-        {
-            Debug.LogWarning("[InputSlot] Není to ShitPack, abort");
-            return;
-        }
-
-        // 1) Vytvoříme kopii ikonky a přidáme ji pod input
-        Debug.Log("[InputSlot] Instantiating new icon under input slot");
+        if (btn == null || def == null) return;
+        if (def.itemID != station.shitPackID) return;
+        
         currentIcon = Instantiate(go, transform);
+        currentIcon.name = go.name;
         var rt = currentIcon.GetComponent<RectTransform>();
         if (rt != null)
         {
@@ -40,27 +29,19 @@ public class InputSlotHandler : MonoBehaviour, IDropHandler
             rt.localRotation    = Quaternion.identity;
             rt.localScale       = Vector3.one;
         }
-
-        // 2) Zablokujeme další raycasty na té nové ikoně
-        var cgNew = currentIcon.GetComponent<CanvasGroup>();
-        if (cgNew != null) cgNew.blocksRaycasts = false;
-
-        // 3) Původní ikonku z inventáře odstraníme naprosto
-        Debug.Log($"[InputSlot] Removing original from inventory at {btn.mainSlotIndex}");
+        var cg = currentIcon.GetComponent<CanvasGroup>() ?? currentIcon.AddComponent<CanvasGroup>();
+        cg.blocksRaycasts = true;
+        cg.interactable   = true;
+        
         Inventory.Instance.RemoveItem(btn.mainSlotIndex, btn.slotSize);
-        Debug.Log("[InputSlot] Inventory.RemoveItem called, placeholdery by měly být pryč");
-
-        // 4) Původní drag icon zničíme
-        Debug.Log("[InputSlot] Destroying original dragged icon");
+        
         Destroy(go);
-
-        // 5) Notifikujeme stanici
+        
         station.OnShitPackReceived(btn);
     }
 
     public void Clear()
     {
-        Debug.Log("[InputSlot] Clear called");
         if (currentIcon != null) Destroy(currentIcon);
         currentIcon = null;
     }

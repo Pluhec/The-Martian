@@ -7,15 +7,29 @@ public class WorkAreaDropHandler : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData e)
     {
-        Debug.Log($"[WorkArea] OnDrop called, pointerDrag = {e.pointerDrag?.name}");
-        var go = e.pointerDrag;
+        GameObject go = e.pointerDrag;
         if (go == null)
+            return;
+        
+        var btn = go.GetComponent<ItemButton>();
+        var def = go.GetComponent<ItemDefinition>();
+        if (btn == null || def == null)
         {
-            Debug.LogWarning("[WorkArea] pointerDrag is null");
             return;
         }
-
-        Debug.Log("[WorkArea] Accepting drop from InputSlot");
+        
+        if (def.itemID != station.shitPackID)
+        {
+            return;
+        }
+        
+        if (!station.hasPackInInput)
+        {
+            Inventory.Instance.RemoveItem(btn.mainSlotIndex, btn.slotSize);
+            Destroy(go);
+            station.OnShitPackReceived(btn);
+        }
+        
         station.OnWorkAreaDrop(go);
     }
 }

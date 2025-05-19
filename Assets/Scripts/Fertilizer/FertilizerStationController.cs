@@ -1,50 +1,65 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class FertilizerStationController : MonoBehaviour
 {
+    public static FertilizerStationController Instance { get; private set; }
+
     [Header("UI Root (Canvas), start inactive)")]
     public GameObject uiRoot;
 
     [Header("Reference na sloty a tlačítko v UI")]
-    public InputSlotHandler inputSlot;     // komponenta na levém slotu
-    public WorkAreaDropHandler workArea;   // komponenta na pracovní ploše
-    public Slot outputSlot;                // pravý dolní slot (běžný Slot)
-    public Button unwrapButton;            // tlačítko „Rozbalit“
+    public InputSlotHandler inputSlot;
+    public WorkAreaDropHandler workArea;
+    public Slot outputSlot;
+    public Button unwrapButton;
 
     [Header("ItemDefinition IDs")]
-    public string shitPackID;              // nastav v Inspectoru přesné itemID
-    public GameObject compostPrefab;       // prefab Compost (s ItemDefinition & ItemButton)
+    public string shitPackID;
+    public GameObject compostPrefab;
 
-    // stav mini-hry
-    bool hasPackInInput;
-    bool hasPackOnWorkArea;
+    [Header("Animation")]
+    public Image unwrapAnimImage;
+    public Sprite[] unwrapFrames;
+    public float frameRate = 12f;
+
+    [HideInInspector] public bool hasPackInInput;
+    [HideInInspector] public bool hasPackOnWorkArea;
+    bool isAnimating;
 
     void Awake()
     {
-        Debug.Log("[Station] Awake: disabling UI, hooking up callbacks");
+        // Singleton
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        
         uiRoot.SetActive(false);
         unwrapButton.interactable = false;
+        unwrapAnimImage.gameObject.SetActive(false);
 
-        // propoj callbacky
-        inputSlot.station  = this;
-        workArea.station   = this;
+        inputSlot.station = this;
+        workArea.station  = this;
         unwrapButton.onClick.AddListener(OnClickUnwrap);
     }
 
     void OnDestroy()
     {
-        Debug.Log("[Station] OnDestroy: removing unwrap listener");
+        if (Instance == this)
+            Instance = null;
         unwrapButton.onClick.RemoveListener(OnClickUnwrap);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"[Station] OnTriggerEnter2D called with {other.name}");
         if (other.CompareTag("Player"))
         {
-            Debug.Log("[Station] Player entered station area → showing UI & enabling drag");
             uiRoot.SetActive(true);
             ItemButton.isDragEnabled = true;
         }
@@ -52,10 +67,8 @@ public class FertilizerStationController : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log($"[Station] OnTriggerExit2D called with {other.name}");
         if (other.CompareTag("Player"))
         {
-            Debug.Log("[Station] Player left station area → hiding UI & disabling drag");
             uiRoot.SetActive(false);
             ItemButton.isDragEnabled = false;
             ResetStation();
@@ -64,51 +77,59 @@ public class FertilizerStationController : MonoBehaviour
 
     public void OnShitPackReceived(ItemButton btn)
     {
-        Debug.Log($"[Station] OnShitPackReceived: got {btn.itemID} in inputSlot");
         hasPackInInput = true;
     }
 
     public void OnWorkAreaDrop(GameObject go)
     {
-        Debug.Log($"[Station] OnWorkAreaDrop: object {go.name} dropped onto workArea");
+        if (hasPackOnWorkArea || isAnimating) return;
+
         hasPackOnWorkArea = true;
         unwrapButton.interactable = true;
+
+        unwrapAnimImage.sprite = unwrapFrames[0];
+        unwrapAnimImage.gameObject.SetActive(true);
     }
 
     void OnClickUnwrap()
     {
-        Debug.Log("[Station] OnClickUnwrap: button pressed");
+        if (!hasPackOnWorkArea || isAnimating) return;
+        StartCoroutine(PlayUnwrapAnimation());
+    }
+
+    IEnumerator PlayUnwrapAnimation()
+    {
+        isAnimating = true;
         unwrapButton.interactable = false;
+
+        float delay = 1f / frameRate;
+        foreach (var frame in unwrapFrames)
+        {
+            unwrapAnimImage.sprite = frame;
+            yield return new WaitForSeconds(delay);
+        }
+
+        unwrapAnimImage.gameObject.SetActive(false);
 
         if (hasPackInInput)
         {
-            Debug.Log("[Station] Clearing inputSlot");
             inputSlot.Clear();
             hasPackInInput = false;
         }
-        else
-        {
-            Debug.LogWarning("[Station] OnClickUnwrap called but hasPackInInput is false");
-        }
 
-        if (compostPrefab == null)
-        {
-            Debug.LogError("[Station] compostPrefab is null!");
-            return;
-        }
+        GameObject result = Instantiate(compostPrefab);
+        outputSlot.OnDirectAdd(result, 1);
 
-        Debug.Log("[Station] Instantiating compostPrefab into outputSlot");
-        var obj = Instantiate(compostPrefab);
-        outputSlot.OnDirectAdd(obj, 1);
         hasPackOnWorkArea = false;
+        isAnimating = false;
     }
 
     void ResetStation()
     {
-        Debug.Log("[Station] ResetStation: resetting internal state and UI");
-        hasPackInInput = hasPackOnWorkArea = false;
+        // hasPackInInput = hasPackOnWorkArea = isAnimating = false;
+        hasPackOnWorkArea = isAnimating = false;
         unwrapButton.interactable = false;
-        inputSlot.Clear();
-        // outputSlot ponecháme, hráč si může vzít výstup
+        unwrapAnimImage.gameObject.SetActive(false);
+        // inputSlot.Clear();
     }
 }
