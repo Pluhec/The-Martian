@@ -10,10 +10,10 @@ public class FertilizerStationController : MonoBehaviour
 
     [Header("Reference na sloty a tlačítko v UI")]
     public InputSlotHandler inputSlot;
-    public WorkAreaDropHandler workArea; 
+    public WorkAreaDropHandler workArea;
     public Slot outputSlot;
     public Button unwrapButton;
-
+    
     [Header("ItemDefinition IDs")]
     public string shitPackID;
     public GameObject compostPrefab;
@@ -23,8 +23,8 @@ public class FertilizerStationController : MonoBehaviour
     public Sprite[] unwrapFrames;
     public float frameRate = 12f;
     
-    public bool hasPackInInput;
-    bool hasPackOnWorkArea;
+    [HideInInspector] public bool hasPackInInput;
+    [HideInInspector] public bool hasPackOnWorkArea;
     bool isAnimating;
 
     void Awake()
@@ -61,12 +61,12 @@ public class FertilizerStationController : MonoBehaviour
             ResetStation();
         }
     }
-
+    
     public void OnShitPackReceived(ItemButton btn)
     {
         hasPackInInput = true;
     }
-
+    
     public void OnWorkAreaDrop(GameObject go)
     {
         if (hasPackOnWorkArea || isAnimating) return;
@@ -90,9 +90,9 @@ public class FertilizerStationController : MonoBehaviour
         unwrapButton.interactable = false;
 
         float delay = 1f / frameRate;
-        for (int i = 0; i < unwrapFrames.Length; i++)
+        foreach (var frame in unwrapFrames)
         {
-            unwrapAnimImage.sprite = unwrapFrames[i];
+            unwrapAnimImage.sprite = frame;
             yield return new WaitForSeconds(delay);
         }
         
@@ -117,6 +117,5 @@ public class FertilizerStationController : MonoBehaviour
         unwrapButton.interactable = false;
         unwrapAnimImage.gameObject.SetActive(false);
         inputSlot.Clear();
-        // outputSlot necháme, tam si hráč může vzít výstup
     }
 }
