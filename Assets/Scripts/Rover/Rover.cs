@@ -157,7 +157,7 @@ public class Rover : InteractableObject
 
         // vypnuti jen pohybu a ne celeho hrace
         playerMovement.enabled = false;
-        
+
         playerGO.SetActive(false);
         playerGO.transform.SetParent(seat, false);
         playerGO.transform.localPosition = Vector3.zero;
@@ -174,6 +174,9 @@ public class Rover : InteractableObject
                 SmoothCameraZoom(vcam.Lens.OrthographicSize, insideOrthoSize)
             );
         }
+
+        // Nastaví kyslík na maximum
+        playerMovement.Oxygen = playerMovement.MaxOxygen;
     }
 
     private void ExitRover()

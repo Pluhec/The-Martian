@@ -96,6 +96,9 @@ public class Movement : MonoBehaviour
 
     private void UpdateOxygenBar()
     {
+        if (SceneManager.GetActiveScene().name == "Hab")
+            return;
+
         if (Oxygen > 0)
         {
             Oxygen -= OxygenDepletionRate * Time.deltaTime;
