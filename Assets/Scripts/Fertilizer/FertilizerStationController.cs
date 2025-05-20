@@ -29,9 +29,12 @@ public class FertilizerStationController : MonoBehaviour
     [HideInInspector] public bool hasPackOnWorkArea;
     bool isAnimating;
 
+    // NOVÉ:
+    bool playerInRange = false;
+
     void Awake()
     {
-        // Singleton
+        // Singleton + persistence across scenes
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -39,7 +42,8 @@ public class FertilizerStationController : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        
+
+        // původní init UI
         uiRoot.SetActive(false);
         unwrapButton.interactable = false;
         unwrapAnimImage.gameObject.SetActive(false);
@@ -56,22 +60,37 @@ public class FertilizerStationController : MonoBehaviour
         unwrapButton.onClick.RemoveListener(OnClickUnwrap);
     }
 
+    void Update()
+    {
+        // Když jsme v zóně a zmáčkneme E, toggle UI
+        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        {
+            bool open = !uiRoot.activeSelf;
+            uiRoot.SetActive(open);
+            ItemButton.isDragEnabled = open;
+            if (!open)
+                ResetStation();
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        {
-            uiRoot.SetActive(true);
-            ItemButton.isDragEnabled = true;
-        }
+            playerInRange = true;
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            uiRoot.SetActive(false);
-            ItemButton.isDragEnabled = false;
-            ResetStation();
+            playerInRange = false;
+            // zavřít UI pokud je otevřené
+            if (uiRoot.activeSelf)
+            {
+                uiRoot.SetActive(false);
+                ItemButton.isDragEnabled = false;
+                ResetStation();
+            }
         }
     }
 
@@ -84,7 +103,7 @@ public class FertilizerStationController : MonoBehaviour
     {
         if (hasPackOnWorkArea || isAnimating) return;
 
-        hasPackOnWorkArea = true;
+        hasPackOnWorkArea   = true;
         unwrapButton.interactable = true;
 
         unwrapAnimImage.sprite = unwrapFrames[0];
@@ -103,9 +122,9 @@ public class FertilizerStationController : MonoBehaviour
         unwrapButton.interactable = false;
 
         float delay = 1f / frameRate;
-        foreach (var frame in unwrapFrames)
+        foreach (var f in unwrapFrames)
         {
-            unwrapAnimImage.sprite = frame;
+            unwrapAnimImage.sprite = f;
             yield return new WaitForSeconds(delay);
         }
 
@@ -117,19 +136,19 @@ public class FertilizerStationController : MonoBehaviour
             hasPackInInput = false;
         }
 
-        GameObject result = Instantiate(compostPrefab);
+        var result = Instantiate(compostPrefab);
         outputSlot.OnDirectAdd(result, 1);
 
         hasPackOnWorkArea = false;
-        isAnimating = false;
+        isAnimating       = false;
     }
 
     void ResetStation()
     {
-        // hasPackInInput = hasPackOnWorkArea = isAnimating = false;
+        // zachováme hasPackInInput, smažeme jen craft části
         hasPackOnWorkArea = isAnimating = false;
         unwrapButton.interactable = false;
         unwrapAnimImage.gameObject.SetActive(false);
-        // inputSlot.Clear();
+        // inputSlot.Clear();  ← necháme, ikonku smaže hráč až při unwrapu
     }
 }
