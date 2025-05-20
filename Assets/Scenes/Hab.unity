@@ -2143,7 +2143,8 @@ MonoBehaviour:
   soilManager: {fileID: 1509243470}
   soilCounterText: {fileID: 1680261371}
   loaderImage: {fileID: 329747537}
-  soilPerItem: 15
+  questManager: {fileID: 365025711}
+  soilPerItem: 1
   resetKey: 114
 --- !u!114 &365025711
 MonoBehaviour:
