@@ -8,6 +8,7 @@ public class SoilDropController : MonoBehaviour
     public SoilRevealManager soilManager;
     public TextMeshProUGUI soilCounterText;
     public Image loaderImage;
+    public SoilQuestManager questManager;
 
     [Header("Nastavení")]
     public int soilPerItem = 1;
@@ -20,6 +21,9 @@ public class SoilDropController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (questManager != null && !questManager.IsQuestActive)
+            return;
+            
         if (other.GetComponent<DirtItem>() != null)
         {
             if (soilManager.currentSoilAmount < soilManager.maxSoilAmount)

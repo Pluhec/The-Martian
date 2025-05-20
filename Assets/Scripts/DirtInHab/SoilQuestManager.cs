@@ -3,15 +3,17 @@ using UnityEngine;
 public class SoilQuestManager : MonoBehaviour
 {
     public int questID;
-    
+
     public GameObject questUIPanel;
-    
+
     public SoilRevealManager soilRevealManager;
 
     private QuestManager questManager;
     private QuestTablet questTablet;
     private int myQuestIndex = -1;
     private bool questCompleted = false;
+    
+    public bool IsQuestActive { get; private set; } = false;
 
     private void Awake()
     {
@@ -53,9 +55,10 @@ public class SoilQuestManager : MonoBehaviour
                 }
             }
         }
-
-        questUIPanel.SetActive(shouldShow);
         
+        IsQuestActive = shouldShow;
+        questUIPanel.SetActive(shouldShow);
+
         CheckQuestCompletion();
     }
 
@@ -63,19 +66,19 @@ public class SoilQuestManager : MonoBehaviour
     {
         if (questCompleted || soilRevealManager == null || questManager == null)
             return;
-        
+
         if (soilRevealManager.currentSoilAmount >= soilRevealManager.maxSoilAmount)
         {
             Quest quest = questManager.ActiveQuests.Find(q => q.questID == questID);
             if (quest != null && !quest.isCompleted)
             {
                 questManager.MarkQuestAsCompletedByID(questID);
-                
+
                 if (questTablet != null)
                     questTablet.UpdateQuestList();
-                
+
                 TimeManager.Instance.ResumeTime();
-                
+
                 questCompleted = true;
             }
         }
