@@ -49,8 +49,8 @@ public class Rover : InteractableObject
     private void Awake()
     {
         actions.Add("Enter Rover");
-        actions.Add("Hide/Show Cargo Zone");
-        actions.Add("Load/Unload Cargo");
+        actions.Add("Hide Or Show Cargo Zone");
+        actions.Add("Load Or Unload Cargo");
     }
 
     private void Start()
@@ -75,12 +75,12 @@ public class Rover : InteractableObject
         {
             EnterRover();
         }
-        else if (action == "Hide/Show Cargo Zone")
+        else if (action == "Hide Or Show Cargo Zone")
         {
             showCargoZone = !showCargoZone;
             outline.ToggleOutline(showCargoZone);
         }
-        else if (action == "Load/Unload Cargo")
+        else if (action == "Load Or Unload Cargo")
         {
             if (currentCargo == null)
                 TryLoadCargo();

@@ -31,7 +31,7 @@ public class Shovel : InteractableObject
         }
         inventory = Inventory.Instance;
 
-        actions.Add("Use");
+        actions.Add("Dig");
         actions.Add("Pick Up");
     }
 
@@ -99,7 +99,7 @@ public class Shovel : InteractableObject
                 return;
             }
         }
-        else if (action == "Use")
+        else if (action == "Dig")
         {
             if (!HasFreeInventorySlot())
             {
