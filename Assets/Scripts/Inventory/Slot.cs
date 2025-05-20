@@ -5,7 +5,7 @@ public class Slot : MonoBehaviour, IDropHandler
 {
     public int  i;
     public bool IsInventorySlot = true;
-    public StorageContainer container;
+    private StorageContainer container;
 
     Inventory inventory;
 
