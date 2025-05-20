@@ -454,7 +454,7 @@ MonoBehaviour:
   FullyCleanedSound: {fileID: 8300000, guid: de1c12abcae8d4f10b594a3cbcdb6c69, type: 3}
   decompressionClip: {fileID: 8300000, guid: 27a8954e7e7e04062876b9a55685082a, type: 3}
   SlidingAirlockDoor: {fileID: 8300000, guid: e2c359a6e6eb344c0abc1021c82cde13, type: 3}
-  mainMenuMusic: {fileID: 8300000, guid: 979075a20902c4aeb9645226510d6a0e, type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: b1731610106de416a85c05181fa7349c, type: 3}
   hoverButton: {fileID: 8300000, guid: 8cf42a22091224779951d0902706013d, type: 3}
   clickButton: {fileID: 8300000, guid: eb7a63c0cc7104667aa789ff2a77bce9, type: 3}
   PoopPackOpenning: {fileID: 8300000, guid: 2e5be7a3a331a405abdd07df17963c3d, type: 3}
