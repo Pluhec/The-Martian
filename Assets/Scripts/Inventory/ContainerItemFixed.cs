@@ -24,4 +24,9 @@ public class ContainerItemFixed : InteractableObject
             case "otevřít":  box?.Open();  break;
         }
     }
+    
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player")) box?.Close();
+    }
 }

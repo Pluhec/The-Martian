@@ -104,4 +104,9 @@ public class ContainerItem : InteractableObject
             break;      // hotovo
         }
     }
+    
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player")) box?.Close();
+    }
 }
