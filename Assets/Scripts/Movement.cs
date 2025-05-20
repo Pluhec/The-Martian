@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
@@ -21,6 +23,12 @@ public class Movement : MonoBehaviour
     public float RechargeRate = 5f;
     public float OxygenDepletionRate = 1f;
     public float OxygenTimeBeforeDeath = 10f;
+    
+    [Header("Death Screen UI")]
+    [SerializeField] private GameObject deathScreenPanel;
+    [SerializeField] private GameObject diedText;
+    [SerializeField] private GameObject infoText;
+    [SerializeField] private Button     backToMenuButton;
     
     private GameObject toastPrefab;
     private Transform notificationsParent;
@@ -165,9 +173,49 @@ public class Movement : MonoBehaviour
         anim.SetFloat("LastMoveY", lastMoveDirection.y);
         anim.SetBool("IsRunning", isRunning);
     }
-
+    
     private void ShowDeathMessage()
     {
         Debug.Log("You Died");
+        StartCoroutine(ShowDeathUI());
+    }
+
+    private IEnumerator ShowDeathUI()
+    {
+        // počkáme, až bude screenFade plně černý
+        yield return new WaitUntil(() => screenFade.color.a >= 1f);
+
+        deathScreenPanel.SetActive(true);
+        diedText.       SetActive(true);
+        infoText.       SetActive(true);
+        backToMenuButton.gameObject.SetActive(true);
+    }
+
+    public void ObaBackToMenu()
+    {
+        DestroyAllDontDestroyObjects();
+        
+        SpawnManager.Instance.LoadSceneFromMenu("StartMenu");
+    }
+
+    private void DestroyAllDontDestroyObjects()
+    {
+        GameObject tempObject = new GameObject("TempForSceneIdentification");
+        DontDestroyOnLoad(tempObject);
+        
+        Scene dontDestroyScene = tempObject.scene;
+        
+        List<GameObject> rootObjects = new List<GameObject>();
+        dontDestroyScene.GetRootGameObjects(rootObjects);
+        
+        foreach (var obj in rootObjects)
+        {
+            if (obj != tempObject)
+            {
+                Destroy(obj);
+            }
+        }
+        
+        Destroy(tempObject);
     }
 }
