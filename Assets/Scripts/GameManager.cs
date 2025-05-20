@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,16 +13,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider volumeSlider;
 
+    [Header("Quest Arrow")]
+    public bool arrowEnabled = true;
+
     private SolSystem solSystem;
     private QuestManager questManager;
     private TimeManager timeManager;
     private bool isPaused = false;
-    
-    public bool IsPaused { get { return isPaused; } }
 
-    public SolSystem SolSystem { get { return solSystem; } }
-    public QuestManager QuestManager { get { return questManager; } }
-    public TimeManager TimeManager { get { return timeManager; } }
+    public bool IsPaused => isPaused;
+    public SolSystem SolSystem => solSystem;
+    public QuestManager QuestManager => questManager;
+    public TimeManager TimeManager => timeManager;
 
     private void Awake()
     {
@@ -29,13 +32,15 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            
-            solSystem = FindObjectOfType<SolSystem>();
-            questManager = FindObjectOfType<QuestManager>();
-            timeManager = FindObjectOfType<TimeManager>();
-            
+
+            solSystem     = FindObjectOfType<SolSystem>();
+            questManager  = FindObjectOfType<QuestManager>();
+            timeManager   = FindObjectOfType<TimeManager>();
+
             pauseMenuCanvas.SetActive(false);
             optionsPanel.SetActive(false);
+            
+            arrowEnabled = PlayerPrefs.GetInt("ArrowEnabled", 1) == 1;
         }
         else
         {
@@ -43,26 +48,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
             TogglePauseMenu();
-        }
-        
+
         if (isPaused)
-        {
             Input.ResetInputAxes();
-        }
     }
 
     private void TogglePauseMenu()
     {
         isPaused = !isPaused;
         pauseMenuCanvas.SetActive(isPaused);
-        
         optionsPanel.SetActive(false);
-
         Time.timeScale = isPaused ? 0f : 1f;
     }
 
@@ -83,10 +82,22 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
-            Application.Quit();
-        #endif
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #else
+        Application.Quit();
+    #endif
+    }
+    
+    public void SetArrowEnabled(bool enabled)
+    {
+        Debug.Log($"[GameManager] SetArrowEnabled({enabled}) called");
+        arrowEnabled = enabled;
+        PlayerPrefs.SetInt("ArrowEnabled", enabled ? 1 : 0);
+        PlayerPrefs.Save();
+        
+        var pointers = FindObjectsOfType<QuestArrowPointer>();
+        foreach (var p in pointers)
+            p.RefreshVisibility();
     }
 }

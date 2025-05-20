@@ -20,6 +20,14 @@ public class TabletToggle : MonoBehaviour
         solSystem = SolSystem.Instance;
         questTablet = FindObjectOfType<QuestTablet>();
     }
+    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ToggleTablet();
+        }
+    }
 
     public void ToggleTablet()
     {
