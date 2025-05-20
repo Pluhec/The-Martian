@@ -155,7 +155,6 @@ public class FertilizerStationController : MonoBehaviour
 
     void ResetStation()
     {
-        // zachováme hasPackInInput, smažeme jen craft části
         hasPackOnWorkArea = isAnimating = false;
         unwrapButton.interactable = false;
         unwrapAnimImage.gameObject.SetActive(false);
