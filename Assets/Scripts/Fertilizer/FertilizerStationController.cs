@@ -25,16 +25,18 @@ public class FertilizerStationController : MonoBehaviour
     public Sprite[] unwrapFrames;
     public float frameRate = 12f;
 
+    [Header("Audio")]
+    public AudioManager audioManager;
+    
+    
     [HideInInspector] public bool hasPackInInput;
     [HideInInspector] public bool hasPackOnWorkArea;
     bool isAnimating;
-
-    // NOVÉ:
+    
     bool playerInRange = false;
 
     void Awake()
     {
-        // Singleton + persistence across scenes
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -42,8 +44,7 @@ public class FertilizerStationController : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        // původní init UI
+        
         uiRoot.SetActive(false);
         unwrapButton.interactable = false;
         unwrapAnimImage.gameObject.SetActive(false);
@@ -62,7 +63,6 @@ public class FertilizerStationController : MonoBehaviour
 
     void Update()
     {
-        // Když jsme v zóně a zmáčkneme E, toggle UI
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             bool open = !uiRoot.activeSelf;
@@ -84,7 +84,6 @@ public class FertilizerStationController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
-            // zavřít UI pokud je otevřené
             if (uiRoot.activeSelf)
             {
                 uiRoot.SetActive(false);
@@ -103,7 +102,7 @@ public class FertilizerStationController : MonoBehaviour
     {
         if (hasPackOnWorkArea || isAnimating) return;
 
-        hasPackOnWorkArea   = true;
+        hasPackOnWorkArea       = true;
         unwrapButton.interactable = true;
 
         unwrapAnimImage.sprite = unwrapFrames[0];
@@ -121,10 +120,21 @@ public class FertilizerStationController : MonoBehaviour
         isAnimating = true;
         unwrapButton.interactable = false;
 
-        float delay = 1f / frameRate;
-        foreach (var f in unwrapFrames)
+        if (audioManager != null)
         {
-            unwrapAnimImage.sprite = f;
+            audioManager.PlayPoopPackOpenning();
+            Debug.Log("prehravam zvuk");
+        }
+        else
+        {
+            Debug.Log("no audio manager");
+        }
+            
+
+        float delay = 1f / frameRate;
+        foreach (var frame in unwrapFrames)
+        {
+            unwrapAnimImage.sprite = frame;
             yield return new WaitForSeconds(delay);
         }
 
@@ -149,6 +159,5 @@ public class FertilizerStationController : MonoBehaviour
         hasPackOnWorkArea = isAnimating = false;
         unwrapButton.interactable = false;
         unwrapAnimImage.gameObject.SetActive(false);
-        // inputSlot.Clear();  ← necháme, ikonku smaže hráč až při unwrapu
     }
 }
