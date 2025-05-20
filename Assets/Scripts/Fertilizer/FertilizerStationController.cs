@@ -25,13 +25,18 @@ public class FertilizerStationController : MonoBehaviour
     public Sprite[] unwrapFrames;
     public float frameRate = 12f;
 
+    [Header("Audio")]
+    public AudioManager audioManager;
+    
+    
     [HideInInspector] public bool hasPackInInput;
     [HideInInspector] public bool hasPackOnWorkArea;
     bool isAnimating;
+    
+    bool playerInRange = false;
 
     void Awake()
     {
-        // Singleton
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -56,22 +61,35 @@ public class FertilizerStationController : MonoBehaviour
         unwrapButton.onClick.RemoveListener(OnClickUnwrap);
     }
 
+    void Update()
+    {
+        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        {
+            bool open = !uiRoot.activeSelf;
+            uiRoot.SetActive(open);
+            ItemButton.isDragEnabled = open;
+            if (!open)
+                ResetStation();
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        {
-            uiRoot.SetActive(true);
-            ItemButton.isDragEnabled = true;
-        }
+            playerInRange = true;
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            uiRoot.SetActive(false);
-            ItemButton.isDragEnabled = false;
-            ResetStation();
+            playerInRange = false;
+            if (uiRoot.activeSelf)
+            {
+                uiRoot.SetActive(false);
+                ItemButton.isDragEnabled = false;
+                ResetStation();
+            }
         }
     }
 
@@ -84,7 +102,7 @@ public class FertilizerStationController : MonoBehaviour
     {
         if (hasPackOnWorkArea || isAnimating) return;
 
-        hasPackOnWorkArea = true;
+        hasPackOnWorkArea       = true;
         unwrapButton.interactable = true;
 
         unwrapAnimImage.sprite = unwrapFrames[0];
@@ -102,6 +120,17 @@ public class FertilizerStationController : MonoBehaviour
         isAnimating = true;
         unwrapButton.interactable = false;
 
+        if (audioManager != null)
+        {
+            audioManager.PlayPoopPackOpenning();
+            Debug.Log("prehravam zvuk");
+        }
+        else
+        {
+            Debug.Log("no audio manager");
+        }
+            
+
         float delay = 1f / frameRate;
         foreach (var frame in unwrapFrames)
         {
@@ -117,19 +146,17 @@ public class FertilizerStationController : MonoBehaviour
             hasPackInInput = false;
         }
 
-        GameObject result = Instantiate(compostPrefab);
+        var result = Instantiate(compostPrefab);
         outputSlot.OnDirectAdd(result, 1);
 
         hasPackOnWorkArea = false;
-        isAnimating = false;
+        isAnimating       = false;
     }
 
     void ResetStation()
     {
-        // hasPackInInput = hasPackOnWorkArea = isAnimating = false;
         hasPackOnWorkArea = isAnimating = false;
         unwrapButton.interactable = false;
         unwrapAnimImage.gameObject.SetActive(false);
-        // inputSlot.Clear();
     }
 }

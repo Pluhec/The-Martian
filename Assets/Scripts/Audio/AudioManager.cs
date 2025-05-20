@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource SlidingAirlockDoorSource;
     [SerializeField] private AudioSource menuMusic;
     [SerializeField] private AudioSource menuButtons;
+    [SerializeField] private AudioSource PoopPack;
 
     [Header("------ RadialMenu ------")]
     public AudioClip openCloseMenu;
@@ -31,6 +32,9 @@ public class AudioManager : MonoBehaviour
     [Header("------ MainMenuMusic ------")]
     public AudioClip hoverButton;
     public AudioClip clickButton;
+    
+    [Header("------ FertilizerStation ------")]
+    public AudioClip PoopPackOpenning;
 
     public void PlayRadialMenu(AudioClip clip)
     {
@@ -82,5 +86,8 @@ public class AudioManager : MonoBehaviour
         menuButtons.PlayOneShot(clickButton);
     }
     
-    
+    public void PlayPoopPackOpenning()
+    {
+        menuButtons.PlayOneShot(PoopPackOpenning);
+    }
 }
