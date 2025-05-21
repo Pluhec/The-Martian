@@ -196,7 +196,7 @@ public class ItemButton : MonoBehaviour,
         }
     }
 
-    void DropItem()
+    public void DropItem()
     {
         if (inventory == null || inventory.slots == null) return;
         if (DroppedItemManager.Instance == null) return;

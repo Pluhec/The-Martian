@@ -14,6 +14,14 @@ public class Inventory : MonoBehaviour
         if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
         else Destroy(gameObject);
     }
+    
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            DropFirstItem();
+        }
+    }
 
     /* ─── veřejné API ─── */
 
@@ -132,6 +140,21 @@ public class Inventory : MonoBehaviour
             isFull[idx] = false;
         }
         AlignItems();
+    }
+    
+    public void DropFirstItem()
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            var slot = slots[i].transform;
+            if (slot.childCount == 0 || !isFull[i]) continue;
+
+            var itemBtn = slot.GetChild(0).GetComponent<ItemButton>();
+            if (itemBtn == null) continue;
+
+            itemBtn.DropItem();
+            break;
+        }
     }
 
     /* ─── zarovnání ─── */

@@ -240,7 +240,7 @@ public class PathfinderHexInput : MonoBehaviour
             if (toastPrefab != null && notificationsParent != null)
             {
                 var toast = Instantiate(toastPrefab, notificationsParent);
-                toast.GetComponent<Toast>().Show("success", "Zpráva úspěšně zadána! Přejděte k terminálu a zadejte příkaz /message.");
+                toast.GetComponent<Toast>().Show("info", "Message successfully entered! Go to the terminal and enter the command /message.");
             }
         }
     }
