@@ -13,6 +13,17 @@ public class Interpreter : MonoBehaviour
     [Tooltip("Dictionary of messages associated with each pathfinder quest")]
     private Dictionary<int, string> pathfinderMessages = new Dictionary<int, string>();
 
+    private Dictionary<int, string> solLoreMessages = new Dictionary<int, string>()
+    {
+        {
+            21,
+            "The Hab is experiencing unstable power. Clean the solar panels to ensure sufficient energy for life support."
+        },
+        {
+            22, "blabla"
+        }
+    };
+
     private List<string> response = new List<string>();
 
     private void Awake()
@@ -267,6 +278,44 @@ public class Interpreter : MonoBehaviour
             else
                 gmMessage.Add("- <color=#FF0000>" + quest.questName + "</color>");
         }
+        
+        if (solLoreMessages.TryGetValue(solSystem.currentSol, out string lore))
+        {
+            gmMessage.Add(""); 
+            foreach (string line in WrapText(lore, 61))
+            {
+                gmMessage.Add("<i>" + line + "</i>");
+            }
+        }
+
         return gmMessage;
+    }
+    
+    // jelikoz neumim delat UI, tak tady musi byt tento shit: 
+    private List<string> WrapText(string text, int maxLineLength)
+    {
+        var words = text.Split(' ');
+        var lines = new List<string>();
+        var currentLine = string.Empty;
+
+        foreach (var word in words)
+        {
+            if ((currentLine.Length + word.Length + (currentLine.Length > 0 ? 1 : 0)) <= maxLineLength)
+            {
+                if (currentLine.Length > 0)
+                    currentLine += " ";
+                currentLine += word;
+            }
+            else
+            {
+                if (currentLine.Length > 0)
+                    lines.Add(currentLine);
+                currentLine = word;
+            }
+        }
+        if (currentLine.Length > 0)
+            lines.Add(currentLine);
+
+        return lines;
     }
 }
