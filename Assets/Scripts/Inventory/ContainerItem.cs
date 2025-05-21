@@ -17,20 +17,20 @@ public class ContainerItem : InteractableObject
 
     void Awake()
     {
-        box       = GetComponent<StorageContainer>();
+        box = GetComponent<StorageContainer>();
         inventory = Inventory.Instance;
-        pItem     = GetComponent<PersistentItem>();
+        pItem = GetComponent<PersistentItem>();
 
-        actions.Add("sebrat");
-        actions.Add("otevřít");
+        actions.Add("Pick Up");
+        actions.Add("Open");
     }
 
     public override void PerformAction(string action)
     {
         switch (action)
         {
-            case "otevřít":  box?.Open();  break;
-            case "sebrat":   TryPickUp();  break;
+            case "Open":  box?.Open();  break;
+            case "Pick Up":   TryPickUp();  break;
         }
     }
 
