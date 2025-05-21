@@ -211,7 +211,7 @@ public class ItemButton : MonoBehaviour,
         {
             if (overlap != null)
             {
-                ShowToast("warning", "Zde nejdou dropovat itemy!");
+                ShowToast("warning", "You cannot drop items here!");
                 return;
             }
 
@@ -262,7 +262,7 @@ public class ItemButton : MonoBehaviour,
 
                 if (overlap != null && !isSand)
                 {
-                    ShowToast("warning", "Zde nejdou dropovat itemy!");
+                    ShowToast("warning", "You cannot drop items here!");
                     return;
                 }
 
