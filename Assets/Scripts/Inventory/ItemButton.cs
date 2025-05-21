@@ -239,7 +239,6 @@ public class ItemButton : MonoBehaviour,
 
             inventory.AlignItems();
             Destroy(gameObject);
-            return;
         }
 
         for (int i = 0; i < slotSize; i++)
