@@ -5,11 +5,29 @@ public static class ShovelLogic
 {
     private static GameObject dirtItemPrefab;
     private static TileBase dugTile;
+    private static GameObject toastPrefab;
+    private static Transform notificationsParent;
 
     public static void Initialize(GameObject dirtPrefab, TileBase tile)
     {
         dirtItemPrefab = dirtPrefab;
         dugTile = tile;
+
+        var notifCanvas = GameObject.FindGameObjectWithTag("NotificationSystem");
+        if (notifCanvas != null)
+        {
+            toastPrefab = notifCanvas.GetComponentInChildren<Toast>(true)?.gameObject;
+            notificationsParent = notifCanvas.transform.Find("NotificationContainer") ?? notifCanvas.transform;
+        }
+    }
+
+    private static void ShowToast(string type, string message)
+    {
+        if (toastPrefab != null && notificationsParent != null)
+        {
+            var toast = Object.Instantiate(toastPrefab, notificationsParent);
+            toast.GetComponent<Toast>()?.Show(type, message);
+        }
     }
 
     public static void Dig()
@@ -27,6 +45,7 @@ public static class ShovelLogic
         if (inventory == null || tilemap == null || player == null)
         {
             Debug.LogError("[ShovelLogic] Chybí potřebné komponenty");
+            ShowToast("warning", "Cannot dig here!");
             return;
         }
 
@@ -43,7 +62,7 @@ public static class ShovelLogic
 
         if (!hasSpace)
         {
-            Debug.Log("[ShovelLogic] Není místo v inventáři.");
+            ShowToast("warning", "Not enough space for dirt!");
             return;
         }
 
@@ -51,16 +70,16 @@ public static class ShovelLogic
         Vector3Int cell = tilemap.WorldToCell(player.position);
         TileBase currentTile = tilemap.GetTile(cell);
         
-        if (currentTile == null)
+        if (currentTile == null || currentTile == dugTile)
         {
-            Debug.Log("[ShovelLogic] Na této pozici není žádná dlaždice.");
+            ShowToast("warning", "Cannot dig this type of ground!");
             return;
         }
         
         // Kontrola, jestli je to písek
         if (!currentTile.name.ToLower().Contains("sand"))
         {
-            Debug.Log("[ShovelLogic] Zde není písek, nelze kopat.");
+            ShowToast("warning", "Cannot dig this type of ground!");
             return;
         }
 

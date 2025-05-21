@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/// Jeden skript pro bednu – umí ji sebrat *a* otevřít / zavřít
-/// (sebrat = přesun do DontDestroyOnLoad + ikona v inventáři).
 public class ContainerItem : InteractableObject
 {
     [Header("Prefab ikony bedny do inventáře (má ItemButton)")]
@@ -14,12 +12,21 @@ public class ContainerItem : InteractableObject
     StorageContainer box;
     Inventory        inventory;
     PersistentItem   pItem;
+    private GameObject toastPrefab;
+    private Transform notificationsParent;
 
     void Awake()
     {
         box = GetComponent<StorageContainer>();
         inventory = Inventory.Instance;
         pItem = GetComponent<PersistentItem>();
+
+        var notifCanvas = GameObject.FindGameObjectWithTag("NotificationSystem");
+        if (notifCanvas != null)
+        {
+            toastPrefab = notifCanvas.GetComponentInChildren<Toast>(true)?.gameObject;
+            notificationsParent = notifCanvas.transform.Find("NotificationContainer") ?? notifCanvas.transform;
+        }
 
         actions.Add("Pick Up");
         actions.Add("Open");
@@ -34,14 +41,11 @@ public class ContainerItem : InteractableObject
         }
     }
 
-    /*──────────────────────────────*/
-    /*  PICKUP LOGIKA                */
-    /*──────────────────────────────*/
     void TryPickUp()
     {
         if (inventory == null || itemButtonPrefab == null) return;
 
-        // 1) hledání volného bloku v inventáři
+        bool foundSpace = false;
         for (int i = 0; i <= inventory.slots.Length - slotSize; i++)
         {
             bool free = true;
@@ -49,18 +53,16 @@ public class ContainerItem : InteractableObject
                 if (inventory.isFull[i + j]) { free = false; break; }
             if (!free) continue;
 
-            // 2) hlavní ikona
-            GameObject main = Instantiate(itemButtonPrefab,
-                inventory.slots[i].transform, false);
+            foundSpace = true;
+            GameObject main = Instantiate(itemButtonPrefab, inventory.slots[i].transform, false);
 
             var btn = main.GetComponent<ItemButton>();
             if (btn == null) { Destroy(main); return; }
 
-            btn.itemID        = pItem.itemID;   // ID bedny = ID ikony
+            btn.itemID = pItem.itemID;
             btn.mainSlotIndex = i;
-            btn.slotSize      = slotSize;
+            btn.slotSize = slotSize;
 
-            /* IKONA UŽ MÁ ContainerSpawn ► jen ho nakonfigurujeme */
             var csp = main.GetComponent<ContainerSpawn>();
             if (csp == null)
             {
@@ -69,16 +71,14 @@ public class ContainerItem : InteractableObject
                 return;
             }
             csp.containerID = pItem.itemID;
-            csp.iconButton  = btn;                 // aby SpawnContainer mohl volat RemoveItem
+            csp.iconButton = btn;
 
             inventory.isFull[i] = true;
 
-            // 3) placeholdery
             for (int j = 1; j < slotSize; j++)
             {
                 int idx = i + j;
-                var ph = Instantiate(itemButtonPrefab,
-                                     inventory.slots[idx].transform, false);
+                var ph = Instantiate(itemButtonPrefab, inventory.slots[idx].transform, false);
 
                 Destroy(ph.GetComponent<ItemButton>());
                 Destroy(ph.GetComponent<Button>());
@@ -86,25 +86,28 @@ public class ContainerItem : InteractableObject
                 var img = ph.GetComponent<Image>();
                 if (img != null)
                 {
-                    img.color         = new Color(1,1,1,0.35f);
+                    img.color = new Color(1,1,1,0.35f);
                     img.raycastTarget = false;
                 }
                 ph.AddComponent<ItemPlaceholder>().mainSlotIndex = i;
                 inventory.isFull[idx] = true;
             }
 
-            // 4) perzistence + úklid
             pItem.MarkCollected();
             DroppedItemManager.Instance?.RemoveDroppedItem(gameObject);
-
-            // 5) přesun do DontDestroy a deaktivace
             DontDestroyOnLoad(gameObject);
             gameObject.SetActive(false);
             ContainerRepository.Register(pItem.itemID, gameObject);
-            break;      // hotovo
+            break;
+        }
+
+        if (!foundSpace && toastPrefab != null && notificationsParent != null)
+        {
+            var toast = Instantiate(toastPrefab, notificationsParent);
+            toast.GetComponent<Toast>()?.Show("warning", "Not enough space in inventory!");
         }
     }
-    
+
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player")) box?.Close();

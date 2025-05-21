@@ -22,10 +22,8 @@ public class ItemButton : MonoBehaviour,
 
     private PlayerInteraction2D playerInteraction;
 
-    // Statická proměnná pro sledování stavu otevření kontejneru
     public static bool isDragEnabled = false;
 
-    // --- Notifikační systém ---
     private GameObject toastPrefab;
     private Transform notificationsParent;
 
@@ -42,17 +40,26 @@ public class ItemButton : MonoBehaviour,
         if (playerInteraction == null)
             Debug.LogError("PlayerInteraction2D instance not found!");
 
-        // Najdi NotificationCanvas podle tagu
+        RefreshNotificationSystem();
+    }
+
+    private void RefreshNotificationSystem()
+    {
         var notifCanvas = GameObject.FindGameObjectWithTag("NotificationSystem");
         if (notifCanvas != null)
         {
-            // Najdi Toast prefab a notificationsParent v canvasu
             toastPrefab = notifCanvas.GetComponentInChildren<Toast>(true)?.gameObject;
             notificationsParent = notifCanvas.transform.Find("NotificationContainer") ?? notifCanvas.transform;
         }
-        else
+    }
+
+    private void ShowToast(string type, string message)
+    {
+        RefreshNotificationSystem();
+        if (toastPrefab != null && notificationsParent != null)
         {
-            Debug.LogWarning("Notification canvas s tagem 'notificationSystem' nebyl nalezen.");
+            var toast = Instantiate(toastPrefab, notificationsParent);
+            toast.GetComponent<Toast>()?.Show(type, message);
         }
     }
 
@@ -101,7 +108,7 @@ public class ItemButton : MonoBehaviour,
     {
         if (!isDragEnabled)
         {
-            e.Use(); // Konzumuje událost, aby Unity nepokračovala s drag operací
+            e.Use();
             return;
         }
 
@@ -118,7 +125,7 @@ public class ItemButton : MonoBehaviour,
     {
         if (!isDragEnabled)
         {
-            e.Use(); // Konzumuje událost
+            e.Use();
             return;
         }
 
@@ -129,7 +136,7 @@ public class ItemButton : MonoBehaviour,
     {
         if (!isDragEnabled)
         {
-            e.Use(); // Konzumuje událost
+            e.Use();
             return;
         }
 
@@ -153,7 +160,7 @@ public class ItemButton : MonoBehaviour,
             ShovelLogic.Dig();
             return;
         }
-        
+
         if (gameObject.name.Contains("Shovel"))
         {
             Debug.LogError("Nelze najít lopatu (ani neaktivní)!");
@@ -167,14 +174,11 @@ public class ItemButton : MonoBehaviour,
             return;
         }
 
-        // 1️⃣ Spusť akci
         sourceObject.PerformAction(actions[0]);
 
-        // 2️⃣ Nenič tlačítko, pokud je to nástroj
-        if (actions[0] == "Use")   // lopata, sekera…  nech v inventáři
+        if (actions[0] == "Use")
             return;
 
-        // 3️⃣ Spotřební věci (léky, jídlo…) smaž jako dřív
         for (int i = 0; i < slotSize; i++)
         {
             int index = mainSlotIndex + i;
@@ -183,7 +187,6 @@ public class ItemButton : MonoBehaviour,
             Transform slot = inventory.slots[index].transform;
             if (slot.childCount == 0) continue;
 
-            // Smaž pouze pokud je sourceObject Medkit
             if (sourceObject is Medkit)
             {
                 GameObject child = slot.GetChild(0).gameObject;
@@ -201,8 +204,17 @@ public class ItemButton : MonoBehaviour,
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
         Vector2 dropPosition = new Vector2(player.position.x, player.position.y + 0.35f);
 
+        LayerMask forbiddenZone = LayerMask.GetMask("NoDropZone");
+        Collider2D overlap = Physics2D.OverlapPoint(dropPosition, forbiddenZone);
+
         if (TryGetComponent<ContainerSpawn>(out var csp))
         {
+            if (overlap != null)
+            {
+                ShowToast("warning", "Zde nejdou dropovat itemy!");
+                return;
+            }
+
             Vector2 dropPos = (Vector2)player.position + Vector2.up * 0.35f;
             csp.SpawnContainer(dropPos);
 
@@ -227,6 +239,7 @@ public class ItemButton : MonoBehaviour,
 
             inventory.AlignItems();
             Destroy(gameObject);
+            return;
         }
 
         for (int i = 0; i < slotSize; i++)
@@ -240,7 +253,6 @@ public class ItemButton : MonoBehaviour,
             GameObject child = slot.GetChild(0).gameObject;
             if (i == 0 && child.TryGetComponent<Spawn>(out var spawn))
             {
-                // Kontrola, zda se jedná o hlínu (sand)
                 bool isSand = false;
                 var itemDef = spawn.GetComponent<ItemDefinition>();
                 if (itemDef != null && itemDef.itemID == "Dirt")
@@ -248,28 +260,12 @@ public class ItemButton : MonoBehaviour,
                     isSand = true;
                 }
 
-                // Kontrola zakázané oblasti (např. HabArea)
-                LayerMask forbiddenZone = LayerMask.GetMask("NoDropZone");
-                Collider2D overlap = Physics2D.OverlapPoint(dropPosition, forbiddenZone);
-
-                // Pokud to není hlína a je v zakázané zóně, zabráníme dropnutí a zobrazíme notifikaci
                 if (overlap != null && !isSand)
                 {
-                    if (toastPrefab != null && notificationsParent != null)
-                    {
-                        var toastGO = Instantiate(toastPrefab, notificationsParent);
-                        var toast = toastGO.GetComponent<Toast>();
-                        if (toast != null)
-                            toast.Show("warning", "Zde nejdou dropovat itemy!");
-                    }
-                    else
-                    {
-                        Debug.LogWarning("Toast prefab nebo notificationsParent není nastaven.");
-                    }
-                    return; // Zruší drop
+                    ShowToast("warning", "Zde nejdou dropovat itemy!");
+                    return;
                 }
 
-                // Pokračuj s běžným dropem
                 GameObject spawnedItem = Instantiate(spawn.item, dropPosition, Quaternion.identity);
                 DroppedItemManager.Instance.AddDroppedItem(spawn.item, dropPosition);
             }
