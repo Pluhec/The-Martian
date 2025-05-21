@@ -135,7 +135,11 @@ public class Movement : MonoBehaviour
             
             if (deathMusicPlayed && audioManager != null)
             {
-                float volumePercent = Mathf.Clamp01(oxygenDepletionTimer / OxygenTimeBeforeDeath);
+                // Hermitova interpolace
+                float normalizedTime = oxygenDepletionTimer / OxygenTimeBeforeDeath;
+                int silaNarustu = 4;
+                int plynuleZakonceni = 2;
+                float volumePercent = Mathf.Clamp01(normalizedTime * normalizedTime * (silaNarustu - plynuleZakonceni * normalizedTime));
                 audioManager.SetDeathMusicVolume(volumePercent);
             }
 
