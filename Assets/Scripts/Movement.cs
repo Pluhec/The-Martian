@@ -30,6 +30,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private GameObject infoText;
     [SerializeField] private Button     backToMenuButton;
     
+    private AudioManager audioManager;
+    private MusicFader   musicFader;  
     private GameObject toastPrefab;
     private Transform notificationsParent;
     private Coroutine recharge;
@@ -38,7 +40,8 @@ public class Movement : MonoBehaviour
     private Vector2 lastMoveDirection;
     private bool warningShown = false;
     private bool alertShown = false;
-
+    private bool deathMusicPlayed = false;
+    
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -57,6 +60,13 @@ public class Movement : MonoBehaviour
         {
             Debug.LogWarning("Notification canvas s tagem 'notificationSystem' nebyl nalezen.");
         }
+        
+        var audioObj = GameObject.FindWithTag("Audio");  // added
+        if (audioObj != null)
+        {
+            audioManager = audioObj.GetComponent<AudioManager>();
+            musicFader   = audioObj.GetComponent<MusicFader>();
+        }
     }
 
     void Update()
@@ -66,26 +76,11 @@ public class Movement : MonoBehaviour
         Animate();
         UpdateStaminaBar();
         UpdateOxygenBar();
-        
+    
         bool isRunningNow = Input.GetKey(KeyCode.LeftShift) && Stamina > 0;
         bool isMovingNow = input.magnitude > 0.1f;
-        
+    
         footstepManager?.SetMovementState(isMovingNow, isRunningNow);
-        if (Oxygen <= 0)
-        {
-            oxygenDepletionTimer += Time.deltaTime;
-            screenFade.color = new Color(0, 0, 0, Mathf.Clamp01(oxygenDepletionTimer / OxygenTimeBeforeDeath));
-            if (oxygenDepletionTimer >= OxygenTimeBeforeDeath)
-            {
-                alive = false;
-                ShowDeathMessage();
-            }
-        }
-        else
-        {
-            oxygenDepletionTimer = 0f;
-            screenFade.color = Color.clear;
-        }
     }
 
     private void UpdateStaminaBar()
@@ -98,14 +93,14 @@ public class Movement : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Hab")
             return;
-
+        
         if (Oxygen > 0)
         {
             Oxygen -= OxygenDepletionRate * Time.deltaTime;
             if (Oxygen < 0) Oxygen = 0;
             float ratio = Oxygen / MaxOxygen;
             OxygenBar.fillAmount = ratio;
-
+            
             if (!alertShown && ratio <= 0.05f)
             {
                 if (toastPrefab != null && notificationsParent != null)
@@ -124,6 +119,37 @@ public class Movement : MonoBehaviour
                 }
                 warningShown = true;
             }
+        }
+        
+        if (Oxygen <= 0)
+        {
+            if (oxygenDepletionTimer == 0f)
+            {
+                audioManager?.PlayDeathMusic();
+                audioManager?.SetDeathMusicVolume(0f);
+                deathMusicPlayed = true;
+            }
+
+            oxygenDepletionTimer += Time.deltaTime;
+            screenFade.color = new Color(0, 0, 0, Mathf.Clamp01(oxygenDepletionTimer / OxygenTimeBeforeDeath));
+            
+            if (deathMusicPlayed && audioManager != null)
+            {
+                float volumePercent = Mathf.Clamp01(oxygenDepletionTimer / OxygenTimeBeforeDeath);
+                audioManager.SetDeathMusicVolume(volumePercent);
+            }
+
+            if (oxygenDepletionTimer >= OxygenTimeBeforeDeath)
+            {
+                alive = false;
+                ShowDeathMessage();
+            }
+        }
+        else
+        {
+            oxygenDepletionTimer = 0f;
+            screenFade.color = Color.clear;
+            deathMusicPlayed = false;
         }
     }
 
@@ -180,14 +206,14 @@ public class Movement : MonoBehaviour
     private void ShowDeathMessage()
     {
         Debug.Log("You Died");
+        if (!deathMusicPlayed)
+            audioManager?.PlayDeathMusic();
         StartCoroutine(ShowDeathUI());
     }
 
     private IEnumerator ShowDeathUI()
     {
-        // počkáme, až bude screenFade plně černý
         yield return new WaitUntil(() => screenFade.color.a >= 1f);
-
         deathScreenPanel.SetActive(true);
         diedText.       SetActive(true);
         infoText.       SetActive(true);
@@ -196,6 +222,7 @@ public class Movement : MonoBehaviour
 
     public void ObaBackToMenu()
     {
+        musicFader?.FadeOut();
         DestroyAllDontDestroyObjects();
         
         SpawnManager.Instance.LoadSceneFromMenu("StartMenu");
