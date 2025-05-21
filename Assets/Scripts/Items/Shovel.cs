@@ -29,7 +29,9 @@ public class Shovel : InteractableObject
             Debug.LogError("Inventory instance missing!");
             return;
         }
+        
         inventory = Inventory.Instance;
+        ShovelLogic.Initialize(dirtItemPrefab, dugTile);
 
         actions.Add("Dig");
         actions.Add("Pick Up");
@@ -99,46 +101,10 @@ public class Shovel : InteractableObject
                 return;
             }
         }
-        else if (action == "Dig")
+        
+        if (action == "Dig")
         {
-            if (!HasFreeInventorySlot())
-            {
-                Debug.Log("[Shovel] Není místo v inventáři pro hlínu.");
-                return;
-            }
-
-            player = GameObject.FindGameObjectWithTag("Player")?.transform;
-            tilemap = FindObjectOfType<Tilemap>();
-
-            if (player == null || tilemap == null)
-            {
-                Debug.Log("[Shovel] Nelze kopat z inventáře.");
-                return;
-            }
-
-            Vector3Int cell = tilemap.WorldToCell(player.position);
-            if (tilemap.GetTile(cell) != null)
-            {
-                tilemap.SetTile(cell, dugTile);
-
-                for (int i = 0; i < inventory.slots.Length; i++)
-                {
-                    if (inventory.isFull[i]) continue;
-
-                    GameObject btn = Instantiate(dirtItemPrefab, inventory.slots[i].transform, false);
-                    inventory.isFull[i] = true;
-
-                    ItemButton ib = btn.GetComponent<ItemButton>();
-                    if (ib != null)
-                    {
-                        ib.mainSlotIndex = i;
-                        ib.slotSize = 1;
-                        ib.inventory = inventory;
-                        ib.sourceObject = null;
-                    }
-                    break;
-                }
-            }
+            ShovelLogic.Dig();
         }
     }
 }

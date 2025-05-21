@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -147,9 +148,15 @@ public class ItemButton : MonoBehaviour,
 
     private void UseItem()
     {
-        if (sourceObject == null)
+        if (gameObject.name.Contains("Shovel"))
         {
-            Debug.LogWarning("sourceObject není nastavený.");
+            ShovelLogic.Dig();
+            return;
+        }
+        
+        if (gameObject.name.Contains("Shovel"))
+        {
+            Debug.LogError("Nelze najít lopatu (ani neaktivní)!");
             return;
         }
 
@@ -176,9 +183,13 @@ public class ItemButton : MonoBehaviour,
             Transform slot = inventory.slots[index].transform;
             if (slot.childCount == 0) continue;
 
-            GameObject child = slot.GetChild(0).gameObject;
-            Destroy(child);
-            inventory.isFull[index] = false;
+            // Smaž pouze pokud je sourceObject Medkit
+            if (sourceObject is Medkit)
+            {
+                GameObject child = slot.GetChild(0).gameObject;
+                Destroy(child);
+                inventory.isFull[index] = false;
+            }
         }
     }
 
