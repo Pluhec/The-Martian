@@ -7,6 +7,8 @@ TagManager:
   - Interactable
   - Audio
   - NotificationSystem
+  - CompleteTilemap
+  - VisibleTilemap
   layers:
   - Default
   - TransparentFX

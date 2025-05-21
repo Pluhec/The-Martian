@@ -34,6 +34,18 @@ public class SoilRevealManager : MonoBehaviour
             Debug.LogError("comleteTilemap neni");
         }
 
+        
+        if (SolSystem.Instance.currentSol >= 25)
+        {
+            Debug.Log("Uz je sol vetsi jak 25");
+            completeTilemap.gameObject.SetActive(true);
+            return;
+        }
+        else
+        {
+            Debug.Log("Jeste neni sol 25");
+        }
+
         visibleTilemap.ClearAllTiles();
         LoadTilePositions();
         UpdateRevealedTiles();

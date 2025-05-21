@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 125730894}
   m_Layer: 0
   m_Name: Hlina_Complete
-  m_TagString: Untagged
+  m_TagString: CompleteTilemap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2144,7 +2144,7 @@ MonoBehaviour:
   soilCounterText: {fileID: 1680261371}
   loaderImage: {fileID: 329747537}
   questManager: {fileID: 365025711}
-  soilPerItem: 1
+  soilPerItem: 15
   resetKey: 114
 --- !u!114 &365025711
 MonoBehaviour:
@@ -111618,7 +111618,7 @@ GameObject:
   - component: {fileID: 1509243470}
   m_Layer: 0
   m_Name: Hlina
-  m_TagString: Untagged
+  m_TagString: VisibleTilemap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
