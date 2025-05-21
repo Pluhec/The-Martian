@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource menuMusic;
     [SerializeField] private AudioSource menuButtons;
     [SerializeField] private AudioSource PoopPack;
+    [SerializeField] private AudioSource DeathMusic;
 
     [Header("------ RadialMenu ------")]
     public AudioClip openCloseMenu;
@@ -35,6 +36,9 @@ public class AudioManager : MonoBehaviour
     
     [Header("------ FertilizerStation ------")]
     public AudioClip PoopPackOpenning;
+    
+    [Header("------ DeathMusic ------")]
+    public AudioClip deathMusic;
 
     public void PlayRadialMenu(AudioClip clip)
     {
@@ -89,5 +93,17 @@ public class AudioManager : MonoBehaviour
     public void PlayPoopPackOpenning()
     {
         menuButtons.PlayOneShot(PoopPackOpenning);
+    }
+    
+    public void PlayDeathMusic()
+    {
+        DeathMusic.clip = deathMusic;
+        DeathMusic.loop = true;
+        DeathMusic.Play();
+    }
+    
+    public void SetDeathMusicVolume(float volume)
+    {
+        DeathMusic.volume = volume;
     }
 }
