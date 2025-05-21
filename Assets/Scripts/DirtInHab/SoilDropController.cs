@@ -23,13 +23,20 @@ public class SoilDropController : MonoBehaviour
     {
         if (questManager != null && !questManager.IsQuestActive)
             return;
-            
+
         if (other.GetComponent<DirtItem>() != null)
         {
             if (soilManager.currentSoilAmount < soilManager.maxSoilAmount)
             {
                 soilManager.AddSoil(soilPerItem);
                 UpdateUI();
+                
+                // smazat ze seave systemu aby se potom znovu nespawnul
+                if (DroppedItemManager.Instance != null)
+                {
+                    DroppedItemManager.Instance.RemoveDroppedItem(other.gameObject);
+                }
+            
                 Destroy(other.gameObject);
             }
         }
