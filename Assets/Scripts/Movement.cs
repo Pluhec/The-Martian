@@ -35,7 +35,8 @@ public class Movement : MonoBehaviour
     private GameObject toastPrefab;
     private Transform notificationsParent;
     private Coroutine recharge;
-    private float oxygenDepletionTimer = 0f;
+    // potrebuji to do smrti pri bouchnuti, tak se nezlob pati 
+    public float oxygenDepletionTimer = 0f;
     private Vector2 input;
     private Vector2 lastMoveDirection;
     private bool warningShown = false;
