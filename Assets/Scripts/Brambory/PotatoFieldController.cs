@@ -20,6 +20,10 @@ public class PotatoFieldController : InteractableObject
     [Header("Identifikace")]
     [Tooltip("Unikátní ID tohoto bramborového pole pro ukládání")]
     public string potatoFieldID = "MainField";
+    
+    [Header("Návaznost")]
+    [Tooltip("GameObject, který se aktivuje po dokončení bramborového questu")]
+    public GameObject fertilizerGameObject;
 
     [Header("Nastavení")]
     public int maxPotatoCount = 30;
@@ -267,19 +271,27 @@ public class PotatoFieldController : InteractableObject
         if (questManager != null)
         {
             questManager.MarkQuestAsCompletedByID(potatoQuestID);
-
+            questCompleted = true;
+            
             // Vypneme UI panel po dokončení questu
             if (questUIPanel != null)
                 questUIPanel.SetActive(false);
-
-            // Přepnutí na FertilizerFieldController
-            FertilizerFieldController fertilizer = GetComponent<FertilizerFieldController>();
-            if (fertilizer != null)
-            {
-                fertilizer.enabled = true;
-                enabled = false; // Vypneme tento controller
-            }
-
+            
+            // Vypneme collider na tomto objektu
+            Collider2D myCollider = GetComponent<Collider2D>();
+            if (myCollider != null)
+                myCollider.enabled = false;
+            
+            // Vyčistíme akce objektu
+            actions.Clear();
+            
+            // Aktivujeme druhý GameObject s kontrolerem na hnojení
+            if (fertilizerGameObject != null)
+                fertilizerGameObject.SetActive(true);
+            
+            // Vypneme tento skript, ale necháme objekt aktivní
+            this.enabled = false;
+            
             TimeManager.Instance.ResumeTime();
         }
     }
