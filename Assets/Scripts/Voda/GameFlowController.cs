@@ -11,11 +11,26 @@ public class GameFlowController : MonoBehaviour
     public ItemType[] targetSequence = new ItemType[]{
         ItemType.Pipe, ItemType.Pipe, ItemType.Catalyst, ItemType.Firewood
     };
+    
+    private GameObject toastPrefab;
+    private Transform notificationsParent;
 
     void Start()
     {
         if (backButton != null)
             backButton.onClick.AddListener(ExitMiniGame);
+            
+        // Inicializace notifikačního systému
+        var notifCanvas = GameObject.FindGameObjectWithTag("NotificationSystem");
+        if (notifCanvas != null)
+        {
+            toastPrefab = notifCanvas.GetComponentInChildren<Toast>(true)?.gameObject;
+            notificationsParent = notifCanvas.transform.Find("NotificationContainer") ?? notifCanvas.transform;
+        }
+        else
+        {
+            Debug.LogWarning("Notification canvas s tagem 'NotificationSystem' nebyl nalezen.");
+        }
     }
 
     public void OnIgniteButton() {
@@ -30,9 +45,17 @@ public class GameFlowController : MonoBehaviour
         }
 
         Debug.Log("Správně: vyrobena voda.");
+        
+        // Zobrazení notifikace o úspěchu
+        if (toastPrefab != null && notificationsParent != null)
+        {
+            var go = Instantiate(toastPrefab, notificationsParent);
+            go.GetComponent<Toast>().Show("success", "Water is being produced!");
+        }
+        
         ExitMiniGame();
     }
-    
+
     public void ExitMiniGame()
     {
         if (waterGameCanvas != null)
@@ -50,6 +73,4 @@ public class GameFlowController : MonoBehaviour
         if (waterGameCanvas != null)
             waterGameCanvas.SetActive(false);
     }
-
-    
 }
