@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 604734697241267501}
   - component: {fileID: 4164593768892316638}
   - component: {fileID: 1938000032921409452}
-  - component: {fileID: 8791935895389354373}
+  - component: {fileID: 4457041464405343994}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -28,14 +28,14 @@ RectTransform:
   m_GameObject: {fileID: 5969000092517461434}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.46, y: 0.46, z: 0.46}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2682993878938906032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1.61, y: 13.64}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &4164593768892316638
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 7635885011056770921, guid: 6f54567678cde41f792a2747ac6a67f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -76,23 +76,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!111 &8791935895389354373
-Animation:
+--- !u!114 &4457041464405343994
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5969000092517461434}
   m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: b4f3190258ff94876859568ea612caec, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: b4f3190258ff94876859568ea612caec, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c93cfe077f2d4fc6bd94b7afc0048bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frames:
+  - {fileID: 7635885011056770921, guid: 6f54567678cde41f792a2747ac6a67f7, type: 3}
+  - {fileID: -5932936924035170550, guid: 6f54567678cde41f792a2747ac6a67f7, type: 3}
+  - {fileID: 8015444248484321372, guid: 6f54567678cde41f792a2747ac6a67f7, type: 3}
+  - {fileID: 1176815785, guid: 6f54567678cde41f792a2747ac6a67f7, type: 3}
+  frameRate: 0.1
 --- !u!1 &7442916438265947008
 GameObject:
   m_ObjectHideFlags: 0
