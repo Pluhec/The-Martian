@@ -272,6 +272,14 @@ public class PotatoFieldController : InteractableObject
             if (questUIPanel != null)
                 questUIPanel.SetActive(false);
 
+            // Přepnutí na FertilizerFieldController
+            FertilizerFieldController fertilizer = GetComponent<FertilizerFieldController>();
+            if (fertilizer != null)
+            {
+                fertilizer.enabled = true;
+                enabled = false; // Vypneme tento controller
+            }
+
             TimeManager.Instance.ResumeTime();
         }
     }
