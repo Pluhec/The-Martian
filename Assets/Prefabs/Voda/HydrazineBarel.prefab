@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4238421137824652346}
   - component: {fileID: 8573372724512997957}
   - component: {fileID: 1069118698829668966}
+  - component: {fileID: 5913550549194041273}
   m_Layer: 0
   m_Name: HydrazineBarel
   m_TagString: Interactable
@@ -225,3 +226,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: []
+--- !u!114 &5913550549194041273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672465644773825452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57df6ed0d9fa94ffbaafbc90ce2803a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

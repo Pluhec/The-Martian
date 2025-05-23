@@ -254,7 +254,7 @@ public class ItemButton : MonoBehaviour,
             {
                 bool isSand = false;
                 var itemDef = spawn.GetComponent<ItemDefinition>();
-                if (itemDef != null && itemDef.itemID == "Dirt")
+                if (itemDef != null && itemDef.itemID == "Dirt" || itemDef != null && itemDef.itemID == "HydrazineBarel")
                 {
                     isSand = true;
                 }
