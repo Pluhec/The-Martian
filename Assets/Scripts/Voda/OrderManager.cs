@@ -32,6 +32,8 @@ public class OrderManager : MonoBehaviour
     }
 
     void SpawnItemsRandom() {
+        
+        Debug.Log("Spawning items");
         // Zamichani 
         GameObject[] shuffled = itemPrefabs.OrderBy(x => Random.value).ToArray();
         // Spawn
