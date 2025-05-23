@@ -208,7 +208,7 @@ public class Movement : MonoBehaviour
         anim.SetBool("IsRunning", isRunning);
     }
     
-    private void ShowDeathMessage()
+    public void ShowDeathMessage()
     {
         Debug.Log("You Died");
         if (!deathMusicPlayed)

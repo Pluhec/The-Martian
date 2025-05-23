@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class GameFlowController : MonoBehaviour
 {
@@ -66,11 +67,39 @@ public class GameFlowController : MonoBehaviour
     {
         if (playerMovement != null)
         {
-            playerMovement.oxygenDepletionTimer = 0f;
+            playerMovement.OxygenTimeBeforeDeath = 2f;  // Dejte nějaký čas na animaci ztmavení
+            playerMovement.oxygenDepletionTimer = 2f;
             playerMovement.Oxygen = 0f;
+            // Spustíme kortuinu, která po uplynutí času zabije hráče
+            StartCoroutine(DelayedPlayerDeath());
         }
 
         if (waterGameCanvas != null)
             waterGameCanvas.SetActive(false);
     }
+
+    IEnumerator DelayedPlayerDeath()
+    {
+        // Počkáme na uplynutí času pro animaci ztmavení
+        float timer = 0f;
+        float totalTime = playerMovement.OxygenTimeBeforeDeath;
+        
+        while (timer < totalTime)
+        {
+            timer += Time.deltaTime;
+            
+            // Postupně zatmavujeme obrazovku
+            if (playerMovement.screenFade != null)
+            {
+                playerMovement.screenFade.color = new Color(0, 0, 0, Mathf.Clamp01(timer / totalTime));
+            }
+            
+            yield return null;
+        }
+        
+        // Zabijeme hráče
+        playerMovement.alive = false;
+        playerMovement.ShowDeathMessage();
+    }
 }
+

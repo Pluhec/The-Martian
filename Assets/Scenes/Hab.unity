@@ -17399,6 +17399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6662e0e46aed4c46934a62361a35632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterGameCanvas: {fileID: 1678982667}
 --- !u!61 &524367290
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22712,7 +22713,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7985454970374614832, guid: a60cb967f45fd4e9999a8f1d717f39a3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38201,6 +38202,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8504289609004842736, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+      propertyPath: diedText
+      value: 
+      objectReference: {fileID: 1993246289}
+    - target: {fileID: 8504289609004842736, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+      propertyPath: infoText
+      value: 
+      objectReference: {fileID: 1993246288}
+    - target: {fileID: 8504289609004842736, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
       propertyPath: OxygenBar
       value: 
       objectReference: {fileID: 1581278833}
@@ -38208,6 +38217,14 @@ PrefabInstance:
       propertyPath: screenFade
       value: 
       objectReference: {fileID: 1581278832}
+    - target: {fileID: 8504289609004842736, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+      propertyPath: backToMenuButton
+      value: 
+      objectReference: {fileID: 1993246287}
+    - target: {fileID: 8504289609004842736, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
+      propertyPath: deathScreenPanel
+      value: 
+      objectReference: {fileID: 1993246290}
     - target: {fileID: 8504289609004842736, guid: 1cc1e2a0e0186e944ae4d6da504e3041, type: 3}
       propertyPath: StaminaPoints.Array.size
       value: 16
@@ -122612,7 +122629,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1386652878055213983, guid: 83d69400d6c60490c8d511b57b995f47, type: 3}
   m_PrefabInstance: {fileID: 1581278831}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1993246290}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -150161,6 +150178,32 @@ RectTransform:
   m_AnchoredPosition: {x: -12.46777, y: 30}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 0}
+--- !u!114 &1993246287 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7188794872495566754, guid: 83d69400d6c60490c8d511b57b995f47, type: 3}
+  m_PrefabInstance: {fileID: 1581278831}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1993246288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2229887488069685110, guid: 83d69400d6c60490c8d511b57b995f47, type: 3}
+  m_PrefabInstance: {fileID: 1581278831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1993246289 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2698311175069290480, guid: 83d69400d6c60490c8d511b57b995f47, type: 3}
+  m_PrefabInstance: {fileID: 1581278831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1993246290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5100189602276578839, guid: 83d69400d6c60490c8d511b57b995f47, type: 3}
+  m_PrefabInstance: {fileID: 1581278831}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2002966141
 GameObject:
   m_ObjectHideFlags: 0
