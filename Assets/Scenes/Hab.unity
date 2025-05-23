@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 87074910}
   - component: {fileID: 87074909}
   - component: {fileID: 87074908}
+  - component: {fileID: 87074912}
   m_Layer: 7
   m_Name: Barrel Drop Zone
   m_TagString: Untagged
@@ -449,6 +450,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &87074912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87074907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13246431bb784e54b53e837f2a257d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 80
+  barrelRevealManager: {fileID: 524367292}
 --- !u!1 &122386822
 GameObject:
   m_ObjectHideFlags: 0
@@ -133327,6 +133342,7 @@ MonoBehaviour:
   waterGameCanvas: {fileID: 1678982667}
   backButton: {fileID: 1986697304}
   targetSequence: 00000000010000000000000002000000
+  questID: 81
 --- !u!114 &1753363834
 MonoBehaviour:
   m_ObjectHideFlags: 0

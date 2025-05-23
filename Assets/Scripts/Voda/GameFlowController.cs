@@ -13,15 +13,21 @@ public class GameFlowController : MonoBehaviour
         ItemType.Pipe, ItemType.Pipe, ItemType.Catalyst, ItemType.Firewood
     };
     
+    public int questID;
+    private QuestManager questManager;
+    private QuestTablet questTablet;
+    
     private GameObject toastPrefab;
     private Transform notificationsParent;
 
     void Start()
     {
+        questManager = QuestManager.Instance;
+        questTablet = FindObjectOfType<QuestTablet>();
+
         if (backButton != null)
             backButton.onClick.AddListener(ExitMiniGame);
             
-        // Inicializace notifikačního systému
         var notifCanvas = GameObject.FindGameObjectWithTag("NotificationSystem");
         if (notifCanvas != null)
         {
@@ -47,11 +53,18 @@ public class GameFlowController : MonoBehaviour
 
         Debug.Log("Správně: vyrobena voda.");
         
-        // Zobrazení notifikace o úspěchu
         if (toastPrefab != null && notificationsParent != null)
         {
             var go = Instantiate(toastPrefab, notificationsParent);
             go.GetComponent<Toast>().Show("success", "Water is being produced!");
+        }
+
+        if (questManager != null)
+        {
+            questManager.MarkQuestAsCompletedByID(questID);
+            if (questTablet != null)
+                questTablet.UpdateQuestList();
+            TimeManager.Instance.ResumeTime();
         }
         
         ExitMiniGame();
@@ -67,10 +80,9 @@ public class GameFlowController : MonoBehaviour
     {
         if (playerMovement != null)
         {
-            playerMovement.OxygenTimeBeforeDeath = 2f;  // Dejte nějaký čas na animaci ztmavení
+            playerMovement.OxygenTimeBeforeDeath = 2f;
             playerMovement.oxygenDepletionTimer = 2f;
             playerMovement.Oxygen = 0f;
-            // Spustíme kortuinu, která po uplynutí času zabije hráče
             StartCoroutine(DelayedPlayerDeath());
         }
 
@@ -80,17 +92,12 @@ public class GameFlowController : MonoBehaviour
 
     IEnumerator DelayedPlayerDeath()
     {
-        // Okamžitě nastavíme černou obrazovku
         if (playerMovement.screenFade != null)
-        {
             playerMovement.screenFade.color = new Color(0, 0, 0, 1f);
-        }
         
-        // Zabijeme hráče
         playerMovement.alive = false;
         playerMovement.ShowDeathMessage();
         
         yield return null;
     }
 }
-

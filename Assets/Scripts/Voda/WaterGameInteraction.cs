@@ -7,14 +7,12 @@ public class WaterGameInteraction : MonoBehaviour
     
     void Start()
     {
-        // Zajistíme, že canvas a nápověda jsou při startu skryté
         if (waterGameCanvas != null)
             waterGameCanvas.SetActive(false);
     }
 
     void Update()
     {
-        // Pokud je hráč v dosahu a stiskne klávesu E
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             ShowCanvas();
@@ -23,7 +21,6 @@ public class WaterGameInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Předpokládám, že hráč má tag "Player"
         if (collision.CompareTag("Player"))
         {
             playerInRange = true;
@@ -35,6 +32,7 @@ public class WaterGameInteraction : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerInRange = false;
+            HideCanvas();
         }
     }
 
@@ -43,6 +41,14 @@ public class WaterGameInteraction : MonoBehaviour
         if (waterGameCanvas != null)
         {
             waterGameCanvas.SetActive(true);
+        }
+    }
+    
+    private void HideCanvas()
+    {
+        if (waterGameCanvas != null)
+        {
+            waterGameCanvas.SetActive(false);
         }
     }
 }
