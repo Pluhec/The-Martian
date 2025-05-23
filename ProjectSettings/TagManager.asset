@@ -9,6 +9,7 @@ TagManager:
   - NotificationSystem
   - CompleteTilemap
   - VisibleTilemap
+  - Fire
   layers:
   - Default
   - TransparentFX
