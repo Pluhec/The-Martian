@@ -80,26 +80,17 @@ public class GameFlowController : MonoBehaviour
 
     IEnumerator DelayedPlayerDeath()
     {
-        // Počkáme na uplynutí času pro animaci ztmavení
-        float timer = 0f;
-        float totalTime = playerMovement.OxygenTimeBeforeDeath;
-        
-        while (timer < totalTime)
+        // Okamžitě nastavíme černou obrazovku
+        if (playerMovement.screenFade != null)
         {
-            timer += Time.deltaTime;
-            
-            // Postupně zatmavujeme obrazovku
-            if (playerMovement.screenFade != null)
-            {
-                playerMovement.screenFade.color = new Color(0, 0, 0, Mathf.Clamp01(timer / totalTime));
-            }
-            
-            yield return null;
+            playerMovement.screenFade.color = new Color(0, 0, 0, 1f);
         }
         
         // Zabijeme hráče
         playerMovement.alive = false;
         playerMovement.ShowDeathMessage();
+        
+        yield return null;
     }
 }
 
