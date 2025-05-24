@@ -17661,6 +17661,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 133282270650906969, guid: 3b17eab693302400d9971731dd2a9f1d, type: 3}
+      propertyPath: 'isFull.Array.data[9]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 133282270650906969, guid: 3b17eab693302400d9971731dd2a9f1d, type: 3}
+      propertyPath: 'isFull.Array.data[10]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 133282270650906969, guid: 3b17eab693302400d9971731dd2a9f1d, type: 3}
+      propertyPath: 'isFull.Array.data[11]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2596534888459210835, guid: 3b17eab693302400d9971731dd2a9f1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.426
@@ -17708,8 +17720,105 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5902520657177951196, guid: 3b17eab693302400d9971731dd2a9f1d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 525879987}
   m_SourcePrefab: {fileID: 100100000, guid: 3b17eab693302400d9971731dd2a9f1d, type: 3}
+--- !u!1 &525879985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5902520657177951196, guid: 3b17eab693302400d9971731dd2a9f1d, type: 3}
+  m_PrefabInstance: {fileID: 525879984}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &525879986 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 133282270650906969, guid: 3b17eab693302400d9971731dd2a9f1d, type: 3}
+  m_PrefabInstance: {fileID: 525879984}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525879985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b7629429c276e4f8afd60f65052461, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &525879987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525879985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554e2655b1721064aaf1ccda7d109fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: {fileID: 525879986}
+  items:
+  - itemID: Lopata
+    count: 1
+    slotSize: 1
+  - itemID: cedule-0
+    count: 1
+    slotSize: 1
+  - itemID: cedule-1
+    count: 1
+    slotSize: 1
+  - itemID: cedule-2
+    count: 1
+    slotSize: 1
+  - itemID: cedule-3
+    count: 1
+    slotSize: 1
+  - itemID: cedule-4
+    count: 1
+    slotSize: 1
+  - itemID: cedule-5
+    count: 1
+    slotSize: 1
+  - itemID: cedule-6
+    count: 1
+    slotSize: 1
+  - itemID: cedule-7
+    count: 1
+    slotSize: 1
+  - itemID: cedule-8
+    count: 1
+    slotSize: 1
+  - itemID: cedule-9
+    count: 1
+    slotSize: 1
+  - itemID: cedule-A
+    count: 1
+    slotSize: 1
+  - itemID: cedule-B
+    count: 1
+    slotSize: 1
+  - itemID: cedule-C
+    count: 1
+    slotSize: 1
+  - itemID: cedule-D
+    count: 1
+    slotSize: 1
+  - itemID: cedule-E
+    count: 1
+    slotSize: 1
+  - itemID: cedule-F
+    count: 1
+    slotSize: 1
+  - itemID: PoopPack
+    count: 3
+    slotSize: 1
+  - itemID: Poop
+    count: 1
+    slotSize: 1
+  - itemID: Potato
+    count: 1
+    slotSize: 1
+  autoSpawn: 0
+  spawnInterval: 1
+  randomSlot: 1
+  enablePersistence: 0
 --- !u!1 &539812502
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,12 +25,12 @@ class PersistedContainerData {
 }
 
 public class ContainerSpawner : MonoBehaviour {
-    public StorageContainer container;
-    public List<ContainerItemEntry> items = new List<ContainerItemEntry>();
-    public bool autoSpawn = false;
-    public float spawnInterval = 1f;
-    public bool randomSlot = false;
-    public bool enablePersistence = false;
+    [Tooltip("Reference to the StorageContainer component")] public StorageContainer container;
+    [Tooltip("Items to spawn into the container")] public List<ContainerItemEntry> items = new List<ContainerItemEntry>();
+    [Tooltip("Automatically respawn items periodically")] public bool autoSpawn = false;
+    [Tooltip("Seconds between auto-spawns")] public float spawnInterval = 1f;
+    [Tooltip("Spawn into random free slot")] public bool randomSlot = false;
+    [Tooltip("Save and load container state")] public bool enablePersistence = false;
 
     private Coroutine spawnCoroutine;
     private string containerID;
@@ -41,93 +41,104 @@ public class ContainerSpawner : MonoBehaviour {
     }
 
     void Awake() {
+        OnValidate();
         if (container == null) {
-            container = GetComponent<StorageContainer>();
-            if (container == null) {
-                Debug.LogError("ContainerSpawner: StorageContainer missing");
-                return;
-            }
+            Debug.LogError("ContainerSpawner: No StorageContainer on " + gameObject.name);
+            return;
         }
-        // unique ID for persistence
         var pid = container.GetComponent<PersistentItem>();
         containerID = (pid != null && !string.IsNullOrEmpty(pid.itemID)) ? pid.itemID : gameObject.name;
 
-        // initial load or fill
-        bool loaded = false;
-        if (enablePersistence)
-            loaded = LoadPersistence();
+        bool loaded = enablePersistence && LoadPersistence();
         if (!loaded) {
             ClearContainer();
             FillContainer();
         }
     }
 
-    void OnEnable() {
-        // rebuild UI layout
-        var rect = container.GetComponent<RectTransform>();
-        if (rect != null) {
-            Canvas.ForceUpdateCanvases();
-            LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
-        }
-        // start auto-spawn
+    void Start() {
         if (autoSpawn && spawnCoroutine == null)
             spawnCoroutine = StartCoroutine(AutoSpawn());
     }
 
     void OnDisable() {
-        // stop auto-spawn
         if (spawnCoroutine != null) {
             StopCoroutine(spawnCoroutine);
             spawnCoroutine = null;
         }
-        // save state
         if (enablePersistence)
             SavePersistence();
     }
 
     void ClearContainer() {
+        if (container.slots == null) return;
         for (int i = 0; i < container.slots.Length; i++) {
-            var tf = container.slots[i].transform;
-            if (tf.childCount > 0)
-                DestroyImmediate(tf.GetChild(0).gameObject);
+            var slot = container.slots[i];
+            if (slot && slot.transform.childCount > 0)
+                DestroyImmediate(slot.transform.GetChild(0).gameObject);
             container.isFull[i] = false;
         }
         container.AlignItems();
     }
 
     public void FillContainer() {
+        if (container.slots == null) return;
+        var registry = PrefabRegistry.Instance;
+        if (registry == null) return;
+
         foreach (var entry in items) {
-            GameObject prefab = PrefabRegistry.Instance.Get(entry.itemID);
-            if (prefab == null) {
-                Debug.LogWarning($"ContainerSpawner: Prefab '{entry.itemID}' not found.");
-                continue;
-            }
+            if (entry.count <= 0) continue;
+            var prefab = registry.Get(entry.itemID);
+            if (prefab == null) continue;
+
             for (int k = 0; k < entry.count; k++) {
                 bool added = randomSlot
                     ? TryAddAtRandom(prefab, entry.slotSize)
-                    : container.AddItem(prefab, entry.slotSize);
-                if (!added) break;
+                    : TryAddSequential(prefab, entry.slotSize);
+                if (!added) {
+                    Debug.LogWarning($"ContainerSpawner: No space for '{entry.itemID}' after {k} items.");
+                    break;
+                }
             }
         }
     }
 
     IEnumerator AutoSpawn() {
         while (autoSpawn) {
+            if (container.slots == null) yield break;
+            var registry = PrefabRegistry.Instance;
             foreach (var entry in items) {
-                GameObject prefab = PrefabRegistry.Instance.Get(entry.itemID);
+                var prefab = registry.Get(entry.itemID);
                 if (prefab == null) continue;
-                if (randomSlot)
-                    TryAddAtRandom(prefab, entry.slotSize);
-                else
-                    container.AddItem(prefab, entry.slotSize);
+                bool added = randomSlot
+                    ? TryAddAtRandom(prefab, entry.slotSize)
+                    : TryAddSequential(prefab, entry.slotSize);
+                if (!added)
+                    Debug.LogWarning($"ContainerSpawner: AutoSpawn no space for '{entry.itemID}'.");
             }
             yield return new WaitForSeconds(spawnInterval);
         }
     }
 
-    bool TryAddAtRandom(GameObject prefab, int size) {
+    bool TryAddSequential(GameObject prefab, int size) {
+        if (container.slots == null) return false;
         int maxStart = container.slots.Length - size;
-        List<int> valid = new List<int>();
+        for (int i = 0; i <= maxStart; i++) {
+            bool ok = true;
+            for (int j = 0; j < size; j++) {
+                if (container.isFull[i + j]) { ok = false; break; }
+            }
+            if (!ok) continue;
+            if (container.AddItemAt(i, prefab, size))
+                return true;
+        }
+        return false;
+    }
+
+    bool TryAddAtRandom(GameObject prefab, int size) {
+        if (container.slots == null) return false;
+        int maxStart = container.slots.Length - size;
+        var valid = new List<int>();
         for (int i = 0; i <= maxStart; i++) {
             bool ok = true;
             for (int j = 0; j < size; j++) {
@@ -141,13 +152,15 @@ public class ContainerSpawner : MonoBehaviour {
     }
 
     void SavePersistence() {
+        if (container.slots == null) return;
         var data = new PersistedContainerData { containerID = containerID };
         int i = 0;
         while (i < container.slots.Length) {
-            var tf = container.slots[i].transform;
-            if (tf.childCount > 0) {
-                var btn = tf.GetChild(0).GetComponent<ItemButton>();
-                var def = tf.GetChild(0).GetComponent<ItemDefinition>();
+            var slot = container.slots[i];
+            if (slot && slot.transform.childCount > 0) {
+                var child = slot.transform.GetChild(0);
+                var btn = child.GetComponent<ItemButton>();
+                var def = child.GetComponent<ItemDefinition>();
                 if (btn != null && def != null) {
                     data.items.Add(new PersistedItemData {
                         prefabKey = def.itemID,
@@ -161,24 +174,24 @@ public class ContainerSpawner : MonoBehaviour {
             }
             i++;
         }
-        var json = JsonUtility.ToJson(data);
-        PlayerPrefs.SetString($"container_{containerID}", json);
+        PlayerPrefs.SetString($"container_{containerID}", JsonUtility.ToJson(data));
         PlayerPrefs.Save();
     }
 
     bool LoadPersistence() {
-        var key = $"container_{containerID}";
+        if (container.slots == null) return false;
+        string key = $"container_{containerID}";
         if (!PlayerPrefs.HasKey(key)) return false;
         var data = JsonUtility.FromJson<PersistedContainerData>(PlayerPrefs.GetString(key));
         if (data == null || data.items.Count == 0) return false;
         for (int k = 0; k < container.slots.Length; k++) {
-            var tf = container.slots[k].transform;
-            if (tf.childCount > 0)
-                DestroyImmediate(tf.GetChild(0).gameObject);
+            var slot = container.slots[k];
+            if (slot && slot.transform.childCount > 0)
+                DestroyImmediate(slot.transform.GetChild(0).gameObject);
             container.isFull[k] = false;
         }
         foreach (var it in data.items) {
-            GameObject prefab = PrefabRegistry.Instance.Get(it.prefabKey);
+            var prefab = PrefabRegistry.Instance.Get(it.prefabKey);
             if (prefab == null) continue;
             var obj = Instantiate(prefab);
             var btn = obj.GetComponent<ItemButton>();
