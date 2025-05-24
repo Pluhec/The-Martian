@@ -162496,8 +162496,48 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5902520657177951196, guid: 3b17eab693302400d9971731dd2a9f1d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7885940590278464052}
   m_SourcePrefab: {fileID: 100100000, guid: 3b17eab693302400d9971731dd2a9f1d, type: 3}
+--- !u!1 &7885940590278464050 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5902520657177951196, guid: 3b17eab693302400d9971731dd2a9f1d, type: 3}
+  m_PrefabInstance: {fileID: 7885940590278464049}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7885940590278464051 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 133282270650906969, guid: 3b17eab693302400d9971731dd2a9f1d, type: 3}
+  m_PrefabInstance: {fileID: 7885940590278464049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7885940590278464050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b7629429c276e4f8afd60f65052461, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7885940590278464052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7885940590278464050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554e2655b1721064aaf1ccda7d109fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: {fileID: 7885940590278464051}
+  items:
+  - itemID: Potato
+    count: 32
+    slotSize: 1
+  autoSpawn: 0
+  spawnInterval: 1
+  randomSlot: 0
+  enablePersistence: 1
 --- !u!1001 &7987385218449444218
 PrefabInstance:
   m_ObjectHideFlags: 0
