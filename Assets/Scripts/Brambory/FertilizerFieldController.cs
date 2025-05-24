@@ -256,6 +256,19 @@ public class FertilizerFieldController : InteractableObject
                 CompleteQuest();
             }
         }
+        // FertilizerFieldController.cs, ApplyFertilizer()
+        Debug.Log("[ApplyFertilizer] *** Stav inventáře před hledáním hnojiva ***");
+        for (int i = 0; i < Inventory.Instance.slots.Length; i++)
+        {
+            var tf = Inventory.Instance.slots[i].transform;
+            Debug.Log($"  Slot {i}: childCount={tf.childCount}");
+            if (tf.childCount > 0)
+            {
+                var go = tf.GetChild(0).gameObject;
+                var def = go.GetComponent<ItemDefinition>();
+                Debug.Log($"    → Found child '{go.name}', itemID={(def!=null?def.itemID:"<no ItemDefinition>")}");
+            }
+        }
     }
 
     private void CompleteQuest()
@@ -298,3 +311,4 @@ public class FertilizerFieldController : InteractableObject
         SaveFieldState();
     }
 }
+

@@ -228,6 +228,29 @@ public class PotatoFieldController : InteractableObject
         {
             Debug.Log("Nemáš žádnou bramboru k zasazení!");
         }
+        
+        if (foundPotato && potatoButton != null)
+        {
+            Debug.Log($"[PlantPotato] Brambora nalezena v slotu {potatoSlotIndex}, slotSize = {potatoButton.slotSize}");
+
+            // Odstranění položky skrze Inventory API
+            Inventory.Instance.RemoveItem(potatoSlotIndex, potatoButton.slotSize);
+            Debug.Log($"[PlantPotato] Voláno RemoveItem({potatoSlotIndex}, {potatoButton.slotSize})");
+
+            // Aktivace brambory na poli
+            PlantSinglePotato();
+
+            // Zarovnání inventáře
+            Inventory.Instance.AlignItems();
+            Debug.Log("[PlantPotato] Inventář zarovnán po odstranění");
+
+            // Uložení stavu pole
+            SaveFieldState();
+        }
+        else
+        {
+            Debug.Log("Nemáš žádnou bramboru k zasazení!");
+        }
     }
 
     private bool IsPotatoQuestActive()
