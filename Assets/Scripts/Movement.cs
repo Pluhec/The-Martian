@@ -229,6 +229,7 @@ public class Movement : MonoBehaviour
     {
         musicFader?.FadeOut();
         DestroyAllDontDestroyObjects();
+        PlayerPrefs.DeleteAll();
         
         SpawnManager.Instance.LoadSceneFromMenu("StartMenu");
     }
