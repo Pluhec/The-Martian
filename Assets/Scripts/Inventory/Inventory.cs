@@ -122,23 +122,45 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
+    // Inventory.cs
     public void VacateSlots(int main, int size, GameObject keep)
     {
+        Debug.Log($"[VacateSlots] called with main={main}, size={size}, keep={(keep!=null)}");
+
         for (int j = 0; j < size; j++)
         {
             int idx = main + j;
-            if (idx >= slots.Length) continue;
+            if (idx >= slots.Length) 
+            {
+                Debug.LogWarning($"[VacateSlots] idx {idx} out of range");
+                continue;
+            }
 
             var tf = slots[idx].transform;
+            int beforeCount = tf.childCount;
+            Debug.Log($"[VacateSlots] slot {idx} childCount before: {beforeCount}");
+
             if (tf.childCount > 0)
             {
                 var g  = tf.GetChild(0).gameObject;
                 var ph = g.GetComponent<ItemPlaceholder>();
-                if (ph != null && ph.mainSlotIndex != main) continue;
-                if (g != keep) Destroy(g);
+                if (ph != null && ph.mainSlotIndex != main)
+                {
+                    Debug.Log($"[VacateSlots] slot {idx} has placeholder for other item (mainSlotIndex={ph.mainSlotIndex}), skipping");
+                    continue;
+                }
+                if (g != keep)
+                {
+                    Debug.Log($"[VacateSlots] Destroying GameObject '{g.name}' in slot {idx}");
+                    Destroy(g);
+                }
             }
+
             isFull[idx] = false;
+            Debug.Log($"[VacateSlots] isFull[{idx}] set to false");
         }
+
+        Debug.Log("[VacateSlots] calling AlignItems()");
         AlignItems();
     }
     
@@ -160,6 +182,7 @@ public class Inventory : MonoBehaviour
     /* ─── zarovnání ─── */
     public void AlignItems()
     {
+        Debug.Log("[AlignItems] START");
         int dst = 0, i = 0;
         while (i < slots.Length)
         {
@@ -168,35 +191,24 @@ public class Inventory : MonoBehaviour
             {
                 var obj = tf.GetChild(0).gameObject;
                 var btn = obj.GetComponent<ItemButton>();
-                if (btn == null) { i++; continue; }
-
-                int size = btn.slotSize;
-
-                if (i != dst)
+                if (btn != null)
                 {
-                    obj.transform.SetParent(slots[dst].transform, false);
-                    btn.mainSlotIndex = dst;
+                    int size = btn.slotSize;
+                    if (i != dst)
+                        Debug.Log($"[AlignItems] Moving '{obj.name}' from slot {i} to slot {dst}");
+                    // … zbytek beze změny …
                 }
-
-                for (int j = 1; j < size; j++)
-                {
-                    int src = i + j, tgt = dst + j;
-                    if (slots[src].transform.childCount > 0)
-                    {
-                        var ph = slots[src].transform.GetChild(0).gameObject;
-                        ph.transform.SetParent(slots[tgt].transform, false);
-                        var phc = ph.GetComponent<ItemPlaceholder>();
-                        if (phc != null) phc.mainSlotIndex = dst;
-                    }
-                }
-
-                for (int j = 0; j < size; j++) isFull[dst + j] = true;
-
-                i += size; dst += size; continue;
+                i += (tf.childCount>0 && tf.GetChild(0).GetComponent<ItemButton>()!=null)
+                    ? tf.GetChild(0).GetComponent<ItemButton>().slotSize
+                    : 1;
+                dst += tf.childCount>0 && tf.GetChild(0).GetComponent<ItemButton>()!=null 
+                    ? tf.GetChild(0).GetComponent<ItemButton>().slotSize 
+                    : 1;
+                continue;
             }
             i++;
         }
-        for (int k = dst; k < isFull.Length; k++) isFull[k] = false;
+        Debug.Log("[AlignItems] END");
     }
 
     /* ─── utils ─── */
