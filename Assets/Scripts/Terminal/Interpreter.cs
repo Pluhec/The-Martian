@@ -20,7 +20,19 @@ public class Interpreter : MonoBehaviour
             "The Hab is experiencing unstable power. Clean the solar panels to ensure sufficient energy for life support."
         },
         {
-            22, "blabla"
+            24, "To begin preparing the Hab for sustainable life on Mars, the interior must first be cleared of clutter and unnecessary equipment. With a clean and open space, a layer of Martian soil can then be spread across the floor — laying the foundation for future plant growth and self-sufficiency."
+        },
+        {
+            30, "With the floor now layered with Martian soil, the next phase begins: growing food. Potatoes stored in the Hab can be used to initiate cultivation. But Martian dirt alone won’t be enough — to support growth, fertilizer must be added. Outside the Hab, sealed containers with organic waste can be retrieved and processed at the fertilizer station."
+        },
+        {
+            36, "Water reserves in the Hab are running dangerously low. Without a steady supply, neither life support nor farming can continue. A backup water barrel is stored in the landing module. Once retrieved, the water must be used wisely — by assembling the heating system to extract liquid from the reclaimed materials."
+        },
+        {
+            94, "Communication with NASA is still down, and the Hab’s systems are isolated. A potential solution lies in Pathfinder — an old rover from a previous mission. If it can be recovered, it might serve as a link to Earth. But first, it has to be located, cleared of debris, and carefully reactivated."
+        },
+        {
+            100, "With communication restored, NASA has transmitted coordinates and a secure PIN to unlock the emergency return module. Everything has led to this moment. The path is clear — reach the escape vehicle, authenticate the code, and leave Mars behind."
         }
     };
 
