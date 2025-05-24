@@ -133,14 +133,21 @@ public class Rover : InteractableObject
     private void UnloadCargo()
     {
         if (currentCargo == null) return;
-        // odparentujeme
+
+        // vrátíme původní měřítko (původně Vector3.one)
+        currentCargo.transform.localScale = Vector3.one;
+
+        // odparentujeme (světové souřadnice zachovány)
         currentCargo.transform.SetParent(null, true);
-        // vylozeni presne na pozici cargoZone s nulovou rotaci
+
+        // vyložení přesně na pozici cargoZone s nulovou rotací
         currentCargo.transform.position = cargoZone.position;
         currentCargo.transform.rotation = Quaternion.identity;
+
         currentCargo.isLoaded = false;
         var col = currentCargo.GetComponent<Collider2D>();
         if (col != null) col.enabled = true;
+
         currentCargo = null;
     }
 
