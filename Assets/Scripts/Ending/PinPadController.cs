@@ -3,10 +3,6 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// Ovládá PIN panel a přepne scénu pomocí SceneFader.FadeToScene().
-/// Script automaticky najde instanci SceneFader ve scéně.
-/// </summary>
 public class PinPadSceneTrigger : MonoBehaviour
 {
     [Header("UI Elements")]
@@ -17,23 +13,30 @@ public class PinPadSceneTrigger : MonoBehaviour
     public Button clearButton;
 
     [Header("PIN Settings")]
-    public string correctCode = "1234";
+    public string correctCode = "4832";
 
     [Header("Scene Settings")]
     public string sceneToLoad = "EndingCutscene";
 
     private string input = string.Empty;
     private bool playerInRange = false;
+    private Inventory inventoryManager;
 
     void Awake()
     {
         if (pinCanvas != null)
             pinCanvas.SetActive(false);
+
+        // Najde InventoryManager ve scéně
+        inventoryManager = FindObjectOfType<Inventory>();
+        if (inventoryManager == null)
+        {
+            Debug.LogWarning("PinPadSceneTrigger: InventoryManager nenalezen.");
+        }
     }
 
     void Start()
     {
-        // Nastavení listenerů na číselná tlačítka
         foreach (var btn in numberButtons)
         {
             string num = btn.GetComponentInChildren<TMP_Text>().text;
@@ -47,18 +50,13 @@ public class PinPadSceneTrigger : MonoBehaviour
     {
         if (!playerInRange)
             return;
-
-        // Otevření/zavření panelu klávesou E
+        
         if (Input.GetKeyDown(KeyCode.E))
         {
             bool open = !pinCanvas.activeSelf;
             pinCanvas.SetActive(open);
             if (open) OnClear();
         }
-
-        // Zavření ESC
-        if (pinCanvas.activeSelf && Input.GetKeyDown(KeyCode.Escape))
-            pinCanvas.SetActive(false);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -89,7 +87,7 @@ public class PinPadSceneTrigger : MonoBehaviour
 
     private void UpdateDisplay()
     {
-        displayText.text = input;
+        displayText.text = new string('*', input.Length);
     }
 
     private void OnSubmit()
@@ -97,7 +95,14 @@ public class PinPadSceneTrigger : MonoBehaviour
         if (input == correctCode)
         {
             pinCanvas.SetActive(false);
-            // Najdi SceneFader ve scéně a přepni scénu fade efektem
+
+            // Vypne InventoryManager, pokud existuje
+            if (inventoryManager != null)
+            {
+                inventoryManager.gameObject.SetActive(false);
+                Debug.Log("InventoryManager byl vypnut.");
+            }
+
             var fader = FindObjectOfType<SceneFader>();
             if (fader != null)
             {
