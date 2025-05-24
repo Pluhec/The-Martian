@@ -975,6 +975,7 @@ GameObject:
   - component: {fileID: 4043989528415359198}
   - component: {fileID: 4884591438499339884}
   - component: {fileID: 6731906959120841957}
+  - component: {fileID: 6304146215510596522}
   m_Layer: 0
   m_Name: Pathfinder
   m_TagString: Interactable
@@ -1099,8 +1100,6 @@ MonoBehaviour:
   playerUICanvas: {fileID: 0}
   inventoryCanvas: {fileID: 0}
   questUICanvas: {fileID: 0}
-  toastPrefab: {fileID: 0}
-  notificationsParent: {fileID: 0}
   messageDisplay: {fileID: 6054175741736100721}
   questMessages:
   - questID: 40
@@ -1112,6 +1111,19 @@ MonoBehaviour:
   minQuestID: 40
   maxQuestID: 44
   currentQuestID: 40
+--- !u!114 &6304146215510596522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999285073461048247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507bf7ace70764177ba29804f6b4d709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLoaded: 0
 --- !u!1 &3651339086071414751
 GameObject:
   m_ObjectHideFlags: 0
