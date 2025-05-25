@@ -168,6 +168,12 @@ public class Movement : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
+    
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteAll();
+        Debug.Log("Player preferences byly vymazány při ukončení hry");
+    }
 
     void FixedUpdate()
     {
