@@ -47,7 +47,6 @@ public class ChargingStation : InteractableObject
 
     private void OnTriggerExit(Collider other)
     {
-        // konec nabijeni kdyz opusti nabijeci zonu
         Rover detectedRover = other.GetComponent<Rover>();
         if (detectedRover != null && detectedRover == rover)
         {
@@ -59,7 +58,6 @@ public class ChargingStation : InteractableObject
     {
         StopChargingCoroutine();
 
-        // notifikace na start nabijeni
         if (toastPrefab != null && notificationsParent != null)
         {
             var go = Instantiate(toastPrefab, notificationsParent);

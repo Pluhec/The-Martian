@@ -35,7 +35,6 @@ public class Movement : MonoBehaviour
     private GameObject toastPrefab;
     private Transform notificationsParent;
     private Coroutine recharge;
-    // potrebuji to do smrti pri bouchnuti, tak se nezlob pati 
     public float oxygenDepletionTimer = 0f;
     private Vector2 input;
     private Vector2 lastMoveDirection;
@@ -62,7 +61,7 @@ public class Movement : MonoBehaviour
             Debug.LogWarning("Notification canvas s tagem 'notificationSystem' nebyl nalezen.");
         }
         
-        var audioObj = GameObject.FindWithTag("Audio");  // added
+        var audioObj = GameObject.FindWithTag("Audio");
         if (audioObj != null)
         {
             audioManager = audioObj.GetComponent<AudioManager>();
@@ -136,7 +135,6 @@ public class Movement : MonoBehaviour
             
             if (deathMusicPlayed && audioManager != null)
             {
-                // Hermitova interpolace
                 float normalizedTime = oxygenDepletionTimer / OxygenTimeBeforeDeath;
                 int silaNarustu = 4;
                 int plynuleZakonceni = 2;

@@ -49,7 +49,6 @@ public static class ShovelLogic
             return;
         }
 
-        // Kontrola místa v inventáři
         bool hasSpace = false;
         for (int i = 0; i < inventory.slots.Length; i++)
         {
@@ -66,7 +65,6 @@ public static class ShovelLogic
             return;
         }
 
-        // Kontrola typu dlaždice
         Vector3Int cell = tilemap.WorldToCell(player.position);
         TileBase currentTile = tilemap.GetTile(cell);
         
@@ -76,17 +74,14 @@ public static class ShovelLogic
             return;
         }
         
-        // Kontrola, jestli je to písek
         if (!currentTile.name.ToLower().Contains("sand"))
         {
             ShowToast("warning", "Cannot dig this type of ground!");
             return;
         }
 
-        // Kopání
         tilemap.SetTile(cell, dugTile);
 
-        // Přidání hlíny do inventáře
         for (int i = 0; i < inventory.slots.Length; i++)
         {
             if (inventory.isFull[i]) continue;

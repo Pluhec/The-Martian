@@ -2,15 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// Úschovna deaktivovaných beden v DontDestroyOnLoad
 public static class ContainerRepository
 {
     static readonly Dictionary<string, GameObject> map = new();
-    
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     private static void Init()
     {
-        // Zajistí, že se kód provede při startu a podporuje i restart v editoru
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -23,7 +21,7 @@ public static class ContainerRepository
     public static bool TryGet(string id, out GameObject box) =>
         map.TryGetValue(id, out box);
 
-    public static void Unregister(string id) 
+    public static void Unregister(string id)
     {
         if (map.ContainsKey(id))
         {
@@ -34,7 +32,6 @@ public static class ContainerRepository
 
     private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Zajistí, že všechny bedny v repozitáři zůstanou neaktivní po načtení scény
         foreach (var container in map.Values)
         {
             if (container != null && container.activeSelf)

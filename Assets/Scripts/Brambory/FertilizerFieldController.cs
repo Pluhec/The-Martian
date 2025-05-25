@@ -33,14 +33,12 @@ public class FertilizerFieldController : InteractableObject
 
     private void Awake()
     {
-        // Registrujeme metodu pro ukládání při změně scény
         SceneManager.sceneUnloaded += OnSceneUnloaded;
         myCollider = GetComponent<Collider2D>();
     }
 
     private void Update()
     {
-        // Kontrola a aktualizace stavu UI podle questu
         if (questUIPanel == null || questManager == null || questManager.ActiveQuests == null)
             return;
 
@@ -55,7 +53,6 @@ public class FertilizerFieldController : InteractableObject
         {
             if (!quests[myQuestIndex].isCompleted)
             {
-                // Quest pro fertilizer by měl být aktivní pouze pokud předchozí (brambory) je dokončen
                 int potatoQuestIndex = quests.FindIndex(q => q.questID == previousPotatoQuestID);
                 if (potatoQuestIndex >= 0 && quests[potatoQuestIndex].isCompleted)
                 {
@@ -66,34 +63,27 @@ public class FertilizerFieldController : InteractableObject
 
         questUIPanel.SetActive(shouldShow);
 
-        // Kontroluje dokončení questu, když je pole plně pohnojené
         CheckQuestCompletion();
     }
 
     private void Start()
     {
-        // Získání reference na QuestManager
         questManager = QuestManager.Instance;
 
-        // Načtení stavu pole
         LoadFieldState();
 
-        // Aktualizace UI
         UpdateUI();
 
-        // Přidání akce Fertilize, pokud neexistuje
         if (!actions.Contains("Fertilize"))
         {
             actions.Add("Fertilize");
         }
 
-        // Vyhledání reference na PotatoFieldController
         potatoController = FindObjectOfType<PotatoFieldController>();
     }
 
     private void OnDestroy()
     {
-        // Odregistrujeme event při zničení objektu
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
@@ -108,12 +98,10 @@ public class FertilizerFieldController : InteractableObject
         }
     }
 
-    // Načtení stavu pole
     private void LoadFieldState()
     {
         string key = GetPrefKey();
 
-        // Načtení uloženého počtu hnojiva
         if (PlayerPrefs.HasKey(key))
         {
             currentFertilizerCount = PlayerPrefs.GetInt(key, 0);
@@ -125,7 +113,6 @@ public class FertilizerFieldController : InteractableObject
         }
     }
 
-    // Uložení stavu pole
     private void SaveFieldState()
     {
         string key = GetPrefKey();
@@ -134,13 +121,11 @@ public class FertilizerFieldController : InteractableObject
         Debug.Log($"Uloženo {currentFertilizerCount} hnojiva do PlayerPrefs pro pole {fertilizerFieldID}");
     }
 
-    // Vytvoření klíče pro PlayerPrefs
     private string GetPrefKey()
     {
         return $"FertilizerField_{fertilizerFieldID}_Count";
     }
 
-    // Volá se při opuštění scény
     private void OnSceneUnloaded(Scene scene)
     {
         SaveFieldState();
@@ -160,14 +145,12 @@ public class FertilizerFieldController : InteractableObject
 
     private void ApplyFertilizer()
     {
-        // Kontrola maximálního množství hnojiva
         if (currentFertilizerCount >= requiredFertilizerAmount)
         {
             Debug.Log("Pole je již plně pohnojené!");
             return;
         }
 
-        // Kontrola správného questu pro hnojení
         bool isFertilizerQuestActive = IsFertilizerQuestActive();
         if (!isFertilizerQuestActive)
         {
@@ -175,7 +158,6 @@ public class FertilizerFieldController : InteractableObject
             return;
         }
 
-        // Hledání hnojiva v inventáři
         bool foundFertilizer = false;
         ItemButton fertilizerButton = null;
         int fertilizerSlotIndex = -1;
@@ -203,17 +185,13 @@ public class FertilizerFieldController : InteractableObject
         {
             Debug.Log("Hnojivo nalezeno v inventáři, odstraňuji...");
 
-            // Použití vestavěné metody z Inventory pro odstranění položky
             int slotSize = fertilizerButton.slotSize;
             Inventory.Instance.RemoveItem(fertilizerSlotIndex, slotSize);
 
-            // Přidání hnojiva na pole
             ApplySingleFertilizer();
 
-            // Zarovnání inventáře po odstranění
             Inventory.Instance.AlignItems();
 
-            // Uložení stavu po každém použití hnojiva
             SaveFieldState();
         }
         else
@@ -230,15 +208,13 @@ public class FertilizerFieldController : InteractableObject
         if (questManager.ActiveQuests == null)
             return false;
 
-        // Hledání questu s daným ID
         int questIndex = questManager.ActiveQuests.FindIndex(q => q.questID == fertilizerQuestID);
         if (questIndex < 0)
-            return false; // Quest neexistuje
+            return false; 
 
-        // Kontrola, zda je předchozí quest (brambory) dokončen
         int potatoQuestIndex = questManager.ActiveQuests.FindIndex(q => q.questID == previousPotatoQuestID);
         if (potatoQuestIndex < 0)
-            return false; // Předchozí quest neexistuje
+            return false;
 
         return questManager.ActiveQuests[potatoQuestIndex].isCompleted;
     }
@@ -250,13 +226,11 @@ public class FertilizerFieldController : InteractableObject
             currentFertilizerCount++;
             UpdateUI();
 
-            // Kontrola, jestli je pole plně pohnojeno
             if (currentFertilizerCount >= requiredFertilizerAmount)
             {
                 CompleteQuest();
             }
         }
-        // FertilizerFieldController.cs, ApplyFertilizer()
         Debug.Log("[ApplyFertilizer] *** Stav inventáře před hledáním hnojiva ***");
         for (int i = 0; i < Inventory.Instance.slots.Length; i++)
         {
@@ -278,14 +252,11 @@ public class FertilizerFieldController : InteractableObject
             questManager.MarkQuestAsCompletedByID(fertilizerQuestID);
             questCompleted = true;
             
-            // Vypneme UI panel po dokončení questu
             if (questUIPanel != null)
                 questUIPanel.SetActive(false);
 
-            // Vypneme celý GameObject
             TimeManager.Instance.ResumeTime();
             
-            // Deaktivujeme celý GameObject
             gameObject.SetActive(false);
         }
     }

@@ -37,7 +37,6 @@ public class QuestArrowPointer : MonoBehaviour
 
     private void Update()
     {
-        // 1) Globální vypínač šipky
         if (!GameManager.Instance.arrowEnabled)
         {
             if (arrowImage.enabled)
@@ -45,14 +44,12 @@ public class QuestArrowPointer : MonoBehaviour
             return;
         }
 
-        // 2) Nemáme target -> skrytí
         if (target == null)
         {
             arrowImage.enabled = false;
             return;
         }
 
-        // 3) Logika on-screen vs off-screen
         Vector3 viewPos = mainCamera.WorldToViewportPoint(target.position);
         bool onScreen = viewPos.z > 0 &&
                         viewPos.x > 0 && viewPos.x < 1 &&
@@ -63,7 +60,6 @@ public class QuestArrowPointer : MonoBehaviour
             return;
         }
 
-        // 4) Zobrazit a umístit šipku na okraj Canvasu
         arrowImage.enabled = true;
         viewPos.x = Mathf.Clamp01(viewPos.x);
         viewPos.y = Mathf.Clamp01(viewPos.y);

@@ -31,7 +31,6 @@ public class CargoZoneOutline : MonoBehaviour
         while (true)
         {
             t += Time.deltaTime;
-            // puls alpha mezi 0.2 a 0.8
             var alpha = (Mathf.Sin(t * 2f) + 1f) * 0.9f + 0.2f;
             var c = sr.color;
             sr.color = new Color(c.r, c.g, c.b, alpha);
@@ -41,7 +40,6 @@ public class CargoZoneOutline : MonoBehaviour
 
     private IEnumerator FadeOut()
     {
-        // rychle do nuly
         while (sr.color.a > 0f)
         {
             var c = sr.color;

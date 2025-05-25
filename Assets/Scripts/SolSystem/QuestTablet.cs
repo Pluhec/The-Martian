@@ -42,7 +42,6 @@ public class QuestTablet : MonoBehaviour
     {
         Debug.Log("QuestTablet.UpdateQuestList: Aktualizuji seznam questů.");
         
-        // Smazání starých položek v seznamu
         foreach (Transform child in contentPanel)
         {
             Destroy(child.gameObject);

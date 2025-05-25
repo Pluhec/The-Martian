@@ -3,18 +3,16 @@ using System.Collections.Generic;
 
 public class PlayerInteraction2D : MonoBehaviour
 {
-    [Header("Nastavení Radial Menu")]
     public RadialSelection radialSelection;
     private InteractableObject currentObject;
-    private Movement playerMovement; // Odkaz na pohyb hráče
+    private Movement playerMovement;
 
-    [Header("Čas pro dlouhý stisk (otevření menu)")]
     public float holdThreshold = 0.5f;
     private float holdTime = 0f;
     private bool menuActive = false;
-    private bool keyReleased = true; // Kontrola uvolnění klávesy
-    private bool actionPerformed = false; // Kontrola, zda byla akce provedena
-    private bool shouldPlaySound = true; // Nová proměnná pro kontrolu přehrání zvuku
+    private bool keyReleased = true;
+    private bool actionPerformed = false;
+    private bool shouldPlaySound = true;
 
     AudioManager audioManager;
 
@@ -29,14 +27,14 @@ public class PlayerInteraction2D : MonoBehaviour
         {
             radialSelection.gameObject.SetActive(false);
         }
-        playerMovement = FindObjectOfType<Movement>(); // Najdeme skript Movement
+        playerMovement = FindObjectOfType<Movement>();
     }
 
     void Update()
     {
         if (Input.GetKey(KeyCode.E))
         {
-            if (keyReleased) // Ujistíme se, že hráč nejprve pustil E, než menu otevře znovu
+            if (keyReleased)
             {
                 holdTime += Time.deltaTime;
                 if (holdTime >= holdThreshold && !menuActive && currentObject != null)
@@ -47,8 +45,8 @@ public class PlayerInteraction2D : MonoBehaviour
         }
         else
         {
-            keyReleased = true; // Uvolnění klávesy umožní další otevření menu
-            holdTime = 0f; // Reset času držení
+            keyReleased = true;
+            holdTime = 0f;
         }
 
         if (Input.GetKeyUp(KeyCode.E))
@@ -59,30 +57,30 @@ public class PlayerInteraction2D : MonoBehaviour
             }
             else if (holdTime < holdThreshold && currentObject != null && !actionPerformed)
             {
-                PerformQuickAction(); // Provede rychlou akci, pokud holdTime je menší než holdThreshold
+                PerformQuickAction();
             }
-            actionPerformed = false; // Reset akce po uvolnění klávesy
+            actionPerformed = false;
         }
     }
 
     private void TryOpenRadialMenu()
     {
-        if (currentObject == null) return; // Pokud není interaktivní objekt, nic se nestane
+        if (currentObject == null) return;
 
         List<string> actions = currentObject.GetActions();
 
         if (actions.Count >= 2)
         {
-            ShowRadialMenu(actions); // Otevřeme menu pouze pokud jsou 2+ akce
-            shouldPlaySound = true; // Reset přehrání zvuku při otevření menu
+            ShowRadialMenu(actions);
+            shouldPlaySound = true;
         }
         else if (actions.Count == 1)
         {
-            PerformQuickAction(); // Pokud je jen 1 akce, rovnou ji provedeme
-            actionPerformed = true; // Nastavíme, že akce byla provedena
+            PerformQuickAction();
+            actionPerformed = true;
         }
 
-        keyReleased = false; // Zamezíme okamžitému znovuotevření
+        keyReleased = false;
     }
 
     private void ShowRadialMenu(List<string> actions)
@@ -98,7 +96,6 @@ public class PlayerInteraction2D : MonoBehaviour
 
     private void HideRadialMenu()
     {
-        // Only proceed if the menu was active
         if (!menuActive)
         {
             return;
@@ -108,7 +105,7 @@ public class PlayerInteraction2D : MonoBehaviour
         {
             radialSelection.gameObject.SetActive(false);
             menuActive = false;
-            if (shouldPlaySound) // Přehrát zvuk pouze pokud by měla být
+            if (shouldPlaySound)
             {
                 audioManager.PlayRadialMenu(audioManager.openCloseMenu);
             }
@@ -119,7 +116,6 @@ public class PlayerInteraction2D : MonoBehaviour
     {
         if (currentObject == null)
         {
-            Debug.LogWarning("Attempted to perform radial action, but currentObject is null.");
             radialSelection.onPartSelected.RemoveListener(PerformRadialAction);
             return;
         }
@@ -129,8 +125,8 @@ public class PlayerInteraction2D : MonoBehaviour
         {
             currentObject.PerformAction(actions[index]);
             radialSelection.onPartSelected.RemoveListener(PerformRadialAction);
-            actionPerformed = true; // Action performed
-            shouldPlaySound = false; // Prevent closing sound on action selection
+            actionPerformed = true;
+            shouldPlaySound = false;
             HideRadialMenu();
         }
     }
@@ -143,8 +139,7 @@ public class PlayerInteraction2D : MonoBehaviour
             List<string> actions = currentObject.GetActions();
             if (actions.Count > 0)
             {
-                currentObject.PerformAction(actions[0]); // Provede první akci ihned
-                Debug.Log("Performed quick action: " + actions[0]);
+                currentObject.PerformAction(actions[0]);
             }
         }
     }
@@ -157,17 +152,8 @@ public class PlayerInteraction2D : MonoBehaviour
             List<string> actions = currentObject.GetActions();
             if (actions.Count > 0)
             {
-                currentObject.PerformAction(actions[0]); // Provede první akci ihned
-                Debug.Log("Performed quick action: " + actions[0]);
+                currentObject.PerformAction(actions[0]);
             }
-            else 
-            {
-                Debug.LogWarning("neco se dojebalo");
-            }
-        }
-        else 
-        {
-            Debug.LogWarning("current Object je null");
         }
     }
 

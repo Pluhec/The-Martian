@@ -124,12 +124,10 @@ public class EntranceTrigger : MonoBehaviour
             Debug.Log("animator by mel fungovat");   
         } 
         
-        // spust kour a zvuk
         var effects = AirlockEffectManager.Instance;
         effects?.ControlSmoke(entranceKey, effectDuration);
         FindObjectOfType<AudioManager>()?.PlayDecompressionSound();
 
-        // pocka az dojedou efekty
         yield return new WaitForSeconds(effectDuration + extraEffectDelay);
         
         if (movement != null) 

@@ -65,7 +65,6 @@ public class TimeManager : MonoBehaviour
             if (currentTime >= targetTimeForQuest && !isTimePaused)
             {
                 isTimePaused = true;
-                // Debug.Log("Time paused at: " + currentTime);
                 questIndexToPause = activeQuestIndex;
             }
         }
@@ -121,12 +120,12 @@ public class TimeManager : MonoBehaviour
 
     public void LogCurrentTime()
     {
-        // Debug.Log("Current time: " + GetFormattedTime());
+        Debug.Log("Current time: " + GetFormattedTime());
     }
 
     public void CalculatePercentOfDay(float currentTime, float dayStartTime, float dayEndTime)
     {
         percentOfDay = (currentTime - dayStartTime) / (dayEndTime - dayStartTime) * 100;
-        // Debug.Log("procento dne: " + percentOfDay);
+        Debug.Log("procento dne: " + percentOfDay);
     }
 }

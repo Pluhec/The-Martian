@@ -53,22 +53,18 @@ public class PathfinderHexInput : MonoBehaviour
 
     private void Awake()
     {
-        // ————————————————————————————————
-        // 1) Najdi hráče a jeho Movement
         var playerGO = GameObject.FindGameObjectWithTag("Player");
         if (playerGO != null)
         {
             if (playerMovement == null)
                 playerMovement = playerGO.GetComponent<Movement>();
 
-            // 2) Najdi UI canvasy
             if (playerUICanvas == null)
                 playerUICanvas = GameObject.Find("Canvas (1) 1");
             if (questUICanvas == null)
                 questUICanvas = GameObject.Find("QuestTablet");
         }
 
-        // 3) Najdi Cinemachine kamery podle názvu
         if (cmPlayerCam == null)
         {
             var go = GameObject.Find("CmCam");
@@ -81,9 +77,7 @@ public class PathfinderHexInput : MonoBehaviour
             if (go != null)
                 cmPathfinderCam = go.GetComponent<CinemachineCamera>();
         }
-        // ————————————————————————————————
-        
-        // původní inicializace questManageru a notifikací
+
         if (GameManager.Instance != null)
         {
             questManager = GameManager.Instance.QuestManager;
@@ -94,7 +88,7 @@ public class PathfinderHexInput : MonoBehaviour
         }
 
         InitializeDefaultMessages();
-        
+
         var notifCanvas = GameObject.FindGameObjectWithTag("NotificationSystem");
         if (notifCanvas != null)
         {
@@ -138,15 +132,14 @@ public class PathfinderHexInput : MonoBehaviour
         pointer.rotation = Quaternion.identity;
         questCompleted = false;
 
-        // Najdi první nehotový lichý quest mezi minQuestID a maxQuestID
         foreach (Quest quest in questManager.ActiveQuests)
         {
             if (!quest.isCompleted
                 && quest.questID >= minQuestID
                 && quest.questID <= maxQuestID
-                && quest.questID % 2 == 1)    // lichá ID = Pathfinder sekvence
+                && quest.questID % 2 == 1)
             {
-                currentQuestID = quest.questID;  // přímo to liché ID
+                currentQuestID = quest.questID;
                 var msgDef = System.Array.Find(questMessages, m => m.questID == currentQuestID);
                 targetMessage = msgDef != null
                     ? msgDef.message

@@ -25,27 +25,23 @@ public class SceneFader : MonoBehaviour
         animator.SetTrigger("Start");
         yield return new WaitForSeconds(1f);
 
-        // Vytvoř dočasný objekt pro identifikaci DontDestroyOnLoad scény
         GameObject tempObject = new GameObject("TempForSceneIdentification");
         DontDestroyOnLoad(tempObject);
-    
+
         Scene dontDestroyScene = tempObject.scene;
-    
-        // Získej všechny kořenové objekty
+
         List<GameObject> rootObjects = new List<GameObject>();
         dontDestroyScene.GetRootGameObjects(rootObjects);
-    
-        // Prohledej všechny GameObject pro Storage Container
+
         foreach (var obj in rootObjects)
         {
             StorageContainer[] containers = obj.GetComponentsInChildren<StorageContainer>(true);
             foreach (var container in containers)
             {
-                // Přepni aktivní stav - zapnutý vypni a vypnutý zapni
                 container.gameObject.SetActive(!container.gameObject.activeSelf);
             }
         }
-    
+
         Destroy(tempObject);
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);

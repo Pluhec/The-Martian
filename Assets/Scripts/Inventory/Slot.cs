@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour, IDropHandler
 {
-    public int  i;
+    public int i;
     public bool IsInventorySlot = true;
     private StorageContainer container;
 
@@ -18,9 +18,8 @@ public class Slot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData e)
     {
-        // Kontrola, zda je přetahování povoleno
         if (!ItemButton.isDragEnabled) return;
-    
+
         var go = e.pointerDrag;
         if (go == null) return;
 
@@ -28,18 +27,16 @@ public class Slot : MonoBehaviour, IDropHandler
         if (item == null) return;
 
         int size = item.slotSize;
-        int src  = item.mainSlotIndex;
-        
-        // Ověř, zda slot není příliš blízko konci
+        int src = item.mainSlotIndex;
+
         int targetIndex = i;
         bool ok = false;
-        
+
         if (IsInventorySlot)
         {
-            // Uprav cílový index pokud je slot příliš blízko konci inventáře
             if (targetIndex + size > inventory.slots.Length)
                 targetIndex = inventory.slots.Length - size;
-            
+
             ok = inventory.AddItemAt(targetIndex, go, size);
             if (ok)
             {
@@ -50,10 +47,9 @@ public class Slot : MonoBehaviour, IDropHandler
         }
         else
         {
-            // Podobná úprava pro kontejnery
             if (targetIndex + size > container.slots.Length)
                 targetIndex = container.slots.Length - size;
-                
+
             ok = container.AddItemAt(targetIndex, go, size);
             if (ok)
             {
@@ -72,7 +68,7 @@ public class Slot : MonoBehaviour, IDropHandler
             item.storageContainer?.AlignItems();
         }
     }
-    
+
     public void OnDirectAdd(GameObject icon, int size)
     {
         icon.transform.SetParent(transform, false);

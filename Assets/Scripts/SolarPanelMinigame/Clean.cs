@@ -73,10 +73,6 @@ public class Clean : MonoBehaviour
         dirtInitialized = true;
     }
 
-    /// <summary>
-    /// Volat po dokončení questu nebo při opakovaném otevírání,
-    /// aby zůstal panel trvale čistý.
-    /// </summary>
     public void ClearDirtPermanently()
     {
         if (dirtInitialized && currentDirtAmount <= 0f)

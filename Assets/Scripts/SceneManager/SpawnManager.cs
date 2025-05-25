@@ -37,7 +37,6 @@ public class SpawnManager : MonoBehaviour
     {
         TeleportPlayer(EntranceData.Instance.lastEntranceKey);
 
-        // prepinani uvnitr vennku pro footstepManager - audio
         var player = GameObject.FindWithTag("Player");
         if (player != null)
         {
@@ -48,7 +47,6 @@ public class SpawnManager : MonoBehaviour
             }
         }
 
-        // Efekt při návratu do Habu
         if (EntranceData.Instance.logAfterLoad)
             StartCoroutine(ReturnEffectCo());
     }
@@ -82,12 +80,10 @@ public class SpawnManager : MonoBehaviour
             animator.Play("Idle", 0, 0f);
         }
 
-        // spust kour a zvuk
         var effects = AirlockEffectManager.Instance;
         effects?.ControlSmoke(EntranceData.Instance.lastEntranceKey, effectDuration);
         FindObjectOfType<AudioManager>()?.PlayDecompressionSound();
 
-        // pocka az dojedou efekty
         yield return new WaitForSeconds(effectDuration + extraEffectDelay);
         
         if (movement != null) 

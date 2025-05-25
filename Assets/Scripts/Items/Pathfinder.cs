@@ -20,7 +20,6 @@ public class PathfinderComputer : InteractableObject
         if (playerMovement == null && playerObject != null)
             playerMovement = playerObject.GetComponent<Movement>();
 
-        // 2) Cinemachine kamery
         if (cmPlayerCam == null)
         {
             var go = GameObject.Find("CmCam");
@@ -39,7 +38,6 @@ public class PathfinderComputer : InteractableObject
             if (pathfinderHexInput != null)
             {
                 pathfinderHexInput.enabled = false;
-                // Předání referencí na kamery
                 pathfinderHexInput.cmPlayerCam = cmPlayerCam;
                 pathfinderHexInput.cmPathfinderCam = cmPathfinderCam;
                 pathfinderHexInput.playerMovement = playerMovement;
@@ -58,18 +56,15 @@ public class PathfinderComputer : InteractableObject
         {
             Debug.Log("Pathfinder aktivován.");
 
-            // 1. Vypnutí pohybu hráče
             if (playerMovement != null)
                 playerMovement.enabled = false;
 
-            // 2. Přepnutí kamer pomocí priorit
             if (cmPlayerCam != null)
                 cmPlayerCam.Priority = 5;
 
             if (cmPathfinderCam != null)
                 cmPathfinderCam.Priority = 20;
 
-            // 3. Aktivace a spuštění pathfinder systému
             if (pathfinderHexInput != null)
             {
                 pathfinderHexInput.enabled = true;

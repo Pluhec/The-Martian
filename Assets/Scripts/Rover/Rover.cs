@@ -118,7 +118,6 @@ public class Rover : InteractableObject
 
     private void LoadCargo(LoadableItem item)
     {
-        // Přečti si itemID z tvé ItemDefinition komponenty
         var def = item.GetComponent<ItemDefinition>();
         if (def == null)
         {
@@ -126,12 +125,10 @@ public class Rover : InteractableObject
             return;
         }
 
-        // Z registru si vytáhni prefab asset podle itemID
         item.originalPrefab = PrefabRegistry.Instance.Get(def.itemID);
         if (item.originalPrefab == null)
             Debug.LogWarning($"[Rover] Prefab s ID '{def.itemID}' nenalezen v PrefabRegistry.");
 
-        // Teď už naplňuješ cargo běžným způsobem:
         item.transform.SetParent(cargo, false);
         item.transform.localPosition = Vector3.zero;
         item.transform.localScale = Vector3.one * 0.5f;
@@ -148,20 +145,17 @@ public class Rover : InteractableObject
     {
         if (currentCargo == null) return;
 
-        // Obnovení měřítka a odparentování
         currentCargo.transform.localScale = Vector3.one;
         currentCargo.transform.SetParent(null, true);
         currentCargo.transform.position = cargoZone.position;
         currentCargo.transform.rotation = Quaternion.identity;
 
-        // Vložení skutečného prefab assetu do DroppedItemManageru
         var prefab = currentCargo.originalPrefab;
         if (prefab != null)
             DroppedItemManager.Instance.AddDroppedItem(prefab, cargoZone.position);
         else
             Debug.LogWarning($"[Rover] Prefab pro '{currentCargo.name}' není nastavený.");
 
-        // Obnovení collideru a stavu
         currentCargo.isLoaded = false;
         var col = currentCargo.GetComponent<Collider2D>();
         if (col != null) col.enabled = true;
@@ -176,11 +170,9 @@ public class Rover : InteractableObject
         playerMovement = playerGO.GetComponent<Movement>();
         playerInteract = playerGO.GetComponent<PlayerInteraction2D>();
 
-        // vypnuti UI stejně jako v SolarPanel
         playerUI.SetActive(false);
         inventoryUI.SetActive(false);
 
-        // vypnuti jen pohybu a ne celeho hrace
         playerMovement.enabled = false;
 
         playerGO.SetActive(false);
@@ -200,7 +192,6 @@ public class Rover : InteractableObject
             );
         }
 
-        // Nastaví kyslík na maximum
         playerMovement.Oxygen = playerMovement.MaxOxygen;
     }
 
@@ -216,7 +207,6 @@ public class Rover : InteractableObject
         playerGO.transform.position = exitPos;
         playerGO.transform.rotation = Quaternion.identity;
 
-        // zapnuti UI stejně jako v SolarPanel
         playerUI.SetActive(true);
         inventoryUI.SetActive(true);
 
@@ -257,7 +247,6 @@ public class Rover : InteractableObject
         if (!driverInside)
             return;
 
-        // motor papa energii i kdyz je nastartovany
         if (transmission.isEngineOn)
         {
             var consume = engineConsumptionRate * Time.deltaTime;

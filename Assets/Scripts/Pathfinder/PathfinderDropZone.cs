@@ -1,8 +1,6 @@
 using UnityEngine;
-
 public class PathfinderDropZone : MonoBehaviour
 {
-    [Tooltip("ID questu, který se má dokončit po doručení objektu.")]
     public int questID;
     public int sol;
 
@@ -20,10 +18,8 @@ public class PathfinderDropZone : MonoBehaviour
         if (questTablet == null)
             Debug.LogError("QuestTablet instance not found.");
 
-        // Výchozí stav - neaktivní
         SetChildrenActive(false);
 
-        // Kontrola jestli je správný sol
         int currentSol = SolSystem.Instance.currentSol;
         if (currentSol == sol)
         {

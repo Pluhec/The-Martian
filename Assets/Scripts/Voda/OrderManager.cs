@@ -34,14 +34,11 @@ public class OrderManager : MonoBehaviour
     void SpawnItemsRandom() {
         
         Debug.Log("Spawning items");
-        // Zamichani 
         GameObject[] shuffled = itemPrefabs.OrderBy(x => Random.value).ToArray();
-        // Spawn
         for (int i = 0; i < shuffled.Length; i++) {
             GameObject go = Instantiate(shuffled[i], slotsPanel);
             var item = go.GetComponent<DraggableItem>();
     
-            // nastaveni typu podle jmena
             if (shuffled[i].name.Contains("Pipe")) {
                 item.itemType = ItemType.Pipe;
             } else if (shuffled[i].name.Contains("Catalyst")) {

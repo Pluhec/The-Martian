@@ -31,7 +31,6 @@ public class RoverMovement : MonoBehaviour
         float moveInput = Input.GetAxis("Vertical");
         float turnInput = Input.GetAxis("Horizontal");
 
-        // nejde se otace pokud neni v pohybu
         if (Mathf.Abs(moveInput) > 0.1f)
             rb.angularVelocity = -turnInput * turnSpeed;
         else

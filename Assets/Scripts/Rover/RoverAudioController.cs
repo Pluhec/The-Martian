@@ -10,7 +10,6 @@ public class RoverAudioController : MonoBehaviour
     public AudioClip boostSound;
     public AudioClip shiftSound;
 
-    // Proste mi nefungujou audioSourcy
     [Range(0f, 1f)] public float startVolume = 1f;
     [Range(0f, 1f)] public float stopVolume = 1f;
     [Range(0f, 1f)] public float idleVolume = 1f;

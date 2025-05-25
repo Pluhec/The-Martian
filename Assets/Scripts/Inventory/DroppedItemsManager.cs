@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class DroppedItemManager : MonoBehaviour
 {
     public static DroppedItemManager Instance;
-    
+
     [System.Serializable]
     public class DroppedItemData
     {
@@ -29,7 +29,7 @@ public class DroppedItemManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }   
+    }
 
     public void AddDroppedItem(GameObject prefab, Vector3 position)
     {
@@ -49,33 +49,27 @@ public class DroppedItemManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 1) Pro každý 'droppedItem' zkontrolujme, jestli je pro právě načtenou scénu,
-        //    a pokud ano, smažme původní instanci v té scéně (její jméno == prefab.name).
         foreach (var item in droppedItems)
         {
-            if (item.sceneName != scene.name) 
+            if (item.sceneName != scene.name)
                 continue;
 
-            // najdeme všechny GameObjecty s komponentou PathfinderComputer
             foreach (var pc in FindObjectsOfType<PathfinderComputer>())
             {
-                // originální má jméno bez "(Clone)"
                 if (pc.gameObject.name == item.prefab.name)
                     Destroy(pc.gameObject);
             }
         }
 
-        // 2) Až teď spawneme všechny položky, které byly opravdu dropnuté
         foreach (var item in droppedItems)
         {
-            if (item.sceneName != scene.name) 
+            if (item.sceneName != scene.name)
                 continue;
 
             Instantiate(item.prefab, item.position, Quaternion.identity);
         }
     }
-    
-    /*──────── EXPORT ───────*/
+
     public List<SaveLoadManager.DroppedData> ExportDropped()
     {
         var list = new List<SaveLoadManager.DroppedData>();
@@ -88,13 +82,12 @@ public class DroppedItemManager : MonoBehaviour
             {
                 prefabID = def.itemID,
                 position = d.position,
-                scene    = d.sceneName
+                scene = d.sceneName
             });
         }
         return list;
     }
 
-/*──────── IMPORT ───────*/
     public void ImportDropped(List<SaveLoadManager.DroppedData> list)
     {
         if (list == null) return;
@@ -107,12 +100,10 @@ public class DroppedItemManager : MonoBehaviour
 
             droppedItems.Add(new DroppedItemData
             {
-                prefab    = prefab,
-                position  = d.position,
+                prefab = prefab,
+                position = d.position,
                 sceneName = d.scene
             });
         }
     }
-
-
 }

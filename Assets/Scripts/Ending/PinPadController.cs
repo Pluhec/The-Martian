@@ -96,7 +96,6 @@ public class PinPadSceneTrigger : MonoBehaviour
         {
             pinCanvas.SetActive(false);
 
-            // Vypne InventoryManager, pokud existuje
             if (inventoryManager != null)
             {
                 inventoryManager.gameObject.SetActive(false);

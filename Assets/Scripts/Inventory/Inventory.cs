@@ -7,14 +7,14 @@ public class Inventory : MonoBehaviour
     public static Inventory Instance;
 
     public GameObject[] slots;
-    public bool[]       isFull;
+    public bool[] isFull;
 
     void Awake()
     {
         if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
         else Destroy(gameObject);
     }
-    
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
@@ -22,8 +22,6 @@ public class Inventory : MonoBehaviour
             DropFirstItem();
         }
     }
-
-    /* ─── veřejné API ─── */
 
     public bool AddItemAt(int start, GameObject obj, int size)
     {
@@ -53,8 +51,6 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(int main, int size) => VacateSlots(main, size, null);
 
-    /* ─── interní ─── */
-
     void CleanOrphans()
     {
         for (int k = 0; k < slots.Length; k++)
@@ -63,8 +59,8 @@ public class Inventory : MonoBehaviour
             if (tf.childCount == 0) { isFull[k] = false; continue; }
 
             var ch = tf.GetChild(0);
-            bool hasBtn = ch.GetComponent<ItemButton>()      != null;
-            bool hasPh  = ch.GetComponent<ItemPlaceholder>() != null;
+            bool hasBtn = ch.GetComponent<ItemButton>() != null;
+            bool hasPh = ch.GetComponent<ItemPlaceholder>() != null;
 
             if (!hasBtn && !hasPh)
             {
@@ -79,25 +75,23 @@ public class Inventory : MonoBehaviour
         var srcBtn = obj.GetComponent<ItemButton>();
         if (srcBtn == null || ContainsID(srcBtn.itemID)) return false;
 
-        /* hlavní ikona */
         GameObject main; ItemButton btn;
         if (obj.scene.IsValid())
         {
             main = obj;
             main.transform.SetParent(slots[start].transform, false);
-            btn  = main.GetComponent<ItemButton>();
+            btn = main.GetComponent<ItemButton>();
         }
         else
         {
             main = Instantiate(obj, slots[start].transform, false);
-            btn  = main.GetComponent<ItemButton>();
+            btn = main.GetComponent<ItemButton>();
         }
         AlignInSlot(main);
 
         btn.Initialize(start, size, this, null);
         isFull[start] = true;
 
-        /* placeholdery */
         for (int j = 1; j < size; j++)
         {
             int idx = start + j;
@@ -110,7 +104,7 @@ public class Inventory : MonoBehaviour
             var img = ph.GetComponent<Image>();
             if (img != null)
             {
-                img.color         = new Color(1,1,1,0.35f);
+                img.color = new Color(1,1,1,0.35f);
                 img.raycastTarget = false;
             }
             var cg = ph.GetComponent<CanvasGroup>() ?? ph.AddComponent<CanvasGroup>();
@@ -122,7 +116,6 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    // Inventory.cs
     public void VacateSlots(int main, int size, GameObject keep)
     {
         Debug.Log($"[VacateSlots] called with main={main}, size={size}, keep={(keep!=null)}");
@@ -130,7 +123,7 @@ public class Inventory : MonoBehaviour
         for (int j = 0; j < size; j++)
         {
             int idx = main + j;
-            if (idx >= slots.Length) 
+            if (idx >= slots.Length)
             {
                 Debug.LogWarning($"[VacateSlots] idx {idx} out of range");
                 continue;
@@ -142,7 +135,7 @@ public class Inventory : MonoBehaviour
 
             if (tf.childCount > 0)
             {
-                var g  = tf.GetChild(0).gameObject;
+                var g = tf.GetChild(0).gameObject;
                 var ph = g.GetComponent<ItemPlaceholder>();
                 if (ph != null && ph.mainSlotIndex != main)
                 {
@@ -163,7 +156,7 @@ public class Inventory : MonoBehaviour
         Debug.Log("[VacateSlots] calling AlignItems()");
         AlignItems();
     }
-    
+
     public void DropFirstItem()
     {
         for (int i = 0; i < slots.Length; i++)
@@ -179,7 +172,6 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    /* ─── zarovnání ─── */
     public void AlignItems()
     {
         Debug.Log("[AlignItems] START");
@@ -196,13 +188,12 @@ public class Inventory : MonoBehaviour
                     int size = btn.slotSize;
                     if (i != dst)
                         Debug.Log($"[AlignItems] Moving '{obj.name}' from slot {i} to slot {dst}");
-                    // … zbytek beze změny …
                 }
                 i += (tf.childCount>0 && tf.GetChild(0).GetComponent<ItemButton>()!=null)
                     ? tf.GetChild(0).GetComponent<ItemButton>().slotSize
                     : 1;
-                dst += tf.childCount>0 && tf.GetChild(0).GetComponent<ItemButton>()!=null 
-                    ? tf.GetChild(0).GetComponent<ItemButton>().slotSize 
+                dst += tf.childCount>0 && tf.GetChild(0).GetComponent<ItemButton>()!=null
+                    ? tf.GetChild(0).GetComponent<ItemButton>().slotSize
                     : 1;
                 continue;
             }
@@ -210,8 +201,6 @@ public class Inventory : MonoBehaviour
         }
         Debug.Log("[AlignItems] END");
     }
-
-    /* ─── utils ─── */
 
     public bool ContainsID(string id)
     {
@@ -231,18 +220,17 @@ public class Inventory : MonoBehaviour
         {
             rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0.5f,0.5f);
             rt.anchoredPosition = Vector2.zero;
-            rt.localRotation    = Quaternion.identity;
-            rt.localScale       = Vector3.one;
+            rt.localRotation = Quaternion.identity;
+            rt.localScale = Vector3.one;
         }
         else
         {
             go.transform.localPosition = Vector3.zero;
             go.transform.localRotation = Quaternion.identity;
-            go.transform.localScale    = Vector3.one;
+            go.transform.localScale = Vector3.one;
         }
     }
-    
-    /*──────── EXPORT ───────*/
+
     public List<SaveLoadManager.ItemData> ExportInventory()
     {
         var list = new List<SaveLoadManager.ItemData>();
@@ -258,9 +246,9 @@ public class Inventory : MonoBehaviour
                 {
                     list.Add(new SaveLoadManager.ItemData
                     {
-                        prefabKey = def.itemID,   // lookup klíč
-                        uniqueID  = btn.itemID,   // zachovat GUID
-                        slotSize  = btn.slotSize
+                        prefabKey = def.itemID,
+                        uniqueID = btn.itemID,
+                        slotSize = btn.slotSize
                     });
                     i += btn.slotSize;
                     continue;
@@ -271,12 +259,10 @@ public class Inventory : MonoBehaviour
         return list;
     }
 
-/*──────── IMPORT ───────*/
     public void ImportInventory(List<SaveLoadManager.ItemData> list)
     {
         if (list == null || list.Count == 0) return;
 
-        /* vyprázdni inventář */
         for (int k = 0; k < slots.Length; k++)
         {
             if (slots[k].transform.childCount > 0)
@@ -284,20 +270,16 @@ public class Inventory : MonoBehaviour
             isFull[k] = false;
         }
 
-        /* znovu vlož */
         foreach (var it in list)
         {
             GameObject prefab = PrefabRegistry.Instance?.Get(it.prefabKey);
             if (prefab == null) { Debug.LogWarning($"[Inventory] prefabKey \"{it.prefabKey}\" nenalezen"); continue; }
 
-            // vytvoř ikonu
             var obj = Instantiate(prefab);
             var btn = obj.GetComponent<ItemButton>();
-            if (btn != null) btn.itemID = it.uniqueID;          // obnov GUID
+            if (btn != null) btn.itemID = it.uniqueID;
 
-            AddItem(obj, it.slotSize);                          // AddItem si ikonu přemístí
+            AddItem(obj, it.slotSize);
         }
     }
-
-
 }

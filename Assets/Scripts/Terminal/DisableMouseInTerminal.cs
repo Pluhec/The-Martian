@@ -6,8 +6,8 @@ namespace DefaultNamespace
     {
         private void Start()
         {
-            Cursor.lockState = CursorLockMode.Locked; // Uzamkne myš na místě
-            Cursor.visible = false; // Skryje kurzor
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 }

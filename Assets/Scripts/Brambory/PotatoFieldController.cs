@@ -20,7 +20,7 @@ public class PotatoFieldController : InteractableObject
     [Header("Identifikace")]
     [Tooltip("Unikátní ID tohoto bramborového pole pro ukládání")]
     public string potatoFieldID = "MainField";
-    
+
     [Header("Návaznost")]
     [Tooltip("GameObject, který se aktivuje po dokončení bramborového questu")]
     public GameObject fertilizerGameObject;
@@ -36,13 +36,11 @@ public class PotatoFieldController : InteractableObject
 
     private void Awake()
     {
-        // Registrujeme metodu pro ukládání při změně scény
         SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
     private void Update()
     {
-        // Kontrola a aktualizace stavu UI podle questu
         if (questUIPanel == null || questManager == null || questManager.ActiveQuests == null)
             return;
 
@@ -69,8 +67,6 @@ public class PotatoFieldController : InteractableObject
         }
 
         questUIPanel.SetActive(shouldShow);
-
-        // Kontroluje dokončení questu, když je pole plné
         CheckQuestCompletion();
     }
 
@@ -88,42 +84,29 @@ public class PotatoFieldController : InteractableObject
 
     private void OnDestroy()
     {
-        // Odregistrujeme event při zničení objektu
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
     private void Start()
     {
-        // Získání reference na QuestManager
         questManager = QuestManager.Instance;
-
-        // Načtení stavu pole
         LoadFieldState();
-    
-        // Kontrola aktuálního Sol a nastavení collideru
         CheckCurrentSol();
-
-        // Aktualizace UI
         UpdateUI();
 
-        // Přidání akce Plant, pokud neexistuje
         if (!actions.Contains("Plant"))
         {
             actions.Add("Plant");
         }
     }
-    
+
     private void CheckCurrentSol()
     {
         Collider2D myCollider = GetComponent<Collider2D>();
         if (myCollider != null)
         {
-            // Zjištění aktuálního Sol z instance SolSystem
             bool isSol30 = (SolSystem.Instance != null && SolSystem.Instance.currentSol == 30);
-        
-            // Zapne collider jen pokud je Sol 30
             myCollider.enabled = isSol30;
-        
             Debug.Log($"[PotatoFieldController] Collider {(isSol30 ? "zapnut" : "vypnut")} - Sol {(isSol30 ? "30" : SolSystem.Instance?.currentSol.ToString() ?? "neznámý")}");
         }
         else
@@ -132,18 +115,15 @@ public class PotatoFieldController : InteractableObject
         }
     }
 
-    // Načtení stavu pole
     private void LoadFieldState()
     {
         string key = GetPrefKey();
 
-        // Načtení uloženého počtu brambor
         if (PlayerPrefs.HasKey(key))
         {
             currentPotatoCount = PlayerPrefs.GetInt(key, 0);
             Debug.Log($"Načteno {currentPotatoCount} brambor z PlayerPrefs pro pole {potatoFieldID}");
 
-            // Aktivace správného počtu brambor
             for (int i = 0; i < currentPotatoCount && i < potatoPrefabs.Length; i++)
             {
                 potatoPrefabs[i].SetActive(true);
@@ -155,7 +135,6 @@ public class PotatoFieldController : InteractableObject
         }
     }
 
-    // Uložení stavu pole
     private void SaveFieldState()
     {
         string key = GetPrefKey();
@@ -164,13 +143,11 @@ public class PotatoFieldController : InteractableObject
         Debug.Log($"Uloženo {currentPotatoCount} brambor do PlayerPrefs pro pole {potatoFieldID}");
     }
 
-    // Vytvoření klíče pro PlayerPrefs
     private string GetPrefKey()
     {
         return $"PotatoField_{potatoFieldID}_Count";
     }
 
-    // Volá se při opuštění scény
     private void OnSceneUnloaded(Scene scene)
     {
         SaveFieldState();
@@ -190,14 +167,12 @@ public class PotatoFieldController : InteractableObject
 
     private void PlantPotato()
     {
-        // Kontrola maximálního počtu brambor
         if (currentPotatoCount >= maxPotatoCount)
         {
             Debug.Log("Bramborové pole je již plné!");
             return;
         }
 
-        // Kontrola správného questu pro brambory
         bool isPotatoQuestActive = IsPotatoQuestActive();
         if (!isPotatoQuestActive)
         {
@@ -205,7 +180,6 @@ public class PotatoFieldController : InteractableObject
             return;
         }
 
-        // Hledání brambory v inventáři
         bool foundPotato = false;
         ItemButton potatoButton = null;
         int potatoSlotIndex = -1;
@@ -232,19 +206,11 @@ public class PotatoFieldController : InteractableObject
         if (foundPotato && potatoButton != null)
         {
             Debug.Log($"[PlantPotato] Brambora nalezena v slotu {potatoSlotIndex}, slotSize = {potatoButton.slotSize}");
-
-            // Odstranění položky skrze Inventory API
             Inventory.Instance.RemoveItem(potatoSlotIndex, potatoButton.slotSize);
             Debug.Log($"[PlantPotato] Voláno RemoveItem({potatoSlotIndex}, {potatoButton.slotSize})");
-
-            // Aktivace brambory na poli
             PlantSinglePotato();
-
-            // Zarovnání inventáře
             Inventory.Instance.AlignItems();
             Debug.Log("[PlantPotato] Inventář zarovnán po odstranění");
-
-            // Uložení stavu pole
             SaveFieldState();
         }
         else
@@ -256,17 +222,15 @@ public class PotatoFieldController : InteractableObject
     private bool IsPotatoQuestActive()
     {
         if (questManager == null)
-            return true; // Pro jistotu povolíme sázení, pokud není questManager
+            return true;
 
         if (questManager.ActiveQuests == null)
             return false;
 
-        // Hledání questu s daným ID
         int questIndex = questManager.ActiveQuests.FindIndex(q => q.questID == potatoQuestID);
         if (questIndex < 0)
-            return false; // Quest neexistuje
+            return false;
 
-        // Kontrola, zda je quest aktivní (první v pořadí nebo předchozí je dokončen)
         if (questIndex == 0)
             return true;
         else
@@ -281,7 +245,6 @@ public class PotatoFieldController : InteractableObject
             currentPotatoCount++;
             UpdateUI();
 
-            // Kontrola, jestli jsou všechny brambory zasazeny
             if (currentPotatoCount >= maxPotatoCount)
             {
                 CompleteQuest();
@@ -295,26 +258,21 @@ public class PotatoFieldController : InteractableObject
         {
             questManager.MarkQuestAsCompletedByID(potatoQuestID);
             questCompleted = true;
-            
-            // Vypneme UI panel po dokončení questu
+
             if (questUIPanel != null)
                 questUIPanel.SetActive(false);
-            
-            // Vypneme collider na tomto objektu
+
             Collider2D myCollider = GetComponent<Collider2D>();
             if (myCollider != null)
                 myCollider.enabled = false;
-            
-            // Vyčistíme akce objektu
+
             actions.Clear();
-            
-            // Aktivujeme druhý GameObject s kontrolerem na hnojení
+
             if (fertilizerGameObject != null)
                 fertilizerGameObject.SetActive(true);
-            
-            // Vypneme tento skript, ale necháme objekt aktivní
+
             this.enabled = false;
-            
+
             TimeManager.Instance.ResumeTime();
         }
     }

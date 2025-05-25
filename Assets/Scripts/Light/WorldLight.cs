@@ -35,7 +35,6 @@ public class WorldLight : MonoBehaviour
         }
     }
 
-    // Metoda ktera se vola vzdy kdyz je zmeneny cas v hre
     private void OnWorldTimeChanged(float currentTime)
     {
         if (!TimeManager.Instance.isTimePaused)
@@ -46,7 +45,6 @@ public class WorldLight : MonoBehaviour
 
     private void Update()
     {
-        // plynuly prechod mezi procenty 
         currentPercentOfDay = Mathf.SmoothDamp(currentPercentOfDay, targetPercentOfDay, ref currentSmoothVelocity, smoothTime);
         
         targetColor = _gradient.Evaluate(currentPercentOfDay / 100f);

@@ -5,11 +5,10 @@ using System.Collections.Generic;
 public class QuestTargetResolver : MonoBehaviour
 {
     public static QuestTargetResolver Instance { get; private set; }
-
-    // existující mapa „questID:targetIndex → Transform“
+    
     private Dictionary<string, Transform> targets = new Dictionary<string, Transform>();
     private Transform fallback;
-    private Transform terminal;   // <-- nově
+    private Transform terminal;
 
     private void Awake()
     {
@@ -37,20 +36,17 @@ public class QuestTargetResolver : MonoBehaviour
     {
         targets.Clear();
         fallback = null;
-        terminal = null;  // <-- reset
+        terminal = null;
 
-        // 1) načti všechna QuestTarget
         foreach (var qt in FindObjectsOfType<QuestTarget>())
         {
             string key = qt.questID + ":" + qt.targetIndex;
             targets[key] = qt.transform;
         }
 
-        // 2) fallback
         var fb = FindObjectOfType<FallbackTarget>();
         if (fb != null) fallback = fb.transform;
 
-        // 3) terminal target
         var tt = FindObjectOfType<TerminalTarget>();
         if (tt != null) terminal = tt.transform;
     }
@@ -62,5 +58,5 @@ public class QuestTargetResolver : MonoBehaviour
     }
 
     public Transform FallbackTarget => fallback;
-    public Transform TerminalTarget => terminal;  // <-- nově
+    public Transform TerminalTarget => terminal;
 }

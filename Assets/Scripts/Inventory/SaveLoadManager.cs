@@ -19,32 +19,30 @@ public class SaveLoadManager : MonoBehaviour
         if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
         else { Destroy(gameObject); return; }
 
-        Load();                      // načti při startu
+        Load();
     }
 
     void OnApplicationQuit() => Save();
 
-    /*──────────────── datové třídy ─────────────*/
-    [System.Serializable] public class ItemData      { public string prefabKey; public string uniqueID; public int slotSize; }
+    [System.Serializable] public class ItemData { public string prefabKey; public string uniqueID; public int slotSize; }
     [System.Serializable] public class ContainerData { public string containerID; public List<ItemData> items = new(); }
-    [System.Serializable] public class DroppedData   { public string prefabID;  public Vector3 position; public string scene; }
+    [System.Serializable] public class DroppedData { public string prefabID; public Vector3 position; public string scene; }
 
     [System.Serializable] class SaveData
     {
-        public List<ItemData>      inventory  = new();
+        public List<ItemData> inventory = new();
         public List<ContainerData> containers = new();
-        public List<DroppedData>   dropped    = new();
-        public List<string>        collected  = new();   // ★ nově uložené Persistent data
+        public List<DroppedData> dropped = new();
+        public List<string> collected = new();
     }
 
-    /*──────────────── SAVE ─────────────*/
     public void Save()
     {
         var data = new SaveData
         {
             inventory = Inventory.Instance.ExportInventory(),
-            dropped   = DroppedItemManager.Instance.ExportDropped(),
-            collected = PersistentDataManager.Instance.ExportCollected()  // ★
+            dropped = DroppedItemManager.Instance.ExportDropped(),
+            collected = PersistentDataManager.Instance.ExportCollected()
         };
 
         foreach (var box in FindObjectsOfType<StorageContainer>(true))
@@ -57,7 +55,6 @@ public class SaveLoadManager : MonoBehaviour
 #endif
     }
 
-    /*──────────────── LOAD ─────────────*/
     public void Load()
     {
         string path = Path.Combine(BaseDir, FILE);
@@ -68,14 +65,14 @@ public class SaveLoadManager : MonoBehaviour
 
         Inventory.Instance.ImportInventory(data.inventory);
         DroppedItemManager.Instance.ImportDropped(data.dropped);
-        PersistentDataManager.Instance.ImportCollected(data.collected);      // ★ obnov jednorázové předměty
+        PersistentDataManager.Instance.ImportCollected(data.collected);
 
         StartCoroutine(DelayContainers(data.containers));
     }
 
     System.Collections.IEnumerator DelayContainers(List<ContainerData> list)
     {
-        yield return null;    // 1 frame
+        yield return null;
         foreach (var box in FindObjectsOfType<StorageContainer>(true))
             box.ImportContainer(list);
     }

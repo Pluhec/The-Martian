@@ -43,15 +43,11 @@ public class Interpreter : MonoBehaviour
         questManager = GameManager.Instance.QuestManager;
         timeManager = GameManager.Instance.TimeManager;
         
-        // Initialize pathfinder message dictionary
         InitializePathfinderMessages();
     }
     
     private void InitializePathfinderMessages()
     {
-        // Add messages for pathfinder quests
-        // Quest IDs are even numbers (10, 12, 14, etc.)
-        // Terminal quest IDs are odd numbers (11, 13, 15, etc.)
         pathfinderMessages.Add(93, "We hear you loud and clear, Mark. Coordinating your return as we speak. Stay safe out there.");
         pathfinderMessages.Add(95, "Fuel tanks are full and all systems are green. The rocket is prepped and ready for launch whenever you are.");
         pathfinderMessages.Add(97, "The launch PIN is 4832. Once you have it, begin preparations immediately. We're all rooting for you.");
@@ -161,24 +157,18 @@ public class Interpreter : MonoBehaviour
     
     private void ProcessMessageCommand()
     {
-        // Procházej všechny aktivní questy
         foreach (Quest quest in questManager.ActiveQuests)
         {
-            // Hledáme první SUDÝ quest, který ještě není dokončený
             if (!quest.isCompleted && quest.questID % 2 == 0)
             {
-                // jeho "Pathfinder-předchůdce" má ID = sudé - 1 (liché)
                 int pathfinderQuestID = quest.questID - 1;
                 Quest pfq = questManager.ActiveQuests
                     .Find(q => q.questID == pathfinderQuestID);
 
-                // pokud je tenhle lichý quest už dokončený, můžeme dokončit ten sudý
                 if (pfq != null && pfq.isCompleted)
                 {
-                    // označíme sudý quest jako dokončený
                     questManager.MarkQuestAsCompletedByID(quest.questID);
 
-                    // vypíšeme zprávu z hex‐systému
                     if (pathfinderMessages.TryGetValue(pathfinderQuestID, out string msg))
                         response.Add("<color=#00FFFF>" + msg + "</color>");
                     else
@@ -189,7 +179,6 @@ public class Interpreter : MonoBehaviour
             }
         }
 
-        // žádný vhodný sudý quest není připraven k potvrzení
         response.Add("<color=#FF0000>No pending messages to confirm.</color>");
         response.Add("<color=#FFFF00>Complete a pathfinder sequence first.</color>");
     }
@@ -297,7 +286,6 @@ public class Interpreter : MonoBehaviour
         return gmMessage;
     }
     
-    // jelikoz neumim delat UI, tak tady musi byt tento shit: 
     private List<string> WrapText(string text, int maxLineLength)
     {
         var words = text.Split(' ');

@@ -6,10 +6,8 @@ public class PrefabRegistry : MonoBehaviour
 {
     public static PrefabRegistry Instance { get; private set; }
 
-    [Tooltip("Cesta k item prefabs ve Resources, bez 'Resources/' prefixu")]
     public string resourcesPath = "Items";
 
-    // interní mapování itemID → prefab
     private Dictionary<string, GameObject> map;
 
     void Awake()
@@ -18,7 +16,6 @@ public class PrefabRegistry : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            // neinitializujeme map hned tady – BuildRegistry() to udělá lazy
         }
         else
         {
@@ -26,7 +23,6 @@ public class PrefabRegistry : MonoBehaviour
         }
     }
 
-    // metoda, která (z)buduje mapu pouze jednou
     private void BuildRegistry()
     {
         if (map != null && map.Count > 0) return;
@@ -43,10 +39,8 @@ public class PrefabRegistry : MonoBehaviour
         Debug.Log($"[PrefabRegistry] Loaded {map.Count} items from Resources/{resourcesPath}", this);
     }
 
-    // vrací prefab, nebo null + varování
     public GameObject Get(string id)
     {
-        // ujistíme se, že máme mapu postavenou
         BuildRegistry();
 
         if (map.TryGetValue(id, out var prefab))

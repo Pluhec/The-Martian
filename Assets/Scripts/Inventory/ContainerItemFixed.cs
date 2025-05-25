@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/// Jeden skript pro bednu – umí ji sebrat *a* otevřít / zavřít
-/// (sebrat = přesun do DontDestroyOnLoad + ikona v inventáři).
 public class ContainerItemFixed : InteractableObject
 {
     StorageContainer box;

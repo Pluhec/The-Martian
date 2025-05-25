@@ -16,7 +16,7 @@ public class PersistentItem : MonoBehaviour
     {
         if (PersistentDataManager.Instance != null && PersistentDataManager.Instance.IsItemCollected(itemID))
         {
-            Destroy(gameObject); // Tento konkrétní objekt už byl sebrán
+            Destroy(gameObject);
         }
     }
 

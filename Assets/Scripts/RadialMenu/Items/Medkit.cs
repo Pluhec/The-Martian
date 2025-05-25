@@ -6,17 +6,13 @@ public class Medkit : InteractableObject
     private Inventory inventory;
     public GameObject itemButton;
     public int slotSize = 2;
-    
     public int questID;
-    
     public Canvas bloodOverlayImage;
-
     private QuestManager questManager;
     private QuestTablet questTablet;
 
     void Awake()
     {
-        // Inicializace inventáře
         if (Inventory.Instance == null)
         {
             Debug.LogError("Inventory instance missing!");
@@ -24,7 +20,6 @@ public class Medkit : InteractableObject
         }
         inventory = Inventory.Instance;
 
-        // Inicializace QuestManager a QuestTablet
         questManager = QuestManager.Instance;
         if (questManager == null)
             Debug.LogError("QuestManager instance not found.");
@@ -33,9 +28,6 @@ public class Medkit : InteractableObject
         if (questTablet == null)
             Debug.LogError("QuestTablet instance not found.");
 
-        // Přidáme akce pro tento objekt:
-        // první akce (Heal) se použije při quick‐action,
-        // druhá (Pick Up) se objeví v radiálním menu.
         actions.Add("Heal");
         actions.Add("Pick Up");
     }
@@ -47,7 +39,6 @@ public class Medkit : InteractableObject
             if (inventory.slots == null)
                 return;
 
-            // Najdeme první volný blok o velikosti slotSize
             for (int i = 0; i <= inventory.slots.Length - slotSize; i++)
             {
                 bool isSpaceFree = true;
@@ -61,7 +52,6 @@ public class Medkit : InteractableObject
                 }
                 if (!isSpaceFree) continue;
 
-                // 1) Vytvoříme hlavní tlačítko v UI
                 GameObject mainItem = Instantiate(itemButton, inventory.slots[i].transform, false);
                 inventory.isFull[i] = true;
 
@@ -69,11 +59,10 @@ public class Medkit : InteractableObject
                 if (itemScript != null)
                 {
                     itemScript.mainSlotIndex = i;
-                    itemScript.slotSize      = slotSize;
-                    itemScript.sourceObject  = this;
+                    itemScript.slotSize = slotSize;
+                    itemScript.sourceObject = this;
                 }
 
-                // 2) Vytvoříme placeholdery pro zbylá políčka
                 for (int j = 1; j < slotSize; j++)
                 {
                     int targetIndex = i + j;
@@ -86,24 +75,21 @@ public class Medkit : InteractableObject
 
                     var img = placeholder.GetComponent<Image>();
                     if (img != null)
-                        img.color         = new Color(1, 1, 1, 0.35f);
+                        img.color = new Color(1, 1, 1, 0.35f);
 
                     placeholder.AddComponent<ItemPlaceholder>().mainSlotIndex = i;
                     inventory.isFull[targetIndex] = true;
                 }
 
-                // 3) Označíme jako sebráno a odstraníme z kódu světa
                 GetComponent<PersistentItem>()?.MarkCollected();
                 DroppedItemManager.Instance?.RemoveDroppedItem(gameObject);
 
-                // 4) Deaktivujeme světový objekt, ale necháme ho pro quick‐action z inventáře
                 gameObject.SetActive(false);
                 return;
             }
         }
         else if (action == "Heal")
         {
-            // Quick‐action (E) i použití z inventáře
             Debug.Log("Medkit: Heal");
 
             if (questManager == null)
@@ -112,7 +98,6 @@ public class Medkit : InteractableObject
                 return;
             }
 
-            // Najdeme a dokončíme questu
             Quest quest = questManager.ActiveQuests.Find(q => q.questID == questID);
             if (quest != null && !quest.isCompleted)
             {
@@ -121,17 +106,14 @@ public class Medkit : InteractableObject
                 Debug.Log($" After heal: Quest {quest.questName} isCompleted? {quest.isCompleted}");
             }
 
-            // Aktualizujeme UI questu
             if (questTablet != null)
                 questTablet.UpdateQuestList();
-            
+
             PlayerPrefs.SetInt("BloodOverlayDisabled", 1);
             PlayerPrefs.Save();
             bloodOverlayImage.enabled = false;
 
-            // 5) Odstraníme světový objekt (pokud byl deaktivovaný, znova ho zničíme)
             Destroy(gameObject);
         }
     }
-    
 }

@@ -15,19 +15,17 @@ public class StorageContainer : MonoBehaviour
     }
 
     void Start() => Close();
-    public void Open() 
+    public void Open()
     {
         uiRoot?.SetActive(true);
-        ItemButton.isDragEnabled = true; // Zapni drag & drop
-    }
-    
-    public void Close() 
-    {
-        uiRoot?.SetActive(false);
-        ItemButton.isDragEnabled = false; // Vypni drag & drop
+        ItemButton.isDragEnabled = true;
     }
 
-    /* ─── veřejné API ─── */
+    public void Close()
+    {
+        uiRoot?.SetActive(false);
+        ItemButton.isDragEnabled = false;
+    }
 
     public bool AddItemAt(int start, GameObject obj, int size)
     {
@@ -57,8 +55,6 @@ public class StorageContainer : MonoBehaviour
     }
 
     public void RemoveItem(int main, int size) => VacateSlots(main, size, null);
-
-    /* ─── interní ─── */
 
     void CleanOrphans()
     {
@@ -147,8 +143,6 @@ public class StorageContainer : MonoBehaviour
         AlignItems();
     }
 
-    /* ─── zarovnání ─── */
-
     public void AlignItems()
     {
         int dst = 0, i = 0;
@@ -192,8 +186,6 @@ public class StorageContainer : MonoBehaviour
         for (int k = dst; k < isFull.Length; k++) isFull[k] = false;
     }
 
-    /* ─── drobnosti ─── */
-
     bool ContainsID(string id)
     {
         foreach (var s in slots)
@@ -222,8 +214,7 @@ public class StorageContainer : MonoBehaviour
             go.transform.localScale    = Vector3.one;
         }
     }
-    
-    /*──────── EXPORT ───────*/
+
     public SaveLoadManager.ContainerData ExportContainer()
     {
         var data = new SaveLoadManager.ContainerData
@@ -257,7 +248,6 @@ public class StorageContainer : MonoBehaviour
         return data;
     }
 
-/*──────── IMPORT ───────*/
     public void ImportContainer(List<SaveLoadManager.ContainerData> list)
     {
         var id = GetComponent<PersistentItem>()?.itemID;
@@ -266,7 +256,6 @@ public class StorageContainer : MonoBehaviour
         var found = list.Find(c => c.containerID == id);
         if (found == null) return;
 
-        /* vyprázdni */
         for (int k = 0; k < slots.Length; k++)
         {
             if (slots[k].transform.childCount > 0)
@@ -274,7 +263,6 @@ public class StorageContainer : MonoBehaviour
             isFull[k] = false;
         }
 
-        /* vlož položky */
         foreach (var it in found.items)
         {
             GameObject prefab = PrefabRegistry.Instance?.Get(it.prefabKey);
@@ -287,5 +275,4 @@ public class StorageContainer : MonoBehaviour
             AddItem(obj, it.slotSize);
         }
     }
-
 }

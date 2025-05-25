@@ -14,8 +14,8 @@ public class RadialSelection : MonoBehaviour
     public int numberOfRadialPart;
     public GameObject radialPartPrefab;
     public Transform radialPartCanvas;
-    public TextMeshProUGUI actionText; // **Odkaz na ActionText v RadialInside**
-    public Image actionImage; // **Odkaz na ActionImage v RadialInside**
+    public TextMeshProUGUI actionText;
+    public Image actionImage;
     public float angleBetweenPart = 10;
 
     public Color32 selectedColor = new Color32(0x33, 0x33, 0x33, 0x0D);
@@ -29,7 +29,7 @@ public class RadialSelection : MonoBehaviour
     private List<string> actions = new List<string>();
 
     public RadialMenuEvent onPartSelected = new RadialMenuEvent();
-    
+
     AudioManager audioManager;
 
     private void Awake()
@@ -40,7 +40,7 @@ public class RadialSelection : MonoBehaviour
     public void SetupMenu(List<string> actionList)
     {
         audioManager.PlayRadialMenu(audioManager.openCloseMenu);
-        
+
         actions = actionList;
 
         foreach (var item in spawnedParts)
@@ -72,7 +72,7 @@ public class RadialSelection : MonoBehaviour
         getSelectedRadialPart();
         AnimateSelection();
 
-        if (Input.GetMouseButtonDown(0)) // Kliknutí levým tlačítkem myši
+        if (Input.GetMouseButtonDown(0))
         {
             if (currentSelectedRadialPart >= 0 && currentSelectedRadialPart < actions.Count)
             {
@@ -83,7 +83,7 @@ public class RadialSelection : MonoBehaviour
             }
         }
 
-        UpdateActionDisplay(); // **Dynamické nastavení textu a ikony**
+        UpdateActionDisplay();
     }
 
     private void UpdateActionDisplay()
@@ -94,21 +94,20 @@ public class RadialSelection : MonoBehaviour
 
             if (actionText != null)
             {
-                actionText.text = selectedAction; // **Nastaví text podle vybrané akce**
+                actionText.text = selectedAction;
             }
 
             if (actionImage != null)
             {
-                // **Načtení ikonky z Resources složky podle názvu akce**
                 Sprite actionSprite = Resources.Load<Sprite>("RadialMenu/Icons/" + selectedAction);
                 if (actionSprite != null)
                 {
-                    actionImage.sprite = actionSprite; // **Nastavení ikonky**
-                    actionImage.enabled = true; // **Zobrazíme ikonku, pokud existuje**
+                    actionImage.sprite = actionSprite;
+                    actionImage.enabled = true;
                 }
                 else
                 {
-                    actionImage.enabled = false; // **Skryjeme ikonku, pokud obrázek neexistuje**
+                    actionImage.enabled = false;
                 }
             }
         }
@@ -125,12 +124,11 @@ public class RadialSelection : MonoBehaviour
 
         int newSelectedPart = (int)(angle * numberOfRadialPart / 360);
 
-        // **Aktualizujeme jen při změně sekce**
         if (newSelectedPart != currentSelectedRadialPart)
         {
             currentSelectedRadialPart = newSelectedPart;
             UpdateActionDisplay();
-            audioManager.PlayRadialMenu(audioManager.howerAction); // Přehrání zvuku při změně hoveru
+            audioManager.PlayRadialMenu(audioManager.howerAction);
         }
     }
 

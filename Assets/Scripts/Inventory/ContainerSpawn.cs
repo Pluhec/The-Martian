@@ -1,10 +1,9 @@
 using UnityEngine;
 
-/// Nahrazuje běžný `Spawn` – bednu neinstancuje, jen ji přesune do scény.
 public class ContainerSpawn : MonoBehaviour
 {
-    [HideInInspector] public string     containerID;
-    [HideInInspector] public ItemButton iconButton;     // odkaz na vlastní ikonu
+    [HideInInspector] public string containerID;
+    [HideInInspector] public ItemButton iconButton;
 
     public void SpawnContainer(Vector2 pos)
     {
@@ -14,13 +13,11 @@ public class ContainerSpawn : MonoBehaviour
             return;
         }
 
-        // 1) vrátíme bednu do aktuální scény
         box.transform.position = pos;
         box.transform.rotation = Quaternion.identity;
         box.SetActive(true);
         ContainerRepository.Unregister(containerID);
 
-        // 2) odstraníme ikonu + placeholdery „oficiální“ cestou
         var inv = Inventory.Instance;
         if (inv != null && iconButton != null)
         {
@@ -28,7 +25,6 @@ public class ContainerSpawn : MonoBehaviour
         }
         else
         {
-            // nouzově – kdyby něco selhalo
             Destroy(iconButton.gameObject);
         }
     }

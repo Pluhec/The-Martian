@@ -40,10 +40,7 @@ public class EndingCutsceneEnd : MonoBehaviour
         else
             SceneManager.LoadScene(nextSceneName);
     }
-
-    /// <summary>
-    /// Odstraní všechny objekty v "DontDestroyOnLoad" scéně.
-    /// </summary>
+    
     private void DestroyAllDontDestroyObjects()
     {
         Debug.Log("DestroyAllDontDestroyObjects: Creating temp object");

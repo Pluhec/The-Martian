@@ -25,7 +25,6 @@ public class DraggableItem : MonoBehaviour,
 
     public void OnDrag(PointerEventData eventData) {
         rt.anchoredPosition += new Vector2(0, eventData.delta.y);
-        // kam to vlozit
         for (int i = 0; i < manager.slotTransforms.Count; i++) {
             float slotY = manager.slotTransforms[i].anchoredPosition.y;
             if (rt.anchoredPosition.y < slotY + 20 && rt.anchoredPosition.y > slotY - 20) {

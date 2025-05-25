@@ -45,7 +45,7 @@ public class FootstepManager : MonoBehaviour
         else
         {
             stepTimer = 0f;
-            StopPlaying(); // Stop footstep when not moving
+            StopPlaying();
         }
     }
 
@@ -58,7 +58,7 @@ public class FootstepManager : MonoBehaviour
     private void InterruptAndPlayNewStep()
     {
         StopPlaying();
-        PlayFootstep(); // immediately play a new step on mode switch
+        PlayFootstep();
     }
 
     private void StopPlaying()

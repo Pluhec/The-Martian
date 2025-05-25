@@ -49,9 +49,6 @@ public class QuestManager : MonoBehaviour
         UpdateArrowAfterSceneLoad();
     }
 
-    /// <summary>
-    /// Pokud reference na šipku chybí, najde ji ve scéně.
-    /// </summary>
     private void FindArrowPointerInScene()
     {
         if (arrowPointer == null)
@@ -62,17 +59,11 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Po načtení scény nebo na startu přenastaví šipku podle stavu questů:
-    /// - pokud jsou dokončeny všechny questy → na TerminalTarget
-    /// - jinak → na aktuální podquest nebo FallbackTarget
-    /// </summary>
     private void UpdateArrowAfterSceneLoad()
     {
         if (activeQuests == null || activeQuests.Count == 0)
             return;
 
-        // 1) pokud jsou všechny questy hotové → ukazuj na terminal
         if (currentQuestIndex >= activeQuests.Count)
         {
             Transform term = QuestTargetResolver.Instance.TerminalTarget;
@@ -80,16 +71,12 @@ public class QuestManager : MonoBehaviour
             return;
         }
 
-        // 2) jinak ukazuj na právě aktivní podquest
         var q = activeQuests[currentQuestIndex];
         Transform t = QuestTargetResolver.Instance.Resolve(q.questID, q.currentTargetIndex)
                      ?? QuestTargetResolver.Instance.FallbackTarget;
         arrowPointer?.SetTarget(t);
     }
 
-    /// <summary>
-    /// Inicializuje seznam questů pro nový Sol.
-    /// </summary>
     public void InitializeQuests(List<Quest> quests)
     {
         activeQuests = new List<Quest>(quests);
@@ -100,9 +87,6 @@ public class QuestManager : MonoBehaviour
         ActivateCurrentQuest();
     }
 
-    /// <summary>
-    /// Nastaví šipku na začátek právě aktivního questu (nebo na terminal).
-    /// </summary>
     private void ActivateCurrentQuest()
     {
         if (currentQuestIndex < activeQuests.Count)
@@ -115,15 +99,11 @@ public class QuestManager : MonoBehaviour
         }
         else
         {
-            // všechny questy hotové → šipka na terminal
             Transform term = QuestTargetResolver.Instance.TerminalTarget;
             arrowPointer?.SetTarget(term);
         }
     }
 
-    /// <summary>
-    /// Volá se při dosažení podcíle (pokud používáš Notify).
-    /// </summary>
     public void NotifyTargetReached(int questID, Transform reachedTarget)
     {
         var quest = activeQuests.Find(q => q.questID == questID);
@@ -135,7 +115,6 @@ public class QuestManager : MonoBehaviour
             quest.currentTargetIndex++;
             if (quest.currentTargetIndex >= quest.targets.Count)
             {
-                // dokončení tohoto questu
                 quest.isCompleted = true;
                 Debug.Log($"Quest {quest.questName} (ID:{quest.questID}) completed.");
                 TimeManager.Instance.ResumeTime();
@@ -153,10 +132,6 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Označí quest jako dokončený ručně a posune ukazatel,
-    /// pokud to byl právě aktivní quest.
-    /// </summary>
     public void MarkQuestAsCompletedByID(int questID)
     {
         for (int i = 0; i < activeQuests.Count; i++)
