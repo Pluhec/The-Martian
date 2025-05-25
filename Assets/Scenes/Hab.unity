@@ -17755,7 +17755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: {fileID: 525879986}
   items:
-  - itemID: Lopata
+  - itemID: Shovel
     count: 1
     slotSize: 1
   - itemID: cedule-0
