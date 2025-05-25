@@ -49,12 +49,29 @@ public class DroppedItemManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // 1) Pro každý 'droppedItem' zkontrolujme, jestli je pro právě načtenou scénu,
+        //    a pokud ano, smažme původní instanci v té scéně (její jméno == prefab.name).
         foreach (var item in droppedItems)
         {
-            if (item.sceneName == scene.name)
+            if (item.sceneName != scene.name) 
+                continue;
+
+            // najdeme všechny GameObjecty s komponentou PathfinderComputer
+            foreach (var pc in FindObjectsOfType<PathfinderComputer>())
             {
-                Instantiate(item.prefab, item.position, Quaternion.identity);
+                // originální má jméno bez "(Clone)"
+                if (pc.gameObject.name == item.prefab.name)
+                    Destroy(pc.gameObject);
             }
+        }
+
+        // 2) Až teď spawneme všechny položky, které byly opravdu dropnuté
+        foreach (var item in droppedItems)
+        {
+            if (item.sceneName != scene.name) 
+                continue;
+
+            Instantiate(item.prefab, item.position, Quaternion.identity);
         }
     }
     

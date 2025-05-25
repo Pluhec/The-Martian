@@ -1108,15 +1108,15 @@ MonoBehaviour:
   questUICanvas: {fileID: 0}
   messageDisplay: {fileID: 6054175741736100721}
   questMessages:
-  - questID: 40
+  - questID: 93
     message: I am alive. Status good. Need rocket info.
-  - questID: 42
+  - questID: 95
     message: Systems checked. Fuel? Ready?
-  - questID: 44
+  - questID: 97
     message: Send PIN to launch. Want home.
-  minQuestID: 40
-  maxQuestID: 44
-  currentQuestID: 40
+  minQuestID: 93
+  maxQuestID: 97
+  currentQuestID: 93
 --- !u!114 &6304146215510596522
 MonoBehaviour:
   m_ObjectHideFlags: 0

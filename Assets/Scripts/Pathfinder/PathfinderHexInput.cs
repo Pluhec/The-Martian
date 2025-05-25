@@ -20,7 +20,7 @@ public class PathfinderHexInput : MonoBehaviour
     public CinemachineCamera cmPathfinderCam;
     public GameObject pathfinderCanvas;
     public GameObject playerUICanvas;
-    public GameObject inventoryCanvas;
+    public GameObject inventoryCanvas => Inventory.Instance.gameObject;
     public GameObject questUICanvas;
 
     [Header("Zpráva")]
@@ -30,7 +30,7 @@ public class PathfinderHexInput : MonoBehaviour
     [Header("Quest Settings")]
     public int minQuestID = 10;
     public int maxQuestID = 20;
-    public int currentQuestID = 10;
+    public int currentQuestID;
 
     [System.Serializable]
     public class PathfinderMessage
@@ -53,6 +53,37 @@ public class PathfinderHexInput : MonoBehaviour
 
     private void Awake()
     {
+        // ————————————————————————————————
+        // 1) Najdi hráče a jeho Movement
+        var playerGO = GameObject.FindGameObjectWithTag("Player");
+        if (playerGO != null)
+        {
+            if (playerMovement == null)
+                playerMovement = playerGO.GetComponent<Movement>();
+
+            // 2) Najdi UI canvasy
+            if (playerUICanvas == null)
+                playerUICanvas = GameObject.Find("Canvas (1) 1");
+            if (questUICanvas == null)
+                questUICanvas = GameObject.Find("QuestTablet");
+        }
+
+        // 3) Najdi Cinemachine kamery podle názvu
+        if (cmPlayerCam == null)
+        {
+            var go = GameObject.Find("CmCam");
+            if (go != null)
+                cmPlayerCam = go.GetComponent<CinemachineCamera>();
+        }
+        if (cmPathfinderCam == null)
+        {
+            var go = GameObject.Find("CmPathfinder");
+            if (go != null)
+                cmPathfinderCam = go.GetComponent<CinemachineCamera>();
+        }
+        // ————————————————————————————————
+        
+        // původní inicializace questManageru a notifikací
         if (GameManager.Instance != null)
         {
             questManager = GameManager.Instance.QuestManager;
@@ -107,14 +138,19 @@ public class PathfinderHexInput : MonoBehaviour
         pointer.rotation = Quaternion.identity;
         questCompleted = false;
 
+        // Najdi první nehotový lichý quest mezi minQuestID a maxQuestID
         foreach (Quest quest in questManager.ActiveQuests)
         {
-            if (!quest.isCompleted && quest.questID >= minQuestID &&
-                quest.questID <= maxQuestID && quest.questID % 2 == 0)
+            if (!quest.isCompleted
+                && quest.questID >= minQuestID
+                && quest.questID <= maxQuestID
+                && quest.questID % 2 == 1)    // lichá ID = Pathfinder sekvence
             {
-                currentQuestID = quest.questID;
-                var message = System.Array.Find(questMessages, m => m.questID == currentQuestID);
-                targetMessage = message != null ? message.message : "TEST";
+                currentQuestID = quest.questID;  // přímo to liché ID
+                var msgDef = System.Array.Find(questMessages, m => m.questID == currentQuestID);
+                targetMessage = msgDef != null
+                    ? msgDef.message
+                    : "TEST";
                 break;
             }
         }
@@ -135,7 +171,8 @@ public class PathfinderHexInput : MonoBehaviour
         if (!tutorialShown && toastPrefab != null && notificationsParent != null)
         {
             var tutorial = Instantiate(toastPrefab, notificationsParent);
-            tutorial.GetComponent<Toast>().Show("info", "Controls: A/D = Rotate | SPACE = Confirm | F = Exit");
+            tutorial.GetComponent<Toast>()
+                .Show("info", "Controls: A/D = Rotate | SPACE = Confirm | F = Exit");
             tutorialShown = true;
         }
 

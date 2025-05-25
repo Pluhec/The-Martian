@@ -4,9 +4,9 @@ using Unity.Cinemachine;
 public class PathfinderComputer : InteractableObject
 {
     [Header("Odkazy")]
-    public GameObject playerObject;
-    public CinemachineCamera cmPlayerCam;
-    public CinemachineCamera cmPathfinderCam;
+    [SerializeField] private GameObject playerObject;
+    [SerializeField] private CinemachineCamera cmPlayerCam;
+    [SerializeField] private CinemachineCamera cmPathfinderCam;
     public GameObject pathfinderRoot;
 
     private Movement playerMovement;
@@ -14,9 +14,23 @@ public class PathfinderComputer : InteractableObject
 
     private void Awake()
     {
-        if (playerObject != null)
-        {
+        if (playerObject == null)
+            playerObject = GameObject.FindGameObjectWithTag("Player");
+
+        if (playerMovement == null && playerObject != null)
             playerMovement = playerObject.GetComponent<Movement>();
+
+        // 2) Cinemachine kamery
+        if (cmPlayerCam == null)
+        {
+            var go = GameObject.Find("CmCam");
+            if (go != null) cmPlayerCam = go.GetComponent<CinemachineCamera>();
+        }
+
+        if (cmPathfinderCam == null)
+        {
+            var go = GameObject.Find("CmPathfinder");
+            if (go != null) cmPathfinderCam = go.GetComponent<CinemachineCamera>();
         }
 
         if (pathfinderRoot != null)

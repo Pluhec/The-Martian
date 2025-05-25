@@ -161,44 +161,39 @@ public class Interpreter : MonoBehaviour
     
     private void ProcessMessageCommand()
     {
-        // Find the next terminal quest (odd numbers) that is not completed
+        // Procházej všechny aktivní questy
         foreach (Quest quest in questManager.ActiveQuests)
         {
-            // Check if this is a terminal quest (odd quest ID)
-            if (!quest.isCompleted && quest.questID % 2 == 1)
+            // Hledáme první SUDÝ quest, který ještě není dokončený
+            if (!quest.isCompleted && quest.questID % 2 == 0)
             {
-                // Get the associated pathfinder quest ID (even number)
+                // jeho "Pathfinder-předchůdce" má ID = sudé - 1 (liché)
                 int pathfinderQuestID = quest.questID - 1;
-                
-                // Check if the previous pathfinder quest was completed
-                Quest pathfinderQuest = questManager.ActiveQuests.Find(q => q.questID == pathfinderQuestID);
-                
-                if (pathfinderQuest != null && pathfinderQuest.isCompleted)
+                Quest pfq = questManager.ActiveQuests
+                    .Find(q => q.questID == pathfinderQuestID);
+
+                // pokud je tenhle lichý quest už dokončený, můžeme dokončit ten sudý
+                if (pfq != null && pfq.isCompleted)
                 {
-                    // Complete this terminal quest
+                    // označíme sudý quest jako dokončený
                     questManager.MarkQuestAsCompletedByID(quest.questID);
-                    
-                    // Display the message
-                    if (pathfinderMessages.TryGetValue(pathfinderQuestID, out string message))
-                    {
-                        response.Add("<color=#00FF00>Message confirmation:</color>");
-                        response.Add("<color=#00FFFF>" + message + "</color>");
-                        response.Add("<color=#00FF00>Quest completed! Continue to next objective.</color>");
-                    }
+
+                    // vypíšeme zprávu z hex‐systému
+                    if (pathfinderMessages.TryGetValue(pathfinderQuestID, out string msg))
+                        response.Add("<color=#00FFFF>" + msg + "</color>");
                     else
-                    {
                         response.Add("<color=#00FF00>Message confirmed. Quest completed!</color>");
-                    }
-                    
+
                     return;
                 }
             }
         }
-        
-        // If we got here, no eligible terminal quest was found
+
+        // žádný vhodný sudý quest není připraven k potvrzení
         response.Add("<color=#FF0000>No pending messages to confirm.</color>");
         response.Add("<color=#FFFF00>Complete a pathfinder sequence first.</color>");
     }
+
     
     public List<string> LoadAsciiLogo()
     {
