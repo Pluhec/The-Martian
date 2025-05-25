@@ -4,11 +4,11 @@ public class PathfinderDropZone : MonoBehaviour
 {
     [Tooltip("ID questu, který se má dokončit po doručení objektu.")]
     public int questID;
+    public int sol;
 
     private QuestManager questManager;
     private QuestTablet questTablet;
     private bool questCompleted;
-    private bool isActive;
 
     void Awake()
     {
@@ -20,20 +20,15 @@ public class PathfinderDropZone : MonoBehaviour
         if (questTablet == null)
             Debug.LogError("QuestTablet instance not found.");
 
+        // Výchozí stav - neaktivní
         SetChildrenActive(false);
-    }
-    
-    void OnBecameVisible()
-    {
-        Debug.Log($"{name} je nyní viditelný kamerou.");
-    }
 
-    void Update()
-    {
-        Quest currentQuest = questManager.ActiveQuests[questManager.currentQuestIndex];
-        bool shouldBeActive = currentQuest.questID == questID;
-        
-        SetChildrenActive(shouldBeActive);
+        // Kontrola jestli je správný sol
+        int currentSol = SolSystem.Instance.currentSol;
+        if (currentSol == sol)
+        {
+            SetChildrenActive(true);
+        }
     }
 
     private void SetChildrenActive(bool active)
@@ -64,7 +59,6 @@ public class PathfinderDropZone : MonoBehaviour
 
                 questCompleted = true;
                 SetChildrenActive(false);
-                isActive = false;
             }
 
             Destroy(gameObject);
