@@ -99,6 +99,9 @@ public class PotatoFieldController : InteractableObject
 
         // Načtení stavu pole
         LoadFieldState();
+    
+        // Kontrola aktuálního Sol a nastavení collideru
+        CheckCurrentSol();
 
         // Aktualizace UI
         UpdateUI();
@@ -107,6 +110,25 @@ public class PotatoFieldController : InteractableObject
         if (!actions.Contains("Plant"))
         {
             actions.Add("Plant");
+        }
+    }
+    
+    private void CheckCurrentSol()
+    {
+        Collider2D myCollider = GetComponent<Collider2D>();
+        if (myCollider != null)
+        {
+            // Zjištění aktuálního Sol z instance SolSystem
+            bool isSol30 = (SolSystem.Instance != null && SolSystem.Instance.currentSol == 30);
+        
+            // Zapne collider jen pokud je Sol 30
+            myCollider.enabled = isSol30;
+        
+            Debug.Log($"[PotatoFieldController] Collider {(isSol30 ? "zapnut" : "vypnut")} - Sol {(isSol30 ? "30" : SolSystem.Instance?.currentSol.ToString() ?? "neznámý")}");
+        }
+        else
+        {
+            Debug.LogWarning("[PotatoFieldController] Nebyl nalezen žádný Collider2D komponenta!");
         }
     }
 
@@ -207,28 +229,6 @@ public class PotatoFieldController : InteractableObject
             }
         }
 
-        if (foundPotato && potatoButton != null)
-        {
-            Debug.Log("Brambora nalezena v inventáři, odstraňuji...");
-
-            // Použití vestavěné metody z Inventory pro odstranění položky
-            int slotSize = potatoButton.slotSize;
-            Inventory.Instance.RemoveItem(potatoSlotIndex, slotSize);
-
-            // Aktivace brambory na poli
-            PlantSinglePotato();
-
-            // Zarovnání inventáře po odstranění
-            Inventory.Instance.AlignItems();
-
-            // Uložení stavu po každé zasazené bramboře
-            SaveFieldState();
-        }
-        else
-        {
-            Debug.Log("Nemáš žádnou bramboru k zasazení!");
-        }
-        
         if (foundPotato && potatoButton != null)
         {
             Debug.Log($"[PlantPotato] Brambora nalezena v slotu {potatoSlotIndex}, slotSize = {potatoButton.slotSize}");
