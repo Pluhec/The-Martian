@@ -1820,7 +1820,7 @@ MonoBehaviour:
   - {fileID: 2676284075195676806}
   - {fileID: 6932953158133519635}
   - {fileID: 7583138409272021364}
-  questIDToComplete: 39
+  questIDToComplete: 92
 --- !u!1 &4657456237705365729
 GameObject:
   m_ObjectHideFlags: 0
