@@ -2441,7 +2441,7 @@ MonoBehaviour:
   soilCounterText: {fileID: 1680261371}
   loaderImage: {fileID: 329747537}
   questManager: {fileID: 365025711}
-  soilPerItem: 15
+  soilPerItem: 1
   resetKey: 114
 --- !u!114 &365025711
 MonoBehaviour:
@@ -102883,6 +102883,63 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1326561485
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3618910172946178163, guid: 58c82443939ec5e4faf04cc27b50e9de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.462
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618910172946178163, guid: 58c82443939ec5e4faf04cc27b50e9de, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.173
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618910172946178163, guid: 58c82443939ec5e4faf04cc27b50e9de, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618910172946178163, guid: 58c82443939ec5e4faf04cc27b50e9de, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618910172946178163, guid: 58c82443939ec5e4faf04cc27b50e9de, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618910172946178163, guid: 58c82443939ec5e4faf04cc27b50e9de, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618910172946178163, guid: 58c82443939ec5e4faf04cc27b50e9de, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618910172946178163, guid: 58c82443939ec5e4faf04cc27b50e9de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618910172946178163, guid: 58c82443939ec5e4faf04cc27b50e9de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618910172946178163, guid: 58c82443939ec5e4faf04cc27b50e9de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215840973986730485, guid: 58c82443939ec5e4faf04cc27b50e9de, type: 3}
+      propertyPath: m_Name
+      value: Shovel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 58c82443939ec5e4faf04cc27b50e9de, type: 3}
 --- !u!1 &1330197807
 GameObject:
   m_ObjectHideFlags: 0
@@ -162713,3 +162770,4 @@ SceneRoots:
   - {fileID: 524367288}
   - {fileID: 1330197808}
   - {fileID: 1547670547}
+  - {fileID: 1326561485}
