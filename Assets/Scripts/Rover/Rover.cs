@@ -8,7 +8,7 @@ public class Rover : InteractableObject
     public Transform seat;
     public GameObject roverUICanvas;
     public GameObject playerUI;         
-    public GameObject inventoryUI; 
+    private GameObject inventoryUI => Inventory.Instance.gameObject;
 
     [Header("Subsystems")] 
     public BatterySystem battery;
