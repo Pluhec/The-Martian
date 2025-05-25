@@ -17818,7 +17818,7 @@ MonoBehaviour:
   autoSpawn: 0
   spawnInterval: 1
   randomSlot: 1
-  enablePersistence: 0
+  enablePersistence: 1
 --- !u!1 &539812502
 GameObject:
   m_ObjectHideFlags: 0

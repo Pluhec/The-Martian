@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLoaded: 0
+  originalPrefab: {fileID: 7707713149563759101}
 --- !u!1 &9163011588621651098
 GameObject:
   m_ObjectHideFlags: 0

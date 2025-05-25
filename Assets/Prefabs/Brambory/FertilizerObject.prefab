@@ -100,7 +100,7 @@ MonoBehaviour:
   previousPotatoQuestID: 30
   fertilizerFieldID: MainField
   requiredFertilizerAmount: 30
-  currentFertilizerCount: 29
+  currentFertilizerCount: 0
   fertilizerItemID: Poop
 --- !u!114 &2820335231034392309
 MonoBehaviour:

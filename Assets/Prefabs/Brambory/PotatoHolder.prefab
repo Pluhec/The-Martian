@@ -162,7 +162,7 @@ MonoBehaviour:
   potatoFieldID: MainField
   fertilizerGameObject: {fileID: 0}
   maxPotatoCount: 30
-  currentPotatoCount: 29
+  currentPotatoCount: 0
   potatoItemID: Potato
 --- !u!114 &2353666154130214
 MonoBehaviour:

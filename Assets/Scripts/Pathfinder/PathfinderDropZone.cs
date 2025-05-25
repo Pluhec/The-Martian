@@ -5,98 +5,69 @@ public class PathfinderDropZone : MonoBehaviour
     [Tooltip("ID questu, který se má dokončit po doručení objektu.")]
     public int questID;
 
-    [Tooltip("Den (Sol), ve kterém je zóna aktivní.")]
-    public int targetSol = 91;
-
-    [Tooltip("Část jména objektu, který se má doručit.")]
-    public string requiredObjectName = "Pathfinder";
-
-    private bool questCompleted = false;
-    private SpriteRenderer spriteRenderer;
     private QuestManager questManager;
     private QuestTablet questTablet;
+    private bool questCompleted;
+    private bool isActive;
 
     void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.enabled = false;
-        
-        if (QuestManager.Instance != null)
-            questManager = QuestManager.Instance;
-    }
-
-    void Start()
-    {
+        questManager = QuestManager.Instance;
         if (questManager == null)
-            questManager = FindObjectOfType<QuestManager>();
+            Debug.LogError("QuestManager instance not found.");
 
         questTablet = FindObjectOfType<QuestTablet>();
-
-        if (questManager == null)
-            Debug.LogError("❌ QuestManager nebyl nalezen ve scéně!");
         if (questTablet == null)
-            Debug.LogWarning("⚠️ QuestTablet nebyl nalezen – seznam úkolů se neaktualizuje vizuálně.");
+            Debug.LogError("QuestTablet instance not found.");
 
-        UpdateVisibility();
+        SetChildrenActive(false);
+    }
+    
+    void OnBecameVisible()
+    {
+        Debug.Log($"{name} je nyní viditelný kamerou.");
     }
 
     void Update()
     {
-        UpdateVisibility();
+        Quest currentQuest = questManager.ActiveQuests[questManager.currentQuestIndex];
+        bool shouldBeActive = currentQuest.questID == questID;
+        
+        SetChildrenActive(shouldBeActive);
     }
 
-    private void UpdateVisibility()
+    private void SetChildrenActive(bool active)
     {
-        spriteRenderer.enabled = (GetCurrentSol() == targetSol);
-    }
-
-    private int GetCurrentSol()
-    {
-        return GameManager.Instance?.SolSystem?.currentSol ?? 0;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(active);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (questCompleted)
-            return;
+        if (questCompleted) return;
 
-        if (other.CompareTag("Interactable") && other.name.Contains(requiredObjectName))
-        {
-            CompleteQuest();
-        }
-    }
+        Debug.Log($"Collision detected with: {other.gameObject.name}, Tag: {other.tag}");
 
-    private void CompleteQuest()
-    {
-        if (questManager == null)
+        if (other.GetComponent<PathfinderComputer>() != null)
         {
-            Debug.LogError("❌ QuestManager není inicializován!");
-            return;
-        }
-        
-        Quest quest = questManager.ActiveQuests?.Find(q => q.questID == questID);
-        if (quest == null)
-        {
-            Debug.LogWarning("⚠️ Quest s ID " + questID + " nebyl nalezen mezi aktivními questy.");
-            return;
-        }
+            Quest quest = questManager.ActiveQuests[questManager.currentQuestIndex];
+            if (quest.questID == questID && !quest.isCompleted)
+            {
+                Debug.Log($"Before completing: Quest {quest.questName} (ID {quest.questID}) isCompleted? {quest.isCompleted}");
+                questManager.MarkQuestAsCompletedByID(questID);
+                Debug.Log($"After completing: Quest {quest.questName} isCompleted? {quest.isCompleted}");
 
-        if (!quest.isCompleted)
-        {
-            Debug.Log("ℹ️ Před dokončením: Quest " + quest.questName +
-                      " (ID: " + quest.questID + ") isCompleted = " + quest.isCompleted);
-            
-            questManager.MarkQuestAsCompletedByID(questID);
-            questCompleted = true;
+                if (questTablet != null)
+                    questTablet.UpdateQuestList();
 
-            Debug.Log("✅ Po dokončení: Quest " + quest.questName +
-                      " (ID: " + quest.questID + ") isCompleted = " + quest.isCompleted);
-            
-            questTablet?.UpdateQuestList();
-        }
-        else
-        {
-            Debug.Log("ℹ️ Quest " + quest.questName + " je již dokončen.");
+                questCompleted = true;
+                SetChildrenActive(false);
+                isActive = false;
+            }
+
+            Destroy(gameObject);
         }
     }
 }

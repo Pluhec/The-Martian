@@ -118,7 +118,20 @@ public class Rover : InteractableObject
 
     private void LoadCargo(LoadableItem item)
     {
-        // parentuje na cargo 
+        // Přečti si itemID z tvé ItemDefinition komponenty
+        var def = item.GetComponent<ItemDefinition>();
+        if (def == null)
+        {
+            Debug.LogWarning($"[Rover] LoadableItem '{item.name}' nemá ItemDefinition!");
+            return;
+        }
+
+        // Z registru si vytáhni prefab asset podle itemID
+        item.originalPrefab = PrefabRegistry.Instance.Get(def.itemID);
+        if (item.originalPrefab == null)
+            Debug.LogWarning($"[Rover] Prefab s ID '{def.itemID}' nenalezen v PrefabRegistry.");
+
+        // Teď už naplňuješ cargo běžným způsobem:
         item.transform.SetParent(cargo, false);
         item.transform.localPosition = Vector3.zero;
         item.transform.localScale = Vector3.one * 0.5f;
@@ -127,29 +140,34 @@ public class Rover : InteractableObject
         var col = item.GetComponent<Collider2D>();
         if (col != null) col.enabled = false;
         currentCargo = item;
-        Debug.Log($"[Rover] nalozil jsem: {item.name}");
+        Debug.Log($"[Rover] naložil jsem: {item.name}");
     }
+
 
     private void UnloadCargo()
     {
         if (currentCargo == null) return;
 
-        // vrátíme původní měřítko (původně Vector3.one)
+        // Obnovení měřítka a odparentování
         currentCargo.transform.localScale = Vector3.one;
-
-        // odparentujeme (světové souřadnice zachovány)
         currentCargo.transform.SetParent(null, true);
-
-        // vyložení přesně na pozici cargoZone s nulovou rotací
         currentCargo.transform.position = cargoZone.position;
         currentCargo.transform.rotation = Quaternion.identity;
 
+        // Vložení skutečného prefab assetu do DroppedItemManageru
+        var prefab = currentCargo.originalPrefab;
+        if (prefab != null)
+            DroppedItemManager.Instance.AddDroppedItem(prefab, cargoZone.position);
+        else
+            Debug.LogWarning($"[Rover] Prefab pro '{currentCargo.name}' není nastavený.");
+
+        // Obnovení collideru a stavu
         currentCargo.isLoaded = false;
         var col = currentCargo.GetComponent<Collider2D>();
         if (col != null) col.enabled = true;
-
         currentCargo = null;
     }
+
 
     private void EnterRover()
     {

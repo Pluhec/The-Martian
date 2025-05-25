@@ -11,7 +11,7 @@ public class QuestManager : MonoBehaviour
 
     private List<Quest> activeQuests = new List<Quest>();
     public List<Quest> ActiveQuests => activeQuests;
-    private int currentQuestIndex = 0;
+    public int currentQuestIndex = 0;
 
     private void Awake()
     {
