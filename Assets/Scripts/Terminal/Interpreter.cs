@@ -16,8 +16,7 @@ public class Interpreter : MonoBehaviour
     private Dictionary<int, string> solLoreMessages = new Dictionary<int, string>()
     {
         {
-            21,
-            "The Hab is experiencing unstable power. Clean the solar panels to ensure sufficient energy for life support."
+            21, "The Hab is experiencing unstable power. Clean the solar panels to ensure sufficient energy for life support."
         },
         {
             24, "To begin preparing the Hab for sustainable life on Mars, the interior must first be cleared of clutter and unnecessary equipment. With a clean and open space, a layer of Martian soil can then be spread across the floor — laying the foundation for future plant growth and self-sufficiency."
@@ -53,9 +52,9 @@ public class Interpreter : MonoBehaviour
         // Add messages for pathfinder quests
         // Quest IDs are even numbers (10, 12, 14, etc.)
         // Terminal quest IDs are odd numbers (11, 13, 15, etc.)
-        pathfinderMessages.Add(40, "We hear you loud and clear, Mark. Coordinating your return as we speak. Stay safe out there.");
-        pathfinderMessages.Add(42, "Fuel tanks are full and all systems are green. The rocket is prepped and ready for launch whenever you are.");
-        pathfinderMessages.Add(44, "The launch PIN is 4832. Once you have it, begin preparations immediately. We're all rooting for you.");
+        pathfinderMessages.Add(93, "We hear you loud and clear, Mark. Coordinating your return as we speak. Stay safe out there.");
+        pathfinderMessages.Add(95, "Fuel tanks are full and all systems are green. The rocket is prepped and ready for launch whenever you are.");
+        pathfinderMessages.Add(97, "The launch PIN is 4832. Once you have it, begin preparations immediately. We're all rooting for you.");
     }
     
     public List<string> Interpret(string userInputText)

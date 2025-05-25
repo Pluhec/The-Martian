@@ -138715,6 +138715,42 @@ PrefabInstance:
       propertyPath: fertilizerGameObject
       value: 
       objectReference: {fileID: 1204149289}
+    - target: {fileID: 7346135889795619507, guid: 4c2daecb37af17147ae1ee7b85c7a412, type: 3}
+      propertyPath: solSpriteMapping.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346135889795619507, guid: 4c2daecb37af17147ae1ee7b85c7a412, type: 3}
+      propertyPath: solSpriteMapping.Array.data[0].solNumber
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346135889795619507, guid: 4c2daecb37af17147ae1ee7b85c7a412, type: 3}
+      propertyPath: solSpriteMapping.Array.data[1].solNumber
+      value: 94
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346135889795619507, guid: 4c2daecb37af17147ae1ee7b85c7a412, type: 3}
+      propertyPath: solSpriteMapping.Array.data[2].solNumber
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346135889795619507, guid: 4c2daecb37af17147ae1ee7b85c7a412, type: 3}
+      propertyPath: solSpriteMapping.Array.data[3].solNumber
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346135889795619507, guid: 4c2daecb37af17147ae1ee7b85c7a412, type: 3}
+      propertyPath: solSpriteMapping.Array.data[4].solNumber
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346135889795619507, guid: 4c2daecb37af17147ae1ee7b85c7a412, type: 3}
+      propertyPath: solSpriteMapping.Array.data[1].potatoSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ed90fffcf13ed436b86e9800ac958a68, type: 3}
+    - target: {fileID: 7346135889795619507, guid: 4c2daecb37af17147ae1ee7b85c7a412, type: 3}
+      propertyPath: solSpriteMapping.Array.data[2].potatoSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ed13b0615061c4045967fdf454fbffbb, type: 3}
+    - target: {fileID: 7346135889795619507, guid: 4c2daecb37af17147ae1ee7b85c7a412, type: 3}
+      propertyPath: solSpriteMapping.Array.data[3].potatoSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ed13b0615061c4045967fdf454fbffbb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
