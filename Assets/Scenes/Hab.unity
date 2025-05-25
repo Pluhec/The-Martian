@@ -138712,6 +138712,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1074487005}
     - target: {fileID: 6473073608102821123, guid: 4c2daecb37af17147ae1ee7b85c7a412, type: 3}
+      propertyPath: currentPotatoCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6473073608102821123, guid: 4c2daecb37af17147ae1ee7b85c7a412, type: 3}
       propertyPath: fertilizerGameObject
       value: 
       objectReference: {fileID: 1204149289}
